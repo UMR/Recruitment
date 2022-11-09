@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Recruitment.Application.Features.Agency.Commands.CreateAgency;
 using Recruitment.Application.Features.Agency.Queries;
 using Recruitment.Application.Features.Menu.Queries;
 using ResourceServer.Controllers;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Recruitment.API.Controllers
 {
@@ -22,8 +24,9 @@ namespace Recruitment.API.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<int> PostAsync([FromBody] CreateAgencyCommand command)
         {
+            return await Mediator.Send(command);
         }
 
         [HttpPut("{id}")]
