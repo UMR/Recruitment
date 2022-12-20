@@ -17,13 +17,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Constant", "Common\Constant
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recruitment.API", "Services\Recruitment\Recruitment.API\Recruitment.API.csproj", "{0457AEC8-7E03-448B-A170-9A5A15B8526E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recruitment.Application", "Services\Recruitment\Recruitment.Application\Recruitment.Application.csproj", "{30EA5725-7AF2-4305-8B1C-4A4999275D85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recruitment.Application", "Services\Recruitment\Recruitment.Application\Recruitment.Application.csproj", "{30EA5725-7AF2-4305-8B1C-4A4999275D85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recruitment.Domain", "Services\Recruitment\Recruitment.Domain\Recruitment.Domain.csproj", "{D14A16E5-6B99-459B-91B6-8CC453BCDC83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recruitment.Domain", "Services\Recruitment\Recruitment.Domain\Recruitment.Domain.csproj", "{D14A16E5-6B99-459B-91B6-8CC453BCDC83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recruitment.Infrastructure", "Services\Recruitment\Recruitment.Infrastructure\Recruitment.Infrastructure.csproj", "{38D8CE91-65F6-40AA-8D93-69B5AE2BC455}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recruitment.Infrastructure", "Services\Recruitment\Recruitment.Infrastructure\Recruitment.Infrastructure.csproj", "{38D8CE91-65F6-40AA-8D93-69B5AE2BC455}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recruitment.Persistence", "Services\Recruitment\Recruitment.Persistence\Recruitment.Persistence.csproj", "{D5CA1E44-E909-4A2B-8A59-482D5A0A2B15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recruitment.Persistence", "Services\Recruitment\Recruitment.Persistence\Recruitment.Persistence.csproj", "{D5CA1E44-E909-4A2B-8A59-482D5A0A2B15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recruitment.Web", "Recruitment.Web\Recruitment.Web.csproj", "{057F40A7-60C3-475C-B395-83F22B308C92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{D5CA1E44-E909-4A2B-8A59-482D5A0A2B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5CA1E44-E909-4A2B-8A59-482D5A0A2B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5CA1E44-E909-4A2B-8A59-482D5A0A2B15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{057F40A7-60C3-475C-B395-83F22B308C92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{057F40A7-60C3-475C-B395-83F22B308C92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{057F40A7-60C3-475C-B395-83F22B308C92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{057F40A7-60C3-475C-B395-83F22B308C92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{D14A16E5-6B99-459B-91B6-8CC453BCDC83} = {B6C8194B-882C-4496-B41F-411749AF6D48}
 		{38D8CE91-65F6-40AA-8D93-69B5AE2BC455} = {B6C8194B-882C-4496-B41F-411749AF6D48}
 		{D5CA1E44-E909-4A2B-8A59-482D5A0A2B15} = {B6C8194B-882C-4496-B41F-411749AF6D48}
+		{057F40A7-60C3-475C-B395-83F22B308C92} = {B6C8194B-882C-4496-B41F-411749AF6D48}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A9AB723-2968-412D-89E8-9A3C64FBF82A}
