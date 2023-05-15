@@ -1,0 +1,191 @@
+.brand {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.header-text{
+    color: #adabab;
+    position: absolute;
+    right: 150px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+  .site-header {
+    position: relative;
+    background-color: #08494d; 
+    z-index: 1;
+    }
+  
+  .site-header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+    padding-bottom: 25px;
+    background-color: #08494d;
+}
+  
+  .site-header__start {
+    display: flex;
+    align-items: center; }
+    .site-header__start > * + * {
+      margin-left: 1rem; }
+
+.main-content{
+  float:right;
+  max-width: 90vw;
+  min-width: 50vw;
+  width: 80vw;
+  max-height: 90vh;
+  overflow:auto;
+  margin: auto;
+  padding-right: 18vh;
+  padding-top: 70px;
+}
+
+.img-home{
+    width: 70vw;
+}
+
+.umrlogo {
+  height: 46px;
+  width: auto;
+}
+  
+.page_title{
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-weight:bold;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#dtBasicExample th {
+  background-color: #10686d;
+}
+
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+/* dataTables Search input box */
+ 
+.dataTables_filter {
+  position: relative;
+}
+
+.dataTables_filter input {
+  width: 250px;
+  height: 32px;
+  background: #fcfcfc;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+  text-indent: 10px;
+}
+
+.dataTables_filter .fa-search {
+  position: absolute;
+  top: 10px;
+  left: auto;
+  right: 10px;
+}
+
+/* dataTables page count box */
+.dataTables_length select {
+  width: 60px;
+  height: 32px;
+  background: #fcfcfc;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+  text-indent: 10px;
+}
+
+
+/* Add Applicant button */
+.add_applicant {
+  margin-top: 20px; 
+  float:right;
+  padding-bottom: 50px;
+}
+
+
+/* Footer */
+.footer-dark {
+  position: fixed;
+  bottom: 0;
+  color: black;
+  background-color: white;
+  width: 100%;
+  margin: auto;
+  padding-left: 18vh;
+  margin-bottom:20px;
+  opacity:0.6;
+  z-index: -1;
+}
+
+@media (max-width:767px) {
+  .footer-dark {
+    text-align:center;
+    padding-bottom:11px;
+    margin-bottom:0;
+  }
+}
+
+.footer-dark .copyright {
+  text-align:center;
+  font-size:10px;
+  margin-top:15px;
+}
+
+
+/* Footer  End */
+
+  @media (max-width: 679px) {
+    .site-header__end {
+      flex: 0 0 100%;
+      order: 2;
+      margin-top: 1rem; } }
+  
+  .nav__wrapper {
+    margin-top: 15px;
+    margin-bottom: -10px;
+    position: fixed;
+    top: 66px;
+    left: 0;
+    width: Max(150px, 15%);
+    bottom: 0;
+    z-index: 1;
+    background-color: #08494d;
+    /* #08494d; */
+    transition: transfrgb(241, 132, 132)s ease-out, opacity 0.3s ease-out;
+    display: block; }
+    @media (max-width: 679px) {
+      .nav__wrapper {
+        top: 101px;
+      } 
+    }
+  .nav__item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+    .nav__item a {
+      display: block;
+      padding: 1.5rem 1rem; }

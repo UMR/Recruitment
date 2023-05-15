@@ -15,6 +15,9 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderComponent } from './common/components/header/header.component';
+import { LandingComponent } from './landing/landing.component';
+import { SidebarComponent } from './common/components/sidebar/sidebar.component';
+import { FooterComponent } from './common/components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { HeaderComponent } from './common/components/header/header.component';
     LoginComponent,
     HomeComponent,
     PageNotFoundComponent,
-    HeaderComponent
+    HeaderComponent,
+    LandingComponent,
+    SidebarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
