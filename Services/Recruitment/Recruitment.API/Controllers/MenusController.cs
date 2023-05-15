@@ -4,7 +4,7 @@ using Recruitment.Application.Features.Menu.Queries;
 namespace ResourceServer.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class MenusController : ApiControllerBase
     {
         [HttpGet(Name = "GetMenus")]

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ResourceServer.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class UsersController : ApiControllerBase
     {
         private readonly ILogger<UsersController> _logger;

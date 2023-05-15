@@ -7,8 +7,8 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Recruitment.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/v1/[controller]")]    
     public class AgenciesController : ApiControllerBase
     {
         [HttpGet(Name = "GetAgencies")]
