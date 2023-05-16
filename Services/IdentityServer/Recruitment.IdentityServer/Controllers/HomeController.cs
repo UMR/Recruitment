@@ -10,7 +10,7 @@ namespace Recruitment.IdentityServer.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok("Hello");
+            return Ok("Welcome to Recruitment Authentication Server");
         }
     }
 }
