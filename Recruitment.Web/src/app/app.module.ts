@@ -40,6 +40,10 @@ import { FooterComponent } from './common/components/footer/footer.component';
     DropdownModule,
     CalendarModule,
     AccordionModule,
+/*    ToastModule,
+    SharedModule,
+    LoadingImageModule,
+    InputBehaviorModule*/
   ],
   providers: [FileService],
   bootstrap: [AppComponent]

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\common\components\footer\footer.component.html" />
     <Content Include="src\app\common\components\header\header.component.html" />
     <Content Include="src\app\common\components\sidebar\sidebar.component.html" />
     <Content Include="src\app\home\home.component.html" />
@@ -72,16 +73,23 @@
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\common\components\footer\footer.component.ts" />
     <TypeScriptCompile Include="src\app\common\components\header\header.component.spec.ts" />
     <TypeScriptCompile Include="src\app\common\components\header\header.component.ts" />
     <TypeScriptCompile Include="src\app\common\components\sidebar\sidebar.component.spec.ts" />
     <TypeScriptCompile Include="src\app\common\components\sidebar\sidebar.component.ts" />
+    <TypeScriptCompile Include="src\app\common\constants\auth-keys.ts" />
+    <TypeScriptCompile Include="src\app\common\helpers\auto-logout.helper.ts" />
+    <TypeScriptCompile Include="src\app\common\helpers\http-client.hepler.ts" />
+    <TypeScriptCompile Include="src\app\common\helpers\route-config.helper.ts" />
+    <TypeScriptCompile Include="src\app\common\services\umr-cookies.service.ts.service.ts" />
     <TypeScriptCompile Include="src\app\home\home.component.spec.ts" />
     <TypeScriptCompile Include="src\app\home\home.component.ts" />
     <TypeScriptCompile Include="src\app\landing\landing.component.spec.ts" />
     <TypeScriptCompile Include="src\app\landing\landing.component.ts" />
     <TypeScriptCompile Include="src\app\login\login.component.spec.ts" />
     <TypeScriptCompile Include="src\app\login\login.component.ts" />
+    <TypeScriptCompile Include="src\app\login\login.service.ts" />
     <TypeScriptCompile Include="src\app\login\login.ts" />
     <TypeScriptCompile Include="src\app\page-not-found\page-not-found.component.spec.ts" />
     <TypeScriptCompile Include="src\app\page-not-found\page-not-found.component.ts" />
@@ -97,6 +105,7 @@
     <None Include="angular.json" />
     <None Include="package.json" />
     <None Include="src\app\app.component.scss" />
+    <None Include="src\app\common\components\footer\footer.component.scss" />
     <None Include="src\app\common\components\header\header.component.scss" />
     <None Include="src\app\common\components\sidebar\sidebar.component.scss" />
     <None Include="src\app\home\home.component.scss" />
@@ -107,6 +116,10 @@
     <None Include="src\styles.scss" />
     <None Include="tsconfig.app.json" />
     <None Include="tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\app\common\directives\" />
+    <Folder Include="src\app\common\model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
