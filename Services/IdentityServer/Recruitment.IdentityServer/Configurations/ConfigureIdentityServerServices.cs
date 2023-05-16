@@ -12,14 +12,19 @@ namespace Recruitment.IdentityServer.Configurations
             .AddInMemoryApiResources(configuration.GetSection("IdentityServer:ApiResources"))
             .AddInMemoryApiScopes(configuration.GetSection("IdentityServer:ApiScopes"))
             .AddInMemoryClients(configuration.GetSection("IdentityServer:Clients"))
-            .AddCustomUserStore();
+            .AddCustomUserStore();            
 
-            //services.AddIdentityServer()
-            //.AddSigningCredential(new X509Certificate2(Path.Combine("idsrv3test.pfx"), "idsrv3test"))
-            //.AddInMemoryApiResources(Resources.GetApiResources())
-            //.AddInMemoryApiScopes(Scopes.GetScopes())
-            //.AddInMemoryClients(Clients.GetClients())
-            //.AddCustomUserStore();
+            return services;
+        }
+
+        public static IServiceCollection ConfigureIdentityServerServices(this IServiceCollection services)
+        {
+            services.AddIdentityServer()
+            .AddSigningCredential(new X509Certificate2(Path.Combine("idsrv3test.pfx"), "idsrv3test"))
+            .AddInMemoryApiResources(Resources.GetApiResources())
+            .AddInMemoryApiScopes(Scopes.GetScopes())
+            .AddInMemoryClients(Clients.GetClients())
+            .AddCustomUserStore();
 
             return services;
         }
