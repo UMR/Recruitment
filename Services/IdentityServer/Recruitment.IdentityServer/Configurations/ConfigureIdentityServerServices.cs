@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Security.Cryptography.X509Certificates;
 using Recruitment.IdentityServer.Extensions;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Recruitment.IdentityServer.Configurations
 {

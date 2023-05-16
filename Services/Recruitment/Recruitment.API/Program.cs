@@ -10,7 +10,7 @@ builder.Services.ConfigurePersistenceServices();
 builder.Services.ConfigureApplicationServices();
 
 builder.Services.AddControllers(config =>
-{    
+{
     config.Filters.Add(new AuthorizeFilter(new AuthorizationPolicyBuilder().
         RequireAuthenticatedUser().
         RequireClaim(builder.Configuration["IdentityServer:ClaimType"], builder.Configuration["IdentityServer:ClaimValue"]).Build()));
