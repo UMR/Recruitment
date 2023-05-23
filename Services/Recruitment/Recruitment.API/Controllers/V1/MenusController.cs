@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using Recruitment.Application.Features.Menu.Queries;
 
 namespace Recruitment.API.Controllers.V1

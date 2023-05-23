@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-
 namespace Recruitment.API.Controllers.V1
 {
     [ApiController]

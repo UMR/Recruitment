@@ -1,6 +1,4 @@
-﻿using Recruitment.Application.Features.Agencies.Dtos;
-
-namespace Recruitment.Application.Features.Agencies.Services
+﻿namespace Recruitment.Application.Features.Agencies
 {
     public interface IAgencyService
     {

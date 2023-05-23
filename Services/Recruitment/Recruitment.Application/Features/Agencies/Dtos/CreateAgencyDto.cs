@@ -1,4 +1,4 @@
-﻿namespace Recruitment.Application.Features.Agencies.Dtos
+﻿namespace Recruitment.Application.Features.Agencies
 {
     public class CreateAgencyDto
     {        

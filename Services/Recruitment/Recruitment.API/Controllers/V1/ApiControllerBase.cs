@@ -1,9 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using ResourceServer.Models;
-
-namespace Recruitment.API.Controllers.V1
+﻿namespace Recruitment.API.Controllers.V1
 {
     public class ApiControllerBase : ControllerBase
     {

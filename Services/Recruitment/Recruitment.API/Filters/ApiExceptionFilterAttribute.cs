@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Recruitment.Application.Exceptions;
-
-namespace Recruitment.API.Filters
+﻿namespace Recruitment.API.Filters
 {
 
     public class ApiExceptionFilterAttribute : ExceptionFilterAttribute

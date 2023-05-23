@@ -1,4 +1,4 @@
-﻿namespace Recruitment.Application.Features.Agencies.Services
+﻿namespace Recruitment.Application.Features.Agencies
 {
     public class AgencyService : IAgencyService
     {
@@ -27,7 +27,7 @@
 
         public async Task<int> CreateAgency(CreateAgencyDto request)
         {
-            var agency = new Domain.Entities.Agency();
+            var agency = new Agency();
             agency.AgencyName = request.AgencyName;
             agency.CreatedBy = request.CreatedBy;
             agency.CreatedDate = DateTime.Now;

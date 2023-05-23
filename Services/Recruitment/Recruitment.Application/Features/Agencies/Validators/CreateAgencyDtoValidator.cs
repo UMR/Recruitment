@@ -1,7 +1,4 @@
-﻿
-using Recruitment.Application.Features.Agencies.Dtos;
-
-namespace Recruitment.Application.Features.Agencies.Validators
+﻿namespace Recruitment.Application.Features.Agencies
 {
     public class CreateAgencyDtoValidator : AbstractValidator<CreateAgencyDto>
     {

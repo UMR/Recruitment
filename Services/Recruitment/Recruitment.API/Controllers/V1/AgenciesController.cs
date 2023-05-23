@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Recruitment.Application.Features.Agencies.Dtos;
-using Recruitment.Application.Features.Agencies.Services;
-
-namespace Recruitment.API.Controllers.V1
+﻿namespace Recruitment.API.Controllers.V1
 {
     [ApiController]
     [Route("api/v1/[controller]")]
