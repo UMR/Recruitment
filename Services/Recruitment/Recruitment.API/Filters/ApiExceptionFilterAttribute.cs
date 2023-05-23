@@ -1,6 +1,5 @@
 ﻿namespace Recruitment.API.Filters
 {
-
     public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
     {
         private readonly IDictionary<Type, Action<ExceptionContext>> _exceptionHandlers;

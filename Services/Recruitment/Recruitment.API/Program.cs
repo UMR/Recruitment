@@ -1,8 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Recruitment.Application;
-using ResourceServer.Configurations;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.ConfigureIdentityServerServices();
@@ -29,7 +24,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

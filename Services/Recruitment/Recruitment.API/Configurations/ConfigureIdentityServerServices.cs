@@ -1,6 +1,4 @@
-﻿using IdentityServer4.AccessTokenValidation;
-
-namespace ResourceServer.Configurations
+﻿namespace ResourceServer.Configurations
 {
     public static class IdentityServerServicesRegistration
     {
