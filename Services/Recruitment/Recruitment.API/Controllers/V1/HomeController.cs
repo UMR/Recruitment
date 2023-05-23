@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Recruitment.API.Controllers
+namespace Recruitment.API.Controllers.V1
 {
     [AllowAnonymous]
     [ApiController]

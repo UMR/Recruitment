@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Recruitment.Application.Features.Menu.Queries;
 
-namespace ResourceServer.Controllers
+namespace Recruitment.API.Controllers.V1
 {
     [ApiController]
     [Route("api/v1/[controller]")]
@@ -9,6 +9,7 @@ namespace ResourceServer.Controllers
     {
         [HttpGet(Name = "GetMenus")]
         public async Task<ActionResult<IEnumerable<MenuDto>>> GetMenus()
+
         {
             return await Mediator.Send(new GetMenusQuery());
         }

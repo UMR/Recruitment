@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ResourceServer.Controllers
+namespace Recruitment.API.Controllers.V1
 {
     [ApiController]
     [Route("api/v1/[controller]")]
@@ -8,7 +8,7 @@ namespace ResourceServer.Controllers
     {
         private readonly ILogger<UsersController> _logger;
 
-        public UsersController(ILogger<UsersController> logger) 
+        public UsersController(ILogger<UsersController> logger)
         {
             _logger = logger;
         }
@@ -16,7 +16,7 @@ namespace ResourceServer.Controllers
         [HttpGet(Name = "Get")]
         public IActionResult Get()
         {
-            return Ok(CurrentUser.UserId);            
+            return Ok(CurrentUser.UserId);
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace Recruitment.Application.Features.Menu.Queries
+﻿namespace Recruitment.Application.Features.Agencies.Dtos
 {
-    public class AgencyDto
+    public class AgencyListDto
     {
         public long AgencyId { get; set; }
         public string AgencyName { get; set; }

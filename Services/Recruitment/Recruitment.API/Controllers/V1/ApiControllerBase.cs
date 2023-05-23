@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using ResourceServer.Models;
 
-namespace ResourceServer.Controllers
+namespace Recruitment.API.Controllers.V1
 {
     public class ApiControllerBase : ControllerBase
     {
@@ -11,10 +11,8 @@ namespace ResourceServer.Controllers
 
         protected ISender Mediator => _mediator ??= HttpContext.RequestServices.GetRequiredService<ISender>();
 
-        protected User CurrentUser
-        {
-            get
-            {
+        protected User CurrentUser {
+            get {
                 User currentUser = null;
                 var currentUserClaim = User.FindFirst("user");
 

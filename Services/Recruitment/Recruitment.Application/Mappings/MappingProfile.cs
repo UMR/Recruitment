@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using Recruitment.Application.Features.Menu.Queries;
-using Recruitment.Domain.Entities;
+﻿using Recruitment.Application.Features.Menu.Queries;
 
 namespace Recruitment.Application.Mappings
 {
@@ -9,7 +7,9 @@ namespace Recruitment.Application.Mappings
         public MappingProfile()
         {
             CreateMap<Menu, MenuDto>().ReverseMap();
-            CreateMap<Agency, AgencyDto>().ReverseMap();
+            CreateMap<Agency, AgencyListDto>().ReverseMap();
+            CreateMap<Agency, CreateAgencyDto>().ReverseMap();
+            CreateMap<Agency, UpdateAgencyDto>().ReverseMap();
         }
     }
 }

@@ -1,12 +1,4 @@
-﻿using FluentValidation;
-using FluentValidation.AspNetCore;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using Recruitment.Application.Behaviours;
-using Recruitment.Application.Mappings;
-using System.Reflection;
-
-namespace Recruitment.Application
+﻿namespace Recruitment.Application
 {
     public static class ApplicationServicesRegistration
     {        
@@ -18,6 +10,7 @@ namespace Recruitment.Application
             services.AddFluentValidationAutoValidation();
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+            services.AddTransient<IAgencyService, AgencyService>();
 
             return services;
         }

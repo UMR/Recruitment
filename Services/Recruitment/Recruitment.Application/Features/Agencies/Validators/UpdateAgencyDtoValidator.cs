@@ -1,21 +1,21 @@
-﻿using FluentValidation;
+﻿using Recruitment.Application.Features.Agencies.Dtos;
 
-namespace Recruitment.Application.Features.Agency.Commands.CreateAgency
+namespace Recruitment.Application.Features.Agencies.Validators
 {
-    public class CreateAgencyCommandValidator : AbstractValidator<CreateAgencyCommand>
+    public class UpdateAgencyCommandValidator : AbstractValidator<UpdateAgencyDto>
     {
-        public CreateAgencyCommandValidator()
+        public UpdateAgencyCommandValidator()
         {
             RuleFor(a => a.AgencyName)
                 .NotEmpty().WithMessage("{PropertyName} is required")
                 .NotNull()
                 .MaximumLength(128).WithMessage("{PropertyName} must not exceed 500 characters");
 
-            RuleFor(c => c.CreatedBy)
+            RuleFor(c => c.UpdatedBy)
                .NotEmpty().WithMessage("{PropertyName} is required")
                .NotNull();
 
-            RuleFor(c => c.CreatedDate)
+            RuleFor(c => c.UpdatedDate)
                .NotEmpty().WithMessage("{PropertyName} is required")
                .NotNull();
         }
