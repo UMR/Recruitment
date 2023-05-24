@@ -16,8 +16,6 @@
         [HttpGet]
         public IActionResult Get()
         {
-            _logger.LogError("Seri Log is Working");           
-
             return Ok("Welcome to Recruitment Resource Server");
         }
     }

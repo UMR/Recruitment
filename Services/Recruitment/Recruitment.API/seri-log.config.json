@@ -1,19 +1,4 @@
 {
-  "ConnectionStrings": {
-    "DefaultConnection": "Data Source=(local);Initial Catalog=UMRRecruitementDB_New;User Id=sa;Password=123456;Integrated Security=false;MultipleActiveResultSets=true;"
-  },
-  "IdentityServer": {
-    "Authority": "http://localhost:4000",
-    "ApiName": "recruitment",
-    "ClaimType": "Scope",
-    "ClaimValue": "recruitment.fullaccess"
-  },
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft.AspNetCore": "Warning"
-    }
-  },
   "Serilog": {
     "Using": [ "Serilog.Sinks.File", "Serilog.Sinks.Console" ],
     "MinimumLevel": {
@@ -35,6 +20,5 @@
         }
       }
     ]
-  },
-  "AllowedHosts": "*"
+  }
 }
