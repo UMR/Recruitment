@@ -1,0 +1,29 @@
+2023-05-24 13:48:02.556 +06:00  INF  User profile is available. Using 'C:\Users\Atikur Zaman\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-05-24 13:48:02.684 +06:00  INF  Now listening on: http://localhost:4001
+2023-05-24 13:48:02.688 +06:00  INF  Application started. Press Ctrl+C to shut down.
+2023-05-24 13:48:02.689 +06:00  INF  Hosting environment: Development
+2023-05-24 13:48:02.689 +06:00  INF  Content root path: D:\UMR\Recruitment\Services\Recruitment\Recruitment.API\
+2023-05-24 13:48:02.907 +06:00  INF  Request starting HTTP/1.1 GET http://localhost:4001/swagger/v1/swagger.json - -
+2023-05-24 13:48:03.067 +06:00  INF  Request finished HTTP/1.1 GET http://localhost:4001/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 163.0541ms
+2023-05-24 13:48:03.255 +06:00  INF  Request starting HTTP/1.1 GET http://localhost:4001/swagger/index.html - -
+2023-05-24 13:48:03.512 +06:00  INF  Request starting HTTP/1.1 GET http://localhost:4001/_framework/aspnetcore-browser-refresh.js - -
+2023-05-24 13:48:03.514 +06:00  INF  Request finished HTTP/1.1 GET http://localhost:4001/_framework/aspnetcore-browser-refresh.js - - - 200 12000 application/javascript;+charset=utf-8 1.6624ms
+2023-05-24 13:48:03.544 +06:00  INF  Request starting HTTP/1.1 GET http://localhost:4001/_vs/browserLink - -
+2023-05-24 13:48:03.674 +06:00  INF  Request finished HTTP/1.1 GET http://localhost:4001/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 129.5069ms
+2023-05-24 13:48:03.728 +06:00  INF  Request finished HTTP/1.1 GET http://localhost:4001/swagger/index.html - - - 200 - text/html;charset=utf-8 473.2445ms
+2023-05-24 13:48:03.762 +06:00  INF  Request starting HTTP/1.1 GET http://localhost:4001/_framework/aspnetcore-browser-refresh.js - -
+2023-05-24 13:48:03.763 +06:00  INF  Request finished HTTP/1.1 GET http://localhost:4001/_framework/aspnetcore-browser-refresh.js - - - 200 12000 application/javascript;+charset=utf-8 0.3725ms
+2023-05-24 13:48:03.846 +06:00  INF  Request starting HTTP/1.1 GET http://localhost:4001/_vs/browserLink - -
+2023-05-24 13:48:03.858 +06:00  INF  Request starting HTTP/1.1 GET http://localhost:4001/swagger/v1/swagger.json - -
+2023-05-24 13:48:03.859 +06:00  INF  Request finished HTTP/1.1 GET http://localhost:4001/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 12.0934ms
+2023-05-24 13:48:03.864 +06:00  INF  Request finished HTTP/1.1 GET http://localhost:4001/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 6.0166ms
+2023-05-24 13:48:04.107 +06:00  INF  Request starting HTTP/1.1 GET http://localhost:4001/swagger/v1/swagger.json - -
+2023-05-24 13:48:04.122 +06:00  INF  Request finished HTTP/1.1 GET http://localhost:4001/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 14.7312ms
+2023-05-24 13:48:09.033 +06:00  INF  Request starting HTTP/1.1 GET http://localhost:4001/api/v1/Home - -
+2023-05-24 13:48:09.058 +06:00  INF  Executing endpoint 'Recruitment.API.Controllers.V1.HomeController.Get (Recruitment.API)'
+2023-05-24 13:48:09.076 +06:00  INF  Route matched with {action = "Get", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller Recruitment.API.Controllers.V1.HomeController (Recruitment.API).
+2023-05-24 13:48:09.083 +06:00  INF  Seri Log is Working
+2023-05-24 13:48:09.095 +06:00  INF  Executing OkObjectResult, writing value of type 'System.String'.
+2023-05-24 13:48:09.107 +06:00  INF  Executed action Recruitment.API.Controllers.V1.HomeController.Get (Recruitment.API) in 19.3404ms
+2023-05-24 13:48:09.109 +06:00  INF  Executed endpoint 'Recruitment.API.Controllers.V1.HomeController.Get (Recruitment.API)'
+2023-05-24 13:48:09.109 +06:00  INF  Request finished HTTP/1.1 GET http://localhost:4001/api/v1/Home - - - 200 - text/plain;+charset=utf-8 75.9452ms
