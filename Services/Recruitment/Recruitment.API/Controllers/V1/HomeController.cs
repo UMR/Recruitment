@@ -5,10 +5,19 @@
     [Route("api/v1/[controller]")]
     public class HomeController : ControllerBase
     {
+        private readonly ILogger<HomeController> _logger;
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
+
+
         [AllowAnonymous]
         [HttpGet]
         public IActionResult Get()
         {
+            _logger.LogInformation("Seri Log is Working");
+
             return Ok("Welcome to Recruitment Resource Server");
         }
     }

@@ -2,7 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.ConfigureIdentityServerServices();
 builder.Services.ConfigurePersistenceServices();
-builder.Services.ConfigureApplicationServices();
+builder.ConfigureApplicationServices();
 
 builder.Services.AddControllers(config =>
 {
