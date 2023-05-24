@@ -13,6 +13,7 @@ namespace Recruitment.Application
                         .Enrich.FromLogContext()
                         .CreateLogger();
             builder.Logging.ClearProviders();
+            builder.Logging.AddConsole();
             builder.Logging.AddSerilog(logger);
 
             builder.Services.AddAutoMapper(typeof(MappingProfile));
