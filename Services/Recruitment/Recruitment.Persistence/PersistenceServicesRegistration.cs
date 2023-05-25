@@ -1,11 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Recruitment.Application.Contracts.Persistence;
-using Recruitment.Persistence.Common;
-using Recruitment.Persistence.Repositories;
+﻿
 
 namespace Recruitment.Application
 {
-    public static class PersistenceServicesRegistration
+    public static class ConfigureServices
     {
         public static IServiceCollection ConfigurePersistenceServices(this IServiceCollection services)
         {
