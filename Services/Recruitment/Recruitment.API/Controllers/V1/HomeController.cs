@@ -16,6 +16,7 @@
         [HttpGet]
         public IActionResult Get()
         {
+            _logger.LogError("Hello");
             return Ok("Welcome to Recruitment Resource Server");
         }
     }

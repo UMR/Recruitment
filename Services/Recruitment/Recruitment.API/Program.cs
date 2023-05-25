@@ -1,5 +1,13 @@
 var builder = WebApplication.CreateBuilder(args);
 
+var enviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+builder.Host.ConfigureAppConfiguration(webBuilder => {
+    webBuilder.AddJsonFile("appsettings.json", false, true);
+    webBuilder.AddJsonFile($"appsettings.{enviroment}.json", true, true);
+    webBuilder.AddEnvironmentVariables();
+});
+
 builder.ConfigureIdentityServerServices();
 builder.Services.ConfigurePersistenceServices();
 builder.ConfigureApplicationServices();

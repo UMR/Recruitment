@@ -1,4 +1,9 @@
-﻿namespace Recruitment.Application
+﻿using System;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+namespace Recruitment.Application
 {
     public static class ApplicationServicesRegistration
     {
@@ -19,11 +24,11 @@
         private static WebApplicationBuilder AddSerilogFromSerilogConfig(this WebApplicationBuilder builder)
         {
             var logger = new LoggerConfiguration()
-                .ReadFrom.Configuration(new ConfigurationBuilder()
-                .AddJsonFile("seri-log.config.json")
-                .Build())
-                .Enrich.FromLogContext()
-                .CreateLogger();
+               .ReadFrom.Configuration(new ConfigurationBuilder()
+               .AddJsonFile("serilog.development.config.json")
+               .Build())
+               .Enrich.FromLogContext()
+               .CreateLogger();
             builder.Logging.ClearProviders();
             builder.Logging.AddConsole();
             builder.Logging.AddSerilog(logger);
@@ -34,9 +39,9 @@
         private static WebApplicationBuilder AddSerilogFromAppSettings(this WebApplicationBuilder builder)
         {
             var logger = new LoggerConfiguration()
-                        .ReadFrom.Configuration(builder.Configuration)
-                        .Enrich.FromLogContext()
-                        .CreateLogger();
+                    .ReadFrom.Configuration(builder.Configuration)
+                    .Enrich.FromLogContext()
+                    .CreateLogger();
             builder.Logging.ClearProviders();
             builder.Logging.AddConsole();
             builder.Logging.AddSerilog(logger);

@@ -12,7 +12,7 @@
         }
 
         public async Task<List<AgencyListDto>> GetAgencies()
-        {
+        {            
             var agenciesFromRepo = await _agencyRepository.GetAgencies();
             var agenciesToReturn = _mapper.Map<List<AgencyListDto>>(agenciesFromRepo);
             return agenciesToReturn;
