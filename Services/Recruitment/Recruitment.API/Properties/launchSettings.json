@@ -1,44 +1,35 @@
-﻿{
-  "$schema": "https://json.schemastore.org/launchsettings.json",
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:40001",
-      "sslPort": 0
-    }
-  },
+{
   "profiles": {
     "ResourceServer": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:4001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:4001"
     },
     "ResourceServer-Staging": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:4001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Staging",
         "ASPNETCORE_DETAILEDERRORS": "1",
         "ASPNETCORE_SHUTDOWNTIMEOUTSECONDS": "3"
-      }
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:4001"
     },
     "ResourceServer-Production": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:4001",
+      "launchUrl": "http://localhost:4001/api/v1/home",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Production"
-      }
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:4001"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -47,6 +38,15 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Production"
       }
+    }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:40001",
+      "sslPort": 0
     }
   }
 }

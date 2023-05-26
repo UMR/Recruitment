@@ -10,7 +10,7 @@ namespace Recruitment.IdentityServer.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok("Welcome to Recruitment Authentication Server");
+            return Ok($"Welcome to Recruitment {Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")} Authentication Server");
         }
     }
 }
