@@ -8,8 +8,8 @@ global using Microsoft.AspNetCore.Mvc.Authorization;
 global using IdentityServer4.AccessTokenValidation;
 
 
-global using ResourceServer.Configurations;
-global using ResourceServer.Models;
+global using Recruitment.API.Configurations;
+global using Recruitment.API.Models;
 
 global using Recruitment.Application;
 global using Recruitment.Application.Exceptions;

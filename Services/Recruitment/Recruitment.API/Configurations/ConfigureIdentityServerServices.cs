@@ -1,4 +1,4 @@
-﻿namespace ResourceServer.Configurations
+﻿namespace Recruitment.API.Configurations
 {
     public static class IdentityServerServicesRegistration
     {

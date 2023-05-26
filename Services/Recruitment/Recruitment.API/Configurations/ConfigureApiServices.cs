@@ -1,8 +1,8 @@
-﻿namespace Recruitment.API
+﻿namespace Recruitment.API.Configurations
 {
     public static class ConfigureServices
     {
-        public static WebApplicationBuilder AddApiServices(this WebApplicationBuilder builder)
+        public static WebApplicationBuilder ConfigureApiServices(this WebApplicationBuilder builder)
         {
             var enviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 

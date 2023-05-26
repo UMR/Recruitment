@@ -1,4 +1,4 @@
-﻿namespace ResourceServer.Models
+﻿namespace Recruitment.API.Models
 {
     public class User
     {

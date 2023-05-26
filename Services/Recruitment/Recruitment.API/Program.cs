@@ -1,8 +1,6 @@
-using Recruitment.API;
-
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddApiServices();
+builder.ConfigureApiServices();
 
 var app = builder.Build();
 

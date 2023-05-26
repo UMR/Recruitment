@@ -1,6 +1,6 @@
 ﻿namespace Recruitment.Application
 {
-    public static class ApplicationServicesRegistration
+    public static class ConfigureServices
     {
         public static WebApplicationBuilder ConfigureApplicationServices(this WebApplicationBuilder builder)
         {
