@@ -1,6 +1,4 @@
-﻿using Microsoft.OpenApi.Models;
-
-namespace Recruitment.API.Configurations
+﻿namespace Recruitment.API.Configurations
 {
     public static class ConfigureSwaggerServicesRegistration
     {
