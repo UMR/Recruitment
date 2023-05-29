@@ -22,12 +22,7 @@
                 config.Filters.Add(new AuthorizeFilter(new AuthorizationPolicyBuilder().
                     RequireAuthenticatedUser().
                     RequireClaim(builder.Configuration["IdentityServer:ClaimType"], builder.Configuration["IdentityServer:ClaimValue"]).Build()));
-            });
-
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen(c => {
-                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
-            });
+            });            
 
             builder.Services.AddCors(o =>
             {
@@ -36,6 +31,8 @@
                     .AllowAnyMethod()
                     .AllowAnyHeader());
             });
+
+            builder.ConfigureSwaggerServices();
 
             return builder;
         }
