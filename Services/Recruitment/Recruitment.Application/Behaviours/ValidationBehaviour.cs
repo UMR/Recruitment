@@ -1,5 +1,4 @@
-﻿using MediatR;
-using ValidationException = Recruitment.Application.Exceptions.ValidationException;
+﻿using ValidationException = Recruitment.Application.Exceptions.ValidationException;
 
 namespace Recruitment.Application.Behaviours
 {
