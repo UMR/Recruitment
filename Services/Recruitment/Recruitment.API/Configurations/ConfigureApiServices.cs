@@ -13,11 +13,12 @@
             });
 
             builder.ConfigureIdentityServerServices();
-            builder.Services.ConfigurePersistenceServices();
+            builder.ConfigurePersistenceServices();
             builder.ConfigureApplicationServices();
 
             builder.Services.AddControllers(config =>
             {
+                config.Filters.Add<ApiExceptionFilterAttribute>();
                 config.Filters.Add(new AuthorizeFilter(new AuthorizationPolicyBuilder().
                     RequireAuthenticatedUser().
                     RequireClaim(builder.Configuration["IdentityServer:ClaimType"], builder.Configuration["IdentityServer:ClaimValue"]).Build()));
@@ -26,6 +27,14 @@
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(c => {
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+            });
+
+            builder.Services.AddCors(o =>
+            {
+                o.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
             });
 
             return builder;

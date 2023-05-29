@@ -1,16 +1,14 @@
-﻿
-
-namespace Recruitment.Application
+﻿namespace Recruitment.Application
 {
     public static class ConfigureServices
     {
-        public static IServiceCollection ConfigurePersistenceServices(this IServiceCollection services)
+        public static WebApplicationBuilder ConfigurePersistenceServices(this WebApplicationBuilder builder)
         {
-            services.AddTransient<IRecruitmentConnectionFactory, RecruitmentConnectionFactory>();
-            services.AddScoped<IMenuRepository, MenuRepository>();
-            services.AddScoped<IAgencyRepository, AgencyRepository>();
+            builder.Services.AddTransient<IRecruitmentConnectionFactory, RecruitmentConnectionFactory>();
+            builder.Services.AddScoped<IMenuRepository, MenuRepository>();
+            builder.Services.AddScoped<IAgencyRepository, AgencyRepository>();
 
-            return services;
+            return builder;
         }
     }
 }
