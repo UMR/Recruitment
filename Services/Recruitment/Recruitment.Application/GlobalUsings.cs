@@ -12,6 +12,7 @@ global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.AspNetCore.Builder;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.Logging;
+global using Microsoft.EntityFrameworkCore;
 
 global using Recruitment.Domain.Entities;
 global using Recruitment.Application.Behaviours;

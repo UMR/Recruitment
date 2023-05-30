@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Recruitment.Application.Models;
+﻿namespace Recruitment.Application.Wrapper;
 
 public class PaginatedList<T>
 {
