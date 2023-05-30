@@ -49,6 +49,7 @@
     <Content Include="src\app\containers\default-layout\default-layout.component.html" />
     <Content Include="src\app\dashboard\dashboard.component.html" />
     <Content Include="src\app\login\login.component.html" />
+    <Content Include="src\assets\img\1.jpg" />
     <Content Include="src\index.html" />
   </ItemGroup>
   <ItemGroup>
@@ -64,10 +65,10 @@
     <TypeScriptCompile Include="src\app\containers\default-layout\index.ts" />
     <TypeScriptCompile Include="src\app\containers\default-layout\_nav.ts" />
     <TypeScriptCompile Include="src\app\containers\index.ts" />
-    <TypeScriptCompile Include="src\app\icons\icon-subset.ts" />
     <TypeScriptCompile Include="src\app\dashboard\dashboard-routing.module.ts" />
     <TypeScriptCompile Include="src\app\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="src\app\dashboard\dashboard.module.ts" />
+    <TypeScriptCompile Include="src\app\icons\icon-subset.ts" />
     <TypeScriptCompile Include="src\app\login\login.component.spec.ts" />
     <TypeScriptCompile Include="src\app\login\login.component.ts" />
     <TypeScriptCompile Include="src\main.ts" />
