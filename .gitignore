@@ -364,3 +364,5 @@ FodyWeavers.xsd
 Services/Recruitment/Recruitment.API/Logs/logs.txt
 *.pack
 *.old
+Recruitment.Web/.angular/cache/16.0.3/babel-webpack/0ef6bc06cdc8eebbd5354742f68244c4f28439be0d07c095ed216b7e7289f0fc.json
+Recruitment.Web/.angular/cache/16.0.3/babel-webpack/6d9ad5a852063732bcfd4eb46921889d96ed2cc8c06abb1db60a25ff88e81ba7.json
