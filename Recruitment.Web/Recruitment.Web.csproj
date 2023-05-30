@@ -57,6 +57,7 @@
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\common\constant.ts" />
     <TypeScriptCompile Include="src\app\containers\default-layout\default-footer\default-footer.component.spec.ts" />
     <TypeScriptCompile Include="src\app\containers\default-layout\default-footer\default-footer.component.ts" />
     <TypeScriptCompile Include="src\app\containers\default-layout\default-header\default-header.component.spec.ts" />
