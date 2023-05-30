@@ -9,7 +9,7 @@
         public AgenciesController(IAgencyService agencyService)
         {
             _agencyService = agencyService;
-        }        
+        }
 
         [HttpGet(Name = "GetAgencies")]
         public async Task<ActionResult<List<AgencyListDto>>> GetAgencies()
@@ -23,14 +23,15 @@
             return await _agencyService.GetAgencyById(id);
         }
 
-        [HttpPost]
-        public async Task<int> PostAsync([FromBody] CreateAgencyDto request)
+        [HttpPost("CreateAgency")]
+        public async Task<ActionResult> PostAsync([FromBody] CreateAgencyDto request)
         {
-            return await _agencyService.CreateAgency(request);
+            var response = await _agencyService.CreateAgency(request);
+            return Ok(response);
         }
 
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("CreateAgency/{id}")]
+        public void Put(int id, [FromBody] CreateAgencyDto request)
         {
         }
 

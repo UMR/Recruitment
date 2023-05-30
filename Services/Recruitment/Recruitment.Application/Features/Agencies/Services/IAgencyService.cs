@@ -1,4 +1,6 @@
-﻿namespace Recruitment.Application.Features.Agencies
+﻿using Recruitment.Application.Wrapper;
+
+namespace Recruitment.Application.Features.Agencies
 {
     public interface IAgencyService
     {
@@ -6,6 +8,6 @@
 
         Task<AgencyListDto> GetAgencyById(int id);
 
-        Task<int> CreateAgency(CreateAgencyDto dto);
+        Task<BaseCommandResponse> CreateAgency(CreateAgencyDto dto);
     }
 }

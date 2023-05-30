@@ -1,4 +1,6 @@
-﻿namespace Recruitment.Application.Features.Agencies
+﻿using Recruitment.Application.Wrapper;
+
+namespace Recruitment.Application.Features.Agencies
 {
     public class AgencyService : IAgencyService
     {
@@ -25,13 +27,31 @@
             return agencyToReturn;
         }
 
-        public async Task<int> CreateAgency(CreateAgencyDto request)
+        public async Task<BaseCommandResponse> CreateAgency(CreateAgencyDto request)
         {
+            var response = new BaseCommandResponse();
+            var validator = new CreateAgencyDtoValidator();
+            var validationResult = await validator.ValidateAsync(request);
+
+            if (validationResult.IsValid == false)
+            {
+                response.Success = false;
+                response.Message = "Updating Failed";
+                response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+                return response;
+            }
+
             var agency = new Agency();
             agency.AgencyName = request.AgencyName;
             agency.CreatedBy = request.CreatedBy;
             agency.CreatedDate = DateTime.Now;
-            return await _agencyRepository.CreateAgency(agency);
+
+            await _agencyRepository.CreateAgency(agency);
+
+            response.Success = true;
+            response.Message = "Updating Successful";            
+
+            return response;
         }
     }
 }

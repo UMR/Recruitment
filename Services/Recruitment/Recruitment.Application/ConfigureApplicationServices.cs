@@ -8,7 +8,7 @@
             builder.Services.AddAutoMapper(typeof(MappingProfile));
             builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
             builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            builder.Services.AddFluentValidationAutoValidation();
+            //builder.Services.AddFluentValidationAutoValidation();
             builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
             builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
             builder.Services.AddTransient<IAgencyService, AgencyService>();
