@@ -8,6 +8,8 @@ namespace Recruitment.Application.Features.Agencies
 
         Task<AgencyListDto> GetAgencyById(int id);
 
-        Task<BaseCommandResponse> CreateAgency(CreateAgencyDto dto);
+        Task<BaseCommandResponse> CreateAgency(CreateAgencyDto request);
+
+        Task<BaseCommandResponse> UpdateAgency(int id, UpdateAgencyDto request);
     }
 }

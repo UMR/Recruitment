@@ -36,7 +36,7 @@ namespace Recruitment.Application.Features.Agencies
             if (validationResult.IsValid == false)
             {
                 response.Success = false;
-                response.Message = "Updating Failed";
+                response.Message = "Creating Failed";
                 response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
                 return response;
             }
@@ -45,11 +45,40 @@ namespace Recruitment.Application.Features.Agencies
             agency.AgencyName = request.AgencyName;
             agency.CreatedBy = request.CreatedBy;
             agency.CreatedDate = DateTime.Now;
-
             await _agencyRepository.CreateAgency(agency);
 
             response.Success = true;
-            response.Message = "Updating Successful";            
+            response.Message = "Creating Successful";            
+
+            return response;
+        }
+
+        public async Task<BaseCommandResponse> UpdateAgency(int id, UpdateAgencyDto request) 
+        {
+            var response = new BaseCommandResponse();
+            var validator = new UpdateAgencyDtoValidator();
+            var validationResult = await validator.ValidateAsync(request);
+
+            if (validationResult.IsValid == false)
+            {
+                response.Success = false;
+                response.Message = "Updating Failed";
+                response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+                return response;
+            }
+
+            var agencyToUpdate = await _agencyRepository.GetAgencyById(id);
+            
+            if (agencyToUpdate is null)
+            {
+                throw new NotFoundException(nameof(User), id.ToString());
+            }
+
+            _mapper.Map(request, agencyToUpdate);
+            await _agencyRepository.UpdateAgency(id, agencyToUpdate);
+
+            response.Success = true;
+            response.Message = "Updating Successful";
 
             return response;
         }
