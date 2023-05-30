@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DefaultLayoutComponent } from './containers';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -38,13 +39,13 @@ const routes: Routes = [
   //    title: 'Page 500'
   //  }
   //},
-  //{
-  //  path: 'login',
-  //  component: LoginComponent,
-  //  data: {
-  //    title: 'Login Page'
-  //  }
-  //},
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: {
+      title: 'Login Page'
+    }
+  },
   //{
   //  path: 'register',
   //  component: RegisterComponent,

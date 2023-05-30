@@ -48,6 +48,7 @@
     <Content Include="src\app\containers\default-layout\default-header\default-header.component.html" />
     <Content Include="src\app\containers\default-layout\default-layout.component.html" />
     <Content Include="src\app\dashboard\dashboard.component.html" />
+    <Content Include="src\app\login\login.component.html" />
     <Content Include="src\index.html" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +68,8 @@
     <TypeScriptCompile Include="src\app\dashboard\dashboard-routing.module.ts" />
     <TypeScriptCompile Include="src\app\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="src\app\dashboard\dashboard.module.ts" />
+    <TypeScriptCompile Include="src\app\login\login.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\login\login.component.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\test.ts" />
   </ItemGroup>
@@ -77,6 +80,7 @@
     <None Include="src\app\containers\default-layout\default-header\default-header.component.scss" />
     <None Include="src\app\containers\default-layout\default-layout.component.scss" />
     <None Include="src\app\dashboard\dashboard.component.scss" />
+    <None Include="src\app\login\login.component.scss" />
     <None Include="src\assets\.gitkeep" />
     <None Include="src\scss\styles.scss" />
     <None Include="src\scss\_charts.scss" />
