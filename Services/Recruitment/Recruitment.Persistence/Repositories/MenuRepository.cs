@@ -1,12 +1,4 @@
-﻿using Dapper;
-using Recruitment.Application.Contracts.Persistence;
-using Recruitment.Domain.Entities;
-using Recruitment.Persistence.Common;
-using System.Data;
-using System.Data.SqlClient;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-
-namespace Recruitment.Persistence.Repositories
+﻿namespace Recruitment.Persistence.Repositories
 {
     public class MenuRepository : IMenuRepository
     {

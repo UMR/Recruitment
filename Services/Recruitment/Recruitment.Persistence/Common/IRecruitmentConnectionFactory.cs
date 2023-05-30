@@ -1,11 +1,8 @@
-﻿using System.Data;
+﻿namespace Recruitment.Persistence.Common;
 
-namespace Recruitment.Persistence.Common
+public interface IRecruitmentConnectionFactory
 {
-    public interface IRecruitmentConnectionFactory
-    {
-        IDbConnection GetConnection { get; }
+    IDbConnection GetConnection { get; }
 
-        void CloseConnection();
-    }
+    void CloseConnection();
 }

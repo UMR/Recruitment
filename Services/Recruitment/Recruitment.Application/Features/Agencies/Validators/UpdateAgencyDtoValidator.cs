@@ -1,8 +1,8 @@
 ﻿namespace Recruitment.Application.Features.Agencies
 {
-    public class UpdateAgencyCommandValidator : AbstractValidator<UpdateAgencyDto>
+    public class UpdateAgencyDtoValidator : AbstractValidator<UpdateAgencyDto>
     {
-        public UpdateAgencyCommandValidator()
+        public UpdateAgencyDtoValidator()
         {
             RuleFor(a => a.AgencyName)
                 .NotEmpty().WithMessage("{PropertyName} is required")
