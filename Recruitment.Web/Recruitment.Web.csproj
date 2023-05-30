@@ -49,6 +49,28 @@
     <Content Include="src\app\containers\default-layout\default-layout.component.html" />
     <Content Include="src\app\dashboard\dashboard.component.html" />
     <Content Include="src\app\login\login.component.html" />
+    <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\common\components\footer\footer.component.html" />
+    <Content Include="src\app\common\components\header\header.component.html" />
+    <Content Include="src\app\common\components\sidebar\sidebar.component.html" />
+    <Content Include="src\app\home\home.component.html" />
+    <Content Include="src\app\landing\landing.component.html" />
+    <Content Include="src\app\login\login.component.html" />
+    <Content Include="src\app\page-not-found\page-not-found.component.html" />
+    <Content Include="src\assets\css\index.css" />
+    <Content Include="src\assets\css\login.css" />
+    <Content Include="src\assets\css\navstyle.css" />
+    <Content Include="src\assets\css\reset.min.css" />
+    <Content Include="src\assets\css\style.css" />
+    <Content Include="src\assets\img\delete-icon.png" />
+    <Content Include="src\assets\img\edit-icon.png" />
+    <Content Include="src\assets\img\home-page.png" />
+    <Content Include="src\assets\img\menu-icon.png" />
+    <Content Include="src\assets\img\profile-icon.png" />
+    <Content Include="src\assets\img\universal-medical-records_logo.png" />
+    <Content Include="src\assets\user_icon.png" />
+    <Content Include="src\assets\img\view-icon.png" />
+    <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +92,32 @@
     <TypeScriptCompile Include="src\app\dashboard\dashboard.module.ts" />
     <TypeScriptCompile Include="src\app\login\login.component.spec.ts" />
     <TypeScriptCompile Include="src\app\login\login.component.ts" />
+    <TypeScriptCompile Include="src\app\common\components\footer\footer.component.ts" />
+    <TypeScriptCompile Include="src\app\common\components\header\header.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\common\components\header\header.component.ts" />
+    <TypeScriptCompile Include="src\app\common\components\sidebar\sidebar.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\common\components\sidebar\sidebar.component.ts" />
+    <TypeScriptCompile Include="src\app\common\constants\auth-keys.ts" />
+    <TypeScriptCompile Include="src\app\common\helpers\auto-logout.helper.ts" />
+    <TypeScriptCompile Include="src\app\common\helpers\http-client.hepler.ts" />
+    <TypeScriptCompile Include="src\app\common\helpers\route-config.helper.ts" />
+    <TypeScriptCompile Include="src\app\common\services\umr-cookies.service.ts.service.ts" />
+    <TypeScriptCompile Include="src\app\home\home.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\home\home.component.ts" />
+    <TypeScriptCompile Include="src\app\landing\landing.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\landing\landing.component.ts" />
+    <TypeScriptCompile Include="src\app\login\login.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\login\login.component.ts" />
+    <TypeScriptCompile Include="src\app\login\login.service.ts" />
+    <TypeScriptCompile Include="src\app\login\login.ts" />
+    <TypeScriptCompile Include="src\app\page-not-found\page-not-found.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\page-not-found\page-not-found.component.ts" />
+    <TypeScriptCompile Include="src\app\services\file.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\services\file.service.ts" />
+    <TypeScriptCompile Include="src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="src\environments\environment.ts" />
     <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\polyfills.ts" />
     <TypeScriptCompile Include="src\test.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -81,20 +128,22 @@
     <None Include="src\app\containers\default-layout\default-layout.component.scss" />
     <None Include="src\app\dashboard\dashboard.component.scss" />
     <None Include="src\app\login\login.component.scss" />
+    <None Include="src\app\app.component.scss" />
+    <None Include="src\app\common\components\footer\footer.component.scss" />
+    <None Include="src\app\common\components\header\header.component.scss" />
+    <None Include="src\app\common\components\sidebar\sidebar.component.scss" />
+    <None Include="src\app\home\home.component.scss" />
+    <None Include="src\app\landing\landing.component.scss" />
+    <None Include="src\app\login\login.component.scss" />
+    <None Include="src\app\page-not-found\page-not-found.component.scss" />
     <None Include="src\assets\.gitkeep" />
-    <None Include="src\scss\styles.scss" />
-    <None Include="src\scss\_charts.scss" />
-    <None Include="src\scss\_custom.scss" />
-    <None Include="src\scss\_examples.scss" />
-    <None Include="src\scss\_fixes.scss" />
-    <None Include="src\scss\_layout.scss" />
-    <None Include="src\scss\_scrollbar.scss" />
-    <None Include="src\scss\_variables.scss" />
+    <None Include="src\styles.scss" />
     <None Include="tsconfig.app.json" />
     <None Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\assets\img\" />
+    <Folder Include="src\app\common\directives\" />
+    <Folder Include="src\app\common\model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
