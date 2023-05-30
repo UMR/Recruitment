@@ -1,36 +1,70 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LandingComponent } from './landing/landing.component';
+import { RouterModule, Routes } from '@angular/router';
 
-import { LoginComponent } from './login/login.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DefaultLayoutComponent } from './containers';
 
 const routes: Routes = [
- /* {
-    path: '',
-    component: LandingComponent,
-  },*/
   {
     path: '',
-    component: LoginComponent
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
   },
   {
-    path: 'home',
-    component: HomeComponent
+    path: '',
+    component: DefaultLayoutComponent,
+    data: {
+      title: 'Home'
+    },
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule)
+      },
+      
+    ]
   },
-  {
-    path: 'page-not-found',
-    component: PageNotFoundComponent
-  },
-  {
-    path: '**',
-    redirectTo: "/page-not-found"
-  }
+  //{
+  //  path: '404',
+  //  component: Page404Component,
+  //  data: {
+  //    title: 'Page 404'
+  //  }
+  //},
+  //{
+  //  path: '500',
+  //  component: Page500Component,
+  //  data: {
+  //    title: 'Page 500'
+  //  }
+  //},
+  //{
+  //  path: 'login',
+  //  component: LoginComponent,
+  //  data: {
+  //    title: 'Login Page'
+  //  }
+  //},
+  //{
+  //  path: 'register',
+  //  component: RegisterComponent,
+  //  data: {
+  //    title: 'Register Page'
+  //  }
+  //},
+  {path: '**', redirectTo: 'dashboard'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'top',
+      anchorScrolling: 'enabled',
+      initialNavigation: 'enabledBlocking'
+      // relativeLinkResolution: 'legacy'
+    })
+  ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
