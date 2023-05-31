@@ -21,6 +21,7 @@ export class LoginComponent {
     onLoginClick() {
         this.loginService.login(this.userId, this.password)
             .subscribe(res => {
+                localStorage.setItem(authCookieKey, res)
                 this.router.navigateByUrl("/");
             },
                 err => {
