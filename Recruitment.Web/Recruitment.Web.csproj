@@ -49,6 +49,7 @@
     <Content Include="src\app\containers\default-layout\default-layout.component.html" />
     <Content Include="src\app\dashboard\dashboard.component.html" />
     <Content Include="src\app\login\login.component.html" />
+    <Content Include="src\assets\icon\favicon.ico" />
     <Content Include="src\assets\img\1.jpg" />
     <Content Include="src\index.html" />
   </ItemGroup>
@@ -57,7 +58,9 @@
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
-    <TypeScriptCompile Include="src\app\common\constant.ts" />
+    <TypeScriptCompile Include="src\app\common\auth-key.ts" />
+    <TypeScriptCompile Include="src\app\common\service\auth.constant.ts" />
+    <TypeScriptCompile Include="src\app\common\service\auth.service.ts" />
     <TypeScriptCompile Include="src\app\containers\default-layout\default-footer\default-footer.component.spec.ts" />
     <TypeScriptCompile Include="src\app\containers\default-layout\default-footer\default-footer.component.ts" />
     <TypeScriptCompile Include="src\app\containers\default-layout\default-header\default-header.component.spec.ts" />
@@ -72,6 +75,7 @@
     <TypeScriptCompile Include="src\app\icons\icon-subset.ts" />
     <TypeScriptCompile Include="src\app\login\login.component.spec.ts" />
     <TypeScriptCompile Include="src\app\login\login.component.ts" />
+    <TypeScriptCompile Include="src\app\login\login.service.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\test.ts" />
   </ItemGroup>
