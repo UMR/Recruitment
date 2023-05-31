@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 import { DefaultLayoutComponent } from './containers';
 import { LoginComponent } from './login/login.component';
@@ -7,15 +8,8 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full'
-    },
-    {
-        path: '',
         component: DefaultLayoutComponent,
-        data: {
-            title: 'Home'
-        },
+        /*canActivate: [AuthGuard],*/
         children: [
             {
                 path: 'dashboard',
@@ -25,35 +19,16 @@ const routes: Routes = [
 
         ]
     },
-    //{
-    //  path: '404',
-    //  component: Page404Component,
-    //  data: {
-    //    title: 'Page 404'
-    //  }
-    //},
-    //{
-    //  path: '500',
-    //  component: Page500Component,
-    //  data: {
-    //    title: 'Page 500'
-    //  }
-    //},
     {
         path: 'login',
         component: LoginComponent,
-        data: {
-            title: 'Login Page'
-        }
     },
-    //{
-    //  path: 'register',
-    //  component: RegisterComponent,
-    //  data: {
-    //    title: 'Register Page'
-    //  }
-    //},
-    { path: '**', redirectTo: 'dashboard' }
+    {
+        path: 'page-not-found',
+        loadChildren: () =>
+            import('./page-not-found/page-not-found.module').then((m) => m.PageNotFoundModule)
+    },
+    { path: '**', redirectTo: 'page-not-found' }
 ];
 
 @NgModule({
@@ -62,7 +37,6 @@ const routes: Routes = [
             scrollPositionRestoration: 'top',
             anchorScrolling: 'enabled',
             initialNavigation: 'enabledBlocking'
-            // relativeLinkResolution: 'legacy'
         })
     ],
     exports: [RouterModule]
