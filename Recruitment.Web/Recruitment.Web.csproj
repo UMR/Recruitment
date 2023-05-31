@@ -51,7 +51,6 @@
     <Content Include="src\app\login\login.component.html" />
     <Content Include="src\assets\icon\favicon.ico" />
     <Content Include="src\assets\img\1.jpg" />
-    <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
   </ItemGroup>
   <ItemGroup>
