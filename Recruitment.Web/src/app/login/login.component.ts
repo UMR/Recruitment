@@ -13,14 +13,16 @@ export class LoginComponent {
     public password: string = "test";
 
     constructor(private router: Router, private loginService: LoginService) { }
+
     onLoginClick() {
-        this.loginService.login(this.userId, this.password).subscribe
-            (res => {
+        this.loginService.login(this.userId, this.password)
+            .subscribe(res => {
                 localStorage.setItem(authCookieKey, res)
                 this.router.navigateByUrl("/");
-            }, err => {
-                console.log(err);
-            });
-        //this.router.navigateByUrl("/");
+            },
+                err => {
+                    console.log(err);
+                }
+            );
     }
 }

@@ -2,14 +2,8 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
-import { authCookieKey, authorizationServerUrl, clientSecret } from '../auth-key';
-
-const accessTokenUrl = `${authorizationServerUrl}/connect/token`;
-const accessTokenBody = `grant_type=password&username={0}&password={1}&scope=recruitment.fullaccess&client_id=recruitmentweb&client_secret=${encodeURIComponent(clientSecret)}`;
-const accessTokenRevokeUrl = `${authorizationServerUrl}/connect/revocation`;
-const refreshTokenRevokeBody = 'token={0}&token_type_hint=refresh_token';
-
-const accessTokenFromRefreshTokenBody = 'grant_type=refresh_token&refresh_token={0}';
+import { authCookieKey } from '../auth-key';
+import { accessTokenBody, accessTokenFromRefreshTokenBody, accessTokenRevokeUrl, accessTokenUrl, refreshTokenRevokeBody } from "./auth.constant";
 
 function getheaders(): HttpHeaders {
     let headers = new HttpHeaders({
