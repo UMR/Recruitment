@@ -49,7 +49,9 @@
     <Content Include="src\app\containers\default-layout\default-layout.component.html" />
     <Content Include="src\app\dashboard\dashboard.component.html" />
     <Content Include="src\app\login\login.component.html" />
+    <Content Include="src\assets\icon\favicon.ico" />
     <Content Include="src\assets\img\1.jpg" />
+    <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
   </ItemGroup>
   <ItemGroup>
