@@ -1,6 +1,7 @@
-import { INavData } from '@coreui/angular';
-
-export const navItems: INavData[] = [
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.navItems = void 0;
+exports.navItems = [
     {
         name: 'Dashboard',
         url: '/dashboard',
@@ -230,3 +231,4 @@ export const navItems: INavData[] = [
         iconComponent: { name: 'cil-file' },
     }
 ];
+//# sourceMappingURL=_nav.js.map
