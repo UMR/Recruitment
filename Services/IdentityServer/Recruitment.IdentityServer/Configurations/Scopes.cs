@@ -1,6 +1,4 @@
-﻿using IdentityServer4.Models;
-
-namespace Recruitment.IdentityServer.Configurations
+﻿namespace Recruitment.IdentityServer.Configurations
 {
     internal static class Scopes
     {
