@@ -68,15 +68,8 @@ const APP_CONTAINERS = [
         HttpClientModule,
         FormsModule 
     ],
-    providers: [
-        {
-            provide: LocationStrategy,
-            useClass: HashLocationStrategy
-        },
-        LoginService,
-        AuthService,
-        IconSetService,
-        Title
+    providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy },
+        LoginService,AuthService,IconSetService,Title
     ],
     bootstrap: [AppComponent]
 })
