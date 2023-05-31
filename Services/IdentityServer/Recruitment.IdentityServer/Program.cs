@@ -1,13 +1,10 @@
-using Recruitment.IdentityServer.Configurations;
-using Recruitment.IdentityServer.Repositories;
-using Recruitment.IdentityServer.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddHttpClient<AuthenticationController>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.ConfigureIdentityServerServices(builder.Configuration);
+builder.ConfigureIdentityServerServices();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

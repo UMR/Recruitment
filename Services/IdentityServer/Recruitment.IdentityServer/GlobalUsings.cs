@@ -2,4 +2,8 @@
 global using IdentityModel.Client;
 global using Microsoft.AspNetCore.Mvc;
 global using Newtonsoft.Json;
+global using Recruitment.IdentityServer.Configurations;
+global using Recruitment.IdentityServer.Controllers;
+global using Recruitment.IdentityServer.Repositories;
+global using Recruitment.IdentityServer.Services;
 global using Recruitment.IdentityServer.Models;

@@ -5,28 +5,28 @@ namespace Recruitment.IdentityServer.Configurations
 {
     public static class IdentityServerServicesRegistration
     {
-        public static IServiceCollection ConfigureIdentityServerServices(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddIdentityServer()
-            .AddSigningCredential(new X509Certificate2(Path.Combine("idsrv3test.pfx"), "idsrv3test"))
-            .AddInMemoryApiResources(configuration.GetSection("IdentityServer:ApiResources"))
-            .AddInMemoryApiScopes(configuration.GetSection("IdentityServer:ApiScopes"))
-            .AddInMemoryClients(configuration.GetSection("IdentityServer:Clients"))
-            .AddCustomUserStore();            
+        //public static WebApplicationBuilder ConfigureIdentityServerServices(this WebApplicationBuilder builder)
+        //{
+        //    builder.Services.AddIdentityServer()
+        //    .AddSigningCredential(new X509Certificate2(Path.Combine("idsrv3test.pfx"), "idsrv3test"))
+        //    .AddInMemoryApiResources(builder.Configuration.GetSection("IdentityServer:ApiResources"))
+        //    .AddInMemoryApiScopes(builder.Configuration.GetSection("IdentityServer:ApiScopes"))
+        //    .AddInMemoryClients(builder.Configuration.GetSection("IdentityServer:Clients"))
+        //    .AddCustomUserStore();
 
-            return services;
-        }
+        //    return builder;
+        //}
 
-        public static IServiceCollection ConfigureIdentityServerServices(this IServiceCollection services)
+        public static WebApplicationBuilder ConfigureIdentityServerServices(this WebApplicationBuilder builder)
         {
-            services.AddIdentityServer()
+            builder.Services.AddIdentityServer()
             .AddSigningCredential(new X509Certificate2(Path.Combine("idsrv3test.pfx"), "idsrv3test"))
             .AddInMemoryApiResources(Resources.GetApiResources())
             .AddInMemoryApiScopes(Scopes.GetScopes())
             .AddInMemoryClients(Clients.GetClients())
             .AddCustomUserStore();
 
-            return services;
+            return builder;
         }
     }
 }
