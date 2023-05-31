@@ -40,6 +40,7 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './common/service/auth.service';
 
 const APP_CONTAINERS = [
     DefaultFooterComponent,
@@ -84,6 +85,7 @@ const APP_CONTAINERS = [
             useClass: HashLocationStrategy
         },
         LoginService,
+        AuthService,
         IconSetService,
         Title
     ],
