@@ -24,7 +24,10 @@ export class AuthService {
     }
     get isLoggedIn(): boolean {
         let tokenInfo = this.getTokenInfo();
-        return (typeof tokenInfo !== 'undefined' && tokenInfo !== null && typeof (tokenInfo as any).access_token !== 'undefined');
+        //console.log(tokenInfo);
+        //console.log((tokenInfo as any).access_token);
+        return (typeof tokenInfo !== 'undefined' && tokenInfo !== null)
+      //return (typeof tokenInfo !== 'undefined' && tokenInfo !== null && typeof (tokenInfo as any).access_token !== 'undefined');
     }
 
     private getTokenInfo() {

@@ -13,11 +13,14 @@ export class LoginComponent {
     public password: string = "test";
 
     constructor(private router: Router, private loginService: LoginService) { }
-
+    ngOnInit() {
+        if (this.loginService.isLoggedIn) {
+            this.router.navigate(['/']);
+        }
+    }
     onLoginClick() {
         this.loginService.login(this.userId, this.password)
             .subscribe(res => {
-                localStorage.setItem(authCookieKey, res)
                 this.router.navigateByUrl("/");
             },
                 err => {
