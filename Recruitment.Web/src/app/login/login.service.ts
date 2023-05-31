@@ -4,7 +4,8 @@ import { Observable } from "rxjs";
 
 
 const accessTokenUrl = `http://localhost:4000/connect/token`;
-const accessTokenBody = `grant_type=password&username={0}&password={1}&scope=recruitment.fullaccess&client_id=recruitmentweb&client_secret=s*|9%2~*=95*+|t8*~3**%;U73*+-c`;
+var secret = 's*|9%2~*=95*+|t8*~3**%;U73*+-c';
+const accessTokenBody = `grant_type=password&username={0}&password={1}&scope=recruitment.fullaccess&client_id=recruitmentweb&client_secret=${encodeURIComponent(secret)}`;
 
 @Injectable()
 export class LoginService {

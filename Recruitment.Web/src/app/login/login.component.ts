@@ -13,9 +13,13 @@ export class LoginComponent {
 
     constructor(private router: Router, private loginService: LoginService) { }
     onLoginClick() {
-        this.loginService.getToken(this.userId, this.password).subscribe(res => {
-            console.log(res);
-        }, err => { });
+        this.loginService.getToken(this.userId, this.password).subscribe
+            (res => {
+                this.router.navigateByUrl("/");
+                console.log(res);
+            }, err => {
+                console.log(err);
+            });
         //this.router.navigateByUrl("/");
     }
 }
