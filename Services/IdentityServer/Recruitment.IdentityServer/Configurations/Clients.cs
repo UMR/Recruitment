@@ -1,6 +1,4 @@
-﻿using IdentityServer4.Models;
-
-namespace Recruitment.IdentityServer.Configurations
+﻿namespace Recruitment.IdentityServer.Configurations
 {
     internal static class Clients
     {
@@ -27,7 +25,7 @@ namespace Recruitment.IdentityServer.Configurations
                         new Secret("s*|9%2~*=95*+|t8*~3**%;U73*+-c".Sha512())
                     },
                     AllowedCorsOrigins = new List<string> { "http://localhost:4002" },
-                    AllowedScopes=  new List<string> {  "recruitment.fullaccess"}
+                    AllowedScopes=  new List<string> {  "recruitment.fullaccess", "offline_access" }
                 }
             };
         }
