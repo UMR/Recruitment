@@ -72,6 +72,7 @@
     <TypeScriptCompile Include="src\app\icons\icon-subset.ts" />
     <TypeScriptCompile Include="src\app\login\login.component.spec.ts" />
     <TypeScriptCompile Include="src\app\login\login.component.ts" />
+    <TypeScriptCompile Include="src\app\login\login.service.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\test.ts" />
   </ItemGroup>

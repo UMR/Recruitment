@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from './login.service';
 
 @Component({
     selector: 'app-login',
@@ -7,9 +8,14 @@ import { Router } from '@angular/router';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+    public userId: string = "test";
+    public password: string = "test";
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private loginService: LoginService) { }
     onLoginClick() {
-        this.router.navigateByUrl("/");
+        this.loginService.getToken(this.userId, this.password).subscribe(res => {
+            console.log(res);
+        }, err => { });
+        //this.router.navigateByUrl("/");
     }
 }
