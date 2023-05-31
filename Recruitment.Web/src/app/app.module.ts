@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
@@ -16,19 +16,7 @@ import { AppComponent } from './app.component';
 import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './containers';
 
 import {
-    AvatarModule,
-    BadgeModule,
-    BreadcrumbModule,
-    ButtonGroupModule,
-    ButtonModule,
-    CardModule,
-    DropdownModule,
-    FooterModule,
-    FormModule,
-    GridModule,
-    HeaderModule,
-    ListGroupModule,
-    NavModule,
+    AvatarModule, BadgeModule, BreadcrumbModule, ButtonGroupModule, ButtonModule, CardModule, DropdownModule, FooterModule, FormModule, GridModule, HeaderModule, ListGroupModule, NavModule,
     ProgressModule,
     SharedModule,
     SidebarModule,
@@ -77,7 +65,8 @@ const APP_CONTAINERS = [
         ListGroupModule,
         CardModule,
         NgScrollbarModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule 
     ],
     providers: [
         {

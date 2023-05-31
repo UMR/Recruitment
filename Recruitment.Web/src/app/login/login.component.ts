@@ -9,8 +9,8 @@ import { LoginService } from './login.service';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-    public userId: string = "test";
-    public password: string = "test";
+    public loginId: string = "";
+    public password: string = "";
 
     constructor(private router: Router, private loginService: LoginService) { }
     ngOnInit() {
@@ -19,7 +19,7 @@ export class LoginComponent {
         }
     }
     onLoginClick() {
-        this.loginService.login(this.userId, this.password)
+        this.loginService.login(this.loginId, this.password)
             .subscribe(res => {
                 localStorage.setItem(authCookieKey, res)
                 this.router.navigateByUrl("/");
