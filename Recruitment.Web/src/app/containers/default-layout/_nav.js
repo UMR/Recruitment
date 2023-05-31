@@ -157,6 +157,50 @@ exports.navItems = [
                 name: 'Position License Requirement',
                 url: 'position-license-requirement'
             },
+            {
+                name: 'Language Information',
+                url: 'language-information'
+            },
+            {
+                name: 'Email Types',
+                url: 'email-types'
+            },
+            {
+                name: 'Zip Code',
+                url: 'institution-type'
+            },
+            {
+                name: 'Institution Type',
+                url: 'institution-type'
+            },
+            {
+                name: 'Institution Type',
+                url: 'institution-type'
+            },
+            {
+                name: 'Institution Type',
+                url: 'institution-type'
+            },
+            {
+                name: 'Institution Type',
+                url: 'institution-type'
+            },
+            {
+                name: 'Institution Type',
+                url: 'institution-type'
+            },
+            {
+                name: 'Institution Type',
+                url: 'institution-type'
+            },
+            {
+                name: 'Institution Type',
+                url: 'institution-type'
+            },
+            {
+                name: 'Institution Type',
+                url: 'institution-type'
+            }
         ]
     },
     {
@@ -193,7 +237,7 @@ exports.navItems = [
     },
     {
         name: 'SMS',
-        iconComponent: { name: 'cil-file' },
+        iconComponent: { name: 'cil-envelope-closed' },
         children: [
             {
                 name: 'SMS History',
