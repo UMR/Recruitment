@@ -37,7 +37,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/scss/styles.scss"
+              "src/scss/styles.scss",
+              "src/assets/css/styles.css",
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [
@@ -107,7 +109,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/scss/styles.scss"
+              "src/scss/styles.scss",
+              "src/assets/css/styles.css",
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": []
           }
