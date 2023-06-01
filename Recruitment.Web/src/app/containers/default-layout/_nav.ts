@@ -12,59 +12,60 @@ export const navItems: INavData[] = [
     },
     {
         name: 'Recruiter',
+        url: '/recruiter',
         iconComponent: { name: 'cil-user' },
         children: [
             {
                 name: 'Manage Recruiter',
-                url: 'manage-recruiter'
+                url: '/recruiter/manage-recruiter'
             },
             {
                 name: 'Manage Role',
-                url: 'manage-role'
+                url: '/recruiter/manage-role'
             },
             {
                 name: 'Assign Recruiter Role',
-                url: 'assign-recruiter-role'
+                url: '/recruiter/assign-recruiter-role'
             },
             {
                 name: 'Manage Profile',
-                url: 'manage-profile'
+                url: '/recruiter/manage-profile'
             },
             {
                 name: 'Applicant Ownership',
-                url: 'applicant-ownership'
+                url: '/recruiter/applicant-ownership'
             },
             {
                 name: 'Recruiter Profiles',
-                url: 'recruiter-profiles'
+                url: '/recruiter/recruiter-profiles'
             },
             {
                 name: 'Applicant Transfer',
-                url: 'applicant-transfer'
+                url: '/recruiter/applicant-transfer'
             },
             {
                 name: 'User Performance',
-                url: 'user-performance'
+                url: '/recruiter/user-performance'
             },
             {
                 name: 'Usage Summary',
-                url: 'usage-summary'
+                url: '/recruiter/usage-summary'
             },
             {
                 name: 'Assign Dept. To Position',
-                url: 'assign-dept-position'
+                url: '/recruiter/assign-dept-position'
             },
             {
                 name: 'Recruiter History',
-                url: 'recruiter-history'
+                url: '/recruiter/recruiter-history'
             },
             {
                 name: 'Suspend Email Addresses',
-                url: 'suspend-email'
+                url: '/recruiter/suspend-email'
             },
             {
                 name: 'Suspend Phone Numbers',
-                url: 'suspend-phone'
+                url: '/recruiter/suspend-phone'
             },
         ]
     },
