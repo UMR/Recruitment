@@ -1,9 +1,17 @@
-﻿global using IdentityServer4.Models;
+﻿global using System.Data;
+global using System.Data.SqlClient;
+global using IdentityModel;
+global using IdentityServer4.Validation;
+global using IdentityServer4.Models;
 global using IdentityModel.Client;
 global using Microsoft.AspNetCore.Mvc;
 global using Newtonsoft.Json;
 global using System.ComponentModel.DataAnnotations;
 global using System.Security.Cryptography.X509Certificates;
+global using System.Security.Claims;
+
+global using IdentityServer4.Extensions;
+global using IdentityServer4.Services;
 global using Recruitment.IdentityServer.Extensions;
 global using Recruitment.IdentityServer.Configurations;
 global using Recruitment.IdentityServer.Controllers;

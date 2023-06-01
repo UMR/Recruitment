@@ -1,8 +1,4 @@
-﻿using Recruitment.IdentityServer.Repositories;
-using Recruitment.IdentityServer.Models;
-using System.Data;
-
-namespace Recruitment.IdentityServer.Services
+﻿namespace Recruitment.IdentityServer.Services
 {
     public class UserService : IUserService
     {

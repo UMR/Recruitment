@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace Recruitment.IdentityServer.Repositories
+﻿namespace Recruitment.IdentityServer.Repositories
 {
     public interface IUserRepository
     {

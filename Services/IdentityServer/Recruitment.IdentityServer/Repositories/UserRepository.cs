@@ -1,7 +1,4 @@
-﻿using System.Data;
-using System.Data.SqlClient;
-
-namespace Recruitment.IdentityServer.Repositories
+﻿namespace Recruitment.IdentityServer.Repositories
 {
     public class UserRepository : IUserRepository
     {

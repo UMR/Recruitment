@@ -1,6 +1,4 @@
-﻿using Recruitment.IdentityServer.Models;
-
-namespace Recruitment.IdentityServer.Services
+﻿namespace Recruitment.IdentityServer.Services
 {
     public interface IUserService
     {
