@@ -1,8 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddHttpClient<AuthenticationController>();
+builder.Services.AddHttpClient<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.ConfigureIdentityServerServices();
 
 builder.Services.AddControllers();
