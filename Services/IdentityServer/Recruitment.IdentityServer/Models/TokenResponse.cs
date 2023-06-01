@@ -1,8 +1,6 @@
-﻿using Newtonsoft.Json;
-
-namespace Recruitment.IdentityServer.Models
+﻿namespace Recruitment.IdentityServer.Models
 {
-    public class LoginResponse
+    public class TokenResponse
     {
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }
