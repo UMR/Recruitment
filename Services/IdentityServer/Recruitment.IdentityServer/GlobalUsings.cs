@@ -2,6 +2,7 @@
 global using IdentityModel.Client;
 global using Microsoft.AspNetCore.Mvc;
 global using Newtonsoft.Json;
+global using System.ComponentModel.DataAnnotations;
 global using System.Security.Cryptography.X509Certificates;
 global using Recruitment.IdentityServer.Extensions;
 global using Recruitment.IdentityServer.Configurations;

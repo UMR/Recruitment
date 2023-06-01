@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Recruitment.IdentityServer.Models
+﻿namespace Recruitment.IdentityServer.Models
 {
-    public class LoginRequest
+    public class TokenRequest
     {
         [Required]
         public string Username { get; set; }
