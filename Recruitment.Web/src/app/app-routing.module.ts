@@ -15,6 +15,7 @@ const routes: Routes = [
                 path: 'dashboard',
                 loadChildren: () =>import('./dashboard/dashboard.module').then((m) => m.DashboardModule)
             },
+            //////////// --------------------------   recruiter menu portion ------------------------///////
             {
                 path: 'recruiter/manage-recruiter',
                 loadChildren: () => import('./recruiter/manage-recruiter/manage-recruiter.module').then((m) => m.ManageRecruiterModule)
@@ -23,7 +24,11 @@ const routes: Routes = [
                 path: 'recruiter/manage-role',
                 loadChildren: () => import('./recruiter/manage-role/manage-role.module').then((m) => m.ManageRoleModule)
             },
-
+            //////////// --------------------------   information menu portion ------------------------///////
+            {
+                path: 'information/agency',
+                loadChildren: () => import('./information/agency/agency.module').then((m) => m.AgencyModule)
+            },
         ]
     },
     {

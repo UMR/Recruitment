@@ -8,7 +8,7 @@ const routes: Routes = [
         path: '',
         component: ManageRecruiterComponent,
         data: {
-            title: $localize`Manage Recruiter`
+            title: $localize`Recruiter / Manage Recruiter`
         }
     }
 ];
