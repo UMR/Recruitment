@@ -131,75 +131,100 @@ export const navItems: INavData[] = [
     },
     {
         name: 'Information',
+        url: '/information',
         iconComponent: { name: 'cil-menu' },
         children: [
             {
                 name: 'Institution Type',
-                url: 'institution-type'
+                url: '/information/institution-type'
             },
             {
                 name: 'Contact Information',
-                url: 'contact-information'
+                url: '/information/contact-information'
             },
             {
                 name: 'Department Information',
-                url: 'department-information'
+                url: '/information/department-information'
             },
             {
                 name: 'Location Information',
-                url: 'location-information'
+                url: '/information/location-information'
             },
             {
                 name: 'Position Information',
-                url: 'position-information'
+                url: '/information/position-information'
             },
             {
                 name: 'Position License Requirement',
-                url: 'position-license-requirement'
+                url: '/information/position-license-requirement'
             },
             {
                 name: 'Language Information',
-                url: 'language-information'
+                url: '/information/language-information'
             },
             {
                 name: 'Email Types',
-                url: 'email-types'
+                url: '/information/email-types'
             },
             {
                 name: 'Zip Code',
-                url: 'institution-type'
+                url: '/information/institution-type'
             },
             {
-                name: 'Institution Type',
-                url: 'institution-type'
+                name: 'Country',
+                url: '/information/country'
             },
             {
-                name: 'Institution Type',
-                url: 'institution-type'
+                name: 'Sponsor',
+                url: '/information/sponsor'
             },
             {
-                name: 'Institution Type',
-                url: 'institution-type'
+                name: 'Profile Template',
+                url: '/information/profile-template'
             },
             {
-                name: 'Institution Type',
-                url: 'institution-type'
+                name: 'Visa Type',
+                url: '/information/visa-type'
             },
             {
-                name: 'Institution Type',
-                url: 'institution-type'
+                name: 'Group Information',
+                url: '/information/group-information'
             },
             {
-                name: 'Institution Type',
-                url: 'institution-type'
+                name: 'Postal Code',
+                url: '/information/postal-code'
             },
             {
-                name: 'Institution Type',
-                url: 'institution-type'
+                name: 'Imported Contacts',
+                url: '/information/imported-contacts'
             },
             {
-                name: 'Institution Type',
-                url: 'institution-type'
+                name: 'Applicant Type',
+                url: '/information/applicant-type'
+            },
+            {
+                name: 'Time and Attendance Reason',
+                url: '/information/time-attendance-reason'
+            },
+            {
+                name: 'Agency',
+                url: '/information/agency'
+            },
+            {
+                name: 'Lower Case Word',
+                url: '/information/lower-case-word'
+            },
+            {
+                name: 'Special Word',
+                url: '/information/"special-word'
+            },
+            {
+                name: 'Upper Case Word',
+                url: '/information/upper-case-word'
+            },
+            {
+                name: 'Mail Template Type',
+                url: '/information/mail-template-type'
             }
         ]
     },
