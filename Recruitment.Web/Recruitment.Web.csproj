@@ -50,6 +50,8 @@
     <Content Include="src\app\dashboard\dashboard.component.html" />
     <Content Include="src\app\login\login.component.html" />
     <Content Include="src\app\page-not-found\page-not-found.component.html" />
+    <Content Include="src\app\Recruiter\manage-recruiter\manage-recruiter.component.html" />
+    <Content Include="src\app\Recruiter\manage-role\manage-role.component.html" />
     <Content Include="src\assets\icon\favicon.ico" />
     <Content Include="src\assets\img\1.jpg" />
     <Content Include="src\index.html" />
@@ -81,6 +83,18 @@
     <TypeScriptCompile Include="src\app\page-not-found\page-not-found.component.ts" />
     <TypeScriptCompile Include="src\app\page-not-found\page-not-found.module.ts" />
     <TypeScriptCompile Include="src\app\page-not-found\page-not-found-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\Recruiter\manage-recruiter\manage-recruiter-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\Recruiter\manage-recruiter\manage-recruiter.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\Recruiter\manage-recruiter\manage-recruiter.component.ts" />
+    <TypeScriptCompile Include="src\app\Recruiter\manage-recruiter\manage-recruiter.module.ts" />
+    <TypeScriptCompile Include="src\app\Recruiter\manage-recruiter\manage-recruiter.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\Recruiter\manage-recruiter\manage-recruiter.service.ts" />
+    <TypeScriptCompile Include="src\app\Recruiter\manage-role\manage-role-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\Recruiter\manage-role\manage-role.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\Recruiter\manage-role\manage-role.component.ts" />
+    <TypeScriptCompile Include="src\app\Recruiter\manage-role\manage-role.module.ts" />
+    <TypeScriptCompile Include="src\app\Recruiter\manage-role\manage-role.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\Recruiter\manage-role\manage-role.service.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\test.ts" />
   </ItemGroup>
@@ -93,6 +107,8 @@
     <None Include="src\app\dashboard\dashboard.component.scss" />
     <None Include="src\app\login\login.component.scss" />
     <None Include="src\app\page-not-found\page-not-found.component.scss" />
+    <None Include="src\app\Recruiter\manage-recruiter\manage-recruiter.component.scss" />
+    <None Include="src\app\Recruiter\manage-role\manage-role.component.scss" />
     <None Include="tsconfig.app.json" />
     <None Include="tsconfig.json" />
   </ItemGroup>

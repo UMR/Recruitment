@@ -13,8 +13,15 @@ const routes: Routes = [
         children: [
             {
                 path: 'dashboard',
-                loadChildren: () =>
-                    import('./dashboard/dashboard.module').then((m) => m.DashboardModule)
+                loadChildren: () =>import('./dashboard/dashboard.module').then((m) => m.DashboardModule)
+            },
+            {
+                path: 'manage-recruiter',
+                loadChildren: () => import('./recruiter/manage-recruiter/manage-recruiter.module').then((m) => m.ManageRecruiterModule)
+            },
+            {
+                path: 'manage-role',
+                loadChildren: () => import('./recruiter/manage-role/manage-role.module').then((m) => m.ManageRoleModule)
             },
 
         ]
