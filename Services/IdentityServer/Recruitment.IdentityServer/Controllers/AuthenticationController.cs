@@ -8,83 +8,41 @@ namespace Recruitment.IdentityServer.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private readonly HttpClient _httpClient;
-        private readonly IConfiguration _configuration;
-        private readonly string _address;
+        private readonly IAuthenticationService _authenticationService;
 
-        public AuthenticationController(HttpClient httpClient, IConfiguration configuration)
+        public AuthenticationController(IAuthenticationService authenticationService)
         {
-            _httpClient = httpClient;
-            _configuration = configuration;
-            _address = _configuration.GetSection("IdentityServer")["IssuerUri"]; 
+            _authenticationService = authenticationService;
         }
 
         [HttpPost("Token")]
         public async Task<IActionResult> GetToken(TokenRequest request)
         {
-            TokenResponse response;
+            var tokenResponse = await _authenticationService.GetToken(request.Username, request.Password);
 
-            try
-            {                
-                var identityServerResponse = await _httpClient.RequestPasswordTokenAsync(new PasswordTokenRequest
-                {
-                    Address = $"{_address}/connect/token",
-                    GrantType = "password",
-                    ClientId = "recruitmentweb",
-                    ClientSecret = "s*|9%2~*=95*+|t8*~3**%;U73*+-c",
-                    Scope = "recruitment.fullaccess offline_access",
-                    UserName = request.Username,
-                    Password = request.Password
-                });
-
-                if (!identityServerResponse.IsError)
-                {
-                    response = JsonConvert.DeserializeObject<TokenResponse>(identityServerResponse.Raw);
-                }
-                else
-                {
-                    return Ok(identityServerResponse);
-                }
-            }
-            catch (Exception ex)
+            if (!tokenResponse.IsError)
             {
-                return Ok(ex.Message);
+                return Ok(JsonConvert.DeserializeObject<TokenResponse>(tokenResponse.Raw));
             }
-
-            return Ok(response);
+            else
+            {
+                return Ok(tokenResponse);
+            }
         }
 
         [HttpPost("RefreshToken")]
         public async Task<IActionResult> GetRefreshTokenByToken(RefreshTokenRequest request)
         {
-            TokenResponse response;
+            var tokenResponse = await _authenticationService.GetRefreshTokenByToken(request.RefreshToken);
 
-            try
-            {                
-                var identityServerResponse = await _httpClient.RequestRefreshTokenAsync(new IdentityModel.Client.RefreshTokenRequest
-                {
-                    Address = $"{_address}/connect/token",
-                    GrantType = "refresh_token",
-                    RefreshToken = request.RefreshToken,
-                    ClientId = "recruitmentweb",
-                    ClientSecret = "s*|9%2~*=95*+|t8*~3**%;U73*+-c"
-                });
-
-                if (!identityServerResponse.IsError)
-                {
-                    response = JsonConvert.DeserializeObject<TokenResponse>(identityServerResponse.Raw);
-                }
-                else
-                {
-                    return Ok(identityServerResponse);
-                }
-            }
-            catch (Exception ex)
+            if (!tokenResponse.IsError)
             {
-                return Ok(ex.Message);
+                return Ok(JsonConvert.DeserializeObject<TokenResponse>(tokenResponse.Raw));
             }
-
-            return Ok(response);
+            else
+            {
+                return Ok(tokenResponse);
+            }
         }
     }
 }
