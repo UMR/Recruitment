@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { Product } from '../../../common/models/agency.model';
+import { AgencyModel } from '../../../common/models/agency.model';
 import { AgencyService } from './agency.service';
 
 @Component({
@@ -10,9 +10,9 @@ import { AgencyService } from './agency.service';
 })
 export class AgencyComponent {
     productDialog: boolean = false;
-    products: Product[] = [];
-    product: any;
-    selectedProducts: Product[] = [];
+    agencys: AgencyModel[] = [];
+    agency: any;
+    selectedProducts: AgencyModel[] = [];
     submitted: boolean = false;
     statuses: any[] = [];
 
@@ -22,19 +22,19 @@ export class AgencyComponent {
         this.getAllAgency();
     }
 
-    editProduct(product: Product) {
-        this.product = { ...product };
+    editProduct(product: AgencyModel) {
+        this.agency = { ...product };
         this.productDialog = true;
     }
 
-    deleteProduct(product: Product) {
+    deleteProduct(product: AgencyModel) {
         this.confirmationService.confirm({
-            message: 'Are you sure you want to delete ' + product.name + '?',
+            message: 'Are you sure you want to delete ' + product.agencyName + '?',
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.products = this.products.filter((val) => val.id !== product.id);
-                this.product = {};
+                this.agencys = this.agencys.filter((val) => val.agencyId !== product.agencyId);
+                this.agency = {};
                 this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
             }
         });
@@ -42,6 +42,7 @@ export class AgencyComponent {
     getAllAgency() {
         this.agencyService.getAllAgency().subscribe(
             res => {
+                this.agencys = res.body;
                 console.log(res);
             },
             err => {

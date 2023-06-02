@@ -2,7 +2,7 @@
 <p-toast></p-toast>
 
 <p-table #dt
-         [value]="products"
+         [value]="agencys"
          [rows]="10"
          [paginator]="true"
          [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
@@ -26,27 +26,24 @@
             <th>Agency Contact Person</th>
             <th>Agency Contact Person Phone</th>
             <th>Status</th>
-            <th></th>
+            <th>Action</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-product>
+    <ng-template pTemplate="body" let-agency>
         <tr>
+            <td>{{ agency.agencyName }}</td>
+            <td>{{ agency.urlPrefix }}</td>
+            <td>{{ agency.agencyEmail }}</td>
+            <td>{{ agency.agencyPhone }}</td>
+            <td>{{ agency.agencyContactPerson }}</td>
+            <td>{{ agency.agencyContactPersonPhone }}</td>
             <td>
+                <p-tableCheckbox [value]="agency.isActive"></p-tableCheckbox>{{agency.isActive}}
                 
             </td>
-            <td>{{ product.name }}</td>
-            <td><img [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.name" width="50" class="shadow-4" /></td>
-            <td>{{ product.price | currency: 'USD' }}</td>
-            <td>{{ product.category }}</td>
             <td>
-            <!--<p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
-            </td>
-            <td>
-                <p-tableCheckbox [value]="product"></p-tableCheckbox>
-            </td>
-            <td>
-                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editProduct(product)"></button>
-                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(product)"></button>
+                <button pButton pRipple icon="cil-pencil" class="p-button-rounded p-button-success mr-2" (click)="editProduct(agency)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(agency)"></button>
             </td>
         </tr>
     </ng-template>
