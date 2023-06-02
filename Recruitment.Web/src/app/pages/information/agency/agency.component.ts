@@ -12,8 +12,8 @@ export class AgencyComponent {
     productDialog: boolean = false;
     agencys: AgencyModel[] = [];
     agency: any;
-    selectedProducts: AgencyModel[] = [];
     submitted: boolean = false;
+    isActive: any =[];
     statuses: any[] = [];
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private agencyService: AgencyService) { }
@@ -22,8 +22,8 @@ export class AgencyComponent {
         this.getAllAgency();
     }
 
-    editProduct(product: AgencyModel) {
-        this.agency = { ...product };
+    editProduct(agency: AgencyModel) {
+        this.agency = { ...agency };
         this.productDialog = true;
     }
 
@@ -38,6 +38,9 @@ export class AgencyComponent {
                 this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
             }
         });
+    }
+    onClickChk(chk:any) {
+        console.log(chk);
     }
     getAllAgency() {
         this.agencyService.getAllAgency().subscribe(

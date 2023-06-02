@@ -5,11 +5,9 @@
          [value]="agencys"
          [rows]="10"
          [paginator]="true"
-         [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
          [tableStyle]="{ 'min-width': '75rem' }"
-         [(selection)]="selectedProducts"
          [rowHover]="true"
-         dataKey="id"
+         dataKey="agencyId"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
          [showCurrentPageReport]="true">
     <ng-template pTemplate="caption">
@@ -38,8 +36,7 @@
             <td>{{ agency.agencyContactPerson }}</td>
             <td>{{ agency.agencyContactPersonPhone }}</td>
             <td>
-                <p-tableCheckbox [value]="agency.isActive"></p-tableCheckbox>{{agency.isActive}}
-                
+                <p-checkbox name="group" [value]=agency.isActive></p-checkbox>{{agency.isActive}}
             </td>
             <td>
                 <button pButton pRipple icon="cil-pencil" class="p-button-rounded p-button-success mr-2" (click)="editProduct(agency)"></button>
