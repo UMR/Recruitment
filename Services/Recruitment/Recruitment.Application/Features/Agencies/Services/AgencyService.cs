@@ -41,11 +41,9 @@ namespace Recruitment.Application.Features.Agencies
                 return response;
             }
 
-            var agency = new Agency();
-            agency.AgencyName = request.AgencyName;
-            agency.CreatedBy = request.CreatedBy;
-            agency.CreatedDate = DateTime.Now;
-            await _agencyRepository.CreateAgency(agency);
+
+            var agencyToCreate = _mapper.Map<Agency>(request);
+            await _agencyRepository.CreateAgency(agencyToCreate);
 
             response.Success = true;
             response.Message = "Creating Successful";            
