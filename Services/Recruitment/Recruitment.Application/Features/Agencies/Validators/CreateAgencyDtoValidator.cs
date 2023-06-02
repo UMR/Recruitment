@@ -7,7 +7,7 @@
             RuleFor(a => a.AgencyName)
                 .NotEmpty().WithMessage("{PropertyName} is required")
                 .NotNull()
-                .MaximumLength(128).WithMessage("{PropertyName} must not exceed 500 characters");
+                .MaximumLength(500).WithMessage("{PropertyName} must not exceed 500 characters");
 
             RuleFor(c => c.CreatedBy)
                .NotEmpty().WithMessage("{PropertyName} is required")

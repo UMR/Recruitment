@@ -11,6 +11,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="Features\EmailTypes\Services\" />
 		<Folder Include="Features\Menu\Commands\" />
 	</ItemGroup>
 
