@@ -65,6 +65,8 @@
     <TypeScriptCompile Include="src\app\auth.guard.ts" />
     <TypeScriptCompile Include="src\app\common\auth-key.ts" />
     <TypeScriptCompile Include="src\app\common\models\agency.model.ts" />
+    <TypeScriptCompile Include="src\app\common\models\auth-info.model.ts" />
+    <TypeScriptCompile Include="src\app\common\service\auth-interceptor.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\auth.constant.ts" />
     <TypeScriptCompile Include="src\app\common\service\auth.service.ts" />
     <TypeScriptCompile Include="src\app\containers\default-layout\default-footer\default-footer.component.spec.ts" />

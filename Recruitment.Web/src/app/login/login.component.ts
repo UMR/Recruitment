@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { authCookieKey } from '../common/auth-key';
+import { AuthInfo } from '../common/models/auth-info.model';
 import { LoginService } from './login.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class LoginComponent {
     onLoginClick() {
         this.loginService.login(this.loginId, this.password)
             .subscribe(res => {
-                localStorage.setItem(authCookieKey, res)
+                localStorage.setItem(authCookieKey, JSON.stringify(res))
                 this.router.navigateByUrl("/");
             },
                 err => {

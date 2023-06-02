@@ -30,7 +30,7 @@ export class AuthService {
       //return (typeof tokenInfo !== 'undefined' && tokenInfo !== null && typeof (tokenInfo as any).access_token !== 'undefined');
     }
 
-    private getTokenInfo() {
+    public getTokenInfo() {
         return localStorage.getItem(authCookieKey);
     }
 

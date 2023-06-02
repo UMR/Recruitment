@@ -27,8 +27,10 @@ import {
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './common/service/auth.service';
+import { AuthInterceptorService } from './common/service/auth-interceptor.service';
+import { AuthGuard } from './auth.guard';
 
 const APP_CONTAINERS = [
     DefaultFooterComponent,
@@ -68,8 +70,16 @@ const APP_CONTAINERS = [
         HttpClientModule,
         FormsModule 
     ],
-    providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy },
-        LoginService,AuthService,IconSetService,Title
+    providers: [
+        { provide: LocationStrategy, useClass: PathLocationStrategy },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptorService,
+            multi: true
+        },
+        AuthService,
+        AuthGuard,
+        LoginService,IconSetService,Title
     ],
     bootstrap: [AppComponent]
 })
