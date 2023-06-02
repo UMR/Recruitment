@@ -65,14 +65,14 @@ namespace Recruitment.Application.Features.Agencies
                 return response;
             }
 
-            var agencyToUpdate = await _agencyRepository.GetAgencyById(id);
+            var agencyFromRepo = await _agencyRepository.GetAgencyById(id);
             
-            if (agencyToUpdate is null)
+            if (agencyFromRepo is null)
             {
                 throw new NotFoundException(nameof(User), id.ToString());
             }
 
-            _mapper.Map(request, agencyToUpdate);
+            var agencyToUpdate = _mapper.Map<Agency>(agencyFromRepo);
             await _agencyRepository.UpdateAgency(id, agencyToUpdate);
 
             response.Success = true;
