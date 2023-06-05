@@ -1,45 +1,44 @@
-﻿namespace Recruitment.Application.Middlewares
+﻿namespace Recruitment.Application.Middlewares;
+
+public class ExceptionMiddleware
 {
-    public class ExceptionMiddleware
+    private readonly RequestDelegate _next;
+    private readonly ILogger<ExceptionMiddleware> _logger;
+    public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
     {
-        private readonly RequestDelegate _next;
-        private readonly ILogger<ExceptionMiddleware> _logger;
-        public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
+        _logger = logger;
+        _next = next;
+    }
+    public async Task Invoke(HttpContext httpContext)
+    {
+        try
         {
-            _logger = logger;
-            _next = next;
+            await _next(httpContext);
         }
-        public async Task Invoke(HttpContext httpContext)
+        catch (Exception ex)
         {
-            try
-            {
-                await _next(httpContext);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong: {ex}");
-                await HandleException(httpContext, ex);
-            }
-        }
-        private async Task HandleException(HttpContext context, Exception exception)
-        {
-            context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            await context.Response.WriteAsync(new ErrorInfo()
-            {
-                StatusCode = context.Response.StatusCode,
-                Message = "Internal Server Error from middleware."
-            }.ToString());
+            _logger.LogError($"Something went wrong: {ex}");
+            await HandleException(httpContext, ex);
         }
     }
-
-    public class ErrorInfo
+    private async Task HandleException(HttpContext context, Exception exception)
     {
-        public int StatusCode { get; set; }
-        public string Message { get; set; }
-        public override string ToString()
+        context.Response.ContentType = "application/json";
+        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+        await context.Response.WriteAsync(new ErrorInfo()
         {
-            return JsonSerializer.Serialize(this);
-        }
+            StatusCode = context.Response.StatusCode,
+            Message = "Internal Server Error from middleware."
+        }.ToString());
+    }
+}
+
+public class ErrorInfo
+{
+    public int StatusCode { get; set; }
+    public string Message { get; set; }
+    public override string ToString()
+    {
+        return JsonSerializer.Serialize(this);
     }
 }

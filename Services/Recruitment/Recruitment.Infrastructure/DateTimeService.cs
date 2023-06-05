@@ -1,8 +1,6 @@
-﻿using Recruitment.Application.Contracts.Infrastructure;
+﻿namespace Recruitment.Infrastructure;
 
-namespace Recruitment.Infrastructure;
-
-public class CurrentDateTime : IDateTime
+public class DateTimeService : IDateTimeService
 {
     public DateTime Now => DateTime.Now;
 

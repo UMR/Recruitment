@@ -36,9 +36,19 @@ internal class AgencyRepository : IAgencyRepository
 
     public async Task<int> CreateAgency(Agency agency)
     {
-        var query = "INSERT INTO Agency (AgencyName, CreatedBy, CreatedDate) VALUES (@AgencyName, @CreatedBy, @CreatedDate) SELECT CAST(SCOPE_IDENTITY() as int)";
+        var query = "INSERT INTO Agency (AgencyName, AgencyAddress, URLPrefix, AgencyEmail, AgencyPhone, AgencyContactPerson, AgencyContactPersonPhone, IsActive, AgencyLoginId, CreatedBy, CreatedDate) " +
+                    "VALUES (@AgencyName, @AgencyAddress, @URLPrefix, @AgencyEmail, @AgencyPhone, @AgencyContactPerson, @AgencyContactPersonPhone, @IsActive, @AgencyLoginId, @CreatedBy, @CreatedDate) " +
+                    "SELECT CAST(SCOPE_IDENTITY() as int)";
         var parameters = new DynamicParameters();
         parameters.Add("AgencyName", agency.AgencyName, DbType.String);
+        parameters.Add("AgencyAddress", agency.AgencyAddress, DbType.String);
+        parameters.Add("URLPrefix", agency.URLPrefix, DbType.String);
+        parameters.Add("AgencyEmail", agency.AgencyEmail, DbType.String);
+        parameters.Add("AgencyPhone", agency.AgencyPhone, DbType.String);
+        parameters.Add("AgencyContactPerson", agency.AgencyContactPerson, DbType.String);
+        parameters.Add("AgencyContactPersonPhone", agency.AgencyContactPersonPhone, DbType.String);
+        parameters.Add("IsActive", agency.IsActive, DbType.Boolean);
+        parameters.Add("AgencyLoginId", agency.AgencyLoginId, DbType.String);
         parameters.Add("CreatedBy", agency.CreatedBy, DbType.Int32);
         parameters.Add("CreatedDate", agency.CreatedDate, DbType.DateTime);
 
@@ -55,6 +65,14 @@ internal class AgencyRepository : IAgencyRepository
         var parameters = new DynamicParameters();
         parameters.Add("AgencyID", id, DbType.Int64);
         parameters.Add("AgencyName", agency.AgencyName, DbType.String);
+        parameters.Add("AgencyAddress", agency.AgencyAddress, DbType.String);
+        parameters.Add("URLPrefix", agency.URLPrefix, DbType.String);
+        parameters.Add("AgencyEmail", agency.AgencyEmail, DbType.String);
+        parameters.Add("AgencyPhone", agency.AgencyPhone, DbType.String);
+        parameters.Add("AgencyContactPerson", agency.AgencyContactPerson, DbType.String);
+        parameters.Add("AgencyContactPersonPhone", agency.AgencyContactPersonPhone, DbType.String);
+        parameters.Add("IsActive", agency.IsActive, DbType.Boolean);
+        parameters.Add("AgencyLoginId", agency.AgencyLoginId, DbType.String);
         parameters.Add("UpdatedBy", agency.UpdatedBy, DbType.Int32);
         parameters.Add("UpdatedDate", agency.UpdatedDate, DbType.DateTime);
 

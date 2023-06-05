@@ -1,7 +1,6 @@
-﻿namespace Recruitment.Application.Contracts.Infrastructure
+﻿namespace Recruitment.Application.Contracts.Infrastructure;
+
+public interface IEmailSender
 {
-    public interface IEmailSender
-    {
-        Task<bool> SendEmailAsync(Email email);
-    }
+    Task<bool> SendEmailAsync(Email email);
 }

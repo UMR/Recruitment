@@ -1,109 +1,104 @@
-﻿using Azure.Core;
-using Recruitment.Application.Contracts;
-using Recruitment.Application.Contracts.Infrastructure;
-using Recruitment.Application.Wrapper;
+﻿namespace Recruitment.Application.Features.Agencies;
 
-namespace Recruitment.Application.Features.Agencies
+public class AgencyService : IAgencyService
 {
-    public class AgencyService : IAgencyService
+    private readonly IMapper _mapper;
+    private readonly ICurrentUserService _currentUserService;
+    private readonly IDateTimeService _dateTime;
+    private readonly IAgencyRepository _agencyRepository;
+
+    public AgencyService(IMapper mapper, ICurrentUserService currentUserService, IDateTimeService dateTime, IAgencyRepository agencyRepository)
     {
-        private readonly IMapper _mapper;
-        private readonly ICurrentUserService _currentUserService;
-        private readonly IDateTime _dateTime;
-        private readonly IAgencyRepository _agencyRepository;
+        _mapper = mapper;
+        _currentUserService = currentUserService;
+        _dateTime = dateTime;
+        _agencyRepository = agencyRepository;
+    }
 
-        public AgencyService(IMapper mapper, ICurrentUserService currentUserService, IDateTime dateTime, IAgencyRepository agencyRepository)
+    public async Task<List<AgencyListDto>> GetAgencies()
+    {            
+        var agenciesFromRepo = await _agencyRepository.GetAgencies();
+        var agenciesToReturn = _mapper.Map<List<AgencyListDto>>(agenciesFromRepo);
+        return agenciesToReturn;
+    }
+
+    public async Task<AgencyListDto> GetAgencyById(int id)
+    {
+        var agencyFromRepo = await _agencyRepository.GetAgencyById(id);
+        var agencyToReturn = _mapper.Map<AgencyListDto>(agencyFromRepo);
+        return agencyToReturn;
+    }
+
+    public async Task<BaseCommandResponse> CreateAgency(CreateAgencyDto request)
+    {
+        var response = new BaseCommandResponse();
+        var validator = new CreateAgencyDtoValidator();
+        var validationResult = await validator.ValidateAsync(request);
+
+        if (validationResult.IsValid == false)
         {
-            _mapper = mapper;
-            _currentUserService = currentUserService;
-            _dateTime = dateTime;
-            _agencyRepository = agencyRepository;
-        }
-
-        public async Task<List<AgencyListDto>> GetAgencies()
-        {            
-            var agenciesFromRepo = await _agencyRepository.GetAgencies();
-            var agenciesToReturn = _mapper.Map<List<AgencyListDto>>(agenciesFromRepo);
-            return agenciesToReturn;
-        }
-
-        public async Task<AgencyListDto> GetAgencyById(int id)
-        {
-            var agencyFromRepo = await _agencyRepository.GetAgencyById(id);
-            var agencyToReturn = _mapper.Map<AgencyListDto>(agencyFromRepo);
-            return agencyToReturn;
-        }
-
-        public async Task<BaseCommandResponse> CreateAgency(CreateAgencyDto request)
-        {
-            var response = new BaseCommandResponse();
-            var validator = new CreateAgencyDtoValidator();
-            var validationResult = await validator.ValidateAsync(request);
-
-            if (validationResult.IsValid == false)
-            {
-                response.Success = false;
-                response.Message = "Creating Failed";
-                response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-                return response;
-            }
-
-            var agencyToCreate = _mapper.Map<Agency>(request);
-            agencyToCreate.CreatedBy = _currentUserService.UserId;
-            agencyToCreate.CreatedDate = _dateTime.Now;
-
-            await _agencyRepository.CreateAgency(agencyToCreate);
-
-            response.Success = true;
-            response.Message = "Creating Successful";    
+            response.Success = false;
+            response.Message = "Creating Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
             return response;
         }
 
-        public async Task<BaseCommandResponse> UpdateAgency(int id, UpdateAgencyDto request) 
+        var entity = _mapper.Map<Agency>(request);
+        entity.CreatedBy = _currentUserService.UserId;
+        entity.CreatedDate = _dateTime.Now;
+
+        await _agencyRepository.CreateAgency(entity);
+
+        response.Success = true;
+        response.Message = "Creating Successful";    
+        return response;
+    }
+
+    public async Task<BaseCommandResponse> UpdateAgency(int id, UpdateAgencyDto request) 
+    {
+        var response = new BaseCommandResponse();
+        var validator = new UpdateAgencyDtoValidator();
+        var validationResult = await validator.ValidateAsync(request);
+
+        if (validationResult.IsValid == false)
         {
-            var response = new BaseCommandResponse();
-            var validator = new UpdateAgencyDtoValidator();
-            var validationResult = await validator.ValidateAsync(request);
-
-            if (validationResult.IsValid == false)
-            {
-                response.Success = false;
-                response.Message = "Updating Failed";
-                response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-                return response;
-            }
-
-            var agencyFromRepo = await _agencyRepository.GetAgencyById(id);
-            
-            if (agencyFromRepo is null)
-            {
-                throw new NotFoundException(nameof(User), id.ToString());
-            }
-
-            var agencyToUpdate = _mapper.Map<Agency>(agencyFromRepo);
-            await _agencyRepository.UpdateAgency(id, agencyToUpdate);
-
-            response.Success = true;
-            response.Message = "Updating Successful";
+            response.Success = false;
+            response.Message = "Updating Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
             return response;
         }
 
-        public async Task<BaseCommandResponse> DeleteAgency(int id) 
+        var isExistEntity = await _agencyRepository.GetAgencyById(id);
+        
+        if (isExistEntity is null)
         {
-            var response = new BaseCommandResponse();
-            var agencyFromRepo = await _agencyRepository.GetAgencyById(id);
-
-            if (agencyFromRepo is null)
-            {
-                throw new NotFoundException(nameof(User), id.ToString());
-            }
-
-            var agencyToUpdate = _mapper.Map<Agency>(agencyFromRepo);
-            await _agencyRepository.UpdateAgency(id, agencyToUpdate);
-
-            response.Success = true;
-            response.Message = "Updating Successful";
-            return response;
+            throw new NotFoundException(nameof(User), id.ToString());
         }
+
+        var entity = _mapper.Map<Agency>(isExistEntity);
+        entity.UpdatedBy = _currentUserService.UserId;
+        entity.UpdatedDate = _dateTime.Now;
+        await _agencyRepository.UpdateAgency(id, entity);
+
+        response.Success = true;
+        response.Message = "Updating Successful";
+        return response;
+    }
+
+    public async Task<BaseCommandResponse> DeleteAgency(int id) 
+    {
+        var response = new BaseCommandResponse();
+        var isExistEntity = await _agencyRepository.GetAgencyById(id);
+
+        if (isExistEntity is null)
+        {
+            throw new NotFoundException(nameof(User), id.ToString());
+        }
+        
+        await _agencyRepository.DeleteAgency(id);
+
+        response.Success = true;
+        response.Message = "Deleting Successful";
+        return response;
     }
 }

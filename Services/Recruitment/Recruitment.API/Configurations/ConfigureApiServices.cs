@@ -9,6 +9,7 @@ public static class ConfigureServices
         builder.ConfigureEnvironmentServices();
         builder.ConfigureIdentityServerServices();
         builder.ConfigurePersistenceServices();
+        builder.ConfigureInfrastructureServices();
         builder.ConfigureApplicationServices();
         builder.Services.AddControllers(config =>
         {

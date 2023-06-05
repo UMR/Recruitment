@@ -10,9 +10,24 @@ public class CurrentUserService : ICurrentUserService
     }
 
     public int? UserId {
-        get {
-            string userId = _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-            return !string.IsNullOrEmpty(userId) ? Convert.ToInt32(_httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier)) : null;
+        get 
+        {
+            int? userId = null;
+            User currentUser = null;
+
+            var currentUserClaim = _httpContextAccessor.HttpContext?.User?.FindFirst("user");
+
+            if (currentUserClaim != null && !string.IsNullOrEmpty(currentUserClaim.Value))
+            {
+                currentUser = JsonConvert.DeserializeObject<User>(currentUserClaim.Value);
+            }
+
+            if (currentUser != null)
+            {
+                userId = currentUser.UserId;
+            }
+
+            return userId;
         }
     }
 }

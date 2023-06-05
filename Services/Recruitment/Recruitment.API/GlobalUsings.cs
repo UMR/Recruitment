@@ -20,6 +20,8 @@ global using Recruitment.Application.Middlewares;
 global using Recruitment.Application.Contracts;
 global using Recruitment.Application.Features.Agencies;
 
+global using Recruitment.Infrastructure;
+
 
 
 
