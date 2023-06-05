@@ -2,13 +2,13 @@
 
 public interface IAgencyService
 {
-    Task<List<AgencyListDto>> GetAgencies();
+    Task<List<AgencyListDto>> GetAgenciesAsync();
 
-    Task<AgencyListDto> GetAgencyById(int id);
+    Task<AgencyListDto> GetAgencyByIdAsync(int id);
 
-    Task<BaseCommandResponse> CreateAgency(CreateAgencyDto request);
+    Task<BaseCommandResponse> CreateAgencyAsync(CreateAgencyDto request);
 
-    Task<BaseCommandResponse> UpdateAgency(int id, UpdateAgencyDto request);
+    Task<BaseCommandResponse> UpdateAgencyAsync(int id, UpdateAgencyDto request);
 
-    Task<BaseCommandResponse> DeleteAgency(int id);
+    Task<BaseCommandResponse> DeleteAgencyAsync(int id);
 }

@@ -2,13 +2,13 @@
 
 public interface IAgencyRepository
 {
-    Task<IEnumerable<Agency>> GetAgencies();
+    Task<IEnumerable<Agency>> GetAgenciesAsync();
 
-    Task<Agency> GetAgencyById(long id);
+    Task<Agency> GetAgencyByIdAsync(long id);
 
-    Task<int> CreateAgency(Agency agency);
+    Task<int> CreateAgencyAsync(Agency agency);
 
-    Task<bool> UpdateAgency(long id,Agency agency);
+    Task<bool> UpdateAgencyAsync(long id,Agency agency);
 
-    Task<bool> DeleteAgency(long agency);
+    Task<bool> DeleteAgencyAsync(long agency);
 }

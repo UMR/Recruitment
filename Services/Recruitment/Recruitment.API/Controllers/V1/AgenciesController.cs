@@ -12,32 +12,32 @@ public class AgenciesController : ApiControllerBase
     }
 
     [HttpGet("GetAgencies")]
-    public async Task<ActionResult<List<AgencyListDto>>> GetAgencies()
+    public async Task<ActionResult<List<AgencyListDto>>> GetAgenciesAsync()
     {
-        return await _agencyService.GetAgencies();
+        return await _agencyService.GetAgenciesAsync();
     }
 
     [HttpGet("GetAgency/{id:int}")]
-    public async Task<ActionResult<AgencyListDto>> GetAgency(int id)
+    public async Task<ActionResult<AgencyListDto>> GetAgencyAsync(int id)
     {
-        return await _agencyService.GetAgencyById(id);
+        return await _agencyService.GetAgencyByIdAsync(id);
     }
 
     [HttpPost("CreateAgency")]
     public async Task<ActionResult> PostAsync([FromBody] CreateAgencyDto request)
     {            
-        return Ok(await _agencyService.CreateAgency(request));
+        return Ok(await _agencyService.CreateAgencyAsync(request));
     }
 
     [HttpPut("UpdateAgency/{id:int}")]
-    public async Task<ActionResult> Put(int id, [FromBody] UpdateAgencyDto request)
+    public async Task<ActionResult> PutAsync(int id, [FromBody] UpdateAgencyDto request)
     {            
-        return Ok(await _agencyService.UpdateAgency(id, request));
+        return Ok(await _agencyService.UpdateAgencyAsync(id, request));
     }
 
     [HttpDelete("DeleteAgency/{id:int}")]
-    public async Task<ActionResult> Delete(int id)
+    public async Task<ActionResult> DeleteAsync(int id)
     {            
-        return Ok(await _agencyService.DeleteAgency(id));
+        return Ok(await _agencyService.DeleteAgencyAsync(id));
     }
 }

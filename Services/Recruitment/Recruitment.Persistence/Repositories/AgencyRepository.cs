@@ -9,7 +9,7 @@ internal class AgencyRepository : IAgencyRepository
         _recruitmentConnectionFactory = recruitmentConnectionFactory;
     }
 
-    public async Task<IEnumerable<Agency>> GetAgencies()
+    public async Task<IEnumerable<Agency>> GetAgenciesAsync()
     {
         var query = @"SELECT * FROM Agency ORDER BY AgencyName ASC";
 
@@ -20,7 +20,7 @@ internal class AgencyRepository : IAgencyRepository
         }
     }
 
-    public async Task<Agency> GetAgencyById(long id)
+    public async Task<Agency> GetAgencyByIdAsync(long id)
     {
         var query = @"SELECT * FROM Agency WHERE AgencyID=@AgencyID";
 
@@ -34,7 +34,7 @@ internal class AgencyRepository : IAgencyRepository
         }
     }
 
-    public async Task<int> CreateAgency(Agency agency)
+    public async Task<int> CreateAgencyAsync(Agency agency)
     {
         var query = "INSERT INTO Agency (AgencyName, AgencyAddress, URLPrefix, AgencyEmail, AgencyPhone, AgencyContactPerson, AgencyContactPersonPhone, IsActive, AgencyLoginId, CreatedBy, CreatedDate) " +
                     "VALUES (@AgencyName, @AgencyAddress, @URLPrefix, @AgencyEmail, @AgencyPhone, @AgencyContactPerson, @AgencyContactPersonPhone, @IsActive, @AgencyLoginId, @CreatedBy, @CreatedDate) " +
@@ -59,7 +59,7 @@ internal class AgencyRepository : IAgencyRepository
         }
     }        
 
-    public async Task<bool> UpdateAgency(long id, Agency agency)
+    public async Task<bool> UpdateAgencyAsync(long id, Agency agency)
     {
         var query = "UPDATE Agency SET AgencyName = @AgencyName, UpdatedBy = @UpdatedBy, UpdatedDate = @UpdatedDate WHERE AgencyID = @AgencyID";
         var parameters = new DynamicParameters();
@@ -83,7 +83,7 @@ internal class AgencyRepository : IAgencyRepository
         }
     }
 
-    public  async Task<bool> DeleteAgency(long id)
+    public  async Task<bool> DeleteAgencyAsync(long id)
     {
         var query = "DELETE FROM Agency WHERE AgencyID = @AgencyID";
         var parameters = new DynamicParameters();
@@ -91,7 +91,7 @@ internal class AgencyRepository : IAgencyRepository
 
         using (IDbConnection conn = _recruitmentConnectionFactory.GetConnection)
         {
-            var result = await conn.ExecuteAsync(query);
+            var result = await conn.ExecuteAsync(query, parameters);
             return result > 0 ? true : false;
         }
     }        
