@@ -11,13 +11,13 @@
             _agencyService = agencyService;
         }
 
-        [HttpGet("GetAgencies", Name = "GetAgencies")]
+        [HttpGet("GetAgencies")]
         public async Task<ActionResult<List<AgencyListDto>>> GetAgencies()
         {
             return await _agencyService.GetAgencies();
         }
 
-        [HttpGet("GetAgency/{id:int}", Name = "GetAgency")]
+        [HttpGet("GetAgency/{id:int}")]
         public async Task<ActionResult<AgencyListDto>> GetAgency(int id)
         {
             return await _agencyService.GetAgencyById(id);
@@ -25,23 +25,20 @@
 
         [HttpPost("CreateAgency")]
         public async Task<ActionResult> PostAsync([FromBody] CreateAgencyDto request)
-        {
-            var response = await _agencyService.CreateAgency(request);
-            return Ok(response);
+        {            
+            return Ok(await _agencyService.CreateAgency(request));
         }
 
         [HttpPut("UpdateAgency/{id:int}")]
         public async Task<ActionResult> Put(int id, [FromBody] UpdateAgencyDto request)
-        {
-            var response = await _agencyService.UpdateAgency(id, request);
-            return Ok(response);
+        {            
+            return Ok(await _agencyService.UpdateAgency(id, request));
         }
 
         [HttpDelete("DeleteAgency/{id:int}")]
         public async Task<ActionResult> Delete(int id)
-        {
-            var response = await _agencyService.DeleteAgency(id);
-            return Ok(response);
+        {            
+            return Ok(await _agencyService.DeleteAgency(id));
         }
     }
 }
