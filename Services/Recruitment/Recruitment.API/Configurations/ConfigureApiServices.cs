@@ -4,6 +4,7 @@
     {
         public static WebApplicationBuilder ConfigureApiServices(this WebApplicationBuilder builder)
         {
+            builder.Services.AddHttpContextAccessor();
             builder.ConfigureEnvironmentServices();
             builder.ConfigureIdentityServerServices();
             builder.ConfigurePersistenceServices();
