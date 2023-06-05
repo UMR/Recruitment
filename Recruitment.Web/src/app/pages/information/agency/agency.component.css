@@ -1,0 +1,26 @@
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+    text-align: left;
+    border: 1px solid #dee2e6;
+    border-width: 0 0 1px 0;
+    padding: 0rem 1rem;
+}
+:host ::ng-deep .p-dialog .product-image {
+    width: 150px;
+    margin: 0 auto 2rem auto;
+    display: block;
+}
+:host ::ng-deep .p-button.p-button-icon-only.p-button-rounded {
+    border-radius: 50%;
+    height: 2rem;
+    margin:2px 4px;
+}
+:host ::ng-deep .p-button.p-button-icon-only {
+    width: 2rem;
+    padding: 0.75rem 0;
+}
+:host ::ng-deep .pi {
+    font-size: 0.8rem;
+}
+.p-unselectable-text {
+    user-select:none !important;
+}

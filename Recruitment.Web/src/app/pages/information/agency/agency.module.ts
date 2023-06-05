@@ -9,6 +9,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FormModule } from '@coreui/angular';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { FormModule } from '@coreui/angular';
         ToastModule,
         ConfirmDialogModule,
         CheckboxModule,
-        FormModule
+        FormModule,
+        DialogModule
     ],
     providers: [ConfirmationService, MessageService]
 })

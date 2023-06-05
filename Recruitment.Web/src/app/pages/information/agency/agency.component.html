@@ -9,7 +9,8 @@
          [rowHover]="true"
          dataKey="agencyId"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-         [showCurrentPageReport]="true">
+         [showCurrentPageReport]="true"
+         styleClass="mystyle">
     <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">
             <h5 class="m-0">Agency Information</h5>
@@ -45,3 +46,24 @@
         </tr>
     </ng-template>
 </p-table>
+<p-dialog [(visible)]="productDialog" [style]="{ width: '450px' }" header="Product Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="field">
+            <label for="name">Name</label>
+            <input type="text" pInputText id="name" required autofocus />
+            <small class="p-error" *ngIf="submitted">Name is required.</small>
+        </div>
+        <div class="field">
+            <label for="description">Description</label>
+            <textarea id="description" pInputTextarea  required rows="3" cols="20"></textarea>
+        </div>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>

@@ -115,7 +115,7 @@
     <None Include="src\app\containers\default-layout\default-header\default-header.component.scss" />
     <None Include="src\app\containers\default-layout\default-layout.component.scss" />
     <None Include="src\app\dashboard\dashboard.component.scss" />
-    <None Include="src\app\pages\information\agency\agency.component.scss" />
+    <Content Include="src\app\pages\information\agency\agency.component.css" />
     <None Include="src\app\login\login.component.scss" />
     <None Include="src\app\page-not-found\page-not-found.component.scss" />
     <None Include="src\app\pages\Recruiter\manage-recruiter\manage-recruiter.component.scss" />
