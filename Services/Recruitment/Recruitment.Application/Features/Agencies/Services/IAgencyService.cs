@@ -11,5 +11,7 @@ namespace Recruitment.Application.Features.Agencies
         Task<BaseCommandResponse> CreateAgency(CreateAgencyDto request);
 
         Task<BaseCommandResponse> UpdateAgency(int id, UpdateAgencyDto request);
+
+        Task<BaseCommandResponse> DeleteAgency(int id);
     }
 }

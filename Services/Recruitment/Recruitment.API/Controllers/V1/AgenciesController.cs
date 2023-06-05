@@ -37,9 +37,11 @@
             return Ok(response);
         }
 
-        [HttpDelete("DeleteAgency/{id}")]
-        public void Delete(int id)
+        [HttpDelete("DeleteAgency/{id:int}")]
+        public async Task<ActionResult> Delete(int id)
         {
+            var response = await _agencyService.DeleteAgency(id);
+            return Ok(response);
         }
     }
 }

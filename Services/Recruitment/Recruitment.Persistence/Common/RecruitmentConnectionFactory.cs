@@ -18,23 +18,8 @@ public class RecruitmentConnectionFactory : IRecruitmentConnectionFactory
 
     public IDbConnection GetConnection {
         get {
-            if (_connection == null)
-            {
-                _connection = new SqlConnection(ConnectionString);
-            }
-            if (_connection.State != ConnectionState.Open)
-            {
-                _connection.Open();
-            }
-            return _connection;
+            return _connection = new SqlConnection(ConnectionString);
         }
     }
-
-    public void CloseConnection()
-    {
-        if (_connection != null && _connection.State == ConnectionState.Open)
-        {
-            _connection.Close();
-        }
-    }
+    
 }

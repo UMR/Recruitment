@@ -1,4 +1,5 @@
-﻿using Recruitment.Application.Wrapper;
+﻿using Azure.Core;
+using Recruitment.Application.Wrapper;
 
 namespace Recruitment.Application.Features.Agencies
 {
@@ -46,8 +47,7 @@ namespace Recruitment.Application.Features.Agencies
             await _agencyRepository.CreateAgency(agencyToCreate);
 
             response.Success = true;
-            response.Message = "Creating Successful";            
-
+            response.Message = "Creating Successful";    
             return response;
         }
 
@@ -77,7 +77,24 @@ namespace Recruitment.Application.Features.Agencies
 
             response.Success = true;
             response.Message = "Updating Successful";
+            return response;
+        }
 
+        public async Task<BaseCommandResponse> DeleteAgency(int id) 
+        {
+            var response = new BaseCommandResponse();
+            var agencyFromRepo = await _agencyRepository.GetAgencyById(id);
+
+            if (agencyFromRepo is null)
+            {
+                throw new NotFoundException(nameof(User), id.ToString());
+            }
+
+            var agencyToUpdate = _mapper.Map<Agency>(agencyFromRepo);
+            await _agencyRepository.UpdateAgency(id, agencyToUpdate);
+
+            response.Success = true;
+            response.Message = "Updating Successful";
             return response;
         }
     }
