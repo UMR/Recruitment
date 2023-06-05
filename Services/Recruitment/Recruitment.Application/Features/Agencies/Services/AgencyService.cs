@@ -46,7 +46,6 @@ public class AgencyService : IAgencyService
         var entity = _mapper.Map<Agency>(request);
         entity.CreatedBy = _currentUserService.UserId;
         entity.CreatedDate = _dateTime.Now;
-
         await _agencyRepository.CreateAgencyAsync(entity);
 
         response.Success = true;

@@ -39,6 +39,7 @@ internal class AgencyRepository : IAgencyRepository
         var query = "INSERT INTO Agency (AgencyName, AgencyAddress, URLPrefix, AgencyEmail, AgencyPhone, AgencyContactPerson, AgencyContactPersonPhone, IsActive, AgencyLoginId, CreatedBy, CreatedDate) " +
                     "VALUES (@AgencyName, @AgencyAddress, @URLPrefix, @AgencyEmail, @AgencyPhone, @AgencyContactPerson, @AgencyContactPersonPhone, @IsActive, @AgencyLoginId, @CreatedBy, @CreatedDate) " +
                     "SELECT CAST(SCOPE_IDENTITY() as int)";
+
         var parameters = new DynamicParameters();
         parameters.Add("AgencyName", agency.AgencyName, DbType.String);
         parameters.Add("AgencyAddress", agency.AgencyAddress, DbType.String);
@@ -61,7 +62,10 @@ internal class AgencyRepository : IAgencyRepository
 
     public async Task<bool> UpdateAgencyAsync(long id, Agency agency)
     {
-        var query = "UPDATE Agency SET AgencyName = @AgencyName, UpdatedBy = @UpdatedBy, UpdatedDate = @UpdatedDate WHERE AgencyID = @AgencyID";
+        var query = "UPDATE Agency SET AgencyName = @AgencyName, AgencyAddress = @AgencyAddress, URLPrefix = @URLPrefix, AgencyEmail = @AgencyEmail, AgencyPhone = @AgencyPhone, " +
+            "AgencyContactPerson = @AgencyContactPerson, AgencyContactPersonPhone = @AgencyContactPersonPhone, IsActive = @IsActive, AgencyLoginId = @AgencyLoginId, " +
+            "UpdatedBy = @UpdatedBy, UpdatedDate = @UpdatedDate WHERE AgencyID = @AgencyID";
+
         var parameters = new DynamicParameters();
         parameters.Add("AgencyID", id, DbType.Int64);
         parameters.Add("AgencyName", agency.AgencyName, DbType.String);
@@ -86,6 +90,7 @@ internal class AgencyRepository : IAgencyRepository
     public  async Task<bool> DeleteAgencyAsync(long id)
     {
         var query = "DELETE FROM Agency WHERE AgencyID = @AgencyID";
+
         var parameters = new DynamicParameters();
         parameters.Add("AgencyID", id, DbType.Int64);
 
