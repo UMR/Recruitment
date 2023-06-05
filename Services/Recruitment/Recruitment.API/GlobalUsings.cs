@@ -12,6 +12,7 @@ global using System.Security.Claims;
 global using Recruitment.API.Configurations;
 global using Recruitment.API.Models;
 global using Recruitment.API.Filters;
+global using Recruitment.API.Services;
 
 global using Recruitment.Application;
 global using Recruitment.Application.Exceptions;

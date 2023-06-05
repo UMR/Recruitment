@@ -1,20 +1,19 @@
-namespace Recruitment.API.Controllers.V1
+namespace Recruitment.API.Controllers.V1;
+
+[ApiController]
+[Route("api/v1/[controller]")]
+public class UsersController : ApiControllerBase
 {
-    [ApiController]
-    [Route("api/v1/[controller]")]
-    public class UsersController : ApiControllerBase
+    private readonly ILogger<UsersController> _logger;
+
+    public UsersController(ILogger<UsersController> logger)
     {
-        private readonly ILogger<UsersController> _logger;
+        _logger = logger;
+    }
 
-        public UsersController(ILogger<UsersController> logger)
-        {
-            _logger = logger;
-        }
-
-        [HttpGet(Name = "Get")]
-        public IActionResult Get()
-        {
-            return Ok(CurrentUser.UserId);
-        }
+    [HttpGet(Name = "Get")]
+    public IActionResult Get()
+    {
+        return Ok(CurrentUser.UserId);
     }
 }

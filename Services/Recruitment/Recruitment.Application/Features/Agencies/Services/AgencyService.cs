@@ -1,4 +1,6 @@
 ﻿using Azure.Core;
+using Recruitment.Application.Contracts;
+using Recruitment.Application.Contracts.Infrastructure;
 using Recruitment.Application.Wrapper;
 
 namespace Recruitment.Application.Features.Agencies
@@ -6,11 +8,15 @@ namespace Recruitment.Application.Features.Agencies
     public class AgencyService : IAgencyService
     {
         private readonly IMapper _mapper;
+        private readonly ICurrentUserService _currentUserService;
+        private readonly IDateTime _dateTime;
         private readonly IAgencyRepository _agencyRepository;
 
-        public AgencyService(IMapper mapper, IAgencyRepository agencyRepository)
+        public AgencyService(IMapper mapper, ICurrentUserService currentUserService, IDateTime dateTime, IAgencyRepository agencyRepository)
         {
             _mapper = mapper;
+            _currentUserService = currentUserService;
+            _dateTime = dateTime;
             _agencyRepository = agencyRepository;
         }
 
@@ -42,8 +48,10 @@ namespace Recruitment.Application.Features.Agencies
                 return response;
             }
 
-
             var agencyToCreate = _mapper.Map<Agency>(request);
+            agencyToCreate.CreatedBy = _currentUserService.UserId;
+            agencyToCreate.CreatedDate = _dateTime.Now;
+
             await _agencyRepository.CreateAgency(agencyToCreate);
 
             response.Success = true;
