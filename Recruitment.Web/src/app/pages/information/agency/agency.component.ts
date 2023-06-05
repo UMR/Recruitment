@@ -13,7 +13,7 @@ export class AgencyComponent {
     agencys: AgencyModel[] = [];
     agency: any;
     submitted: boolean = false;
-    isActive: any =[];
+    isActive: any = [];
     statuses: any[] = [];
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private agencyService: AgencyService) { }
@@ -39,8 +39,8 @@ export class AgencyComponent {
             }
         });
     }
-    onClickChk(chk:any) {
-        console.log(chk);
+    changeStatus(id: any, value: any) {
+        console.log(id, value);
     }
     getAllAgency() {
         this.agencyService.getAllAgency().subscribe(

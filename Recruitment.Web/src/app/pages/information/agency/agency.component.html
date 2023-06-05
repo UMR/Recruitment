@@ -36,7 +36,7 @@
             <td>{{ agency.agencyContactPerson }}</td>
             <td>{{ agency.agencyContactPersonPhone }}</td>
             <td>
-                <p-checkbox name="group" [value]=agency.isActive></p-checkbox>{{agency.isActive}}
+                <input type="checkbox" name="group" [checked]="agency.isActive" (change)="changeStatus(agency.agencyId,agency.isActive)">
             </td>
             <td>
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editProduct(agency)"></button>
