@@ -8,7 +8,7 @@ import { TableModule } from 'primeng/table';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { CheckboxModule } from 'primeng/checkbox';
-import { FormModule } from '@coreui/angular';
+import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
@@ -22,7 +22,7 @@ import { DialogModule } from 'primeng/dialog';
         ToastModule,
         ConfirmDialogModule,
         CheckboxModule,
-        FormModule,
+        FormsModule,
         DialogModule
     ],
     providers: [ConfirmationService, MessageService]

@@ -1,6 +1,3 @@
-
-<p-toast></p-toast>
-
 <p-table #dt
          [value]="agencys"
          [rows]="10"
@@ -13,7 +10,8 @@
          styleClass="mystyle">
     <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">
-            <h5 class="m-0">Agency Information</h5>
+            <button class="btn-success" (click)="openNewAgency()" style="float:left; margin-right:8px">Add New</button>
+            <h5 style="width:300px">Agency Information</h5>
         </div>
     </ng-template>
     <ng-template pTemplate="header">
@@ -46,18 +44,41 @@
         </tr>
     </ng-template>
 </p-table>
-<p-dialog [(visible)]="productDialog" [style]="{ width: '450px' }" header="Product Details" [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="agencyDialog" [style]="{ width: '450px' }" header="{{addEditTxt}} Agency" [modal]="true" [draggable]="false" [resizable]="false">
     <ng-template pTemplate="content">
         <div class="field">
-            <label for="name">Name</label>
-            <input type="text" pInputText id="name" required autofocus />
-            <small class="p-error" *ngIf="submitted">Name is required.</small>
+            <label for="agencyName">Agency Name</label>
+            <input type="text" pInputText id="agencyName" [(ngModel)]="agency.agencyName"  required autofocus />
+            <small class="p-error" *ngIf="submitted && !agency.agencyName">Agency Name is required.</small>
         </div>
         <div class="field">
-            <label for="description">Description</label>
-            <textarea id="description" pInputTextarea  required rows="3" cols="20"></textarea>
+            <label for="urlPrefix">Agency URL Prefix</label>
+            <input type="text" pInputText id="urlPrefix" [(ngModel)]="agency.urlPrefix"/>
         </div>
-
+        <div class="field">
+            <label for="agencyEmail">Agency Email</label>
+            <input type="text" pInputText id="agencyEmail" [(ngModel)]="agency.agencyEmail"/>
+        </div>
+        <div class="field">
+            <label for="agencyPhone">Agency Phone</label>
+            <input type="text" pInputText id="agencyPhone" [(ngModel)]="agency.agencyPhone"/>
+        </div>
+        <div class="field">
+            <label for="agencyAdress">Agency Address</label>
+            <input type="text" pInputText id="agencyAdress" [(ngModel)]="agency.agencyAddress"/>
+        </div>
+        <div class="field">
+            <label for="contactPerson">Agency Contact Person</label>
+            <input type="text" pInputText id="contactPerson" [(ngModel)]="agency.agencyContactPerson"/>
+        </div>
+        <div class="field">
+            <label for="personPhone">Agency Contact Person Phone</label>
+            <input type="text" pInputText id="personPhone" [(ngModel)]="agency.agencyContactPersonPhone"/>
+        </div>
+        <div>
+            <label for="name" style="margin-right:12px">Active</label>
+            <input type="checkbox" id="name" [(ngModel)]="agency.isActive"/>
+        </div>
     </ng-template>
 
     <ng-template pTemplate="footer">
@@ -66,4 +87,5 @@
     </ng-template>
 </p-dialog>
 
+<p-toast></p-toast>
 <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>

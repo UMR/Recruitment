@@ -9,12 +9,13 @@ import { AgencyService } from './agency.service';
     styleUrls: ['./agency.component.css']
 })
 export class AgencyComponent {
-    productDialog: boolean = false;
+    agencyDialog: boolean = false;
     agencys: AgencyModel[] = [];
     agency: any;
     submitted: boolean = false;
     isActive: any = [];
     statuses: any[] = [];
+    addEditTxt: string = "Add";
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private agencyService: AgencyService) { }
 
@@ -23,8 +24,9 @@ export class AgencyComponent {
     }
 
     editProduct(agency: AgencyModel) {
+        this.addEditTxt = "Edit";
         this.agency = { ...agency };
-        this.productDialog = true;
+        this.agencyDialog = true;
     }
 
     deleteProduct(product: AgencyModel) {
@@ -41,7 +43,7 @@ export class AgencyComponent {
                         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Deleted', life: 3000 });
                     }
                 }, err => { })
-                
+
             }
         });
     }
@@ -49,17 +51,17 @@ export class AgencyComponent {
         this.submitted = true;
 
         if (this.agency.agencyName.trim()) {
-            if (this.agency.id) {
+            if (this.agency.agencyId) {
                 this.agencys[this.findIndexById(this.agency.agencyId)] = this.agency;
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
+                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Updated', life: 3000 });
             } else {
                 //this.agency.id = this.createId();
                 this.agencys.push(this.agency);
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
+                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Created', life: 3000 });
             }
 
             this.agencys = [...this.agencys];
-            this.productDialog = false;
+            this.agencyDialog = false;
             this.agency = {};
         }
     }
@@ -75,12 +77,19 @@ export class AgencyComponent {
         return index;
     }
     hideDialog() {
-        this.productDialog = false;
+        this.agencyDialog = false;
         this.submitted = false;
     }
 
     changeStatus(id: any, value: any) {
         console.log(id, value);
+    }
+
+    openNewAgency() {
+        this.addEditTxt = "Add";
+        this.agency = {};
+        this.submitted = false;
+        this.agencyDialog = true;
     }
 
     getAllAgency() {
