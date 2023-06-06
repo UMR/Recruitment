@@ -33,9 +33,15 @@ export class AgencyComponent {
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.agencys = this.agencys.filter((val) => val.agencyId !== product.agencyId);
-                this.agency = {};
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Deleted', life: 3000 });
+                this.agencyService.deleteAgency(product.agencyId).subscribe(res => {
+                    console.log(res);
+                    if (res && res.body) {
+                        this.agencys = this.agencys.filter((val) => val.agencyId !== product.agencyId);
+                        this.agency = {};
+                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Deleted', life: 3000 });
+                    }
+                }, err => { })
+                
             }
         });
     }
