@@ -11,7 +11,7 @@ public class MenuRepository : IMenuRepository
 
     public async Task<IEnumerable<Menu>> GetMenus()
     {
-        var query = @"SELECT * FROM Menu";
+        var query = @"SELECT * FROM Menu ORDER BY MenuId ASC";
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {

@@ -1,6 +1,4 @@
-﻿using Recruitment.Application.Features.Menu.Dtos;
-
-namespace Recruitment.Application.Mappings;
+﻿namespace Recruitment.Application.Mappings;
 
 public class MappingProfile : Profile
 {
