@@ -52,12 +52,28 @@ export class AgencyComponent {
 
         if (this.agency.agencyName.trim()) {
             if (this.agency.agencyId) {
-                this.agencys[this.findIndexById(this.agency.agencyId)] = this.agency;
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Updated', life: 3000 });
+                //this.agencys[this.findIndexById(this.agency.agencyId)] = this.agency;
+                this.agencyService.updateAgency(this.agency.agencyId, this.agency).subscribe(res => {
+                    console.log(res);
+                    this.getAllAgency();
+                    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Updated', life: 3000 });
+                },
+                    error => {
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Agency Updated Faild', life: 3000 });
+                    },
+                    () => { })
+
             } else {
-                //this.agency.id = this.createId();
-                this.agencys.push(this.agency);
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Created', life: 3000 });
+                //this.agency.agencyId = this.createId();
+                this.agencyService.addAgency(this.agency).subscribe(res => {
+                    this.getAllAgency();
+                    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Created', life: 3000 });
+                },
+                    err => {
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Agency Created Faild', life: 3000 });
+                    },
+                    () => { })
+
             }
 
             this.agencys = [...this.agencys];

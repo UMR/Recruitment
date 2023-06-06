@@ -2,20 +2,34 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { resourceServerUrl } from '../../../common/auth-key';
+import { AgencyModel } from '../../../common/models/agency.model';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AgencyService {
-    private agencyURI: string = `${resourceServerUrl}/api/v1/Agencies/GetAgencies`;
-    private deleteAgencyURI: string = `${resourceServerUrl}/api/v1/Agencies/DeleteAgency/`;
+
+
 
     constructor(private http: HttpClient) { }
 
     getAllAgency(): Observable<HttpResponse<any>> {
-        return this.http.get(this.agencyURI, { observe: 'response' })
+        const agencyURI = `${resourceServerUrl}/api/v1/Agencies/GetAgencies`;
+        return this.http.get(agencyURI, { observe: 'response' })
     }
+
     deleteAgency(agencyId: any): Observable<HttpResponse<any>> {
-        return this.http.delete(this.deleteAgencyURI + agencyId, { observe: 'response' })
+        const deleteAgencyURI = `${resourceServerUrl}/api/v1/Agencies/DeleteAgency/`;
+        return this.http.delete(deleteAgencyURI + agencyId, { observe: 'response' })
+    }
+
+    addAgency(agency: AgencyModel): Observable<HttpResponse<any>> {
+        const addAgencyURI = `${resourceServerUrl}/api/v1/Agencies/CreateAgency/`;
+        return this.http.post(addAgencyURI, agency, { observe: 'response' })
+    }
+
+    updateAgency(agencyId: number, agency: AgencyModel) {
+        const addAgencyURI = `${resourceServerUrl}/api/v1/Agencies/UpdateAgency/`;
+        return this.http.put(addAgencyURI + agencyId, agency, { observe: 'response' })
     }
 }
