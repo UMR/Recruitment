@@ -2,18 +2,18 @@
 
 internal class AgencyRepository : IAgencyRepository
 {
-    private readonly IRecruitmentConnectionFactory _recruitmentConnectionFactory;
+    private readonly IDapperContext _dapperContext;
 
-    public AgencyRepository(IRecruitmentConnectionFactory recruitmentConnectionFactory)
+    public AgencyRepository(IDapperContext dapperContext)
     {
-        _recruitmentConnectionFactory = recruitmentConnectionFactory;
+        _dapperContext = dapperContext;
     }
 
     public async Task<IEnumerable<Agency>> GetAgenciesAsync()
     {
         var query = @"SELECT * FROM Agency ORDER BY AgencyName ASC";
 
-        using (IDbConnection conn = _recruitmentConnectionFactory.GetConnection)
+        using (IDbConnection conn = _dapperContext.CreateConnection)
         {
             var agencies = await conn.QueryAsync<Agency>(query);
             return agencies.ToList();
@@ -27,7 +27,7 @@ internal class AgencyRepository : IAgencyRepository
         var parameters = new DynamicParameters();
         parameters.Add("AgencyID", id, DbType.Int32);
 
-        using (IDbConnection conn = _recruitmentConnectionFactory.GetConnection)
+        using (IDbConnection conn = _dapperContext.CreateConnection)
         {
             var agency = await conn.QueryFirstOrDefaultAsync<Agency>(query, parameters);
             return agency;
@@ -53,7 +53,7 @@ internal class AgencyRepository : IAgencyRepository
         parameters.Add("CreatedBy", agency.CreatedBy, DbType.Int32);
         parameters.Add("CreatedDate", agency.CreatedDate, DbType.DateTime);
 
-        using (IDbConnection conn = _recruitmentConnectionFactory.GetConnection)
+        using (IDbConnection conn = _dapperContext.CreateConnection)
         {
             var id = await conn.ExecuteAsync(query, parameters);
             return id;
@@ -66,8 +66,7 @@ internal class AgencyRepository : IAgencyRepository
             "AgencyContactPerson = @AgencyContactPerson, AgencyContactPersonPhone = @AgencyContactPersonPhone, IsActive = @IsActive, AgencyLoginId = @AgencyLoginId, " +
             "UpdatedBy = @UpdatedBy, UpdatedDate = @UpdatedDate WHERE AgencyID = @AgencyID";
 
-        var parameters = new DynamicParameters();
-        parameters.Add("AgencyID", id, DbType.Int64);
+        var parameters = new DynamicParameters();        
         parameters.Add("AgencyName", agency.AgencyName, DbType.String);
         parameters.Add("AgencyAddress", agency.AgencyAddress, DbType.String);
         parameters.Add("URLPrefix", agency.URLPrefix, DbType.String);
@@ -79,8 +78,9 @@ internal class AgencyRepository : IAgencyRepository
         parameters.Add("AgencyLoginId", agency.AgencyLoginId, DbType.String);
         parameters.Add("UpdatedBy", agency.UpdatedBy, DbType.Int32);
         parameters.Add("UpdatedDate", agency.UpdatedDate, DbType.DateTime);
+        parameters.Add("AgencyID", id, DbType.Int64);
 
-        using (IDbConnection conn = _recruitmentConnectionFactory.GetConnection)
+        using (IDbConnection conn = _dapperContext.CreateConnection)
         {
             var result = await conn.ExecuteAsync(query, parameters);
             return result > 0 ? true : false;
@@ -94,7 +94,7 @@ internal class AgencyRepository : IAgencyRepository
         var parameters = new DynamicParameters();
         parameters.Add("AgencyID", id, DbType.Int64);
 
-        using (IDbConnection conn = _recruitmentConnectionFactory.GetConnection)
+        using (IDbConnection conn = _dapperContext.CreateConnection)
         {
             var result = await conn.ExecuteAsync(query, parameters);
             return result > 0 ? true : false;

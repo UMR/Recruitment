@@ -16,7 +16,7 @@ public class AgencyService : IAgencyService
     }
 
     public async Task<List<AgencyListDto>> GetAgenciesAsync()
-    {            
+    {
         var agenciesFromRepo = await _agencyRepository.GetAgenciesAsync();
         var agenciesToReturn = _mapper.Map<List<AgencyListDto>>(agenciesFromRepo);
         return agenciesToReturn;
@@ -43,17 +43,28 @@ public class AgencyService : IAgencyService
             return response;
         }
 
-        var entity = _mapper.Map<Agency>(request);
-        entity.CreatedBy = _currentUserService.UserId;
-        entity.CreatedDate = _dateTime.Now;
+        var entity = new Agency
+        {
+            AgencyName = request.AgencyName,
+            AgencyAddress = request.AgencyAddress,
+            URLPrefix = request.URLPrefix,
+            AgencyEmail = request.AgencyEmail,
+            AgencyPhone = request.AgencyPhone,
+            AgencyContactPerson = request.AgencyContactPerson,
+            AgencyContactPersonPhone = request.AgencyContactPersonPhone,
+            IsActive = request.IsActive,
+            AgencyLoginId = request.AgencyLoginId,
+            CreatedBy = _currentUserService.UserId,
+            CreatedDate = _dateTime.Now
+        };
         await _agencyRepository.CreateAgencyAsync(entity);
 
         response.Success = true;
-        response.Message = "Creating Successful";    
+        response.Message = "Creating Successful";
         return response;
     }
 
-    public async Task<BaseCommandResponse> UpdateAgencyAsync(int id, UpdateAgencyDto request) 
+    public async Task<BaseCommandResponse> UpdateAgencyAsync(int id, UpdateAgencyDto request)
     {
         var response = new BaseCommandResponse();
         var validator = new UpdateAgencyDtoValidator();
@@ -67,14 +78,28 @@ public class AgencyService : IAgencyService
             return response;
         }
 
-        var isExistEntity = await _agencyRepository.GetAgencyByIdAsync(id);
-        
-        if (isExistEntity is null)
+        if (id != request.AgencyId)
         {
-            throw new NotFoundException(nameof(User), id.ToString());
+            throw new BadRequestException("Id does not match");
         }
 
-        var entity = _mapper.Map<Agency>(isExistEntity);
+        var entity = await _agencyRepository.GetAgencyByIdAsync(id);
+
+        if (entity is null)
+        {
+            throw new NotFoundException(nameof(User), id.ToString());
+        }        
+
+        entity.AgencyId = request.AgencyId;
+        entity.AgencyName = request.AgencyName;
+        entity.AgencyAddress = request.AgencyAddress;
+        entity.URLPrefix = request.URLPrefix;
+        entity.AgencyEmail = request.AgencyEmail;
+        entity.AgencyPhone = request.AgencyPhone;
+        entity.AgencyContactPerson = request.AgencyContactPerson;
+        entity.AgencyContactPersonPhone = request.AgencyContactPersonPhone;
+        entity.IsActive = request.IsActive;
+        entity.AgencyLoginId = request.AgencyLoginId;
         entity.UpdatedBy = _currentUserService.UserId;
         entity.UpdatedDate = _dateTime.Now;
         await _agencyRepository.UpdateAgencyAsync(id, entity);
@@ -84,16 +109,16 @@ public class AgencyService : IAgencyService
         return response;
     }
 
-    public async Task<BaseCommandResponse> DeleteAgencyAsync(int id) 
+    public async Task<BaseCommandResponse> DeleteAgencyAsync(int id)
     {
         var response = new BaseCommandResponse();
-        var isExistEntity = await _agencyRepository.GetAgencyByIdAsync(id);
+        var entity = await _agencyRepository.GetAgencyByIdAsync(id);
 
-        if (isExistEntity is null)
+        if (entity is null)
         {
             throw new NotFoundException(nameof(User), id.ToString());
         }
-        
+
         await _agencyRepository.DeleteAgencyAsync(id);
 
         response.Success = true;

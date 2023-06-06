@@ -1,22 +1,26 @@
-using Recruitment.Application.Features.Menu.Queries;
+using Microsoft.IdentityModel.Tokens;
 
-namespace Recruitment.API.Controllers.V1
+namespace Recruitment.API.Controllers.V1;
+
+[ApiController]
+[Route("api/v1/[controller]")]
+public class MenusController : ApiControllerBase
 {
-    [ApiController]
-    [Route("api/v1/[controller]")]
-    public class MenusController : ApiControllerBase
+    private readonly IMenuService _menuService;
+    public MenusController(IMenuService menuService)
     {
-        [HttpGet(Name = "GetMenus")]
-        public async Task<ActionResult<IEnumerable<MenuDto>>> GetMenus()
+        _menuService = menuService;
+    }
 
-        {
-            return await Mediator.Send(new GetMenusQuery());
-        }
+    [HttpGet("GetMenus")]
+    public async Task<ActionResult<IEnumerable<MenuListDto>>> GetMenus()
+    {
+        return Ok(await _menuService.GetMenusAsync());
+    }
 
-        [HttpGet("{id}", Name = "GetMenuById")]
-        public async Task<ActionResult<MenuDto>> GetMenu(int id)
-        {
-            return await Mediator.Send(new GetMenuByIdQuery { Id = id });
-        }
+    [HttpGet("GetMenu/{id}")]
+    public async Task<ActionResult<MenuListDto>> GetMenu(int id)
+    {
+        return Ok(await _menuService.GetMenuByIdAsync(id));
     }
 }

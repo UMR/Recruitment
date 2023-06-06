@@ -1,11 +1,11 @@
 ﻿namespace Recruitment.Persistence.Common;
 
-public class RecruitmentConnectionFactory : IRecruitmentConnectionFactory
+public class DapperContext : IDapperContext
 {
     private IDbConnection _connection;
     private readonly IConfiguration _configuration;
 
-    public RecruitmentConnectionFactory(IConfiguration configuration)
+    public DapperContext(IConfiguration configuration)
     {
         _configuration = configuration;
     }
@@ -16,10 +16,11 @@ public class RecruitmentConnectionFactory : IRecruitmentConnectionFactory
         }
     }
 
-    public IDbConnection GetConnection {
+    public IDbConnection CreateConnection {
         get {
-            return _connection = new SqlConnection(ConnectionString);
+            return new SqlConnection(ConnectionString);
         }
-    }
-    
+    }   
+
+
 }

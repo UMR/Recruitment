@@ -18,15 +18,17 @@ global using FluentValidation.Results;
 global using Recruitment.Application.Behaviours;
 global using Recruitment.Application.Exceptions;
 global using Recruitment.Application.Mappings;
-global using Recruitment.Application.Contracts.Persistence;
-global using Recruitment.Application.Features.Agencies;
 global using Recruitment.Application.Models;
 global using Recruitment.Application.Contracts;
 global using Recruitment.Application.Wrapper;
+global using Recruitment.Application.Contracts.Persistence;
+global using Recruitment.Application.Contracts.Infrastructure;
+global using Recruitment.Application.Features.Agencies;
+global using Recruitment.Application.Features.Menus;
 
 global using Recruitment.Domain.Entities;
 
-global using Recruitment.Application.Contracts.Infrastructure;
+
  
 
 

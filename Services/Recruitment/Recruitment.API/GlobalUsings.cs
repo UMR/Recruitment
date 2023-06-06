@@ -19,6 +19,7 @@ global using Recruitment.Application.Exceptions;
 global using Recruitment.Application.Middlewares;
 global using Recruitment.Application.Contracts;
 global using Recruitment.Application.Features.Agencies;
+global using Recruitment.Application.Features.Menus;
 
 global using Recruitment.Infrastructure;
 
