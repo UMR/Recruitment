@@ -1,6 +1,6 @@
 ﻿namespace Recruitment.Persistence.Repositories;
 
-internal class AgencyRepository : IAgencyRepository
+public class AgencyRepository : IAgencyRepository
 {
     private readonly IDapperContext _dapperContext;
 
