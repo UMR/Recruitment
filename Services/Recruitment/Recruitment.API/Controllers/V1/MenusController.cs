@@ -1,3 +1,4 @@
+using Recruitment.Application.Features.Menu.Dtos;
 using Recruitment.Application.Features.Menu.Queries;
 
 namespace Recruitment.API.Controllers.V1
@@ -7,14 +8,14 @@ namespace Recruitment.API.Controllers.V1
     public class MenusController : ApiControllerBase
     {
         [HttpGet(Name = "GetMenus")]
-        public async Task<ActionResult<IEnumerable<MenuDto>>> GetMenus()
+        public async Task<ActionResult<IEnumerable<MenuListDto>>> GetMenus()
 
         {
             return await Mediator.Send(new GetMenusQuery());
         }
 
         [HttpGet("{id}", Name = "GetMenuById")]
-        public async Task<ActionResult<MenuDto>> GetMenu(int id)
+        public async Task<ActionResult<MenuListDto>> GetMenu(int id)
         {
             return await Mediator.Send(new GetMenuByIdQuery { Id = id });
         }

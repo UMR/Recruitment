@@ -1,6 +1,6 @@
-﻿namespace Recruitment.Application.Features.Menu.Queries
+﻿namespace Recruitment.Application.Features.Menu.Dtos
 {
-    public class MenuDto
+    public class MenuListDto
     {
         public int MenuId { get; set; }
 

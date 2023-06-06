@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using MediatR;
 using Recruitment.Application.Contracts.Persistence;
+using Recruitment.Application.Features.Menu.Dtos;
 
 namespace Recruitment.Application.Features.Menu.Queries
 {
-    public record GetMenusQuery : IRequest<List<MenuDto>>;
+    public record GetMenusQuery : IRequest<List<MenuListDto>>;
 
-    public class GetMenusQueryHandler : IRequestHandler<GetMenusQuery, List<MenuDto>>
+    public class GetMenusQueryHandler : IRequestHandler<GetMenusQuery, List<MenuListDto>>
     {
         private readonly IMenuRepository _menuRepository;
         private readonly IMapper _mapper;
@@ -17,10 +18,10 @@ namespace Recruitment.Application.Features.Menu.Queries
             _mapper = mapper;
         }
 
-        public async Task<List<MenuDto>> Handle(GetMenusQuery request, CancellationToken cancellationToken)
+        public async Task<List<MenuListDto>> Handle(GetMenusQuery request, CancellationToken cancellationToken)
         {
             var menusFromRepo = await _menuRepository.GetMenus();
-            return _mapper.Map<List<MenuDto>>(menusFromRepo);
+            return _mapper.Map<List<MenuListDto>>(menusFromRepo);
         }
     }
 }
