@@ -7,6 +7,7 @@ public static class ConfigureServices
         builder.Services.AddSingleton<IDapperContext, DapperContext>();
         builder.Services.AddScoped<IMenuRepository, MenuRepository>();
         builder.Services.AddScoped<IAgencyRepository, AgencyRepository>();
+        builder.Services.AddScoped<IEmailTypeRepository, EmailTypeRepository>();
 
         return builder;
     }
