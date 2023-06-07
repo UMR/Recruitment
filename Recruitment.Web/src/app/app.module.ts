@@ -31,6 +31,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './common/service/auth.service';
 import { AuthInterceptorService } from './common/service/auth-interceptor.service';
 import { AuthGuard } from './auth.guard';
+import { TooltipModule } from 'primeng/tooltip';
 
 const APP_CONTAINERS = [
     DefaultFooterComponent,
@@ -68,7 +69,8 @@ const APP_CONTAINERS = [
         CardModule,
         NgScrollbarModule,
         HttpClientModule,
-        FormsModule 
+        FormsModule,
+        TooltipModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
