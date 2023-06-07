@@ -1,4 +1,6 @@
-﻿namespace Recruitment.Persistence.Repositories;
+﻿using Recruitment.Domain.Entities;
+
+namespace Recruitment.Persistence.Repositories;
 
 public class AgencyRepository : IAgencyRepository
 {
@@ -31,6 +33,20 @@ public class AgencyRepository : IAgencyRepository
         {
             var agency = await conn.QueryFirstOrDefaultAsync<Agency>(query, parameters);
             return agency;
+        }
+    }
+
+    public bool IsExistAgencyNameAsync(string agencyName)
+    {
+        var query = @"SELECT COUNT(*) FROM Agency WHERE AgencyName=@AgencyName";
+
+        var parameters = new DynamicParameters();
+        parameters.Add("AgencyName", agencyName, DbType.String);
+
+        using (IDbConnection conn = _dapperContext.CreateConnection)
+        {
+            var result =  conn.ExecuteScalar<int>(query, parameters);
+            return result > 0 ? true : false;
         }
     }
 

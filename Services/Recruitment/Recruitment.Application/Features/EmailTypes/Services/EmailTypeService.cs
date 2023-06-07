@@ -32,35 +32,35 @@ internal class EmailTypeService
     public async Task<BaseCommandResponse> CreateAgencyAsync(CreateAgencyDto request)
     {
         var response = new BaseCommandResponse();
-        var validator = new CreateAgencyDtoValidator();
-        var validationResult = await validator.ValidateAsync(request);
+        //var validator = new CreateAgencyDtoValidator(this);
+        //var validationResult = await validator.ValidateAsync(request);
 
-        if (validationResult.IsValid == false)
-        {
-            response.Success = false;
-            response.Message = "Creating Failed";
-            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-            return response;
-        }
+        //if (validationResult.IsValid == false)
+        //{
+        //    response.Success = false;
+        //    response.Message = "Creating Failed";
+        //    response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+        //    return response;
+        //}
 
-        var entity = new Agency
-        {
-            AgencyName = request.AgencyName,
-            AgencyAddress = request.AgencyAddress,
-            URLPrefix = request.URLPrefix,
-            AgencyEmail = request.AgencyEmail,
-            AgencyPhone = request.AgencyPhone,
-            AgencyContactPerson = request.AgencyContactPerson,
-            AgencyContactPersonPhone = request.AgencyContactPersonPhone,
-            IsActive = request.IsActive,
-            AgencyLoginId = request.AgencyLoginId,
-            CreatedBy = _currentUserService.UserId,
-            CreatedDate = _dateTime.Now
-        };
-        await _agencyRepository.CreateAgencyAsync(entity);
+        //var entity = new Agency
+        //{
+        //    AgencyName = request.AgencyName,
+        //    AgencyAddress = request.AgencyAddress,
+        //    URLPrefix = request.URLPrefix,
+        //    AgencyEmail = request.AgencyEmail,
+        //    AgencyPhone = request.AgencyPhone,
+        //    AgencyContactPerson = request.AgencyContactPerson,
+        //    AgencyContactPersonPhone = request.AgencyContactPersonPhone,
+        //    IsActive = request.IsActive,
+        //    AgencyLoginId = request.AgencyLoginId,
+        //    CreatedBy = _currentUserService.UserId,
+        //    CreatedDate = _dateTime.Now
+        //};
+        //await _agencyRepository.CreateAgencyAsync(entity);
 
-        response.Success = true;
-        response.Message = "Creating Successful";
+        //response.Success = true;
+        //response.Message = "Creating Successful";
         return response;
     }
 

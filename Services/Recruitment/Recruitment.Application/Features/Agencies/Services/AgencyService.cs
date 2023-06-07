@@ -1,6 +1,6 @@
 ﻿namespace Recruitment.Application.Features.Agencies;
 
-public class AgencyService : IAgencyService
+internal class AgencyService : IAgencyService
 {
     private readonly IMapper _mapper;
     private readonly ICurrentUserService _currentUserService;
@@ -29,10 +29,15 @@ public class AgencyService : IAgencyService
         return agencyToReturn;
     }
 
+    public bool IsExistAgencyNameAsync(string agencyName) 
+    {
+        return _agencyRepository.IsExistAgencyNameAsync(agencyName);
+    }
+
     public async Task<BaseCommandResponse> CreateAgencyAsync(CreateAgencyDto request)
     {
         var response = new BaseCommandResponse();
-        var validator = new CreateAgencyDtoValidator();
+        var validator = new CreateAgencyDtoValidator(this);
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.IsValid == false)
@@ -88,7 +93,7 @@ public class AgencyService : IAgencyService
         if (entity is null)
         {
             throw new NotFoundException(nameof(User), id.ToString());
-        }        
+        }
 
         entity.AgencyId = request.AgencyId;
         entity.AgencyName = request.AgencyName;
