@@ -5,3 +5,116 @@
     --scrollbar-hover-size: calc(var(--scrollbar-size) * 1.5);
   }
 }
+/*
+ * Container - Button
+ */
+.float {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 50px;
+    right: 30px;
+    background-color: #3c4b64;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 10000;
+    animation: bot-to-top 2s ease-out;
+}
+/*
+ * Submenu - Buttons
+ */
+ul {
+    position: fixed;
+    right: 30px;
+    padding-bottom: 10px;
+    bottom: 80px;
+    z-index: 10000;
+}
+
+ul li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+ul li a {
+    width: 50px;
+    height: 50px;
+    background-color: #234F1E;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    display: block;
+}
+/* Hidden Buttons */
+a.float + ul {
+    visibility: hidden;
+}
+/* Visible Buttons */
+a.float:hover + ul {
+    visibility: visible;
+    animation: scale-in 0.5s;
+}
+
+ul:hover {
+    visibility: visible !important;
+}
+/* Center icons */
+a i {
+    font-size: 32px;
+    margin-top: 8px;
+}
+/*
+ * Animations
+ */
+a.float i {
+    animation: rotate-in 0.5s;
+}
+
+a.float:hover > i {
+    animation: rotate-out 0.5s;
+}
+
+@keyframes bot-to-top {
+    0% {
+        bottom: -50px
+    }
+
+    50% {
+        bottom: 40px
+    }
+}
+
+@keyframes scale-in {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes rotate-in {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate-out {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
