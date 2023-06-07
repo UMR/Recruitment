@@ -42,6 +42,6 @@ public class CreateAgencyDtoValidator : AbstractValidator<CreateAgencyDto>
 
     private bool IsExistAgencyNameAsync(string agencyName)
     {        
-        return _agencyService.IsExistAgencyNameAsync(agencyName);
+        return _agencyService.IsExistAgencyNameAsync(agencyName).Result;
     }
 }

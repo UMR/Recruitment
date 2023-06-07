@@ -36,7 +36,7 @@ public class AgencyRepository : IAgencyRepository
         }
     }
 
-    public bool IsExistAgencyNameAsync(string agencyName)
+    public async Task<bool> IsExistAgencyNameAsync(string agencyName)
     {
         var query = @"SELECT COUNT(*) FROM Agency WHERE AgencyName=@AgencyName";
 
@@ -45,7 +45,7 @@ public class AgencyRepository : IAgencyRepository
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
-            var result =  conn.ExecuteScalar<int>(query, parameters);
+            var result =  await conn.ExecuteScalarAsync<int>(query, parameters);
             return result > 0 ? true : false;
         }
     }

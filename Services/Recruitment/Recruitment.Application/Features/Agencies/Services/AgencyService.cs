@@ -29,9 +29,9 @@ internal class AgencyService : IAgencyService
         return agencyToReturn;
     }
 
-    public bool IsExistAgencyNameAsync(string agencyName) 
+    public async Task<bool> IsExistAgencyNameAsync(string agencyName) 
     {
-        return _agencyRepository.IsExistAgencyNameAsync(agencyName);
+        return await _agencyRepository.IsExistAgencyNameAsync(agencyName);
     }
 
     public async Task<BaseCommandResponse> CreateAgencyAsync(CreateAgencyDto request)
