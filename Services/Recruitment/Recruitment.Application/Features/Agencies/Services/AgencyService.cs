@@ -113,6 +113,42 @@ internal class AgencyService : IAgencyService
         response.Message = "Updating Successful";
         return response;
     }
+    public async Task<BaseCommandResponse> UpdateAgencyStatusAsync(int id, UpdateAgencyStatusDto request)
+    {
+        var response = new BaseCommandResponse();
+        var validator = new UpdateAgencyStatusDtoValidator();
+        var validationResult = await validator.ValidateAsync(request);
+
+        if (validationResult.IsValid == false)
+        {
+            response.Success = false;
+            response.Message = "Updating Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            return response;
+        }
+
+        if (id != request.AgencyId)
+        {
+            throw new BadRequestException("Id does not match");
+        }
+
+        var entity = await _agencyRepository.GetAgencyByIdAsync(id);
+
+        if (entity is null)
+        {
+            throw new NotFoundException(nameof(User), id.ToString());
+        }
+
+        entity.AgencyId = request.AgencyId;
+        entity.IsActive = request.IsActive;
+        entity.UpdatedBy = _currentUserService.UserId;
+        entity.UpdatedDate = _dateTime.Now;
+        await _agencyRepository.UpdateAgencyAsync(id, entity);
+
+        response.Success = true;
+        response.Message = "Updating Successful";
+        return response;
+    }
 
     public async Task<BaseCommandResponse> DeleteAgencyAsync(int id)
     {

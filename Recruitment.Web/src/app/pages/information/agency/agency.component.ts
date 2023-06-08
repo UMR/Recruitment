@@ -17,7 +17,8 @@ export class AgencyComponent {
     statuses: any[] = [];
     addEditTxt: string = "Add";
 
-    constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private agencyService: AgencyService) { }
+    constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
+        private agencyService: AgencyService) { }
 
     ngOnInit() {
         this.getAllAgency();
@@ -98,6 +99,23 @@ export class AgencyComponent {
     }
 
     changeStatus(id: any, value: any) {
+        let updateAgency = {
+            agencyId: id,
+            isActive: !value
+        }
+        this.agencyService.updateAgencyStatus(id, updateAgency)
+            .subscribe(res => {
+                console.log(res);
+                //if (res.body.success) {
+                //    this.getAllAgency();
+                //    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Updated', life: 3000 });
+                //}
+                //else {
+                //    this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.errors[0], life: 3000 });
+                //}
+            },
+                err => { },
+                () => { });
         console.log(id, value);
     }
 
