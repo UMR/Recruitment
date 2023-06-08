@@ -22,7 +22,7 @@ internal class AgencyService : IAgencyService
         return agenciesToReturn;
     }
 
-    public async Task<AgencyListDto> GetAgencyByIdAsync(int id)
+    public async Task<AgencyListDto> GetAgencyByIdAsync(long id)
     {
         var agencyFromRepo = await _agencyRepository.GetAgencyByIdAsync(id);
         var agencyToReturn = _mapper.Map<AgencyListDto>(agencyFromRepo);
@@ -69,7 +69,7 @@ internal class AgencyService : IAgencyService
         return response;
     }
 
-    public async Task<BaseCommandResponse> UpdateAgencyAsync(int id, UpdateAgencyDto request)
+    public async Task<BaseCommandResponse> UpdateAgencyAsync(long id, UpdateAgencyDto request)
     {
         var response = new BaseCommandResponse();
         var validator = new UpdateAgencyDtoValidator(this);
@@ -113,7 +113,7 @@ internal class AgencyService : IAgencyService
         response.Message = "Updating Successful";
         return response;
     }
-    public async Task<BaseCommandResponse> UpdateAgencyStatusAsync(int id, UpdateAgencyStatusDto request)
+    public async Task<BaseCommandResponse> UpdateAgencyStatusAsync(long id, UpdateAgencyStatusDto request)
     {
         var response = new BaseCommandResponse();
         var validator = new UpdateAgencyStatusDtoValidator();
@@ -150,7 +150,7 @@ internal class AgencyService : IAgencyService
         return response;
     }
 
-    public async Task<BaseCommandResponse> DeleteAgencyAsync(int id)
+    public async Task<BaseCommandResponse> DeleteAgencyAsync(long id)
     {
         var response = new BaseCommandResponse();
         var entity = await _agencyRepository.GetAgencyByIdAsync(id);
