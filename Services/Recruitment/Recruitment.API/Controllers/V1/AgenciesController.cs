@@ -34,6 +34,7 @@ public class AgenciesController : ApiControllerBase
     {            
         return Ok(await _agencyService.UpdateAgencyAsync(id, request));
     }
+
     [HttpPut("UpdateAgencyStatus/{id:int}")]
     public async Task<ActionResult> PutAsync(int id, [FromBody] UpdateAgencyStatusDto request)
     {

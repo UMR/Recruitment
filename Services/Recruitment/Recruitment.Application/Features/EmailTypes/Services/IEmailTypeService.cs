@@ -10,6 +10,6 @@
 
         Task<BaseCommandResponse> UpdateEmailTypeAsync(int id, UpdateEmailTypeDto request);
 
-        Task<BaseCommandResponse> DeleteAgencyAsync(int id);
+        Task<BaseCommandResponse> DeleteEmailTypeAsync(int id);
     }
 }

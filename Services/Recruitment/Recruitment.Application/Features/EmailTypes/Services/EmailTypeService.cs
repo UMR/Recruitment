@@ -96,7 +96,7 @@ public class EmailTypeService : IEmailTypeService
         return response;
     }
 
-    public async Task<BaseCommandResponse> DeleteAgencyAsync(int id)
+    public async Task<BaseCommandResponse> DeleteEmailTypeAsync(int id)
     {
         var response = new BaseCommandResponse();
         var entity = await _emailTypeRepository.GetEmailTypeByIdAsync(id);
