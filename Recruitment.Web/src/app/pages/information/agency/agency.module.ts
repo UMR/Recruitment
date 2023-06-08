@@ -11,6 +11,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { InputMaskModule } from 'primeng/inputmask';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { InputMaskModule } from 'primeng/inputmask';
         CheckboxModule,
         FormsModule,
         DialogModule,
-        InputMaskModule
+        InputMaskModule,
+        InputTextareaModule
     ],
     providers: [ConfirmationService, MessageService]
 })

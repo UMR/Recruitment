@@ -48,16 +48,16 @@
     <ng-template pTemplate="content">
         <div class="field">
             <label for="agencyName">Agency Name</label>
-            <input type="text" pInputText id="agencyName" [(ngModel)]="agency.agencyName"  required autofocus />
+            <input type="text" pInputText id="agencyName" [(ngModel)]="agency.agencyName"  required autofocus maxlength="100"/>
             <small class="p-error" *ngIf="submitted && !agency.agencyName">Agency Name is required.</small>
         </div>
         <div class="field">
             <label for="urlPrefix">Agency URL Prefix</label>
-            <input type="text" pInputText id="urlPrefix" [(ngModel)]="agency.urlPrefix"/>
+            <input type="text" pInputText id="urlPrefix" [(ngModel)]="agency.urlPrefix" maxlength="50"/>
         </div>
         <div class="field">
             <label for="agencyEmail">Agency Email</label>
-            <input type="text" pInputText id="agencyEmail" [(ngModel)]="agency.agencyEmail"/>
+            <input type="text" pInputText id="agencyEmail" [(ngModel)]="agency.agencyEmail" maxlength="100"/>
         </div>
         <div class="field">
             <label for="agencyPhone">Agency Phone</label>
@@ -65,15 +65,15 @@
         </div>
         <div class="field">
             <label for="agencyAdress">Agency Address</label>
-            <input type="text" pInputText id="agencyAdress" [(ngModel)]="agency.agencyAddress"/>
+            <textarea pInputTextarea id="agencyAdress" [(ngModel)]="agency.agencyAddress" maxlength="200" [autoResize]="true"></textarea>
         </div>
         <div class="field">
             <label for="contactPerson">Agency Contact Person</label>
-            <p-inputMask mask="(999) 999-9999" id="contactPerson" [(ngModel)]="agency.agencyContactPerson" placeholder="(999) 999-9999"/>
+            <input type="text" pInputText  id="contactPerson" [(ngModel)]="agency.agencyContactPerson"/>
         </div>
         <div class="field">
             <label for="personPhone">Agency Contact Person Phone</label>
-            <input type="text" pInputText id="personPhone" [(ngModel)]="agency.agencyContactPersonPhone"/>
+            <p-inputMask mask="(999) 999-9999" id="personPhone" [(ngModel)]="agency.agencyContactPersonPhone" placeholder="(999) 999-9999"/>
         </div>
         <div>
             <label for="name" style="margin-right:12px">Active</label>
