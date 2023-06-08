@@ -81,6 +81,7 @@
     <TypeScriptCompile Include="src\app\dashboard\dashboard-routing.module.ts" />
     <TypeScriptCompile Include="src\app\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="src\app\dashboard\dashboard.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\email-type\email-type.service.ts" />
     <TypeScriptCompile Include="src\app\pages\information\email-type\email-type-routing.module.ts" />
     <TypeScriptCompile Include="src\app\pages\information\email-type\email-type.component.spec.ts" />
     <TypeScriptCompile Include="src\app\pages\information\email-type\email-type.component.ts" />

@@ -11,16 +11,16 @@ public class EmailTypesController : ApiControllerBase
         _emailTypeService = emailTypeService;
     }
 
-    [HttpGet("GetEmailTypesAsync")]
+    [HttpGet("GetEmailTypes")]
     public async Task<ActionResult<List<EmailTypeListDto>>> GetEmailTypesAsync()
     {
-        return await _emailTypeService.GetEmailTypesAsync();
+        return Ok(await _emailTypeService.GetEmailTypesAsync());
     }
 
-    [HttpGet("GetEmailTypeAsync/{id:int}")]
+    [HttpGet("GetEmailType/{id:int}")]
     public async Task<ActionResult<EmailTypeListDto>> GetEmailTypeAsync(int id)
     {
-        return await _emailTypeService.GetEmailTypeByIdAsync(id);
+        return Ok(await _emailTypeService.GetEmailTypeByIdAsync(id));
     }
 
     [HttpPost("CreateEmailType")]
