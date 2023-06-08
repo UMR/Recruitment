@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { KeyFilterModule } from 'primeng/keyfilter';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
         FormsModule,
         DialogModule,
         InputMaskModule,
-        InputTextareaModule
+        InputTextareaModule,
+        KeyFilterModule
     ],
     providers: [ConfirmationService, MessageService]
 })

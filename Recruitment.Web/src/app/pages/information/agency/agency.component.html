@@ -48,12 +48,12 @@
     <ng-template pTemplate="content">
         <div class="field">
             <label for="agencyName">Agency Name</label>
-            <input type="text" pInputText id="agencyName" [(ngModel)]="agency.agencyName"  required autofocus maxlength="100"/>
+            <input type="text" pInputText id="agencyName" [(ngModel)]="agency.agencyName" required autofocus maxlength="100"/>
             <small class="p-error" *ngIf="submitted && !agency.agencyName">Agency Name is required.</small>
         </div>
         <div class="field">
             <label for="urlPrefix">Agency URL Prefix</label>
-            <input type="text" pInputText id="urlPrefix" [(ngModel)]="agency.urlPrefix" maxlength="50"/>
+            <input pInputText [(ngModel)]="agency.urlPrefix" [pKeyFilter]="'alpha'" id="urlPrefix" maxlength="50" />
         </div>
         <div class="field">
             <label for="agencyEmail">Agency Email</label>
