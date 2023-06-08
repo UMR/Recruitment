@@ -93,12 +93,13 @@ export class AgencyComponent {
 
         return index;
     }
+
     hideDialog() {
         this.agencyDialog = false;
         this.submitted = false;
     }
 
-    changeStatus(id: any, value: any) {
+    changeStatus(id: any, value: boolean) {
         let updateAgency = {
             agencyId: id,
             isActive: !value
@@ -106,13 +107,13 @@ export class AgencyComponent {
         this.agencyService.updateAgencyStatus(id, updateAgency)
             .subscribe(res => {
                 console.log(res);
-                //if (res.body.success) {
-                //    this.getAllAgency();
-                //    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Updated', life: 3000 });
-                //}
-                //else {
-                //    this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.errors[0], life: 3000 });
-                //}
+                if ((res.body as any).success) {
+                    this.getAllAgency();
+                    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Updated', life: 3000 });
+                }
+                else {
+                    this.messageService.add({ severity: 'error', summary: 'Error', detail: (res.body as any).errors[0], life: 3000 });
+                }
             },
                 err => { },
                 () => { });

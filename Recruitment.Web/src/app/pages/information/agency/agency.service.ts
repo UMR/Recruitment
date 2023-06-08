@@ -29,12 +29,12 @@ export class AgencyService {
     }
 
     updateAgency(agencyId: number, agency: AgencyModel) {
-        const addAgencyURI = `${resourceServerUrl}/api/v1/Agencies/UpdateAgency/`;
-        return this.http.put(addAgencyURI + agencyId, agency, { observe: 'response' })
+        const addAgencyURI = `${resourceServerUrl}/api/v1/Agencies/UpdateAgency/` + agencyId;
+        return this.http.put(addAgencyURI, agency, { observe: 'response' })
     }
 
     updateAgencyStatus(agencyId: number, agency: any) {
-        const addAgencyURI = `${resourceServerUrl}/api/v1/Agencies/UpdateAgencyStatus/`;
-        return this.http.put(addAgencyURI + agencyId, agency, { observe: 'response' })
+        const addAgencyURI = `${resourceServerUrl}/api/v1/Agencies/UpdateAgencyStatus/` + agencyId;
+        return this.http.put(addAgencyURI, agency, { observe: 'response' })
     }
 }
