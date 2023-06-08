@@ -5,28 +5,28 @@ internal class EmailTypeService
     private readonly IMapper _mapper;
     private readonly ICurrentUserService _currentUserService;
     private readonly IDateTimeService _dateTime;
-    private readonly IAgencyRepository _agencyRepository;
+    private readonly IEmailTypeRepository _emailTypeRepository;
 
-    public EmailTypeService(IMapper mapper, ICurrentUserService currentUserService, IDateTimeService dateTime, IAgencyRepository agencyRepository)
+    public EmailTypeService(IMapper mapper, ICurrentUserService currentUserService, IDateTimeService dateTime, IEmailTypeRepository emailTypeRepository)
     {
         _mapper = mapper;
         _currentUserService = currentUserService;
         _dateTime = dateTime;
-        _agencyRepository = agencyRepository;
+        _emailTypeRepository = emailTypeRepository;
     }
 
-    public async Task<List<AgencyListDto>> GetAgenciesAsync()
+    public async Task<List<EmailTypeListDto>> GetEmailTypesAsync()
     {
-        var agenciesFromRepo = await _agencyRepository.GetAgenciesAsync();
-        var agenciesToReturn = _mapper.Map<List<AgencyListDto>>(agenciesFromRepo);
-        return agenciesToReturn;
+        var emailTypesFromRepo = await _emailTypeRepository.GetEmailTypesAsync();
+        var emailTypesToReturn = _mapper.Map<List<EmailTypeListDto>>(emailTypesFromRepo);
+        return emailTypesToReturn;
     }
 
-    public async Task<AgencyListDto> GetAgencyByIdAsync(int id)
+    public async Task<EmailTypeListDto> GetEmailTypeByIdAsync(int id)
     {
-        var agencyFromRepo = await _agencyRepository.GetAgencyByIdAsync(id);
-        var agencyToReturn = _mapper.Map<AgencyListDto>(agencyFromRepo);
-        return agencyToReturn;
+        var emailTypeFromRepo = await _emailTypeRepository.GetEmailTypeByIdAsync(id);
+        var emailTypeToReturn = _mapper.Map<EmailTypeListDto>(emailTypeFromRepo);
+        return emailTypeToReturn;
     }
 
     public async Task<BaseCommandResponse> CreateAgencyAsync(CreateAgencyDto request)
@@ -112,14 +112,14 @@ internal class EmailTypeService
     public async Task<BaseCommandResponse> DeleteAgencyAsync(int id)
     {
         var response = new BaseCommandResponse();
-        var entity = await _agencyRepository.GetAgencyByIdAsync(id);
+        var entity = await _emailTypeRepository.GetEmailTypeByIdAsync(id);
 
         if (entity is null)
         {
             throw new NotFoundException(nameof(User), id.ToString());
         }
 
-        await _agencyRepository.DeleteAgencyAsync(id);
+        await _emailTypeRepository.DeleteEmailTypeAsync(id);
 
         response.Success = true;
         response.Message = "Deleting Successful";
