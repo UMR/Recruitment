@@ -29,6 +29,10 @@ const routes: Routes = [
                 path: 'information/agency',
                 loadChildren: () => import('./pages/information/agency/agency.module').then((m) => m.AgencyModule)
             },
+            {
+                path: 'information/email-types',
+                loadChildren: () => import('./pages/information/email-type/email-type.module').then((m) => m.EmailTypeModule)
+            },
         ]
     },
     {
