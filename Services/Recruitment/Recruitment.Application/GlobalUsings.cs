@@ -24,6 +24,7 @@ global using Recruitment.Application.Wrapper;
 global using Recruitment.Application.Contracts.Persistence;
 global using Recruitment.Application.Contracts.Infrastructure;
 global using Recruitment.Application.Features.Agencies;
+global using Recruitment.Application.Features.EmailTypes;
 global using Recruitment.Application.Features.Menus;
 
 global using Recruitment.Domain.Entities;
