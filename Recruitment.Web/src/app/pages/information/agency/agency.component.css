@@ -4,39 +4,57 @@
     border-width: 0 0 1px 0;
     padding: 0rem 1rem;
 }
+
 :host ::ng-deep .p-dialog .product-image {
     width: 150px;
     margin: 0 auto 2rem auto;
     display: block;
 }
+
 :host ::ng-deep .p-button.p-button-icon-only.p-button-rounded {
     border-radius: 50%;
     height: 2rem;
-    margin:2px 4px;
+    margin: 2px 4px;
 }
+
 :host ::ng-deep .p-button.p-button-icon-only {
     width: 2rem;
     padding: 0.75rem 0;
 }
+
 :host ::ng-deep .pi {
     font-size: 0.8rem;
 }
+
 .p-unselectable-text {
-    user-select:none !important;
+    user-select: none !important;
 }
+
 .add-new-btn {
     float: left;
     margin-right: 8px;
     background: #22C55E;
-    color:white;
-    border:none;
+    color: white;
+    border: none;
 }
+
 .field {
     margin-bottom: 1rem;
-    display:grid;
+    display: grid;
 }
+
     .field > label {
         display: inline-block;
         margin-bottom: 0.5rem;
     }
-    
+
+:host ::ng-deep .p-inputtext {
+    width: 100%;
+    padding: 3px 2px;
+    border-radius: 0px;
+    border:1px solid;
+}
+    :host ::ng-deep .p-inputtext:focus {
+        box-shadow: none;
+        border-color: black;
+    }

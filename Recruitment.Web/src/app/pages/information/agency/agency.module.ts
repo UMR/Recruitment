@@ -10,6 +10,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { DialogModule } from 'primeng/dialog';
         ConfirmDialogModule,
         CheckboxModule,
         FormsModule,
-        DialogModule
+        DialogModule,
+        InputMaskModule
     ],
     providers: [ConfirmationService, MessageService]
 })
