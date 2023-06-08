@@ -9,6 +9,7 @@ public class UpdateAgencyStatusDtoValidator : AbstractValidator<UpdateAgencyStat
           .NotNull();
 
         RuleFor(c => c.IsActive)
-            .Must(x => x == false || x == true).WithMessage("{PropertyName} is required");
+            .Must(x => x == false || x == true)
+            .WithMessage("{PropertyName} is required");
     }
 }
