@@ -30,18 +30,19 @@ public class AgenciesController : ApiControllerBase
     }
 
     [HttpPut("UpdateAgency/{id:int}")]
-    public async Task<ActionResult> PutAsync(int id, [FromBody] UpdateAgencyDto request)
+    public async Task<ActionResult> PutAsync(long id, [FromBody] UpdateAgencyDto request)
     {            
         return Ok(await _agencyService.UpdateAgencyAsync(id, request));
     }
+
     [HttpPut("UpdateAgencyStatus/{id:int}")]
-    public async Task<ActionResult> PutAsync(int id, [FromBody] UpdateAgencyStatusDto request)
+    public async Task<ActionResult> PutAsync(long id, [FromBody] UpdateAgencyStatusDto request)
     {
         return Ok(await _agencyService.UpdateAgencyStatusAsync(id, request));
     }
 
     [HttpDelete("DeleteAgency/{id:int}")]
-    public async Task<ActionResult> DeleteAsync(int id)
+    public async Task<ActionResult> DeleteAsync(long id)
     {            
         return Ok(await _agencyService.DeleteAgencyAsync(id));
     }

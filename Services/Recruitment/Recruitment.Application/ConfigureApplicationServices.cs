@@ -12,6 +12,7 @@ public static class ConfigureServices
         builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
         builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
         builder.Services.AddTransient<IAgencyService, AgencyService>();
+        builder.Services.AddTransient<IEmailTypeService, EmailTypeService>();
         builder.Services.AddTransient<IMenuService, MenuService>();
 
         return builder;
