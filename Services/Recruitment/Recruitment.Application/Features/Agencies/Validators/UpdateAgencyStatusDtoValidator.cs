@@ -8,8 +8,8 @@ public class UpdateAgencyStatusDtoValidator : AbstractValidator<UpdateAgencyStat
           .NotEmpty().WithMessage("{PropertyName} is required")
           .NotNull();
 
-        RuleFor(c => c.IsActive)
-            .NotEmpty().WithMessage("{PropertyName} is required")
-            .NotNull();
+        //RuleFor(c => c.IsActive)
+        //    .NotEmpty().WithMessage("{PropertyName} is required")
+        //    .NotNull();
     }
 }
