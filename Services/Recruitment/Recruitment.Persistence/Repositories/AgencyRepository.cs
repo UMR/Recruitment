@@ -25,7 +25,7 @@ public class AgencyRepository : IAgencyRepository
         var query = @"SELECT * FROM Agency WHERE AgencyID=@AgencyID";
 
         var parameters = new DynamicParameters();
-        parameters.Add("AgencyID", id, DbType.Int32);
+        parameters.Add("AgencyID", id, DbType.Int64);
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
