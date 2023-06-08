@@ -1,6 +1,4 @@
-﻿using Recruitment.Domain.Entities;
-
-namespace Recruitment.Persistence.Repositories;
+﻿namespace Recruitment.Persistence.Repositories;
 
 public class AgencyRepository : IAgencyRepository
 {
@@ -36,16 +34,26 @@ public class AgencyRepository : IAgencyRepository
         }
     }
 
-    public async Task<bool> IsExistAgencyNameAsync(string agencyName)
+    public async Task<bool> IsExistAgencyNameAsync(string agencyName, long? id = null)
     {
         var query = @"SELECT COUNT(*) FROM Agency WHERE AgencyName=@AgencyName";
+
+        if (id != null)
+        {
+            query += " AND AgencyID != AgencyID";
+        }
 
         var parameters = new DynamicParameters();
         parameters.Add("AgencyName", agencyName, DbType.String);
 
+        if (id is not null)
+        {
+            parameters.Add("AgencyID", id, DbType.Int64);
+        }
+
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
-            var result =  await conn.ExecuteScalarAsync<int>(query, parameters);
+            var result = await conn.ExecuteScalarAsync<int>(query, parameters);
             return result > 0 ? true : false;
         }
     }
@@ -74,7 +82,7 @@ public class AgencyRepository : IAgencyRepository
             var id = await conn.ExecuteAsync(query, parameters);
             return id;
         }
-    }        
+    }
 
     public async Task<bool> UpdateAgencyAsync(long id, Agency agency)
     {
@@ -82,7 +90,7 @@ public class AgencyRepository : IAgencyRepository
             "AgencyContactPerson = @AgencyContactPerson, AgencyContactPersonPhone = @AgencyContactPersonPhone, IsActive = @IsActive, AgencyLoginId = @AgencyLoginId, " +
             "UpdatedBy = @UpdatedBy, UpdatedDate = @UpdatedDate WHERE AgencyID = @AgencyID";
 
-        var parameters = new DynamicParameters();        
+        var parameters = new DynamicParameters();
         parameters.Add("AgencyName", agency.AgencyName, DbType.String);
         parameters.Add("AgencyAddress", agency.AgencyAddress, DbType.String);
         parameters.Add("URLPrefix", agency.URLPrefix, DbType.String);
@@ -103,7 +111,7 @@ public class AgencyRepository : IAgencyRepository
         }
     }
 
-    public  async Task<bool> DeleteAgencyAsync(long id)
+    public async Task<bool> DeleteAgencyAsync(long id)
     {
         var query = "DELETE FROM Agency WHERE AgencyID = @AgencyID";
 
@@ -115,5 +123,5 @@ public class AgencyRepository : IAgencyRepository
             var result = await conn.ExecuteAsync(query, parameters);
             return result > 0 ? true : false;
         }
-    }        
+    }
 }
