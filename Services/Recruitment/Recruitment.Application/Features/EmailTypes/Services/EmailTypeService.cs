@@ -67,42 +67,42 @@ internal class EmailTypeService
     public async Task<BaseCommandResponse> UpdateAgencyAsync(int id, UpdateAgencyDto request)
     {
         var response = new BaseCommandResponse();
-        var validator = new UpdateAgencyDtoValidator();
-        var validationResult = await validator.ValidateAsync(request);
+        //var validator = new UpdateAgencyDtoValidator(this);
+        //var validationResult = await validator.ValidateAsync(request);
 
-        if (validationResult.IsValid == false)
-        {
-            response.Success = false;
-            response.Message = "Updating Failed";
-            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-            return response;
-        }
+        //if (validationResult.IsValid == false)
+        //{
+        //    response.Success = false;
+        //    response.Message = "Updating Failed";
+        //    response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+        //    return response;
+        //}
 
-        if (id != request.AgencyId)
-        {
-            throw new BadRequestException("Id does not match");
-        }
+        //if (id != request.AgencyId)
+        //{
+        //    throw new BadRequestException("Id does not match");
+        //}
 
-        var entity = await _agencyRepository.GetAgencyByIdAsync(id);
+        //var entity = await _agencyRepository.GetAgencyByIdAsync(id);
 
-        if (entity is null)
-        {
-            throw new NotFoundException(nameof(User), id.ToString());
-        }
+        //if (entity is null)
+        //{
+        //    throw new NotFoundException(nameof(User), id.ToString());
+        //}
 
-        entity.AgencyId = request.AgencyId;
-        entity.AgencyName = request.AgencyName;
-        entity.AgencyAddress = request.AgencyAddress;
-        entity.URLPrefix = request.URLPrefix;
-        entity.AgencyEmail = request.AgencyEmail;
-        entity.AgencyPhone = request.AgencyPhone;
-        entity.AgencyContactPerson = request.AgencyContactPerson;
-        entity.AgencyContactPersonPhone = request.AgencyContactPersonPhone;
-        entity.IsActive = request.IsActive;
-        entity.AgencyLoginId = request.AgencyLoginId;
-        entity.UpdatedBy = _currentUserService.UserId;
-        entity.UpdatedDate = _dateTime.Now;
-        await _agencyRepository.UpdateAgencyAsync(id, entity);
+        //entity.AgencyId = request.AgencyId;
+        //entity.AgencyName = request.AgencyName;
+        //entity.AgencyAddress = request.AgencyAddress;
+        //entity.URLPrefix = request.URLPrefix;
+        //entity.AgencyEmail = request.AgencyEmail;
+        //entity.AgencyPhone = request.AgencyPhone;
+        //entity.AgencyContactPerson = request.AgencyContactPerson;
+        //entity.AgencyContactPersonPhone = request.AgencyContactPersonPhone;
+        //entity.IsActive = request.IsActive;
+        //entity.AgencyLoginId = request.AgencyLoginId;
+        //entity.UpdatedBy = _currentUserService.UserId;
+        //entity.UpdatedDate = _dateTime.Now;
+        //await _agencyRepository.UpdateAgencyAsync(id, entity);
 
         response.Success = true;
         response.Message = "Updating Successful";

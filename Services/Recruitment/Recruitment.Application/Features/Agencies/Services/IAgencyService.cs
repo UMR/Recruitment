@@ -6,11 +6,12 @@ public interface IAgencyService
 
     Task<AgencyListDto> GetAgencyByIdAsync(int id);
 
-    Task<bool> IsExistAgencyNameAsync(string agencyName);
+    Task<bool> IsExistAgencyNameAsync(string agencyName, long? id = null);
 
     Task<BaseCommandResponse> CreateAgencyAsync(CreateAgencyDto request);
 
     Task<BaseCommandResponse> UpdateAgencyAsync(int id, UpdateAgencyDto request);
+
     Task<BaseCommandResponse> UpdateAgencyStatusAsync(int id, UpdateAgencyStatusDto request);
 
     Task<BaseCommandResponse> DeleteAgencyAsync(int id);

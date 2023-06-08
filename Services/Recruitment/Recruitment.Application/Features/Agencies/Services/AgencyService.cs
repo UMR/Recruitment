@@ -29,9 +29,9 @@ internal class AgencyService : IAgencyService
         return agencyToReturn;
     }
 
-    public async Task<bool> IsExistAgencyNameAsync(string agencyName) 
+    public async Task<bool> IsExistAgencyNameAsync(string agencyName, long? id = null)
     {
-        return await _agencyRepository.IsExistAgencyNameAsync(agencyName);
+        return await _agencyRepository.IsExistAgencyNameAsync(agencyName, id);
     }
 
     public async Task<BaseCommandResponse> CreateAgencyAsync(CreateAgencyDto request)
@@ -72,7 +72,7 @@ internal class AgencyService : IAgencyService
     public async Task<BaseCommandResponse> UpdateAgencyAsync(int id, UpdateAgencyDto request)
     {
         var response = new BaseCommandResponse();
-        var validator = new UpdateAgencyDtoValidator();
+        var validator = new UpdateAgencyDtoValidator(this);
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.IsValid == false)

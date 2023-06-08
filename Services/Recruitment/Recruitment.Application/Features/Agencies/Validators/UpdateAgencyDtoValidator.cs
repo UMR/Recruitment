@@ -2,8 +2,12 @@
 
 public class UpdateAgencyDtoValidator : AbstractValidator<UpdateAgencyDto>
 {
-    public UpdateAgencyDtoValidator()
+    private readonly IAgencyService _agencyService;
+
+    public UpdateAgencyDtoValidator(IAgencyService agencyService)
     {
+        _agencyService = agencyService;
+
         RuleFor(a => a.AgencyId)
           .NotEmpty().WithMessage("{PropertyName} is required")
           .NotNull();
@@ -33,5 +37,14 @@ public class UpdateAgencyDtoValidator : AbstractValidator<UpdateAgencyDto>
 
         RuleFor(c => c.AgencyLoginId)
            .MaximumLength(256).WithMessage("{PropertyName} must not exceed 256 characters");
+
+        RuleFor(x => x)
+           .Must(x => !IsExistAgencyNameAsync(x.AgencyName, x.AgencyId))
+           .WithMessage("Agency name already exist");
+    }
+
+    private bool IsExistAgencyNameAsync(string agencyName, long agencyId)
+    {
+        return _agencyService.IsExistAgencyNameAsync(agencyName).Result;
     }
 }
