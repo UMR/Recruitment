@@ -4,26 +4,29 @@ import { FormsModule } from '@angular/forms';
 
 import { EmailTypeRoutingModule } from './email-type-routing.module';
 import { EmailTypeComponent } from './email-type.component';
+import { EmailTypeService } from './email-type.service';
 
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @NgModule({
-  declarations: [
-    EmailTypeComponent
-  ],
-  imports: [
-    CommonModule,
-      EmailTypeRoutingModule,
-      TableModule,
-      ToastModule,
-      ConfirmDialogModule,
-      CheckboxModule,
-      FormsModule,
-      DialogModule
-  ]
+    declarations: [
+        EmailTypeComponent
+    ],
+    imports: [
+        CommonModule,
+        EmailTypeRoutingModule,
+        TableModule,
+        ToastModule,
+        ConfirmDialogModule,
+        CheckboxModule,
+        FormsModule,
+        DialogModule
+    ],
+    providers: [ConfirmationService, MessageService, EmailTypeService]
 })
 export class EmailTypeModule { }
