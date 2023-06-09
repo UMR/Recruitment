@@ -25,7 +25,7 @@
         <tr>
             <td>{{ emailType.type }}</td>
             <td>{{ emailType.isPersonal === 'true' ? 'Yes' : 'No' }}</td>
-            <td>{{ emailType.isOfficial }}</td>
+            <td>{{ emailType.isOfficial === 'true' ? 'Yes' : 'No' }}</td>
             <td>
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
                 <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
