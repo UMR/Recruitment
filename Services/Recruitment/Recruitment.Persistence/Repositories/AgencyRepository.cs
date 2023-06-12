@@ -132,7 +132,7 @@ public class AgencyRepository : IAgencyRepository
 
     public async Task<bool> DeleteAgencyAsync(long id)
     {
-        var query = "DELETE FROM Agency WHERE AgencyID = @AgencyID";
+        var query = "DELETE [Users] WHERE [AgencyID]=@AgencyID;DELETE FROM Agency WHERE AgencyID = @AgencyID";
 
         var parameters = new DynamicParameters();
         parameters.Add("AgencyID", id, DbType.Int64);
