@@ -1,4 +1,6 @@
-﻿namespace Recruitment.Persistence.Repositories;
+﻿using Recruitment.Application.Features.Agencies;
+
+namespace Recruitment.Persistence.Repositories;
 
 public class AgencyRepository : IAgencyRepository
 {
@@ -100,6 +102,23 @@ public class AgencyRepository : IAgencyRepository
         parameters.Add("AgencyContactPersonPhone", agency.AgencyContactPersonPhone, DbType.String);
         parameters.Add("IsActive", agency.IsActive, DbType.Boolean);
         parameters.Add("AgencyLoginId", agency.AgencyLoginId, DbType.String);
+        parameters.Add("UpdatedBy", agency.UpdatedBy, DbType.Int32);
+        parameters.Add("UpdatedDate", agency.UpdatedDate, DbType.DateTime);
+        parameters.Add("AgencyID", id, DbType.Int64);
+
+        using (IDbConnection conn = _dapperContext.CreateConnection)
+        {
+            var result = await conn.ExecuteAsync(query, parameters);
+            return result > 0 ? true : false;
+        }
+    }
+    public async Task<bool> UpdateAgencyStatusAsync(long id, UpdateAgencyStatusByUserDto agency)
+    {
+        var query = "UPDATE [dbo].[Agency] SET [IsActive] = @IsActive, [UpdatedBy] = @updatedBy, [UpdatedDate] = @updatedDate WHERE AgencyID = @AgencyID;" +
+            "UPDATE [Users] SET [IsActive] = @IsActive,[UpdatedBy] = @UpdatedBy,[UpdatedDate] = @UpdatedDate WHERE [AgencyID] = @AgencyID";
+
+        var parameters = new DynamicParameters();
+        parameters.Add("IsActive", agency.IsActive, DbType.Boolean);
         parameters.Add("UpdatedBy", agency.UpdatedBy, DbType.Int32);
         parameters.Add("UpdatedDate", agency.UpdatedDate, DbType.DateTime);
         parameters.Add("AgencyID", id, DbType.Int64);
