@@ -36,9 +36,9 @@ public class AgencyRepository : IAgencyRepository
         }
     }
 
-    public async Task<bool> IsExistAgencyNameAsync(string agencyName, long? id = null)
+    public async Task<bool> IsExistAgencyURLAsync(string urlPrefix, long? id = null)
     {
-        var query = @"SELECT COUNT(*) FROM Agency WHERE AgencyName=@AgencyName";
+        var query = @"SELECT COUNT(*) FROM Agency WHERE URLPrefix=@URLPrefix";
 
         if (id != null)
         {
@@ -46,7 +46,7 @@ public class AgencyRepository : IAgencyRepository
         }
 
         var parameters = new DynamicParameters();
-        parameters.Add("AgencyName", agencyName, DbType.String);
+        parameters.Add("URLPrefix", urlPrefix, DbType.String);
 
         if (id is not null)
         {
@@ -114,8 +114,7 @@ public class AgencyRepository : IAgencyRepository
     }
     public async Task<bool> UpdateAgencyStatusAsync(long id, UpdateAgencyStatusByUserDto agency)
     {
-        var query = "UPDATE [dbo].[Agency] SET [IsActive] = @IsActive, [UpdatedBy] = @updatedBy, [UpdatedDate] = @updatedDate WHERE AgencyID = @AgencyID;" +
-            "UPDATE [Users] SET [IsActive] = @IsActive,[UpdatedBy] = @UpdatedBy,[UpdatedDate] = @UpdatedDate WHERE [AgencyID] = @AgencyID";
+        var query = "UPDATE [dbo].[Agency] SET [IsActive] = @IsActive, [UpdatedBy] = @updatedBy, [UpdatedDate] = @updatedDate WHERE AgencyID = @AgencyID";
 
         var parameters = new DynamicParameters();
         parameters.Add("IsActive", agency.IsActive, DbType.Boolean);
@@ -132,7 +131,7 @@ public class AgencyRepository : IAgencyRepository
 
     public async Task<bool> DeleteAgencyAsync(long id)
     {
-        var query = "DELETE [Users] WHERE [AgencyID]=@AgencyID;DELETE FROM Agency WHERE AgencyID = @AgencyID";
+        var query = "DELETE FROM Agency WHERE AgencyID = @AgencyID";
 
         var parameters = new DynamicParameters();
         parameters.Add("AgencyID", id, DbType.Int64);

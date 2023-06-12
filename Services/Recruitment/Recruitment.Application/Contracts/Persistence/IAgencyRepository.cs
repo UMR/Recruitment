@@ -6,11 +6,13 @@ public interface IAgencyRepository
 
     Task<Agency> GetAgencyByIdAsync(long id);
 
-    Task<bool> IsExistAgencyNameAsync(string agencyName, long? id = null);
+    Task<bool> IsExistAgencyURLAsync(string agencyName, long? id = null);
 
     Task<int> CreateAgencyAsync(Agency agency);
 
     Task<bool> UpdateAgencyAsync(long id, Agency agency);
+
+    Task<bool> UpdateAgencyStatusAsync(long id, UpdateAgencyStatusByUserDto agency);
 
     Task<bool> DeleteAgencyAsync(long agency);
 }

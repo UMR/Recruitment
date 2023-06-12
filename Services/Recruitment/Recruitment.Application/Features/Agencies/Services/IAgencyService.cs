@@ -6,7 +6,7 @@ public interface IAgencyService
 
     Task<AgencyListDto> GetAgencyByIdAsync(long id);
 
-    Task<bool> IsExistAgencyNameAsync(string agencyName, long? id = null);
+    Task<bool> IsExistAgencyURLAsync(string agencyName, long? id = null);
 
     Task<BaseCommandResponse> CreateAgencyAsync(CreateAgencyDto request);
 

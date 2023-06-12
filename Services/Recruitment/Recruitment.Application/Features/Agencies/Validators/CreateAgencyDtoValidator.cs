@@ -35,13 +35,13 @@ public class CreateAgencyDtoValidator : AbstractValidator<CreateAgencyDto>
            .MaximumLength(256).WithMessage("{PropertyName} must not exceed 256 characters");
 
         RuleFor(x => x)
-           .Must(x => !IsExistAgencyNameAsync(x.AgencyName))
+           .Must(x => !IsExistAgencyURLAsync(x.URLPrefix))
            .WithMessage("Agency name already exist");
 
     }
 
-    private bool IsExistAgencyNameAsync(string agencyName)
+    private bool IsExistAgencyURLAsync(string urlPrefix)
     {        
-        return _agencyService.IsExistAgencyNameAsync(agencyName).Result;
+        return _agencyService.IsExistAgencyURLAsync(urlPrefix).Result;
     }
 }

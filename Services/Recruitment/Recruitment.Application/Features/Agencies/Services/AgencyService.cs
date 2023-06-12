@@ -6,13 +6,15 @@ internal class AgencyService : IAgencyService
     private readonly ICurrentUserService _currentUserService;
     private readonly IDateTimeService _dateTime;
     private readonly IAgencyRepository _agencyRepository;
+    private readonly IUserRepository _userRepository;
 
-    public AgencyService(IMapper mapper, ICurrentUserService currentUserService, IDateTimeService dateTime, IAgencyRepository agencyRepository)
+    public AgencyService(IMapper mapper, ICurrentUserService currentUserService, IDateTimeService dateTime, IAgencyRepository agencyRepository, IUserRepository userRepository)
     {
         _mapper = mapper;
         _currentUserService = currentUserService;
         _dateTime = dateTime;
         _agencyRepository = agencyRepository;
+        _userRepository = userRepository;
     }
 
     public async Task<List<AgencyListDto>> GetAgenciesAsync()
@@ -29,9 +31,9 @@ internal class AgencyService : IAgencyService
         return agencyToReturn;
     }
 
-    public async Task<bool> IsExistAgencyNameAsync(string agencyName, long? id = null)
+    public async Task<bool> IsExistAgencyURLAsync(string agencyName, long? id = null)
     {
-        return await _agencyRepository.IsExistAgencyNameAsync(agencyName, id);
+        return await _agencyRepository.IsExistAgencyURLAsync(agencyName, id);
     }
 
     public async Task<BaseCommandResponse> CreateAgencyAsync(CreateAgencyDto request)
@@ -139,15 +141,29 @@ internal class AgencyService : IAgencyService
             throw new NotFoundException(nameof(User), id.ToString());
         }
 
-        entity.AgencyId = request.AgencyId;
-        entity.IsActive = request.IsActive;
-        entity.UpdatedBy = _currentUserService.UserId;
-        entity.UpdatedDate = _dateTime.Now;
-        await _agencyRepository.UpdateAgencyAsync(id, entity);
+        UpdateAgencyStatusByUserDto updateAgencyStatusByUserDto = new UpdateAgencyStatusByUserDto();
 
-        response.Success = true;
-        response.Message = "Updating Successful";
-        return response;
+        updateAgencyStatusByUserDto.AgencyId = request.AgencyId;
+        updateAgencyStatusByUserDto.IsActive = request.IsActive;
+        updateAgencyStatusByUserDto.UpdatedBy = _currentUserService.UserId;
+        updateAgencyStatusByUserDto.UpdatedDate = _dateTime.Now;
+
+        var result = await _userRepository.UpdateUserByAgencyAsync(id, updateAgencyStatusByUserDto);
+
+        if (result)
+        {
+            await _agencyRepository.UpdateAgencyStatusAsync(id, updateAgencyStatusByUserDto);
+            response.Success = true;
+            response.Message = "Updating Successful";
+            return response;
+        }
+        else
+        {
+            response.Success = false;
+            response.Message = "Updating Faild";
+            return response;
+        }
+
     }
 
     public async Task<BaseCommandResponse> DeleteAgencyAsync(long id)
@@ -160,10 +176,20 @@ internal class AgencyService : IAgencyService
             throw new NotFoundException(nameof(User), id.ToString());
         }
 
-        await _agencyRepository.DeleteAgencyAsync(id);
+        var result = await _userRepository.DeleteUserByAgencyAsync(id);
 
-        response.Success = true;
-        response.Message = "Deleting Successful";
-        return response;
+        if (result)
+        {
+            await _agencyRepository.DeleteAgencyAsync(id);
+
+            response.Success = true;
+            response.Message = "Deleting Successful";
+            return response;
+        }
+        else {
+            response.Success = false;
+            response.Message = "Deleting Faild";
+            return response;
+        }
     }
 }
