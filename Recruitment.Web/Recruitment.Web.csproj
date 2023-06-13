@@ -128,6 +128,14 @@
     <None Include="src\app\pages\Recruiter\manage-recruiter\manage-recruiter.component.scss" />
     <None Include="src\app\pages\Recruiter\manage-role\manage-role.component.scss" />
     <Content Include="src\assets\css\styles.css" />
+    <None Include="src\scss\styles.scss" />
+    <None Include="src\scss\_charts.scss" />
+    <None Include="src\scss\_custom.scss" />
+    <None Include="src\scss\_examples.scss" />
+    <None Include="src\scss\_fixes.scss" />
+    <None Include="src\scss\_layout.scss" />
+    <None Include="src\scss\_scrollbar.scss" />
+    <None Include="src\scss\_variables.scss" />
     <None Include="tsconfig.app.json" />
     <None Include="tsconfig.json" />
   </ItemGroup>
