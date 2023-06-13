@@ -1,13 +1,12 @@
-<p-table #dt
-         [value]="emailTypes"
-         [rows]="10"
-         [paginator]="true"
-         [tableStyle]="{ 'min-width': '75rem' }"
-         [rowHover]="true"
+<p-table [value]="emailTypes"
          dataKey="id"
-         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         [paginator]="true"
+         [rows]="10"
          [showCurrentPageReport]="true"
-         styleClass="mystyle">
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         [tableStyle]="{ 'min-width': '50rem' }"
+         [rowHover]="true"
+         [rowsPerPageOptions]="[10, 25, 50]">
     <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">
             <h5>Email Type Information</h5>
@@ -31,5 +30,11 @@
                 <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
             </td>
         </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+        <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+        <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
     </ng-template>
 </p-table>

@@ -17,20 +17,7 @@ export class EmailTypeComponent implements OnInit {
 
     ngOnInit() {
         this.getEmailTypes();
-    }
-
-    //getEmailTypes() {
-    //    this.emailTypeService.getEmailTypes().subscribe({
-    //        next: (res) => {
-    //            console.log(res);
-    //        },
-    //        error: (err) => {
-    //        },
-    //        complete: () => {
-    //        }
-    //    });
-
-    //}
+    }    
 
     getEmailTypes() {
         this.emailTypeService.getEmailTypes().subscribe({
@@ -45,7 +32,6 @@ export class EmailTypeComponent implements OnInit {
             complete: () => {
             }
         });
-
     }
 
 }

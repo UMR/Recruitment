@@ -1,3 +1,37 @@
 ﻿@import "primeng/resources/primeng.css";
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeicons/primeicons.css";
+
+
+/*************************** Primeng-Table /***************************/
+
+.p-datatable .p-datatable-header {
+    padding: 0.7rem 1rem;
+    background-color: #3c4b64;
+    color:#ffffff;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+    padding: 0.5rem 1rem;    
+}
+
+.p-datatable .p-datatable-tbody > tr > td {    
+    border: 1px solid #dee2e6;
+    border-width: 0 0 1px 0;
+    padding: 0.5rem 1rem;    
+}
+
+host :: ng-deep .p-paginator {
+    padding: 0 1rem;
+    color: red !important;
+}
+
+.p-button.p-button-icon-only.p-button-rounded {
+    border-radius: 50%;    
+    height: 2rem;
+}
+
+.p-button.p-button-icon-only {
+    width: 2rem;
+    padding: 0.75rem 0;
+}
