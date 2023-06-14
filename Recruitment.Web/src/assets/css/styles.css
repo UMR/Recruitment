@@ -8,24 +8,28 @@
 .p-datatable .p-datatable-header {
     padding: 0.5rem 1rem;
     background-color: #3c4b64;
-    color:#ffffff;
+    color: #ffffff;
 }
 
 .p-datatable .p-datatable-thead > tr > th {
-    padding: 0.5rem 1rem;    
+    padding: 0.5rem 1rem;
 }
 
-.p-datatable .p-datatable-tbody > tr > td {    
+.p-datatable .p-datatable-tbody > tr > td {
     border: 1px solid #dee2e6;
     border-width: 0 0 1px 0;
-    padding: 0.1rem 1rem;    
+    padding: 0.1rem 1rem;
 }
 
 /*************************** Primeng-p-paginator ***************************/
 
-.p-paginator {    
-    padding: 0.1rem 1rem;    
+.p-paginator {
+    padding: 0.1rem 1rem;
 }
+
+    .p-paginator .p-dropdown {
+        border-radius: 0;
+    }
 
 /*************************** Primeng-p-button ***************************/
 
@@ -37,21 +41,21 @@
     font-size: 1rem;
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
     border-radius: 0px;
-} 
-
-.p-button.p-button-icon-only.p-button-rounded {
-    border-radius: 50%;    
-    height: 2rem;
 }
 
-.p-button.p-button-icon-only {
-    width: 2rem;
-    padding: 0.75rem 0;
-}
+    .p-button.p-button-icon-only.p-button-rounded {
+        border-radius: 50%;
+        height: 2rem;
+    }
+
+    .p-button.p-button-icon-only {
+        width: 2rem;
+        padding: 0.75rem 0;
+    }
 
 /*************************** Primeng-p-dropdown ***************************/
 
-.p-dropdown .p-dropdown-trigger {   
+.p-dropdown .p-dropdown-trigger {
     width: 2rem;
-    border-radius: 0px;     
+    border-radius: 0px;
 }
