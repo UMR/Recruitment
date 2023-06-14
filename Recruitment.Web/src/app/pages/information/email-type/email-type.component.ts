@@ -24,7 +24,11 @@ export class EmailTypeComponent implements OnInit {
         this.visibleAddEditEmailTypeDialog = true;
     }
 
-    addEditEmailType(): void {
+    editEmailType() {
+        this.visibleAddEditEmailTypeDialog = true;
+    }
+
+    saveEmailType(): void {
         this.visibleAddEditEmailTypeDialog = false;
     }
 
