@@ -4,25 +4,33 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { EmailTypeService } from './email-type.service';
 
 @Component({
-  selector: 'app-email-type',
-  templateUrl: './email-type.component.html',
-  styleUrls: ['./email-type.component.scss']
+    selector: 'app-email-type',
+    templateUrl: './email-type.component.html',
+    styleUrls: ['./email-type.component.scss']
 })
 export class EmailTypeComponent implements OnInit {
 
-    public emailTypes = [];
+    public emailTypes: any[] = [];
+    public visibleAddEditEmailTypeDialog: boolean = false;
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
         private emailTypeService: EmailTypeService) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.getEmailTypes();
-    }    
+    }
+
+    addEmailType(): void {
+        this.visibleAddEditEmailTypeDialog = true;
+    }
+
+    addEditEmailType(): void {
+        this.visibleAddEditEmailTypeDialog = false;
+    }
 
     getEmailTypes() {
         this.emailTypeService.getEmailTypes().subscribe({
-            next: (res) => {
-                console.log(res);
+            next: (res) => {                
                 this.emailTypes = res.body;
                 console.log(this.emailTypes);
             },

@@ -18,7 +18,7 @@
 .p-datatable .p-datatable-tbody > tr > td {    
     border: 1px solid #dee2e6;
     border-width: 0 0 1px 0;
-    padding: 0.3rem 1rem;    
+    padding: 0.1rem 1rem;    
 }
 
 /*************************** Primeng-p-paginator ***************************/

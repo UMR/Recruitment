@@ -1,5 +1,9 @@
-<p-table #dt
-         [value]="agencys"
+<div class="grid">
+    <div class="col-12">
+        <button pButton pRipple label="Add New" class="p-button-success" (click)="openNewAgency()"></button>
+    </div>
+</div>
+<p-table [value]="agencys"
          [rows]="10"
          [paginator]="true"
          [tableStyle]="{ 'min-width': '75rem' }"
@@ -9,8 +13,7 @@
          [showCurrentPageReport]="true"
          styleClass="mystyle">
     <ng-template pTemplate="caption">
-        <div class="flex align-items-center justify-content-between">
-            <button class="add-new-btn" (click)="openNewAgency()">Add New</button>
+        <div class="flex align-items-center justify-content-between">            
             <h5 style="width:300px">Agency Information</h5>
         </div>
     </ng-template>
