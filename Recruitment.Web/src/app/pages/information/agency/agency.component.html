@@ -11,7 +11,7 @@
          dataKey="agencyId"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
          [showCurrentPageReport]="true"
-         styleClass="mystyle">
+         [rowsPerPageOptions]="[10, 25, 50]">
     <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">            
             <h5 style="width:300px">Agency Information</h5>
