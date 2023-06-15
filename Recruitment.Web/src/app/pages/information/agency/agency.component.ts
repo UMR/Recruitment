@@ -24,13 +24,13 @@ export class AgencyComponent {
         this.getAllAgency();
     }
 
-    editProduct(agency: AgencyModel) {
+    editAgency(agency: AgencyModel) {
         this.addEditTxt = "Edit";
         this.agency = { ...agency };
         this.agencyDialog = true;
     }
 
-    deleteProduct(product: AgencyModel) {
+    deleteAgency(product: AgencyModel) {
         this.confirmationService.confirm({
             message: 'Are you sure you want to delete ' + product.agencyName + ' agency ?',
             header: 'Confirm',
@@ -48,7 +48,7 @@ export class AgencyComponent {
             }
         });
     }
-    saveProduct() {
+    saveAgency() {
         this.submitted = true;
 
         if (this.agency.agencyName.trim()) {

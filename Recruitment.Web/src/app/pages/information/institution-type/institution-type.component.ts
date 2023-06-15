@@ -10,7 +10,9 @@ import { InstitutionTypeService } from './institution-type.service';
 export class InstitutionTypeComponent {
 
     public institutionTypes: any[] = [];
-    public visibleAddEditInstitutionTypeDialog: boolean = false;
+    public institutionTypeDialog: boolean = false;
+    public addEditTxt = "Add";
+    public submitted = false;
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
         private institutionTypeService: InstitutionTypeService) { }
@@ -20,15 +22,20 @@ export class InstitutionTypeComponent {
     }
 
    addInstitutionType(): void {
-       this.visibleAddEditInstitutionTypeDialog = true;
+       this.institutionTypeDialog = true;
     }
 
     editInstitutionType() {
-        this.visibleAddEditInstitutionTypeDialog = true;
+        this.institutionTypeDialog = true;
     }
 
     saveInstitutionType(): void {
-        this.visibleAddEditInstitutionTypeDialog = false;
+        this.institutionTypeDialog = false;
+    }
+
+    hideAddEditDialog() {
+        this.institutionTypeDialog = false;
+        this.submitted = false;
     }
 
     getInstitutionTypes() {
