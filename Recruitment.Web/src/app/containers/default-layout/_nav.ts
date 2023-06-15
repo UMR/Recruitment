@@ -168,7 +168,7 @@ export const navItems: INavData[] = [
             },
             {
                 name: 'Zip Code',
-                url: '/information/institution-type'
+                url: '/information/zip-code'
             },
             {
                 name: 'Country',
