@@ -47,18 +47,4 @@
     box-shadow: none;
     border-color: black;
 }
-:host ::ng-deep.p-dialog .p-dialog-header {
-    background: #343a40;
-    color: #ffffff;
-    padding: .5rem;
-    border-radius: 0px;
-}
 
-:host ::ng-deep .p-dialog .p-dialog-footer {
-    border-top: 0 none;
-    background: #ffffff;
-    color: #495057;
-    padding: 0 1rem 1rem 1rem;
-    text-align: right;
-    border-radius: 0px;
-}
