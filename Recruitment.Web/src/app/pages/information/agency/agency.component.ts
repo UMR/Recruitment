@@ -30,16 +30,16 @@ export class AgencyComponent {
         this.agencyDialog = true;
     }
 
-    deleteAgency(product: AgencyModel) {
+    deleteAgency(agency: AgencyModel) {
         this.confirmationService.confirm({
-            message: 'Are you sure you want to delete ' + product.agencyName + ' agency ?',
+            message: 'Are you sure you want to delete ' + agency.agencyName + ' agency ?',
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.agencyService.deleteAgency(product.agencyId).subscribe(res => {
+                this.agencyService.deleteAgency(agency.agencyId).subscribe(res => {
                     console.log(res);
                     if (res && res.body) {
-                        this.agencys = this.agencys.filter((val) => val.agencyId !== product.agencyId);
+                        this.agencys = this.agencys.filter((val) => val.agencyId !== agency.agencyId);
                         this.agency = {};
                         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Deleted', life: 3000 });
                     }

@@ -11,19 +11,23 @@ import { DialogModule } from 'primeng/dialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { InstitutionTypeService } from './institution-type.service';
 import { FormsModule } from '@angular/forms';
+import { InputMaskModule } from 'primeng/inputmask';
+import { KeyFilterModule } from 'primeng/keyfilter';
 
 @NgModule({
-  declarations: [
-    InstitutionTypeComponent
-  ],
-  imports: [
+    declarations: [
+        InstitutionTypeComponent
+    ],
+    imports: [
         CommonModule,
         InstitutionTypeRoutingModule,
         TableModule,
         ToastModule,
         ConfirmDialogModule,
         FormsModule,
-        DialogModule
+        DialogModule,
+        InputMaskModule,
+        KeyFilterModule
     ],
     providers: [ConfirmationService, MessageService, InstitutionTypeService]
 })

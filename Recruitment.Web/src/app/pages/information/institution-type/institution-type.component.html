@@ -29,8 +29,8 @@
             <td>{{ institutionType.instituteType }}</td>
             <td>{{ institutionType.description }}</td>
             <td>
-                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editInstitutionType()"></button>
-                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editInstitutionType(institutionType)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteInstitute(institutionType)"></button>
             </td>
         </tr>
     </ng-template>
@@ -38,15 +38,15 @@
 
 <p-dialog [(visible)]="institutionTypeDialog" [style]="{ width: '450px' }" header="{{addEditTxt}} Institution Type" [modal]="true" [draggable]="false" [resizable]="false">
     <ng-template pTemplate="content">
-        <!--<div class="field">
-            <label for="agencyName">Institution Type</label>
-            <input type="text" pInputText id="agencyName" [(ngModel)]="institutionType.agencyName" required autofocus maxlength="100" />
-            <small class="p-error" *ngIf="submitted && !institutionType.agencyName">Agency Name is required.</small>
+        <div class="field">
+            <label for="instituteType">Institution Type</label>
+            <input type="text" pInputText id="instituteType" [(ngModel)]="institutionType.instituteType" required autofocus maxlength="100" />
+            <small class="p-error" *ngIf="submitted && !institutionType.instituteType">Agency Name is required.</small>
         </div>
         <div class="field">
-            <label for="urlPrefix">Abbreviation</label>
-            <input pInputText [(ngModel)]="institutionType.urlPrefix" [pKeyFilter]="'alpha'" id="urlPrefix" maxlength="50" />
-        </div>-->
+            <label for="des">Abbreviation</label>
+            <input pInputText [(ngModel)]="institutionType.description" [pKeyFilter]="'alpha'" id="des" maxlength="50" />
+        </div>
     </ng-template>
 
     <ng-template pTemplate="footer">
