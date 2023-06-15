@@ -60,7 +60,7 @@
     border-radius: 0px;
 }
 
-/*************************** Primeng-p-modal css ***************************/
+/*************************** Primeng-p-dialog css ***************************/
 
 .p-dialog .p-dialog-header {
     background: #3c4b64;
@@ -70,10 +70,13 @@
 }
 
 .p-dialog .p-dialog-footer {
-    border-top: 0 none;
-    background: #ffffff;
-    color: #495057;
-    padding: 0 1rem 1rem 1rem;
-    text-align: right;
+    background: #EBEDEF;
+    padding: 0 0 3px 0;
     border-radius: 0px;
+}
+
+.p-modal-save-btn {
+    background: #22C55E !important;
+    color:#ffffff !important;
+    padding-top:5px !important;
 }
