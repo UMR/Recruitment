@@ -8,6 +8,7 @@ public static class ConfigureServices
         builder.Services.AddScoped<IMenuRepository, MenuRepository>();
         builder.Services.AddScoped<IAgencyRepository, AgencyRepository>();
         builder.Services.AddScoped<IEmailTypeRepository, EmailTypeRepository>();
+        builder.Services.AddScoped<IInstitutionTypeRepository, InstitutionTypeRepository>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
 
         return builder;

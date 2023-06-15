@@ -120,8 +120,8 @@ namespace Recruitment.Domain.Entities
             InstituteCreatedByNavigations = new HashSet<Institute>();
             InstituteNameCreatedByNavigations = new HashSet<InstituteName>();
             InstituteNameUpdatedByNavigations = new HashSet<InstituteName>();
-            InstituteTypeCreatedByNavigations = new HashSet<InstituteType>();
-            InstituteTypeUpdatedByNavigations = new HashSet<InstituteType>();
+            InstituteTypeCreatedByNavigations = new HashSet<InstituteTypeTable>();
+            InstituteTypeUpdatedByNavigations = new HashSet<InstituteTypeTable>();
             InstituteUpdatedByNavigations = new HashSet<Institute>();
             InstitutionLocationCreatedByNavigations = new HashSet<InstitutionLocation>();
             InstitutionLocationUpdatedByNavigations = new HashSet<InstitutionLocation>();
@@ -391,8 +391,8 @@ namespace Recruitment.Domain.Entities
         public virtual ICollection<Institute> InstituteCreatedByNavigations { get; set; }
         public virtual ICollection<InstituteName> InstituteNameCreatedByNavigations { get; set; }
         public virtual ICollection<InstituteName> InstituteNameUpdatedByNavigations { get; set; }
-        public virtual ICollection<InstituteType> InstituteTypeCreatedByNavigations { get; set; }
-        public virtual ICollection<InstituteType> InstituteTypeUpdatedByNavigations { get; set; }
+        public virtual ICollection<InstituteTypeTable> InstituteTypeCreatedByNavigations { get; set; }
+        public virtual ICollection<InstituteTypeTable> InstituteTypeUpdatedByNavigations { get; set; }
         public virtual ICollection<Institute> InstituteUpdatedByNavigations { get; set; }
         public virtual ICollection<InstitutionLocation> InstitutionLocationCreatedByNavigations { get; set; }
         public virtual ICollection<InstitutionLocation> InstitutionLocationUpdatedByNavigations { get; set; }

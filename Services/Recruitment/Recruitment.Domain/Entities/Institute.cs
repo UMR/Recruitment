@@ -55,7 +55,7 @@ namespace Recruitment.Domain.Entities
 
         public virtual Country? Country { get; set; }
         public virtual User? CreatedByNavigation { get; set; }
-        public virtual InstituteType InstituteType { get; set; } = null!;
+        public virtual InstituteTypeTable InstituteType { get; set; } = null!;
         public virtual Institute? Parent { get; set; }
         public virtual State? StateNavigation { get; set; }
         public virtual User? UpdatedByNavigation { get; set; }

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace Recruitment.Domain.Entities
 {
-    public partial class InstituteType
+    public partial class InstituteTypeTable
     {
-        public InstituteType()
+        public InstituteTypeTable()
         {
             Institutes = new HashSet<Institute>();
         }
 
         public int InstituteTypeId { get; set; }
-        public string InstituteType1 { get; set; } = null!;
+        public string InstituteType { get; set; } = null!;
         public string? Description { get; set; }
         public int? CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }

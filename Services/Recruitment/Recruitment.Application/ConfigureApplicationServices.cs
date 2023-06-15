@@ -1,4 +1,6 @@
-﻿namespace Recruitment.Application;
+﻿using Recruitment.Application.Features.InstitutionTypes;
+
+namespace Recruitment.Application;
 
 public static class ConfigureServices
 {
@@ -13,6 +15,7 @@ public static class ConfigureServices
         builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
         builder.Services.AddTransient<IAgencyService, AgencyService>();
         builder.Services.AddTransient<IEmailTypeService, EmailTypeService>();
+        builder.Services.AddTransient<IInstitutionTypeService, InstitutionTypeService>();
         builder.Services.AddTransient<IMenuService, MenuService>();
 
         return builder;

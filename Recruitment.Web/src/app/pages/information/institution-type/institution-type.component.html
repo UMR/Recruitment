@@ -4,7 +4,7 @@
     </div>
 </div>
 <p-table [value]="institutionTypes"
-         dataKey="id"
+         dataKey="InstituteTypeId"
          [paginator]="true"
          [rows]="10"
          [showCurrentPageReport]="true"
@@ -26,8 +26,8 @@
     </ng-template>
     <ng-template pTemplate="body" let-institutionType>
         <tr>
-            <td>{{ institutionType.type }}</td>
-            <td>{{ institutionType.abbreviation }}</td>
+            <td>{{ institutionType.instituteType }}</td>
+            <td>{{ institutionType.description }}</td>
             <td>
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editInstitutionType()"></button>
                 <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
