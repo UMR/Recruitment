@@ -37,6 +37,10 @@ const routes: Routes = [
                 path: 'information/institution-type',
                 loadChildren: () => import('./pages/information/institution-type/institution-type.module').then((m) => m.InstitutionTypeModule)
             },
+            {
+                path: 'information/contact-information',
+                loadChildren: () => import('./pages/information/contact-info/contact-info.module').then((m) => m.ContactInfoModule)
+            },
         ]
     },
     {

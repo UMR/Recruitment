@@ -51,6 +51,7 @@
     <Content Include="src\app\pages\information\agency\agency.component.html" />
     <Content Include="src\app\login\login.component.html" />
     <Content Include="src\app\page-not-found\page-not-found.component.html" />
+    <Content Include="src\app\pages\information\contact-info\contact-info.component.html" />
     <Content Include="src\app\pages\information\email-type\email-type.component.html" />
     <Content Include="src\app\pages\information\institution-type\institution-type.component.html" />
     <Content Include="src\app\pages\Recruiter\manage-recruiter\manage-recruiter.component.html" />
@@ -82,6 +83,12 @@
     <TypeScriptCompile Include="src\app\dashboard\dashboard-routing.module.ts" />
     <TypeScriptCompile Include="src\app\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="src\app\dashboard\dashboard.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\contact-info\contact-info-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\contact-info\contact-info.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\contact-info\contact-info.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\contact-info\contact-info.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\contact-info\contact-info.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\contact-info\contact-info.service.ts" />
     <TypeScriptCompile Include="src\app\pages\information\email-type\email-type.service.ts" />
     <TypeScriptCompile Include="src\app\pages\information\email-type\email-type-routing.module.ts" />
     <TypeScriptCompile Include="src\app\pages\information\email-type\email-type.component.spec.ts" />
@@ -131,6 +138,7 @@
     <Content Include="src\app\pages\information\agency\agency.component.css" />
     <None Include="src\app\login\login.component.scss" />
     <None Include="src\app\page-not-found\page-not-found.component.scss" />
+    <None Include="src\app\pages\information\contact-info\contact-info.component.scss" />
     <None Include="src\app\pages\information\email-type\email-type.component.scss" />
     <None Include="src\app\pages\information\institution-type\institution-type.component.scss" />
     <None Include="src\app\pages\Recruiter\manage-recruiter\manage-recruiter.component.scss" />

@@ -1,9 +1,9 @@
 <div class="grid">
     <div class="col-12">
-        <button pButton pRipple label="Add New" class="p-button-success" (click)="addInstitutionType()"></button>
+        <button pButton pRipple label="Add New" class="p-button-success" (click)="addContactInfo()"></button>
     </div>
 </div>
-<p-table [value]="institutionTypes"
+<p-table [value]="contactInformations"
          dataKey="id"
          [paginator]="true"
          [rows]="10"
@@ -14,29 +14,33 @@
          [rowsPerPageOptions]="[10, 25, 50]">
     <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">
-            <h5 style="text-align:center">Institution Type Information</h5>
+            <h5 style="text-align:center">Contact Information</h5>
         </div>
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>Institution Type</th>
-            <th>Abbreviation</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Institution Name</th>
             <th>Action</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-institutionType>
+    <ng-template pTemplate="body" let-contactInfo>
         <tr>
-            <td>{{ institutionType.type }}</td>
-            <td>{{ institutionType.abbreviation }}</td>
+            <td>{{ contactInfo.name }}</td>
+            <td>{{ contactInfo.address }}</td>
+            <td>{{ contactInfo.email}}</td>
+            <td>{{ contactInfo.institutionName}}</td>
             <td>
-                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editInstitutionType()"></button>
-                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editContactInfo(contactInfo)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteContactInfo(contactInfo)"></button>
             </td>
         </tr>
     </ng-template>
 </p-table>
 
-<p-dialog [(visible)]="institutionTypeDialog" [style]="{ width: '450px' }" header="{{addEditTxt}} Institution Type" [modal]="true" [draggable]="false" [resizable]="false">
+<p-dialog [(visible)]="contactInfoDialog" [style]="{ width: '450px' }" header="{{addEditTxt}} Contact Information" [modal]="true" [draggable]="false" [resizable]="false">
     <ng-template pTemplate="content">
         <!--<div class="field">
             <label for="agencyName">Institution Type</label>
@@ -51,7 +55,7 @@
 
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideAddEditDialog()"></button>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveInstitutionType()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveContactInfo()"></button>
     </ng-template>
 </p-dialog>
 
