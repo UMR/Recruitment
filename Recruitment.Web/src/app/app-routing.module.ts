@@ -33,6 +33,10 @@ const routes: Routes = [
                 path: 'information/email-types',
                 loadChildren: () => import('./pages/information/email-type/email-type.module').then((m) => m.EmailTypeModule)
             },
+            {
+                path: 'information/institution-type',
+                loadChildren: () => import('./pages/information/institution-type/institution-type.module').then((m) => m.InstitutionTypeModule)
+            },
         ]
     },
     {

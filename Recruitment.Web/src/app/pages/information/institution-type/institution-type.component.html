@@ -1,0 +1,45 @@
+<div class="grid">
+    <div class="col-12">
+        <button pButton pRipple label="Add New" class="p-button-success" (click)="addInstitutionType()"></button>
+    </div>
+</div>
+<p-table [value]="institutionTypes"
+         dataKey="id"
+         [paginator]="true"
+         [rows]="10"
+         [showCurrentPageReport]="true"
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         [tableStyle]="{ 'min-width': '50rem' }"
+         [rowHover]="true"
+         [rowsPerPageOptions]="[10, 25, 50]">
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            <h5 style="text-align:center">Institution Type Information</h5>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Institution Type</th>
+            <th>Abbreviation</th>
+            <th>Action</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-institutionType>
+        <tr>
+            <td>{{ institutionType.type }}</td>
+            <td>{{ institutionType.isOfficial === 'true' ? 'Yes' : 'No' }}</td>
+            <td>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editInstitutionType()"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-dialog header="Header" [(visible)]="visibleAddEditInstitutionTypeDialog" [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
+    <div class="grid">
+        <div class="col-12">
+            <button pButton pRipple label="Save" class="p-button-success" (click)="saveInstitutionType()"></button>
+        </div>
+    </div>
+</p-dialog>
