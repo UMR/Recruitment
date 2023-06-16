@@ -1,6 +1,6 @@
 <div class="grid">
     <div class="col-12">
-        <button pButton pRipple label="Add New" class="p-button-success" (click)="addEmailType()"></button>
+        <button pButton pRipple label="Add New" class="p-button-success" (click)="onAdd()"></button>
     </div>
 </div>
 <p-table [value]="emailTypes"
@@ -31,14 +31,14 @@
             <td>{{ emailType.isPersonal === 'true' ? 'Yes' : 'No' }}</td>
             <td>{{ emailType.isOfficial === 'true' ? 'Yes' : 'No' }}</td>
             <td>
-                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editEmailType()"></button>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="onEdit()"></button>
                 <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
             </td>
         </tr>
     </ng-template>
 </p-table>
 
-<p-dialog [(visible)]="visibleAddEditEmailTypeDialog" [style]="{width: '30vw'}" [draggable]="false" [resizable]="false">
+<p-dialog [(visible)]="visibleDialog" [style]="{width: '30vw'}" [draggable]="false" [resizable]="false">
     <ng-template pTemplate="header">
         <span class="text-xl font-bold p-panel-header">Add Edit Email Type</span>
     </ng-template>
@@ -63,9 +63,9 @@
     <ng-template pTemplate="footer" class="p-panel-header">
         <div class="grid">
             <div class="col-12">
-                <button pButton pRipple label="Cancel" class="p-button-info"></button>
-                <button pButton pRipple label="Clear" class="p-button-secondary"></button>
-                <button pButton pRipple label="Save" class="p-button-success" (click)="saveEmailType()"></button>
+                <button pButton pRipple label="Cancel" class="p-button-info" (click)="onCancel()"></button>
+                <button pButton pRipple label="Clear" class="p-button-secondary" (click)="onClear()"></button>
+                <button pButton pRipple label="Save" class="p-button-success" (click)="onSave()"></button>
             </div>
         </div>
     </ng-template>
