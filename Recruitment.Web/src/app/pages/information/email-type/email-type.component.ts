@@ -11,7 +11,7 @@ import { EmailTypeService } from './email-type.service';
 export class EmailTypeComponent implements OnInit {
 
     public emailTypes: any[] = [];
-    public visibleAddEditEmailTypeDialog: boolean = false;
+    public visibleDialog: boolean = false;
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
         private emailTypeService: EmailTypeService) { }
@@ -20,23 +20,30 @@ export class EmailTypeComponent implements OnInit {
         this.getEmailTypes();
     }
 
-    addEmailType(): void {
-        this.visibleAddEditEmailTypeDialog = true;
+    onAdd(): void {
+        this.visibleDialog = true;
     }
 
-    editEmailType() {
-        this.visibleAddEditEmailTypeDialog = true;
+    onEdit() {
+        this.visibleDialog = true;
     }
 
-    saveEmailType(): void {
-        this.visibleAddEditEmailTypeDialog = false;
+    onCancel() {
+        this.visibleDialog = false;
+    }
+
+    onClear() {
+        
+    }
+
+    onSave(): void {
+        this.visibleDialog = false;
     }
 
     getEmailTypes() {
         this.emailTypeService.getEmailTypes().subscribe({
             next: (res) => {                
-                this.emailTypes = res.body;
-                console.log(this.emailTypes);
+                this.emailTypes = res.body;                
             },
             error: (err) => {
                 console.log(err);
