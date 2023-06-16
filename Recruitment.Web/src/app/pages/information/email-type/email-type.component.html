@@ -43,18 +43,19 @@
         <span class="text-xl font-bold p-panel-header">Add Edit Email Type</span>
     </ng-template>
     <ng-template pTemplate="content">
-        <form>
+        <form [formGroup]="formGroup">
             <div class="grid">
                 <div class="col-12">
                     <label for="emailType" class="font-bold block mb-2 mt-2">Email Type</label>
-                    <input type="text" pInputText id="emailType" required autofocus maxlength="100" />
+                    <input type="text" pInputText id="emailType" formControlName="emailType" required autofocus maxlength="100" />
+                    <small class="p-error" *ngIf="submitted && f['emailType'].errors">Email Type is required.</small>
                 </div>
                 <div class="col-12">
-                    <p-checkbox value="IsPersonal" inputId="isPersonal" class="mr-2"></p-checkbox>
+                    <p-checkbox inputId="isPersonal" formControlName="isPersonal" class="mr-2"></p-checkbox>
                     <label for="isPersonal">Is Personal</label>
                 </div>
                 <div class="col-12">
-                    <p-checkbox value="Is Official" inputId="isOfficial" class="mr-2"></p-checkbox>
+                    <p-checkbox inputId="isOfficial" formControlName="isOfficial" class="mr-2"></p-checkbox>
                     <label for="isOfficial">Is Official</label>
                 </div>
             </div>

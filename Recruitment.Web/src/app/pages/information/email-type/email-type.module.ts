@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { EmailTypeRoutingModule } from './email-type-routing.module';
 import { EmailTypeComponent } from './email-type.component';
@@ -11,7 +11,6 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
-import { PanelModule } from 'primeng/panel';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 @NgModule({
@@ -21,13 +20,13 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     imports: [
         CommonModule,
         EmailTypeRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
         TableModule,
         ToastModule,
         ConfirmDialogModule,
-        CheckboxModule,
-        FormsModule,
-        DialogModule,
-        PanelModule
+        CheckboxModule,        
+        DialogModule        
     ],
     providers: [ConfirmationService, MessageService, EmailTypeService]
 })
