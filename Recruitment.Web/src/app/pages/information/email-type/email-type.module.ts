@@ -11,6 +11,7 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
+import { PanelModule } from 'primeng/panel';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
         ConfirmDialogModule,
         CheckboxModule,
         FormsModule,
-        DialogModule
+        DialogModule,
+        PanelModule
     ],
     providers: [ConfirmationService, MessageService, EmailTypeService]
 })
