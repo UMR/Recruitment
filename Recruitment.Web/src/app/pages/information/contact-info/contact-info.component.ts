@@ -4,9 +4,9 @@ import { AgencyModel } from '../../../common/models/agency.model';
 import { ContactInfoService } from './contact-info.service';
 
 @Component({
-  selector: 'app-contact-info',
-  templateUrl: './contact-info.component.html',
-  styleUrls: ['./contact-info.component.scss']
+    selector: 'app-contact-info',
+    templateUrl: './contact-info.component.html',
+    styleUrls: ['./contact-info.component.scss']
 })
 export class ContactInfoComponent {
     contactInfoDialog: boolean = false;
@@ -14,12 +14,38 @@ export class ContactInfoComponent {
     contactInfo: any;
     submitted: boolean = false;
     addEditTxt: string = "Add";
+    showHideOpt: string = "Show";
+
+    applicantName: string = "";
+    designation: string = "";
+    address: string = "";
+    email: string = "";
+    institutionName: string = "";
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
-        private agencyService: ContactInfoService) { }
+        private contactService: ContactInfoService) { }
 
     ngOnInit() {
-        this.getAllAgency();
+        this.getAllContact();
+    }
+
+    onCloseAccordion() {
+        this.showHideOpt = "Show";
+    }
+    onOpenAccordion() {
+        this.showHideOpt = "Hide";
+    }
+
+    onClearClick() {
+        this.clear();   
+    }
+
+    clear() {
+        this.applicantName = "";
+        this.designation = "";
+        this.address = "";
+        this.email = "";
+        this.institutionName = "";
     }
 
     addContactInfo(): void {
@@ -34,16 +60,16 @@ export class ContactInfoComponent {
 
     deleteContactInfo(product: AgencyModel) {
         this.confirmationService.confirm({
-            message: 'Are you sure you want to delete ' + product.agencyName + ' agency ?',
+            message: 'Are you sure you want to delete ' + product.agencyName + ' contact ?',
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.agencyService.deleteContactInfo(product.agencyId).subscribe(res => {
+                this.contactService.deleteContactInfo(product.agencyId).subscribe(res => {
                     console.log(res);
                     if (res && res.body) {
                         this.contactInformations = this.contactInformations.filter((val) => val.agencyId !== product.agencyId);
                         this.contactInfo = {};
-                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Deleted', life: 3000 });
+                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Contact Deleted', life: 3000 });
                     }
                 }, err => { })
 
@@ -55,25 +81,23 @@ export class ContactInfoComponent {
 
         if (this.contactInfo.agencyName.trim()) {
             if (this.contactInfo.agencyId) {
-                //this.agencys[this.findIndexById(this.agency.agencyId)] = this.agency;
-                this.agencyService.updateContactInfo(this.contactInfo.agencyId, this.contactInfo).subscribe(res => {
+                this.contactService.updateContactInfo(this.contactInfo.agencyId, this.contactInfo).subscribe(res => {
                     console.log(res);
-                    this.getAllAgency();
-                    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Updated', life: 3000 });
+                    this.getAllContact();
+                    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Contact Updated', life: 3000 });
                 },
                     error => {
-                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Agency Updated Faild', life: 3000 });
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Contact Updated Faild', life: 3000 });
                     },
                     () => { })
 
             } else {
-                //this.agency.agencyId = this.createId();
-                this.agencyService.addContactInfo(this.contactInfo).subscribe(res => {
-                    this.getAllAgency();
-                    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Created', life: 3000 });
+                this.contactService.addContactInfo(this.contactInfo).subscribe(res => {
+                    this.getAllContact();
+                    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Contact Created', life: 3000 });
                 },
                     err => {
-                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Agency Created Faild', life: 3000 });
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Contact Created Faild', life: 3000 });
                     },
                     () => { })
 
@@ -83,17 +107,6 @@ export class ContactInfoComponent {
             this.contactInfoDialog = false;
             this.contactInfo = {};
         }
-    }
-    findIndexById(id: string): number {
-        let index = -1;
-        for (let i = 0; i < this.contactInformations.length; i++) {
-            if (this.contactInformations[i].agencyId.toString() === id) {
-                index = i;
-                break;
-            }
-        }
-
-        return index;
     }
 
     hideAddEditDialog() {
@@ -108,8 +121,8 @@ export class ContactInfoComponent {
         this.contactInfoDialog = true;
     }
 
-    getAllAgency() {
-        this.agencyService.getContactInformations().subscribe(
+    getAllContact() {
+        this.contactService.getContactInformations().subscribe(
             res => {
                 this.contactInformations = res.body;
                 console.log(res);
