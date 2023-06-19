@@ -13,21 +13,23 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ContactInfoService } from './contact-info.service';
+import { AccordionModule } from 'primeng/accordion';
 
 
 @NgModule({
-  declarations: [
-    ContactInfoComponent
-  ],
-  imports: [
-    CommonModule,
-      ContactInfoRoutingModule,
-      TableModule,
-      ToastModule,
-      ConfirmDialogModule,
-      CheckboxModule,
-      FormsModule,
-      DialogModule
+    declarations: [
+        ContactInfoComponent
+    ],
+    imports: [
+        CommonModule,
+        ContactInfoRoutingModule,
+        TableModule,
+        ToastModule,
+        ConfirmDialogModule,
+        CheckboxModule,
+        FormsModule,
+        DialogModule,
+        AccordionModule
     ],
     providers: [ConfirmationService, MessageService, ContactInfoService]
 })

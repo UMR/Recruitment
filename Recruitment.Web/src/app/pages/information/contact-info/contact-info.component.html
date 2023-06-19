@@ -6,6 +6,44 @@
         <button pButton pRipple icon="pi pi-history" label="Contact History" class="p-button-warning" (click)="addContactInfo()" style="margin:0 4px"></button>
     </div>
 </div>
+<p-accordion class="w-full">
+    <p-accordionTab>
+        <ng-template pTemplate="header">
+            <div class="flex align-items-center">
+                <span class="vertical-align-middle">Show Search options</span>
+                <i class="pi pi-search mr-2" style="float:right"></i>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="content">
+            <div class="row">
+                <div class="field col-md-2">
+                    <label for="agencyName">Applicant Name</label>
+                    <input type="text" pInputText id="agencyName" maxlength="100" />
+                </div>
+                <div class="field col-md-2">
+                    <label for="urlPrefix">Designation</label>
+                    <input pInputText id="urlPrefix" maxlength="50" />
+                </div>
+                <div class="field col-md-2">
+                    <label for="agencyEmail">Address</label>
+                    <input type="text" pInputText id="agencyEmail" maxlength="100" />
+                </div>
+                <div class="field col-md-2">
+                    <label for="agencyPhone">Email</label>
+                    <input type="text" pInputText id="agencyEmail" maxlength="100" />
+                </div>
+                <div class="field col-md-2">
+                    <label for="agencyAdress">Institution Name</label>
+                    <input type="text" pInputText id="agencyEmail" maxlength="100" />
+                </div>
+                <div class="field col-md-2">
+                    <button pButton pRipple label="Clear" icon="pi pi-times" class="p-button-text"></button>
+                    <button pButton pRipple label="Search" icon="pi pi-search" class="p-button-text p-button-success p-modal-save-btn"></button>
+                </div>
+            </div>
+        </ng-template>
+    </p-accordionTab>
+</p-accordion>
 <p-table [value]="contactInformations"
          dataKey="id"
          [paginator]="true"
