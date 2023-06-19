@@ -6,6 +6,7 @@ import { AuthService } from "../common/service/auth.service";
 @Injectable()
 export class LoginService {
     private http: HttpClient;
+    public redirectUrl = ""; 
 
     constructor(private authService: AuthService, private httpBackend: HttpBackend) {
         this.http = new HttpClient(httpBackend);

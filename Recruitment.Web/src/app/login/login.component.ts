@@ -12,6 +12,7 @@ import { LoginService } from './login.service';
 export class LoginComponent {
     public loginId: string = "";
     public password: string = "";
+   
 
     constructor(private router: Router, private loginService: LoginService) { }
     ngOnInit() {
@@ -27,6 +28,15 @@ export class LoginComponent {
             },
                 err => {
                     console.log(err);
+                },
+                () => {
+                    if (this.loginService.redirectUrl) {
+                        this.router.navigateByUrl(this.loginService.redirectUrl);
+                        this.loginService.redirectUrl = "";
+                    }
+                    else {
+                        this.router.navigate(['/']);
+                    }
                 }
             );
     }
