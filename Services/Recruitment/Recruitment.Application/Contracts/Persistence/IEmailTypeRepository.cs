@@ -6,6 +6,8 @@ public interface IEmailTypeRepository
 
     Task<EmailType> GetEmailTypeByIdAsync(int id);
 
+    Task<bool> IsExistEmailTypeAsync(string emailType, int? id = null);
+
     Task<int> CreateEmailTypeAsync(EmailType emailType);
 
     Task<bool> UpdateEmailTypeAsync(int id, EmailType emailType);

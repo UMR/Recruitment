@@ -4,7 +4,9 @@
     {
         Task<List<EmailTypeListDto>> GetEmailTypesAsync();
 
-        Task<EmailTypeListDto> GetEmailTypeByIdAsync(int id);        
+        Task<EmailTypeListDto> GetEmailTypeByIdAsync(int id);
+
+        Task<bool> IsExistEmailTypeAsync(string emailType, int? id = null);
 
         Task<BaseCommandResponse> CreateEmailTypeAsync(CreateEmailTypeDto request);        
 

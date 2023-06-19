@@ -47,7 +47,7 @@
             <div class="grid">
                 <div class="col-12">
                     <label for="emailType" class="font-bold block mb-2 mt-2">Email Type</label>
-                    <input type="text" pInputText id="emailType" formControlName="emailType" required autofocus maxlength="100" />
+                    <input type="text" pInputText id="emailType" formControlName="emailType" required maxlength="100" autofocus />
                     <small class="p-error" *ngIf="f['emailType'].errors">Email Type is required.</small>
                 </div>
                 <div class="col-12">

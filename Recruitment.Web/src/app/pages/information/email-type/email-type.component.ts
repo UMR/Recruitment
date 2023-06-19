@@ -11,8 +11,8 @@ import { EmailTypeService } from './email-type.service';
 export class EmailTypeComponent implements OnInit {
 
     public id: number = 0;
-    public emailTypes: any[] = [];    
-    public formGroup!: FormGroup;    
+    public emailTypes: any[] = [];
+    public formGroup!: FormGroup;
     public visibleDialog: boolean = false;
 
     constructor(private formBuilder: FormBuilder, private messageService: MessageService, private confirmationService: ConfirmationService,
@@ -33,19 +33,15 @@ export class EmailTypeComponent implements OnInit {
 
     get f() {
         return this.formGroup.controls;
-    }    
+    }
 
     onAdd(): void {
         this.id = 0;
-        this.formGroup.patchValue({
-            emailType: '',
-            isPersonal: '',
-            isOfficial: '',
-        });
+        this.formGroup.reset();
         this.visibleDialog = true;
     }
 
-    onEdit(emailType: any) {        
+    onEdit(emailType: any) {
         this.id = emailType.id;
         this.formGroup.patchValue({
             emailType: emailType.type,
@@ -55,11 +51,11 @@ export class EmailTypeComponent implements OnInit {
         this.visibleDialog = true;
     }
 
-    onCancel() {        
+    onCancel() {
         this.visibleDialog = false;
     }
 
-    onDelete(emailType: any) {        
+    onDelete(emailType: any) {
         this.confirmationService.confirm({
             message: 'Are you sure you want to delete ' + emailType.type + ' email type?',
             header: 'Confirm',
@@ -69,7 +65,7 @@ export class EmailTypeComponent implements OnInit {
                     next: (res) => {
                         console.log(res);
                         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Delete Successfull', life: 3000 });
-                        this.visibleDialog = false;                        
+                        this.visibleDialog = false;
                     },
                     error: (err) => {
                         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Delete Failed', life: 3000 });
@@ -81,11 +77,11 @@ export class EmailTypeComponent implements OnInit {
         });
     }
 
-    onClear() {        
+    onClear() {
         this.formGroup.reset();
     }
 
-    onSave(): void {        
+    onSave(): void {
         const model = {
             id: this.id,
             type: this.formGroup.controls['emailType'].value ? this.formGroup.controls['emailType'].value.trim() : null,
@@ -99,8 +95,12 @@ export class EmailTypeComponent implements OnInit {
                 this.emailTypeService.addEmailType(model).subscribe({
                     next: (res) => {
                         if (res.status === 200) {
-                            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Create Successfull', life: 3000 });
-                            this.visibleDialog = false;
+                            if ((res.body as any).success) {
+                                this.messageService.add({ severity: 'success', summary: 'Successful', detail: res.body.message, life: 3000 });
+                                this.visibleDialog = false;
+                            } else if (!(res.body as any).success) {
+                                this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.errors[0], life: 3000 });
+                            }
                         }
                     },
                     error: (err) => {
@@ -115,8 +115,12 @@ export class EmailTypeComponent implements OnInit {
                 this.emailTypeService.updateEmailType(this.id, model).subscribe({
                     next: (res) => {
                         if (res.status === 200) {
-                            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Update Successfull', life: 3000 });
-                            this.visibleDialog = false;
+                            if ((res.body as any).success) {
+                                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Update Successfull', life: 3000 });
+                                this.visibleDialog = false;
+                            } else if (!(res.body as any).success) {
+                                this.messageService.add({ severity: 'error', summary: 'Error', detail: (res.body as any).errors[0], life: 3000 });
+                            }
                         }
                     },
                     error: (err) => {

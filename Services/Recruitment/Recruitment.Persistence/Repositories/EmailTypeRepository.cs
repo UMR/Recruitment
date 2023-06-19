@@ -34,6 +34,30 @@ public class EmailTypeRepository : IEmailTypeRepository
         }
     }
 
+    public async Task<bool> IsExistEmailTypeAsync(string emailType, int? id = null)
+    {
+        var query = @"SELECT COUNT(*) FROM EmailTypes WHERE Type=@Type";
+
+        if (id != null)
+        {
+            query += " AND ID != @ID";
+        }
+
+        var parameters = new DynamicParameters();
+        parameters.Add("Type", emailType, DbType.String);
+
+        if (id is not null)
+        {
+            parameters.Add("ID", id, DbType.Int32);
+        }
+
+        using (IDbConnection conn = _dapperContext.CreateConnection)
+        {
+            var result = await conn.ExecuteScalarAsync<int>(query, parameters);
+            return result > 0 ? true : false;
+        }
+    }
+
     public async Task<int> CreateEmailTypeAsync(EmailType emailType)
     {
         var query = "INSERT INTO EmailTypes (Type, IsPersonal, IsOfficial, CreatedBy, CreatedDate) VALUES (@Type, @IsPersonal, @IsOfficial, @CreatedBy, @CreatedDate) " +

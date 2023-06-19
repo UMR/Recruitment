@@ -29,10 +29,15 @@ public class EmailTypeService : IEmailTypeService
         return emailTypeToReturn;
     }
 
+    public async Task<bool> IsExistEmailTypeAsync(string emailType, int? id = null)
+    {
+        return await _emailTypeRepository.IsExistEmailTypeAsync(emailType, id);
+    }
+
     public async Task<BaseCommandResponse> CreateEmailTypeAsync(CreateEmailTypeDto request)
     {
         var response = new BaseCommandResponse();
-        var validator = new CreateEmailTypeDtoValidator();
+        var validator = new CreateEmailTypeDtoValidator(this);
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.IsValid == false)
@@ -61,7 +66,7 @@ public class EmailTypeService : IEmailTypeService
     public async Task<BaseCommandResponse> UpdateEmailTypeAsync(int id, UpdateEmailTypeDto request)
     {
         var response = new BaseCommandResponse();
-        var validator = new UpdateEmailTypeDtoValidator();
+        var validator = new UpdateEmailTypeDtoValidator(this);
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.IsValid == false)
