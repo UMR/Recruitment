@@ -1,6 +1,9 @@
 <div class="grid">
     <div class="col-12">
-        <button pButton pRipple label="Add New" class="p-button-success" (click)="addContactInfo()"></button>
+        <button pButton pRipple icon="pi pi-plus" label="Add New" class="p-button-success" (click)="addContactInfo()" style="margin:0 4px 0 0"></button>
+        <button pButton pRipple icon="pi pi-user-edit" label="Edit Work Information" class="p-button-secondary" (click)="addContactInfo()" style="margin:0 4px"></button>
+        <button pButton pRipple icon="pi pi-align-justify" label="Contact Details" class="p-button-info" (click)="addContactInfo()" style="margin:0 4px"></button>
+        <button pButton pRipple icon="pi pi-history" label="Contact History" class="p-button-warning" (click)="addContactInfo()" style="margin:0 4px"></button>
     </div>
 </div>
 <p-table [value]="contactInformations"
