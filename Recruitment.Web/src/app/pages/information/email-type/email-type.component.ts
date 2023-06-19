@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
-
 import { EmailTypeService } from './email-type.service';
 
 @Component({
@@ -12,6 +11,7 @@ import { EmailTypeService } from './email-type.service';
 export class EmailTypeComponent implements OnInit {
 
     public emailTypes: any[] = [];
+    public id: number = 0;
     public formGroup!: FormGroup;
     public submitted: boolean = false;
     public visibleDialog: boolean = false;
@@ -34,18 +34,49 @@ export class EmailTypeComponent implements OnInit {
 
     get f() {
         return this.formGroup.controls;
-    }
+    }    
 
     onAdd(): void {
+        this.id = 0;
         this.visibleDialog = true;
     }
 
-    onEdit() {
+    onEdit(emailType: any) {
+        console.log(emailType);
+        this.id = emailType.id;
+        this.formGroup.patchValue({
+            emailType: emailType.type,
+            isPersonal: emailType.isPersonal ? 'isPersonal' : '',
+            isOfficial: emailType.isOfficial
+        });
         this.visibleDialog = true;
     }
 
     onCancel() {
+        this.id = 0;
         this.visibleDialog = false;
+    }
+
+    onDelete(emailType: any) {        
+        this.confirmationService.confirm({
+            message: 'Are you sure you want to delete ' + emailType.type + ' email type?',
+            header: 'Confirm',
+            icon: 'pi pi-exclamation-triangle',
+            accept: () => {
+                this.emailTypeService.deleteEmailType(emailType.id).subscribe({
+                    next: (res) => {
+                        console.log(res);
+                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Delete Successfull', life: 3000 });
+                        this.visibleDialog = false;                        
+                    },
+                    error: (err) => {
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Delete Failed', life: 3000 });
+                    },
+                    complete: () => {
+                    }
+                });
+            }
+        });
     }
 
     onClear() {
@@ -56,24 +87,42 @@ export class EmailTypeComponent implements OnInit {
     onSave(): void {
         this.submitted = true;
         const model = {
-            emailType: this.formGroup.controls['emailType'].value,
-            isPersonal: this.formGroup.controls['isPersonal'].value,
-            isOfficial: this.formGroup.controls['isOfficial'].value
+            id: this.id,
+            type: this.formGroup.controls['emailType'].value,
+            isPersonal: this.formGroup.controls['isPersonal'].value ? true : false,
+            isOfficial: this.formGroup.controls['isOfficial'].value ? true : false,
+        };
+
+        if (this.id === 0) {
+            this.emailTypeService.addEmailType(model).subscribe({
+                next: (res) => {
+                    if (res.status === 200) {
+                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Create Successfull', life: 3000 });
+                        this.visibleDialog = false;
+                    }
+                },
+                error: (err) => {
+                    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Created Failed', life: 3000 });
+                },
+                complete: () => { 
+                }
+            });
+        } else {
+            this.emailTypeService.updateEmailType(this.id, model).subscribe({
+                next: (res) => {
+                    if (res.status === 200) {
+                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Update Successfull', life: 3000 });  
+                        this.visibleDialog = false;
+                        this.id = 0;
+                    }
+                },
+                error: (err) => {
+                    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Update Failed', life: 3000 });
+                },
+                complete: () => {                    
+                }
+            });
         }
-
-        console.log(model);
-
-        this.emailTypeService.addEmailType(model).subscribe({
-            next: (res) => {
-                console.log(res);                
-                this.visibleDialog = false;
-            },
-            error: (err) => {
-                console.log(err);
-            },
-            complete: () => {                
-            }
-        });        
     }
 
     getEmailTypes() {

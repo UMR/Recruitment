@@ -28,11 +28,11 @@
     <ng-template pTemplate="body" let-emailType>
         <tr>
             <td>{{ emailType.type }}</td>
-            <td>{{ emailType.isPersonal === 'true' ? 'Yes' : 'No' }}</td>
-            <td>{{ emailType.isOfficial === 'true' ? 'Yes' : 'No' }}</td>
+            <td>{{ emailType.isPersonal === true ? 'Yes' : 'No' }}</td>
+            <td>{{ emailType.isOfficial === true ? 'Yes' : 'No' }}</td>
             <td>
-                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="onEdit()"></button>
-                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="onEdit(emailType)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="onDelete(emailType)"></button>
             </td>
         </tr>
     </ng-template>
@@ -51,11 +51,11 @@
                     <small class="p-error" *ngIf="submitted && f['emailType'].errors">Email Type is required.</small>
                 </div>
                 <div class="col-12">
-                    <p-checkbox inputId="isPersonal" formControlName="isPersonal" class="mr-2"></p-checkbox>
+                    <p-checkbox inputId="isPersonal" formControlName="isPersonal" value="isPersonal" [binary]="true"  class="mr-2"></p-checkbox>
                     <label for="isPersonal">Is Personal</label>
                 </div>
                 <div class="col-12">
-                    <p-checkbox inputId="isOfficial" formControlName="isOfficial" class="mr-2"></p-checkbox>
+                    <p-checkbox inputId="isOfficial" formControlName="isOfficial" value="isOfficial" [binary]="true"  class="mr-2"></p-checkbox>
                     <label for="isOfficial">Is Official</label>
                 </div>
             </div>
@@ -72,3 +72,6 @@
     </ng-template>
 
 </p-dialog>
+
+<p-toast></p-toast>
+<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
