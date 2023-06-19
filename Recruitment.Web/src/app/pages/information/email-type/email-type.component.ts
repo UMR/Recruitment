@@ -10,10 +10,9 @@ import { EmailTypeService } from './email-type.service';
 })
 export class EmailTypeComponent implements OnInit {
 
-    public emailTypes: any[] = [];
     public id: number = 0;
-    public formGroup!: FormGroup;
-    public submitted: boolean = false;
+    public emailTypes: any[] = [];    
+    public formGroup!: FormGroup;    
     public visibleDialog: boolean = false;
 
     constructor(private formBuilder: FormBuilder, private messageService: MessageService, private confirmationService: ConfirmationService,
@@ -38,22 +37,25 @@ export class EmailTypeComponent implements OnInit {
 
     onAdd(): void {
         this.id = 0;
-        this.visibleDialog = true;
-    }
-
-    onEdit(emailType: any) {
-        console.log(emailType);
-        this.id = emailType.id;
         this.formGroup.patchValue({
-            emailType: emailType.type,
-            isPersonal: emailType.isPersonal ? 'isPersonal' : '',
-            isOfficial: emailType.isOfficial
+            emailType: '',
+            isPersonal: '',
+            isOfficial: '',
         });
         this.visibleDialog = true;
     }
 
-    onCancel() {
-        this.id = 0;
+    onEdit(emailType: any) {        
+        this.id = emailType.id;
+        this.formGroup.patchValue({
+            emailType: emailType.type,
+            isPersonal: emailType.isPersonal ? true : '',
+            isOfficial: emailType.isOfficial ? true : '',
+        });
+        this.visibleDialog = true;
+    }
+
+    onCancel() {        
         this.visibleDialog = false;
     }
 
@@ -79,49 +81,53 @@ export class EmailTypeComponent implements OnInit {
         });
     }
 
-    onClear() {
-        this.submitted = false;
+    onClear() {        
         this.formGroup.reset();
     }
 
-    onSave(): void {
-        this.submitted = true;
+    onSave(): void {        
         const model = {
             id: this.id,
-            type: this.formGroup.controls['emailType'].value,
+            type: this.formGroup.controls['emailType'].value ? this.formGroup.controls['emailType'].value.trim() : null,
             isPersonal: this.formGroup.controls['isPersonal'].value ? true : false,
             isOfficial: this.formGroup.controls['isOfficial'].value ? true : false,
         };
 
-        if (this.id === 0) {
-            this.emailTypeService.addEmailType(model).subscribe({
-                next: (res) => {
-                    if (res.status === 200) {
-                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Create Successfull', life: 3000 });
-                        this.visibleDialog = false;
-                    }
-                },
-                error: (err) => {
-                    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Created Failed', life: 3000 });
-                },
-                complete: () => { 
-                }
-            });
-        } else {
-            this.emailTypeService.updateEmailType(this.id, model).subscribe({
-                next: (res) => {
-                    if (res.status === 200) {
-                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Update Successfull', life: 3000 });  
-                        this.visibleDialog = false;
+        if (this.formGroup.valid) {
+
+            if (this.id === 0) {
+                this.emailTypeService.addEmailType(model).subscribe({
+                    next: (res) => {
+                        if (res.status === 200) {
+                            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Create Successfull', life: 3000 });
+                            this.visibleDialog = false;
+                        }
+                    },
+                    error: (err) => {
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Created Failed', life: 3000 });
+                    },
+                    complete: () => {
                         this.id = 0;
+                        this.getEmailTypes();
                     }
-                },
-                error: (err) => {
-                    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Update Failed', life: 3000 });
-                },
-                complete: () => {                    
-                }
-            });
+                });
+            } else {
+                this.emailTypeService.updateEmailType(this.id, model).subscribe({
+                    next: (res) => {
+                        if (res.status === 200) {
+                            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Update Successfull', life: 3000 });
+                            this.visibleDialog = false;
+                        }
+                    },
+                    error: (err) => {
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Update Failed', life: 3000 });
+                    },
+                    complete: () => {
+                        this.id = 0;
+                        this.getEmailTypes();
+                    }
+                });
+            }
         }
     }
 
@@ -131,11 +137,8 @@ export class EmailTypeComponent implements OnInit {
                 this.emailTypes = res.body;
             },
             error: (err) => {
-                console.log(err);
-            },
-            complete: () => {
+                this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to get Email Type', life: 3000 });
             }
         });
     }
-
 }

@@ -48,7 +48,7 @@
                 <div class="col-12">
                     <label for="emailType" class="font-bold block mb-2 mt-2">Email Type</label>
                     <input type="text" pInputText id="emailType" formControlName="emailType" required autofocus maxlength="100" />
-                    <small class="p-error" *ngIf="submitted && f['emailType'].errors">Email Type is required.</small>
+                    <small class="p-error" *ngIf="f['emailType'].errors">Email Type is required.</small>
                 </div>
                 <div class="col-12">
                     <p-checkbox inputId="isPersonal" formControlName="isPersonal" value="isPersonal" [binary]="true"  class="mr-2"></p-checkbox>

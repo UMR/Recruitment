@@ -85,6 +85,7 @@ public class EmailTypeService : IEmailTypeService
         }
 
         entity.Id = request.Id;
+        entity.Type = request.Type;
         entity.IsOfficial = request.IsOfficial;
         entity.IsPersonal = request.IsPersonal;
         entity.UpdatedBy = _currentUserService.UserId;
