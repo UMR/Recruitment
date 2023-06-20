@@ -71,6 +71,7 @@
     <TypeScriptCompile Include="src\app\common\models\instituteType.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\agency.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\auth-info.model.ts" />
+    <TypeScriptCompile Include="src\app\common\models\user.model.ts" />
     <TypeScriptCompile Include="src\app\common\service\auth-interceptor.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\auth.constant.ts" />
     <TypeScriptCompile Include="src\app\common\service\auth.service.ts" />
