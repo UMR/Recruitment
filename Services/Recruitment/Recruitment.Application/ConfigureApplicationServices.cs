@@ -1,4 +1,5 @@
 ﻿using Recruitment.Application.Features.InstitutionTypes;
+using Recruitment.Application.Features.ManageRecruiter;
 using Recruitment.Application.Features.PositionLicenseRequirements;
 
 namespace Recruitment.Application;
@@ -19,6 +20,7 @@ public static class ConfigureServices
         builder.Services.AddScoped<IInstitutionTypeService, InstitutionTypeService>();
         builder.Services.AddScoped<IMenuService, MenuService>();
         builder.Services.AddScoped<IPositionLicenseRequirementService, PositionLicenseRequirementService>();
+        builder.Services.AddScoped<IRecruiterService, RecruiterService>();
 
         return builder;
     }

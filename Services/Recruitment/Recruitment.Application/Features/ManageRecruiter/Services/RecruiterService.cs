@@ -5,28 +5,27 @@ public class RecruiterService : IRecruiterService
     private readonly IMapper _mapper;
     private readonly ICurrentUserService _currentUserService;
     private readonly IDateTimeService _dateTime;
-    private readonly IEmailTypeRepository _emailTypeRepository;
+    private readonly IRecruiterRepository _recruiterRepository;
 
-    public RecruiterService(IMapper mapper, ICurrentUserService currentUserService, IDateTimeService dateTime, IEmailTypeRepository emailTypeRepository)
+    public RecruiterService(IMapper mapper, ICurrentUserService currentUserService, IRecruiterRepository recruiterRepository)
     {
         _mapper = mapper;
         _currentUserService = currentUserService;
-        _dateTime = dateTime;
-        _emailTypeRepository = emailTypeRepository;
+        _recruiterRepository = recruiterRepository;
     }
 
     async Task<List<RecruiterListDto>> IRecruiterService.GetAllRecruitersAsync()
     {
-        var emailTypesFromRepo = await _emailTypeRepository.GetEmailTypesAsync();
-        var emailTypesToReturn = _mapper.Map<List<RecruiterListDto>>(emailTypesFromRepo);
-        return emailTypesToReturn;
+        var recruiterFromRepo = await _recruiterRepository.GetAllRecruitersAsync();
+        var recruiterToReturn = _mapper.Map<List<RecruiterListDto>>(recruiterFromRepo);
+        return recruiterToReturn;
     }
 
     public async Task<RecruiterListDto> GetRecruiterByIdAsync(int id)
     {
-        var emailTypeFromRepo = await _emailTypeRepository.GetEmailTypeByIdAsync(id);
-        var emailTypeToReturn = _mapper.Map<RecruiterListDto>(emailTypeFromRepo);
-        return emailTypeToReturn;
+        var recruiterFromRepo = await _recruiterRepository.GetRecruiterByIdAsync(id);
+        var recruiterToReturn = _mapper.Map<RecruiterListDto>(recruiterFromRepo);
+        return recruiterToReturn;
     }
 
     public async Task<BaseCommandResponse> CreateRecruiterAsync(CreateRecruiterDto request)
@@ -43,15 +42,15 @@ public class RecruiterService : IRecruiterService
             return response;
         }
 
-        var entity = new EmailType
+        var entity = new User
         {
-            Type = request.Type,
-            IsPersonal = request.IsPersonal,
-            IsOfficial = request.IsOfficial,
+            //Type = request.Type,
+            //IsPersonal = request.IsPersonal,
+            //IsOfficial = request.IsOfficial,
             CreatedBy = _currentUserService.UserId,
             CreatedDate = _dateTime.Now
         };
-        await _emailTypeRepository.CreateEmailTypeAsync(entity);
+        await _recruiterRepository.CreateRecruiterAsync(entity);
 
         response.Success = true;
         response.Message = "Creating Successful";
@@ -77,20 +76,20 @@ public class RecruiterService : IRecruiterService
             throw new BadRequestException("Id does not match");
         }
 
-        var entity = await _emailTypeRepository.GetEmailTypeByIdAsync(id);
+        var entity = await _recruiterRepository.GetRecruiterByIdAsync(id);
 
         if (entity is null)
         {
             throw new NotFoundException(nameof(User), id.ToString());
         }
 
-        entity.Id = request.Id;
-        entity.Type = request.Type;
-        entity.IsOfficial = request.IsOfficial;
-        entity.IsPersonal = request.IsPersonal;
+        //entity.Id = request.Id;
+        //entity.Type = request.Type;
+        //entity.IsOfficial = request.IsOfficial;
+        //entity.IsPersonal = request.IsPersonal;
         entity.UpdatedBy = _currentUserService.UserId;
         entity.UpdatedDate = _dateTime.Now;
-        await _emailTypeRepository.UpdateEmailTypeAsync(id, entity);
+        await _recruiterRepository.UpdateRecruiterAsync(id, entity);
 
         response.Success = true;
         response.Message = "Updating Successful";
@@ -100,14 +99,14 @@ public class RecruiterService : IRecruiterService
     public async Task<BaseCommandResponse> DeleteRecruiterAsync(int id)
     {
         var response = new BaseCommandResponse();
-        var entity = await _emailTypeRepository.GetEmailTypeByIdAsync(id);
+        var entity = await _recruiterRepository.GetRecruiterByIdAsync(id);
 
         if (entity is null)
         {
             throw new NotFoundException(nameof(User), id.ToString());
         }
 
-        await _emailTypeRepository.DeleteEmailTypeAsync(id);
+        await _recruiterRepository.DeleteRecruiterAsync(id);
 
         response.Success = true;
         response.Message = "Deleting Successful";
