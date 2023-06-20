@@ -19,6 +19,6 @@ internal class CreateEmailTypeDtoValidator  : AbstractValidator<CreateEmailTypeD
 
     private bool IsExistEmailTypeAsync(string emailType)
     {
-        return _emailTypeService.IsExistEmailTypeAsync(emailType).Result;
+        return _emailTypeService.IsExistAsync(emailType).Result;
     }
 }

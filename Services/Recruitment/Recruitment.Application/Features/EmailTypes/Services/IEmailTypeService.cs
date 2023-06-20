@@ -2,16 +2,16 @@
 {
     public interface IEmailTypeService
     {
-        Task<List<EmailTypeListDto>> GetEmailTypesAsync();
+        Task<List<EmailTypeListDto>> GetAllAsync();
 
-        Task<EmailTypeListDto> GetEmailTypeByIdAsync(int id);
+        Task<EmailTypeListDto> GetByIdAsync(int id);
 
-        Task<bool> IsExistEmailTypeAsync(string emailType, int? id = null);
+        Task<bool> IsExistAsync(string emailType, int? id = null);
 
-        Task<BaseCommandResponse> CreateEmailTypeAsync(CreateEmailTypeDto request);        
+        Task<BaseCommandResponse> CreateAsync(CreateEmailTypeDto request);        
 
-        Task<BaseCommandResponse> UpdateEmailTypeAsync(int id, UpdateEmailTypeDto request);
+        Task<BaseCommandResponse> UpdateAsync(int id, UpdateEmailTypeDto request);
 
-        Task<BaseCommandResponse> DeleteEmailTypeAsync(int id);
+        Task<BaseCommandResponse> DeleteAsync(int id);
     }
 }

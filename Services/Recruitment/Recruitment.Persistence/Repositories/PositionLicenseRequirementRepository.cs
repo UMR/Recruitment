@@ -34,7 +34,7 @@
             }
         }
 
-        public async Task<bool> IsExistAsync(string name, int? id = null)
+        public async Task<bool> IsExistAsync(string name, long? id = null)
         {
             var query = @"SELECT COUNT(*) FROM PositionLicenseRequirement WHERE PositionLicenseRequirementName=@PositionLicenseRequirementName";
 

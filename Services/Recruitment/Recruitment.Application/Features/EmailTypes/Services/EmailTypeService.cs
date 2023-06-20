@@ -15,26 +15,26 @@ public class EmailTypeService : IEmailTypeService
         _emailTypeRepository = emailTypeRepository;
     }
 
-    public async Task<List<EmailTypeListDto>> GetEmailTypesAsync()
+    public async Task<List<EmailTypeListDto>> GetAllAsync()
     {
         var emailTypesFromRepo = await _emailTypeRepository.GetEmailTypesAsync();
         var emailTypesToReturn = _mapper.Map<List<EmailTypeListDto>>(emailTypesFromRepo);
         return emailTypesToReturn;
     }
 
-    public async Task<EmailTypeListDto> GetEmailTypeByIdAsync(int id)
+    public async Task<EmailTypeListDto> GetByIdAsync(int id)
     {
         var emailTypeFromRepo = await _emailTypeRepository.GetEmailTypeByIdAsync(id);
         var emailTypeToReturn = _mapper.Map<EmailTypeListDto>(emailTypeFromRepo);
         return emailTypeToReturn;
     }
 
-    public async Task<bool> IsExistEmailTypeAsync(string emailType, int? id = null)
+    public async Task<bool> IsExistAsync(string emailType, int? id = null)
     {
         return await _emailTypeRepository.IsExistEmailTypeAsync(emailType, id);
     }
 
-    public async Task<BaseCommandResponse> CreateEmailTypeAsync(CreateEmailTypeDto request)
+    public async Task<BaseCommandResponse> CreateAsync(CreateEmailTypeDto request)
     {
         var response = new BaseCommandResponse();
         var validator = new CreateEmailTypeDtoValidator(this);
@@ -63,7 +63,7 @@ public class EmailTypeService : IEmailTypeService
         return response;
     }
 
-    public async Task<BaseCommandResponse> UpdateEmailTypeAsync(int id, UpdateEmailTypeDto request)
+    public async Task<BaseCommandResponse> UpdateAsync(int id, UpdateEmailTypeDto request)
     {
         var response = new BaseCommandResponse();
         var validator = new UpdateEmailTypeDtoValidator(this);
@@ -102,7 +102,7 @@ public class EmailTypeService : IEmailTypeService
         return response;
     }
 
-    public async Task<BaseCommandResponse> DeleteEmailTypeAsync(int id)
+    public async Task<BaseCommandResponse> DeleteAsync(int id)
     {
         var response = new BaseCommandResponse();
         var entity = await _emailTypeRepository.GetEmailTypeByIdAsync(id);
