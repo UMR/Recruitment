@@ -34,68 +34,68 @@
             return await _positionLicenseRequirementRepository.IsExistAsync(name, id);
         }
 
-        public Task<BaseCommandResponse> CreateAsync(CreatePositionLicenseRequirementDto request)
+        public async Task<BaseCommandResponse> CreateAsync(CreatePositionLicenseRequirementDto request)
         {
             var response = new BaseCommandResponse();
-            var validator = new CreateEmailTypeDtoValidator(this);
-            var validationResult = await validator.ValidateAsync(request);
+            //var validator = new CreateEmailTypeDtoValidator();
+            //var validationResult = await validator.ValidateAsync(request);
 
-            if (validationResult.IsValid == false)
-            {
-                response.Success = false;
-                response.Message = "Creating Failed";
-                response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-                return response;
-            }
+            //if (validationResult.IsValid == false)
+            //{
+            //    response.Success = false;
+            //    response.Message = "Creating Failed";
+            //    response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            //    return response;
+            //}
 
-            var entity = new EmailType
-            {
-                Type = request.Type,
-                IsPersonal = request.IsPersonal,
-                IsOfficial = request.IsOfficial,
-                CreatedBy = _currentUserService.UserId,
-                CreatedDate = _dateTime.Now
-            };
-            await _emailTypeRepository.CreateEmailTypeAsync(entity);
+            //var entity = new EmailType
+            //{
+            //    Type = request.Type,
+            //    IsPersonal = request.IsPersonal,
+            //    IsOfficial = request.IsOfficial,
+            //    CreatedBy = _currentUserService.UserId,
+            //    CreatedDate = _dateTime.Now
+            //};
+            //await _emailTypeRepository.CreateEmailTypeAsync(entity);
 
             response.Success = true;
             response.Message = "Creating Successful";
             return response;
         }
 
-        public Task<BaseCommandResponse> UpdateAsync(long id, UpdatePositionLicenseRequirementDto request)
+        public async Task<BaseCommandResponse> UpdateAsync(long id, UpdatePositionLicenseRequirementDto request)
         {
             var response = new BaseCommandResponse();
-            var validator = new UpdateEmailTypeDtoValidator(this);
-            var validationResult = await validator.ValidateAsync(request);
+            //var validator = new UpdateEmailTypeDtoValidator(this);
+            //var validationResult = await validator.ValidateAsync(request);
 
-            if (validationResult.IsValid == false)
-            {
-                response.Success = false;
-                response.Message = "Updating Failed";
-                response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-                return response;
-            }
+            //if (validationResult.IsValid == false)
+            //{
+            //    response.Success = false;
+            //    response.Message = "Updating Failed";
+            //    response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            //    return response;
+            //}
 
-            if (id != request.Id)
-            {
-                throw new BadRequestException("Id does not match");
-            }
+            //if (id != request.Id)
+            //{
+            //    throw new BadRequestException("Id does not match");
+            //}
 
-            var entity = await _emailTypeRepository.GetEmailTypeByIdAsync(id);
+            //var entity = await _emailTypeRepository.GetEmailTypeByIdAsync(id);
 
-            if (entity is null)
-            {
-                throw new NotFoundException(nameof(User), id.ToString());
-            }
+            //if (entity is null)
+            //{
+            //    throw new NotFoundException(nameof(User), id.ToString());
+            //}
 
-            entity.Id = request.Id;
-            entity.Type = request.Type;
-            entity.IsOfficial = request.IsOfficial;
-            entity.IsPersonal = request.IsPersonal;
-            entity.UpdatedBy = _currentUserService.UserId;
-            entity.UpdatedDate = _dateTime.Now;
-            await _emailTypeRepository.UpdateEmailTypeAsync(id, entity);
+            //entity.Id = request.Id;
+            //entity.Type = request.Type;
+            //entity.IsOfficial = request.IsOfficial;
+            //entity.IsPersonal = request.IsPersonal;
+            //entity.UpdatedBy = _currentUserService.UserId;
+            //entity.UpdatedDate = _dateTime.Now;
+            //await _emailTypeRepository.UpdateEmailTypeAsync(id, entity);
 
             response.Success = true;
             response.Message = "Updating Successful";

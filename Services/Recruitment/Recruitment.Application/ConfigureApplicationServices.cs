@@ -1,4 +1,5 @@
 ﻿using Recruitment.Application.Features.InstitutionTypes;
+using Recruitment.Application.Features.PositionLicenseRequirement;
 
 namespace Recruitment.Application;
 
@@ -11,12 +12,13 @@ public static class ConfigureServices
         builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
         builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         //builder.Services.AddFluentValidationAutoValidation();
-        builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
-        builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
-        builder.Services.AddTransient<IAgencyService, AgencyService>();
-        builder.Services.AddTransient<IEmailTypeService, EmailTypeService>();
-        builder.Services.AddTransient<IInstitutionTypeService, InstitutionTypeService>();
-        builder.Services.AddTransient<IMenuService, MenuService>();
+        builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
+        builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+        builder.Services.AddScoped<IAgencyService, AgencyService>();
+        builder.Services.AddScoped<IEmailTypeService, EmailTypeService>();
+        builder.Services.AddScoped<IInstitutionTypeService, InstitutionTypeService>();
+        builder.Services.AddScoped<IMenuService, MenuService>();
+        builder.Services.AddScoped<IPositionLicenseRequirementService, PositionLicenseRequirementService>();
 
         return builder;
     }
