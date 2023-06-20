@@ -54,6 +54,7 @@
     <Content Include="src\app\pages\information\contact-info\contact-info.component.html" />
     <Content Include="src\app\pages\information\email-type\email-type.component.html" />
     <Content Include="src\app\pages\information\institution-type\institution-type.component.html" />
+    <Content Include="src\app\pages\information\position-license-requirement\position-license-requirement.component.html" />
     <Content Include="src\app\pages\Recruiter\manage-recruiter\manage-recruiter.component.html" />
     <Content Include="src\app\pages\Recruiter\manage-role\manage-role.component.html" />
     <Content Include="src\assets\icon\favicon.ico" />
@@ -101,6 +102,10 @@
     <TypeScriptCompile Include="src\app\pages\information\institution-type\institution-type.module.ts" />
     <TypeScriptCompile Include="src\app\pages\information\institution-type\institution-type.service.spec.ts" />
     <TypeScriptCompile Include="src\app\pages\information\institution-type\institution-type.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement.module.ts" />
     <TypeScriptCompile Include="src\assets\icons\icon-subset.ts" />
     <TypeScriptCompile Include="src\app\pages\information\agency\agency-routing.module.ts" />
     <TypeScriptCompile Include="src\app\pages\information\agency\agency.component.spec.ts" />
@@ -142,6 +147,7 @@
     <None Include="src\app\pages\information\contact-info\contact-info.component.scss" />
     <None Include="src\app\pages\information\email-type\email-type.component.scss" />
     <None Include="src\app\pages\information\institution-type\institution-type.component.scss" />
+    <None Include="src\app\pages\information\position-license-requirement\position-license-requirement.component.scss" />
     <None Include="src\app\pages\Recruiter\manage-recruiter\manage-recruiter.component.scss" />
     <None Include="src\app\pages\Recruiter\manage-role\manage-role.component.scss" />
     <Content Include="src\assets\css\styles.css" />

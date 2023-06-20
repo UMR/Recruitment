@@ -41,6 +41,10 @@ const routes: Routes = [
                 path: 'information/contact-information',
                 loadChildren: () => import('./pages/information/contact-info/contact-info.module').then((m) => m.ContactInfoModule)
             },
+            {
+                path: 'information/position-license-requirement',
+                loadChildren: () => import('./pages/information/position-license-requirement/position-license-requirement.module').then((m) => m.PositionLicenseRequirementModule)
+            },
         ]
     },
     {
