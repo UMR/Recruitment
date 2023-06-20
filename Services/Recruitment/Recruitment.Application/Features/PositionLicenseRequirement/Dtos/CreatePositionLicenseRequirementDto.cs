@@ -1,6 +1,8 @@
 ﻿namespace Recruitment.Application.Features.PositionLicenseRequirement
 {
-    internal class CreatePositionLicenseRequirementDto
-    {
+    public class CreatePositionLicenseRequirementDto
+    {        
+        public string PositionLicenseRequirementName { get; set; } = null!;
+        
     }
 }
