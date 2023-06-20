@@ -12,4 +12,6 @@ public class RecruiterListDto
     public bool? IsActive { get; set; }
     public long? AgencyId { get; set; }
     public string AgencyName { get; set; }
+    public long? ApplicantTypeId { get; set; }
+    public string ApplicantType { get; set; }
 }

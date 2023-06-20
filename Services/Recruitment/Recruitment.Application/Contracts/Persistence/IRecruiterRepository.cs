@@ -1,8 +1,10 @@
-﻿namespace Recruitment.Application.Contracts.Persistence;
+﻿using Recruitment.Application.Features.ManageRecruiter;
+
+namespace Recruitment.Application.Contracts.Persistence;
 
 public interface IRecruiterRepository
 {
-    Task<IEnumerable<User>> GetAllRecruitersAsync();
+    Task<IEnumerable<RecruiterListDto>> GetAllRecruitersAsync();
 
     Task<User> GetRecruiterByIdAsync(int id);
 

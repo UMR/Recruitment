@@ -1,4 +1,6 @@
-﻿namespace Recruitment.Persistence.Repositories;
+﻿using Recruitment.Application.Features.ManageRecruiter;
+
+namespace Recruitment.Persistence.Repositories;
 
 public class RecruiterRepository : IRecruiterRepository
 {
@@ -9,14 +11,16 @@ public class RecruiterRepository : IRecruiterRepository
         _dapperContext = dapperContext;
     }
 
-    public async Task<IEnumerable<User>> GetAllRecruitersAsync()
+    public async Task<IEnumerable<RecruiterListDto>> GetAllRecruitersAsync()
     {
-        var query = @"select UserID,LoginId,FirstName,LastName,Email,Telephone,ODAPermission,Users.IsActive,AgencyName from [Users] LEFT JOIN  [Agency] ON [Users].[AgencyID] = [Agency].[AgencyID]  " +
+        var query = @"select UserID,LoginId,FirstName,LastName,Email,Telephone,ODAPermission,Users.IsActive,AgencyName,ApplicantType.ApplicantTypeID,Name from [Users]
+                    LEFT JOIN  [Agency] ON [Users].[AgencyID] = [Agency].[AgencyID]
+                    LEFT JOIN  ApplicantType ON [Users].ApplicantTypeID = ApplicantType.ApplicantTypeID" +
                 "ORDER BY FirstName,LastName,LoginId";
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
-            var users = await conn.QueryAsync<User>(query);
+            var users = await conn.QueryAsync<RecruiterListDto>(query);
             return users.ToList();
         }
     }
