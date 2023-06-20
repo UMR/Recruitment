@@ -9,8 +9,6 @@ import { AgencyModel } from '../../../common/models/agency.model';
 })
 export class AgencyService {
 
-
-
     constructor(private http: HttpClient) { }
 
     getAllAgency(): Observable<HttpResponse<any>> {

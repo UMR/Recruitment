@@ -20,7 +20,7 @@ export class ManageRecruiterComponent {
     agencys: AgencyModel[] = [];
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
-        private userService: ManageRecruiterService) { }
+        private manageRecruiterService: ManageRecruiterService) { }
 
     ngOnInit() {
         this.getAllUser();
@@ -128,15 +128,15 @@ export class ManageRecruiterComponent {
     }
 
     getAllUser() {
-        //this.agencyService.getAllAgency().subscribe(
-        //    res => {
-        //        this.agencys = res.body;
-        //        console.log(res);
-        //    },
-        //    err => {
-        //        console.log(err);
-        //    },
-        //    () => {
-        //    });
+        this.manageRecruiterService.getAllRecruiter().subscribe(
+            res => {
+                this.users = res.body;
+                console.log(res);
+            },
+            err => {
+                console.log(err);
+            },
+            () => {
+            });
     }
 }
