@@ -85,7 +85,7 @@ export class PositionLicenseRequirementComponent {
 
     onSave(): void {
 
-        const model = {
+        const model: any = {
             id: this.id,
             type: this.formGroup.controls['name'].value ? this.formGroup.controls['name'].value.trim() : null,
         };

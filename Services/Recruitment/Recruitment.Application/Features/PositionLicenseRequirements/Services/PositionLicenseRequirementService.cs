@@ -75,7 +75,7 @@
                 return response;
             }
 
-            if (id != request.Id)
+            if (id != request.PositionLicenseRequirementId)
             {
                 throw new BadRequestException("Id does not match");
             }
