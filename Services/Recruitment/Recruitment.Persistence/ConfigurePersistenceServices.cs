@@ -10,6 +10,7 @@ public static class ConfigureServices
         builder.Services.AddScoped<IEmailTypeRepository, EmailTypeRepository>();
         builder.Services.AddScoped<IInstitutionTypeRepository, InstitutionTypeRepository>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
+        builder.Services.AddScoped<IPositionLicenseRequirementRepository, PositionLicenseRequirementRepository>();
 
         return builder;
     }

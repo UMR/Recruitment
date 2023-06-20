@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Recruitment.Application.Features.PositionLicenseRequirement.Dtos
+﻿namespace Recruitment.Application.Features.PositionLicenseRequirement
 {
-    internal class PositionLicenseRequirementListDto
+    public class PositionLicenseRequirementListDto
     {
+        public long PositionLicenseRequirementId { get; set; }
+        public string PositionLicenseRequirementName { get; set; } = null!;
+        public int? CreatedBy { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public int? UpdatedBy { get; set; }
+        public DateTime? UpdatedDate { get; set; }
     }
 }
