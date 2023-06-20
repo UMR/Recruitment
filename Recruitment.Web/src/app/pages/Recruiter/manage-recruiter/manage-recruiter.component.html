@@ -56,7 +56,7 @@
         </div>
         <div class="field">
             <label for="password">Password</label>
-            <p-password [(ngModel)]="user.urlPrefix" id="password" maxlength="50"></p-password>
+            <p-password id="password" [(ngModel)]="user.password"  maxlength="50"></p-password>
         </div>
         <div class="field">
             <label for="confirmPassword">Confirm Password</label>
@@ -64,7 +64,7 @@
         </div>
         <div class="field">
             <label for="firstName">First Name</label>
-            <input type="text" pInputText id="firstName" [(ngModel)]="user.firstName" placeholder="(999) 999-9999" />
+            <input pInputText id="firstName" [(ngModel)]="user.firstName" />
         </div>
         <div class="field">
             <label for="lastName">Last Name</label>
