@@ -104,6 +104,7 @@
     <TypeScriptCompile Include="src\app\pages\information\institution-type\institution-type.service.spec.ts" />
     <TypeScriptCompile Include="src\app\pages\information\institution-type\institution-type.service.ts" />
     <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement.service.ts" />
     <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement.component.spec.ts" />
     <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement.component.ts" />
     <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement.module.ts" />

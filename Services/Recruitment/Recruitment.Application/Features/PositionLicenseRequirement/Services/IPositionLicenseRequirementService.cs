@@ -2,16 +2,16 @@
 {
     public interface IPositionLicenseRequirementService
     {
-        Task<List<PositionLicenseRequirementListDto>> GetAllAsync();
+        Task<List<PositionLicenseRequirementListDto>> GetPositionLicenseRequirementsAsync();
 
-        Task<PositionLicenseRequirementListDto> GetByIdAsync(long id);
+        Task<PositionLicenseRequirementListDto> GetPositionLicenseRequirementByIdAsync(long id);
 
-        Task<bool> IsExistAsync(string name, long? id = null);
+        Task<bool> IsExistNameAsync(string name, long? id = null);
 
-        Task<BaseCommandResponse> CreateAsync(CreatePositionLicenseRequirementDto request);
+        Task<BaseCommandResponse> CreatePositionLicenseRequirementAsync(CreatePositionLicenseRequirementDto request);
 
-        Task<BaseCommandResponse> UpdateAsync(long id, UpdatePositionLicenseRequirementDto request);
+        Task<BaseCommandResponse> UpdatePositionLicenseRequirementAsync(long id, UpdatePositionLicenseRequirementDto request);
 
-        Task<BaseCommandResponse> DeleteAsync(long id);
+        Task<BaseCommandResponse> DeletePositionLicenseRequirementAsync(long id);
     }
 }

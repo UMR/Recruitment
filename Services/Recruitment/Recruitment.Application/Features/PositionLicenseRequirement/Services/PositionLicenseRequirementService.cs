@@ -15,26 +15,26 @@
             _positionLicenseRequirementRepository = positionLicenseRequirementRepository;
         }
 
-        public async Task<List<PositionLicenseRequirementListDto>> GetAllAsync()
+        public async Task<List<PositionLicenseRequirementListDto>> GetPositionLicenseRequirementsAsync()
         {
             var emailTypesFromRepo = await _positionLicenseRequirementRepository.GetAllAsync();
             var emailTypesToReturn = _mapper.Map<List<PositionLicenseRequirementListDto>>(emailTypesFromRepo);
             return emailTypesToReturn;
         }
 
-        public async Task<PositionLicenseRequirementListDto> GetByIdAsync(long id)
+        public async Task<PositionLicenseRequirementListDto> GetPositionLicenseRequirementByIdAsync(long id)
         {
             var emailTypeFromRepo = await _positionLicenseRequirementRepository.GetByIdAsync(id);
             var emailTypeToReturn = _mapper.Map<PositionLicenseRequirementListDto>(emailTypeFromRepo);
             return emailTypeToReturn;
         }
 
-        public async Task<bool> IsExistAsync(string name, long? id = null)
+        public async Task<bool> IsExistNameAsync(string name, long? id = null)
         {
             return await _positionLicenseRequirementRepository.IsExistAsync(name, id);
         }
 
-        public async Task<BaseCommandResponse> CreateAsync(CreatePositionLicenseRequirementDto request)
+        public async Task<BaseCommandResponse> CreatePositionLicenseRequirementAsync(CreatePositionLicenseRequirementDto request)
         {
             var response = new BaseCommandResponse();
             //var validator = new CreateEmailTypeDtoValidator();
@@ -63,7 +63,7 @@
             return response;
         }
 
-        public async Task<BaseCommandResponse> UpdateAsync(long id, UpdatePositionLicenseRequirementDto request)
+        public async Task<BaseCommandResponse> UpdatePositionLicenseRequirementAsync(long id, UpdatePositionLicenseRequirementDto request)
         {
             var response = new BaseCommandResponse();
             //var validator = new UpdateEmailTypeDtoValidator(this);
@@ -102,7 +102,7 @@
             return response;
         }
 
-        public async Task<BaseCommandResponse> DeleteAsync(long id)
+        public async Task<BaseCommandResponse> DeletePositionLicenseRequirementAsync(long id)
         {
             var response = new BaseCommandResponse();
             var entity = await _positionLicenseRequirementRepository.GetByIdAsync(id);
