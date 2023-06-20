@@ -86,8 +86,8 @@ export class PositionLicenseRequirementComponent {
     onSave(): void {
 
         const model: any = {
-            id: this.id,
-            type: this.formGroup.controls['name'].value ? this.formGroup.controls['name'].value.trim() : null,
+            positionLicenseRequirementId: this.id,
+            positionLicenseRequirementName: this.formGroup.controls['name'].value ? this.formGroup.controls['name'].value.trim() : null,
         };
 
         if (this.formGroup.valid) {
@@ -98,7 +98,7 @@ export class PositionLicenseRequirementComponent {
                             if ((res.body as any).success) {
                                 this.messageService.add({ severity: 'success', summary: 'Successful', detail: res.body.message, life: 3000 });
                                 this.visibleDialog = false;
-                            } else if (!(res.body as any).success) {
+                            } else {
                                 this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.errors[0], life: 3000 });
                             }
                         }
