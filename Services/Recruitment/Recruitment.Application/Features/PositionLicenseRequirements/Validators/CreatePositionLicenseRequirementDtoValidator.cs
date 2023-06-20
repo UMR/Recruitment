@@ -1,4 +1,4 @@
-﻿namespace Recruitment.Application.Features.PositionLicenseRequirement
+﻿namespace Recruitment.Application.Features.PositionLicenseRequirements
 {
     internal class CreatePositionLicenseRequirementDtoValidator
     {

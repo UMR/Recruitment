@@ -1,5 +1,5 @@
 ﻿using Recruitment.Application.Features.InstitutionTypes;
-using Recruitment.Application.Features.PositionLicenseRequirement;
+using Recruitment.Application.Features.PositionLicenseRequirements;
 
 namespace Recruitment.Application;
 

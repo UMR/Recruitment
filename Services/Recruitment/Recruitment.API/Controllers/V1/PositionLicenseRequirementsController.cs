@@ -1,26 +1,26 @@
-﻿using Recruitment.Application.Features.PositionLicenseRequirement;
+﻿using Recruitment.Application.Features.PositionLicenseRequirements;
 
 namespace Recruitment.API.Controllers.V1;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-public class PositionLicenseRequirementController : ApiControllerBase
+public class PositionLicenseRequirementsController : ApiControllerBase
 {
     private readonly IPositionLicenseRequirementService _positionLicenseRequirementService;
 
-    public PositionLicenseRequirementController(IPositionLicenseRequirementService positionLicenseRequirementService)
+    public PositionLicenseRequirementsController(IPositionLicenseRequirementService positionLicenseRequirementService)
     {
         _positionLicenseRequirementService = positionLicenseRequirementService;
     }
 
     [HttpGet("GetPositionLicenseRequirements")]
-    public async Task<ActionResult<List<PositionLicenseRequirementListDto>>> GetEmailTypesAsync()
+    public async Task<ActionResult<List<PositionLicenseRequirementListDto>>> GetPositionLicenseRequirementsAsync()
     {
         return Ok(await _positionLicenseRequirementService.GetPositionLicenseRequirementsAsync());
     }
 
     [HttpGet("GetPositionLicenseRequirementById/{id:long}")]
-    public async Task<ActionResult<PositionLicenseRequirementListDto>> GetEmailTypeAsync(long id)
+    public async Task<ActionResult<PositionLicenseRequirementListDto>> GetPositionLicenseRequirementAsync(long id)
     {
         return Ok(await _positionLicenseRequirementService.GetPositionLicenseRequirementByIdAsync(id));
     }

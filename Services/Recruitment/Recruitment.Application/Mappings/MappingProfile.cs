@@ -7,5 +7,6 @@ public class MappingProfile : Profile
         CreateMap<Menu, MenuListDto>().ReverseMap();
         CreateMap<Agency, AgencyListDto>().ReverseMap();
         CreateMap<EmailType, EmailTypeListDto>().ReverseMap();
+        CreateMap<PositionLicenseRequirement, PositionLicenseRequirementListDto>().ReverseMap();
     }
 }
