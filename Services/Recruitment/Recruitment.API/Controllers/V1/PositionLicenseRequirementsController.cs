@@ -16,19 +16,19 @@ public class PositionLicenseRequirementsController : ApiControllerBase
     [HttpGet("GetPositionLicenseRequirements")]
     public async Task<ActionResult<List<PositionLicenseRequirementListDto>>> GetPositionLicenseRequirementsAsync()
     {
-        return Ok(await _positionLicenseRequirementService.GetPositionLicenseRequirementsAsync());
+        return Ok(await _positionLicenseRequirementService.GetAllAsync());
     }
 
     [HttpGet("GetPositionLicenseRequirementById/{id:long}")]
     public async Task<ActionResult<PositionLicenseRequirementListDto>> GetPositionLicenseRequirementAsync(long id)
     {
-        return Ok(await _positionLicenseRequirementService.GetPositionLicenseRequirementByIdAsync(id));
+        return Ok(await _positionLicenseRequirementService.GetByIdAsync(id));
     }
 
     [HttpPost("CreatePositionLicenseRequirement")]
     public async Task<ActionResult> PostAsync([FromBody] CreatePositionLicenseRequirementDto request)
     {
-        return Ok(await _positionLicenseRequirementService.CreatePositionLicenseRequirementAsync(request));
+        return Ok(await _positionLicenseRequirementService.CreateAsync(request));
     }
 
     [HttpPut("UpdatePositionLicenseRequirement/{id:long}")]

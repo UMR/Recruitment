@@ -2,16 +2,16 @@
 
 public interface IEmailTypeRepository
 {
-    Task<IEnumerable<EmailType>> GetEmailTypesAsync();
+    Task<IEnumerable<EmailType>> GetAllAsync();
 
-    Task<EmailType> GetEmailTypeByIdAsync(int id);
+    Task<EmailType> GetByIdAsync(int id);
 
-    Task<bool> IsExistEmailTypeAsync(string emailType, int? id = null);
+    Task<bool> IsExistAsync(string emailType, int? id = null);
 
-    Task<int> CreateEmailTypeAsync(EmailType emailType);
+    Task<int> CreateAsync(EmailType emailType);
 
-    Task<bool> UpdateEmailTypeAsync(int id, EmailType emailType);
+    Task<bool> UpdateAsync(int id, EmailType emailType);
 
-    Task<bool> DeleteEmailTypeAsync(long id);    
+    Task<bool> DeleteAsync(long id);    
     
 }

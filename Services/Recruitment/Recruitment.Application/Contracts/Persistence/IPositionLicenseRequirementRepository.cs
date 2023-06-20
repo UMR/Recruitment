@@ -6,7 +6,7 @@
 
         Task<PositionLicenseRequirement> GetByIdAsync(long id);
 
-        Task<bool> IsExistAsync(string name, long? id = null);
+        Task<bool> IsExistNameAsync(string name, long? id = null);
 
         Task<int> CreateAsync(PositionLicenseRequirement model);
 
