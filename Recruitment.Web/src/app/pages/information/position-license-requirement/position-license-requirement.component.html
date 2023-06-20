@@ -19,20 +19,16 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>Email Type</th>
-            <th>Is Personal</th>
-            <th>Is Official</th>
+            <th>Email Type</th>            
             <th>Action</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-emailType>
+    <ng-template pTemplate="body" let-positionLicenseRequirement>
         <tr>
-            <td>{{ emailType.type }}</td>
-            <td>{{ emailType.isPersonal === true ? 'Yes' : 'No' }}</td>
-            <td>{{ emailType.isOfficial === true ? 'Yes' : 'No' }}</td>
+            <td>{{ positionLicenseRequirement.positionLicenseRequirementName }}</td>            
             <td>
-                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="onEdit(emailType)"></button>
-                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="onDelete(emailType)"></button>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="onEdit(positionLicenseRequirement)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="onDelete(positionLicenseRequirement)"></button>
             </td>
         </tr>
     </ng-template>
@@ -46,18 +42,10 @@
         <form [formGroup]="formGroup">
             <div class="grid">
                 <div class="col-12">
-                    <label for="emailType" class="font-bold block mb-2 mt-2">Email Type</label>
-                    <input type="text" pInputText id="emailType" formControlName="emailType" required maxlength="100" autofocus />
-                    <small class="p-error" *ngIf="f['emailType'].errors">Email Type is required.</small>
-                </div>
-                <div class="col-12">
-                    <p-checkbox inputId="isPersonal" formControlName="isPersonal" value="isPersonal" [binary]="true" class="mr-2"></p-checkbox>
-                    <label for="isPersonal">Is Personal</label>
-                </div>
-                <div class="col-12">
-                    <p-checkbox inputId="isOfficial" formControlName="isOfficial" value="isOfficial" [binary]="true" class="mr-2"></p-checkbox>
-                    <label for="isOfficial">Is Official</label>
-                </div>
+                    <label for="name" class="font-bold block mb-2 mt-2">Email Type</label>
+                    <input type="text" pInputText id="name" formControlName="name" required maxlength="100" autofocus />
+                    <small class="p-error" *ngIf="f['name'].errors">Name Type is required.</small>
+                </div>                
             </div>
         </form>
     </ng-template>

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PositionLicenseRequirementRoutingModule } from './position-license-requirement-routing.module';
 import { PositionLicenseRequirementComponent } from './position-license-requirement.component';
+import { PositionLicenseRequirementService } from './position-license-requirement.service';
 
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
@@ -26,6 +27,6 @@ import { ConfirmationService, MessageService } from 'primeng/api';
         ConfirmDialogModule,        
         DialogModule
     ],
-    providers: [ConfirmationService, MessageService]
+    providers: [ConfirmationService, MessageService, PositionLicenseRequirementService]
 })
 export class PositionLicenseRequirementModule { }
