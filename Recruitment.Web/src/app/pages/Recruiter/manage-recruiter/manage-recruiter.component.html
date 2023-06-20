@@ -56,19 +56,19 @@
         </div>
         <div class="field">
             <label for="password">Password</label>
-            <input pInputText [(ngModel)]="user.urlPrefix" [pKeyFilter]="'alpha'" id="password" maxlength="50" />
+            <p-password [(ngModel)]="user.urlPrefix" id="password" maxlength="50"></p-password>
         </div>
         <div class="field">
             <label for="confirmPassword">Confirm Password</label>
-            <input type="text" pInputText id="confirmPassword" [(ngModel)]="user.password" maxlength="100" />
+            <p-password id="confirmPassword" [(ngModel)]="user.password" maxlength="100"></p-password>
         </div>
         <div class="field">
             <label for="firstName">First Name</label>
-            <p-inputMask mask="(999) 999-9999" id="firstName" [(ngModel)]="user.firstName" placeholder="(999) 999-9999" />
+            <input type="text" pInputText id="firstName" [(ngModel)]="user.firstName" placeholder="(999) 999-9999" />
         </div>
         <div class="field">
             <label for="lastName">Last Name</label>
-            <textarea pInputTextarea id="lastName" [(ngModel)]="user.lastName" maxlength="200" [autoResize]="true"></textarea>
+            <input type="text" pInputText id="lastName" [(ngModel)]="user.lastName" maxlength="200" />
         </div>
         <div class="field">
             <label for="email">Email</label>
@@ -80,15 +80,15 @@
         </div>
         <div class="field">
             <label for="agency">Agency</label>
-            <textarea pInputTextarea id="agency" [(ngModel)]="user.agencyId" maxlength="200" [autoResize]="true"></textarea>
+            <input type="text" pInputText id="agency" [(ngModel)]="user.agencyId" maxlength="200">
         </div>
         <div class="field">
             <label for="timeOut">Time Out</label>
-            <textarea pInputTextarea id="timeOut" [(ngModel)]="user.timeOut" maxlength="200" [autoResize]="true"></textarea>
+            <input type="text" pInputText id="timeOut" [(ngModel)]="user.timeOut" maxlength="200" />
         </div>
         <div class="field">
             <label for="applicantType">Default Applicant Type</label>
-            <textarea pInputTextarea id="applicantType" [(ngModel)]="user.ApplicantTypeId" maxlength="200" [autoResize]="true"></textarea>
+            <input type="text" pInputText id="applicantType" [(ngModel)]="user.ApplicantTypeId" maxlength="200" />
         </div>
     </ng-template>
 
