@@ -17,21 +17,21 @@ public class EmailTypeService : IEmailTypeService
 
     public async Task<List<EmailTypeListDto>> GetAllAsync()
     {
-        var emailTypesFromRepo = await _emailTypeRepository.GetEmailTypesAsync();
-        var emailTypesToReturn = _mapper.Map<List<EmailTypeListDto>>(emailTypesFromRepo);
-        return emailTypesToReturn;
+        var entitiesFromRepo = await _emailTypeRepository.GetAllAsync();
+        var entitiesToReturn = _mapper.Map<List<EmailTypeListDto>>(entitiesFromRepo);
+        return entitiesToReturn;
     }
 
     public async Task<EmailTypeListDto> GetByIdAsync(int id)
     {
-        var emailTypeFromRepo = await _emailTypeRepository.GetEmailTypeByIdAsync(id);
-        var emailTypeToReturn = _mapper.Map<EmailTypeListDto>(emailTypeFromRepo);
-        return emailTypeToReturn;
+        var entityFromRepo = await _emailTypeRepository.GetByIdAsync(id);
+        var entityToReturn = _mapper.Map<EmailTypeListDto>(entityFromRepo);
+        return entityToReturn;
     }
 
     public async Task<bool> IsExistAsync(string emailType, int? id = null)
     {
-        return await _emailTypeRepository.IsExistEmailTypeAsync(emailType, id);
+        return await _emailTypeRepository.IsExistAsync(emailType, id);
     }
 
     public async Task<BaseCommandResponse> CreateAsync(CreateEmailTypeDto request)
@@ -56,7 +56,7 @@ public class EmailTypeService : IEmailTypeService
             CreatedBy = _currentUserService.UserId,
             CreatedDate = _dateTime.Now
         };
-        await _emailTypeRepository.CreateEmailTypeAsync(entity);
+        await _emailTypeRepository.CreateAsync(entity);
 
         response.Success = true;
         response.Message = "Creating Successful";
@@ -82,7 +82,7 @@ public class EmailTypeService : IEmailTypeService
             throw new BadRequestException("Id does not match");
         }
 
-        var entity = await _emailTypeRepository.GetEmailTypeByIdAsync(id);
+        var entity = await _emailTypeRepository.GetByIdAsync(id);
 
         if (entity is null)
         {
@@ -95,7 +95,7 @@ public class EmailTypeService : IEmailTypeService
         entity.IsPersonal = request.IsPersonal;
         entity.UpdatedBy = _currentUserService.UserId;
         entity.UpdatedDate = _dateTime.Now;
-        await _emailTypeRepository.UpdateEmailTypeAsync(id, entity);
+        await _emailTypeRepository.UpdateAsync(id, entity);
 
         response.Success = true;
         response.Message = "Updating Successful";
@@ -105,14 +105,14 @@ public class EmailTypeService : IEmailTypeService
     public async Task<BaseCommandResponse> DeleteAsync(int id)
     {
         var response = new BaseCommandResponse();
-        var entity = await _emailTypeRepository.GetEmailTypeByIdAsync(id);
+        var entity = await _emailTypeRepository.GetByIdAsync(id);
 
         if (entity is null)
         {
             throw new NotFoundException(nameof(User), id.ToString());
         }
 
-        await _emailTypeRepository.DeleteEmailTypeAsync(id);
+        await _emailTypeRepository.DeleteAsync(id);
 
         response.Success = true;
         response.Message = "Deleting Successful";

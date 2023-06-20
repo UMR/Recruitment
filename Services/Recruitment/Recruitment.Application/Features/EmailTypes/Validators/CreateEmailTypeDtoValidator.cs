@@ -9,7 +9,7 @@ internal class CreateEmailTypeDtoValidator  : AbstractValidator<CreateEmailTypeD
 
         RuleFor(a => a.Type)
             .NotEmpty().WithMessage("{PropertyName} is required")
-            .NotNull()
+            .NotNull().WithMessage("{PropertyName} is required")
             .MaximumLength(128).WithMessage("{PropertyName} must not exceed 500 characters");
 
         RuleFor(x => x)

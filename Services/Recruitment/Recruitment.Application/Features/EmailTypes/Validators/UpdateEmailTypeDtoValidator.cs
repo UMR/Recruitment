@@ -8,13 +8,13 @@ internal class UpdateEmailTypeDtoValidator: AbstractValidator<UpdateEmailTypeDto
     {
         _emailTypeService = emailTypeService;   
 
-        RuleFor(a => a.Type)
+        RuleFor(a => a.Id)
             .NotEmpty().WithMessage("{PropertyName} is required")
-            .NotNull();            
+            .NotNull().WithMessage("{PropertyName} is required");            
 
         RuleFor(a => a.Type)
             .NotEmpty().WithMessage("{PropertyName} is required")
-            .NotNull()
+            .NotNull().WithMessage("{PropertyName} is required")
             .MaximumLength(128).WithMessage("{PropertyName} must not exceed 500 characters");
 
         RuleFor(x => x)

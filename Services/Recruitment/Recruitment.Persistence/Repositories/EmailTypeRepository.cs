@@ -9,7 +9,7 @@ public class EmailTypeRepository : IEmailTypeRepository
         _dapperContext = dapperContext;
     }
 
-    public async Task<IEnumerable<EmailType>> GetEmailTypesAsync()
+    public async Task<IEnumerable<EmailType>> GetAllAsync()
     {
         var query = @"SELECT * FROM EmailTypes ORDER BY Type ASC";
 
@@ -20,7 +20,7 @@ public class EmailTypeRepository : IEmailTypeRepository
         }
     }
 
-    public async Task<EmailType> GetEmailTypeByIdAsync(int id)
+    public async Task<EmailType> GetByIdAsync(int id)
     {
         var query = @"SELECT * FROM EmailTypes WHERE ID=@ID";
 
@@ -34,7 +34,7 @@ public class EmailTypeRepository : IEmailTypeRepository
         }
     }
 
-    public async Task<bool> IsExistEmailTypeAsync(string emailType, int? id = null)
+    public async Task<bool> IsExistAsync(string emailType, int? id = null)
     {
         var query = @"SELECT COUNT(*) FROM EmailTypes WHERE Type=@Type";
 
@@ -58,17 +58,17 @@ public class EmailTypeRepository : IEmailTypeRepository
         }
     }
 
-    public async Task<int> CreateEmailTypeAsync(EmailType emailType)
+    public async Task<int> CreateAsync(EmailType model)
     {
         var query = "INSERT INTO EmailTypes (Type, IsPersonal, IsOfficial, CreatedBy, CreatedDate) VALUES (@Type, @IsPersonal, @IsOfficial, @CreatedBy, @CreatedDate) " +
                     "SELECT CAST(SCOPE_IDENTITY() as int)";
 
         var parameters = new DynamicParameters();
-        parameters.Add("Type", emailType.Type, DbType.String);
-        parameters.Add("IsPersonal", emailType.IsPersonal, DbType.Boolean);
-        parameters.Add("IsOfficial", emailType.IsOfficial, DbType.Boolean);
-        parameters.Add("CreatedBy", emailType.CreatedBy, DbType.Int32);
-        parameters.Add("CreatedDate", emailType.CreatedDate, DbType.DateTime);
+        parameters.Add("Type", model.Type, DbType.String);
+        parameters.Add("IsPersonal", model.IsPersonal, DbType.Boolean);
+        parameters.Add("IsOfficial", model.IsOfficial, DbType.Boolean);
+        parameters.Add("CreatedBy", model.CreatedBy, DbType.Int32);
+        parameters.Add("CreatedDate", model.CreatedDate, DbType.DateTime);
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
@@ -77,16 +77,16 @@ public class EmailTypeRepository : IEmailTypeRepository
         }
     }
 
-    public async Task<bool> UpdateEmailTypeAsync(int id, EmailType emailType)
+    public async Task<bool> UpdateAsync(int id, EmailType model)
     {
         var query = "UPDATE EmailTypes SET Type = @Type, IsPersonal = @IsPersonal, IsOfficial = @IsOfficial, UpdatedBy = @UpdatedBy, UpdatedDate = @UpdatedDate WHERE ID = @ID";
 
         var parameters = new DynamicParameters();
-        parameters.Add("Type", emailType.Type, DbType.String);
-        parameters.Add("IsPersonal", emailType.IsPersonal, DbType.Boolean);
-        parameters.Add("IsOfficial", emailType.IsOfficial, DbType.Boolean);
-        parameters.Add("UpdatedBy", emailType.UpdatedBy, DbType.Int32);
-        parameters.Add("UpdatedDate", emailType.UpdatedDate, DbType.DateTime);
+        parameters.Add("Type", model.Type, DbType.String);
+        parameters.Add("IsPersonal", model.IsPersonal, DbType.Boolean);
+        parameters.Add("IsOfficial", model.IsOfficial, DbType.Boolean);
+        parameters.Add("UpdatedBy", model.UpdatedBy, DbType.Int32);
+        parameters.Add("UpdatedDate", model.UpdatedDate, DbType.DateTime);
         parameters.Add("ID", id, DbType.Int32);
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
@@ -96,7 +96,7 @@ public class EmailTypeRepository : IEmailTypeRepository
         }
     }
 
-    public async Task<bool> DeleteEmailTypeAsync(long id)
+    public async Task<bool> DeleteAsync(long id)
     {
         var query = "DELETE FROM EmailTypes WHERE ID = @ID";
 
