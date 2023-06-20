@@ -31,14 +31,14 @@
     </ng-template>
     <ng-template pTemplate="body" let-user>
         <tr>
-            <td>{{ user.agencyName }}</td>
-            <td>{{ user.urlPrefix }}</td>
-            <td>{{ user.agencyEmail }}</td>
-            <td>{{ user.agencyPhone }}</td>
-            <td>{{ user.agencyContactPerson }}</td>
-            <td>{{ user.agencyContactPersonPhone }}</td>
+            <td>{{ user.loginId }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.telephone }}</td>
+            <td>{{ user.agencyId }}</td>
             <td>
-                <input type="checkbox" name="group" [checked]="user.isActive" (change)="changeStatus(user.agencyId,user.isActive)">
+                <input type="checkbox" name="group" [checked]="user.isActive" (change)="changeStatus(user.userId,user.isActive)">
             </td>
             <td>
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editUser(user)"></button>
@@ -51,44 +51,44 @@
     <ng-template pTemplate="content">
         <div class="field">
             <label for="loginId">Login Id</label>
-            <input type="text" pInputText id="loginId" [(ngModel)]="agency.agencyName" required autofocus maxlength="100" />
-            <small class="p-error" *ngIf="submitted && !agency.agencyName">Agency Name is required.</small>
+            <input type="text" pInputText id="loginId" [(ngModel)]="user.loginId" required autofocus maxlength="100" />
+            <small class="p-error" *ngIf="submitted && !user.loginId">Login id required.</small>
         </div>
         <div class="field">
             <label for="password">Password</label>
-            <input pInputText [(ngModel)]="agency.urlPrefix" [pKeyFilter]="'alpha'" id="password" maxlength="50" />
+            <input pInputText [(ngModel)]="user.urlPrefix" [pKeyFilter]="'alpha'" id="password" maxlength="50" />
         </div>
         <div class="field">
             <label for="confirmPassword">Confirm Password</label>
-            <input type="text" pInputText id="confirmPassword" [(ngModel)]="agency.agencyEmail" maxlength="100" />
+            <input type="text" pInputText id="confirmPassword" [(ngModel)]="user.password" maxlength="100" />
         </div>
         <div class="field">
             <label for="firstName">First Name</label>
-            <p-inputMask mask="(999) 999-9999" id="firstName" [(ngModel)]="agency.agencyPhone" placeholder="(999) 999-9999" />
+            <p-inputMask mask="(999) 999-9999" id="firstName" [(ngModel)]="user.firstName" placeholder="(999) 999-9999" />
         </div>
         <div class="field">
             <label for="lastName">Last Name</label>
-            <textarea pInputTextarea id="lastName" [(ngModel)]="agency.agencyAddress" maxlength="200" [autoResize]="true"></textarea>
+            <textarea pInputTextarea id="lastName" [(ngModel)]="user.lastName" maxlength="200" [autoResize]="true"></textarea>
         </div>
         <div class="field">
             <label for="email">Email</label>
-            <input type="text" pInputText id="email" [(ngModel)]="agency.agencyContactPerson" />
+            <input type="text" pInputText id="email" [(ngModel)]="user.email" />
         </div>
         <div class="field">
             <label for="telephone">Telephone</label>
-            <p-inputMask mask="(999) 999-9999" id="telephone" [(ngModel)]="agency.agencyContactPersonPhone" placeholder="(999) 999-9999" />
+            <p-inputMask mask="(999) 999-9999" id="telephone" [(ngModel)]="user.telephone" placeholder="(999) 999-9999" />
         </div>
         <div class="field">
             <label for="agency">Agency</label>
-            <textarea pInputTextarea id="agency" [(ngModel)]="agency.agencyAddress" maxlength="200" [autoResize]="true"></textarea>
+            <textarea pInputTextarea id="agency" [(ngModel)]="user.agencyId" maxlength="200" [autoResize]="true"></textarea>
         </div>
         <div class="field">
             <label for="timeOut">Time Out</label>
-            <textarea pInputTextarea id="timeOut" [(ngModel)]="agency.agencyAddress" maxlength="200" [autoResize]="true"></textarea>
+            <textarea pInputTextarea id="timeOut" [(ngModel)]="user.timeOut" maxlength="200" [autoResize]="true"></textarea>
         </div>
         <div class="field">
             <label for="applicantType">Default Applicant Type</label>
-            <textarea pInputTextarea id="applicantType" [(ngModel)]="agency.agencyAddress" maxlength="200" [autoResize]="true"></textarea>
+            <textarea pInputTextarea id="applicantType" [(ngModel)]="user.ApplicantTypeId" maxlength="200" [autoResize]="true"></textarea>
         </div>
     </ng-template>
 
