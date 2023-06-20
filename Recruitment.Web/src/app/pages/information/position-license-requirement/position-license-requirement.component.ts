@@ -58,7 +58,7 @@ export class PositionLicenseRequirementComponent {
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.positionLicenseRequirementService.deletePositionLicenseRequirement(model.positionLicenseRequirementId).subscribe({
+                this.positionLicenseRequirementService.delete(model.positionLicenseRequirementId).subscribe({
                     next: (res) => {                        
                         if (res.status === 200) {
                             if (res.body.success) {                                
@@ -92,7 +92,7 @@ export class PositionLicenseRequirementComponent {
 
         if (this.formGroup.valid) {
             if (this.id === 0) {
-                this.positionLicenseRequirementService.addPositionLicenseRequirement(model).subscribe({
+                this.positionLicenseRequirementService.create(model).subscribe({
                     next: (res) => {
                         if (res.status === 200) {
                             if ((res.body as any).success) {
@@ -112,7 +112,7 @@ export class PositionLicenseRequirementComponent {
                     }
                 });
             } else {
-                this.positionLicenseRequirementService.updatePositionLicenseRequirement(this.id, model).subscribe({
+                this.positionLicenseRequirementService.update(this.id, model).subscribe({
                     next: (res) => {
                         if (res.status === 200) {
                             if ((res.body as any).success) {
@@ -136,7 +136,7 @@ export class PositionLicenseRequirementComponent {
     }
 
     getPositionLicenseRequirements() {
-        this.positionLicenseRequirementService.getPositionLicenseRequirements().subscribe({
+        this.positionLicenseRequirementService.getAll().subscribe({
             next: (res) => {
                 if (res.status === 200) {
                     this.positionLicenseRequirements = res.body;

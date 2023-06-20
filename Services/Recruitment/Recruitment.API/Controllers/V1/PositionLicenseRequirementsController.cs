@@ -13,31 +13,31 @@ public class PositionLicenseRequirementsController : ApiControllerBase
         _positionLicenseRequirementService = positionLicenseRequirementService;
     }
 
-    [HttpGet("GetPositionLicenseRequirements")]
+    [HttpGet("GetAll")]
     public async Task<ActionResult<List<PositionLicenseRequirementListDto>>> GetPositionLicenseRequirementsAsync()
     {
         return Ok(await _positionLicenseRequirementService.GetAllAsync());
     }
 
-    [HttpGet("GetPositionLicenseRequirementById/{id:long}")]
+    [HttpGet("GetById/{id:long}")]
     public async Task<ActionResult<PositionLicenseRequirementListDto>> GetPositionLicenseRequirementAsync(long id)
     {
         return Ok(await _positionLicenseRequirementService.GetByIdAsync(id));
     }
 
-    [HttpPost("CreatePositionLicenseRequirement")]
+    [HttpPost("Create")]
     public async Task<ActionResult> PostAsync([FromBody] CreatePositionLicenseRequirementDto request)
     {
         return Ok(await _positionLicenseRequirementService.CreateAsync(request));
     }
 
-    [HttpPut("UpdatePositionLicenseRequirement/{id:long}")]
+    [HttpPut("Update/{id:long}")]
     public async Task<ActionResult> PutAsync(long id, [FromBody] UpdatePositionLicenseRequirementDto request)
     {
         return Ok(await _positionLicenseRequirementService.UpdatePositionLicenseRequirementAsync(id, request));
     }
 
-    [HttpDelete("DeletePositionLicenseRequirement/{id:long}")]
+    [HttpDelete("Delete/{id:long}")]
     public async Task<ActionResult> DeleteAsync(long id)
     {
         return Ok(await _positionLicenseRequirementService.DeletePositionLicenseRequirementAsync(id));

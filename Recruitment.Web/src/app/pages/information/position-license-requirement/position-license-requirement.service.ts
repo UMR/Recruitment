@@ -10,28 +10,28 @@ export class PositionLicenseRequirementService {
 
     constructor(private http: HttpClient) { }
 
-    getPositionLicenseRequirements(): Observable<HttpResponse<any>> {
-        const URI = `${resourceServerUrl}/api/v1/PositionLicenseRequirements/GetPositionLicenseRequirements`;
+    getAll(): Observable<HttpResponse<any>> {
+        const URI = `${resourceServerUrl}/api/v1/PositionLicenseRequirements/GetAll`;
         return this.http.get(URI, { observe: 'response' })
     }
 
-    getPositionLicenseRequirementById(id: number): Observable<HttpResponse<any>> {
-        const URI = `${resourceServerUrl}/api/v1/PositionLicenseRequirements/GetPositionLicenseRequirementById/${id}`;
+    getById(id: number): Observable<HttpResponse<any>> {
+        const URI = `${resourceServerUrl}/api/v1/PositionLicenseRequirements/GetById/${id}`;
         return this.http.get(URI, { observe: 'response' })
     }
 
-    addPositionLicenseRequirement(emailType: any): Observable<HttpResponse<any>> {
-        const URI = `${resourceServerUrl}/api/v1/PositionLicenseRequirements/CreatePositionLicenseRequirement/`;
+    create(emailType: any): Observable<HttpResponse<any>> {
+        const URI = `${resourceServerUrl}/api/v1/PositionLicenseRequirements/Create/`;
         return this.http.post(URI, emailType, { observe: 'response' })
     }
 
-    updatePositionLicenseRequirement(id: number, emailType: any) {
-        const URI = `${resourceServerUrl}/api/v1/PositionLicenseRequirements/UpdatePositionLicenseRequirement/${id}`;
+    update(id: number, emailType: any) {
+        const URI = `${resourceServerUrl}/api/v1/PositionLicenseRequirements/Update/${id}`;
         return this.http.put(URI, emailType, { observe: 'response' })
     }
 
-    deletePositionLicenseRequirement(id: number): Observable<HttpResponse<any>> {
-        const URI = `${resourceServerUrl}/api/v1/PositionLicenseRequirements/DeletePositionLicenseRequirement/${id}`;
+    delete(id: number): Observable<HttpResponse<any>> {
+        const URI = `${resourceServerUrl}/api/v1/PositionLicenseRequirements/Delete/${id}`;
         return this.http.delete(URI, { observe: 'response' })
     }
 
