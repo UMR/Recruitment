@@ -15,7 +15,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { PasswordModule } from 'primeng/password';
-
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
     declarations: [
@@ -33,7 +33,8 @@ import { PasswordModule } from 'primeng/password';
         InputMaskModule,
         InputTextareaModule,
         KeyFilterModule,
-        PasswordModule
+        PasswordModule,
+        DropdownModule
     ],
     providers: [ConfirmationService, MessageService]
 })

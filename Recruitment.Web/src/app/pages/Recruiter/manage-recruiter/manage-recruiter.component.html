@@ -80,7 +80,8 @@
         </div>
         <div class="field">
             <label for="agency">Agency</label>
-            <input type="text" pInputText id="agency" [(ngModel)]="user.agencyId" maxlength="200">
+            <!--<input type="text" pInputText id="agency" [(ngModel)]="user.agencyId" maxlength="200">-->
+            <p-dropdown [options]="agencys" [(ngModel)]="user.agencyId" optionLabel="name"></p-dropdown>
         </div>
         <div class="field">
             <label for="timeOut">Time Out</label>
@@ -88,7 +89,7 @@
         </div>
         <div class="field">
             <label for="applicantType">Default Applicant Type</label>
-            <input type="text" pInputText id="applicantType" [(ngModel)]="user.ApplicantTypeId" maxlength="200" />
+            <p-dropdown [options]="agencys" [(ngModel)]="user.agencyId" optionLabel="name"></p-dropdown>
         </div>
     </ng-template>
 

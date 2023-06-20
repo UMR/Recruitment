@@ -15,6 +15,17 @@
     padding: 3px 2px;
     border-radius: 0px;
 }
+
+:host ::ng-deep .p-dropdown {
+    width: 100%;
+    padding: 3px 2px;
+    border-radius: 0px;
+}
+:host ::ng-deep .p-dropdown:not(.p-disabled).p-focus {
+    box-shadow: none;
+    border-color: black;
+}
+
 .field {
      margin-bottom: .4rem; 
 }

@@ -1,36 +1,38 @@
 import { Component } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { User } from '../../../common/models/user.model';
+import { AgencyModel } from '../../../common/models/agency.model';
+import { UserModel } from '../../../common/models/user.model';
 import { ManageRecruiterService } from './manage-recruiter.service';
 
 @Component({
-  selector: 'app-manage-recruiter',
-  templateUrl: './manage-recruiter.component.html',
-  styleUrls: ['./manage-recruiter.component.scss']
+    selector: 'app-manage-recruiter',
+    templateUrl: './manage-recruiter.component.html',
+    styleUrls: ['./manage-recruiter.component.scss']
 })
 export class ManageRecruiterComponent {
     userDialog: boolean = false;
-    users: User[] = [];
+    users: UserModel[] = [];
     user: any;
     submitted: boolean = false;
     isActive: any = [];
     statuses: any[] = [];
     addEditTxt: string = "Add";
+    agencys: AgencyModel[] = [];
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
         private userService: ManageRecruiterService) { }
 
     ngOnInit() {
-        this.getAllAgency();
+        this.getAllUser();
     }
 
-    editUser(agency: User) {
+    editUser(agency: UserModel) {
         this.addEditTxt = "Edit";
         this.user = { ...agency };
         this.userDialog = true;
     }
 
-    deleteUser(user: User) {
+    deleteUser(user: UserModel) {
         this.confirmationService.confirm({
             message: 'Are you sure you want to delete ' + user.firstName + ' agency ?',
             header: 'Confirm',
@@ -125,7 +127,7 @@ export class ManageRecruiterComponent {
         this.userDialog = true;
     }
 
-    getAllAgency() {
+    getAllUser() {
         //this.agencyService.getAllAgency().subscribe(
         //    res => {
         //        this.agencys = res.body;
