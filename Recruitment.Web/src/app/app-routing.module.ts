@@ -13,7 +13,7 @@ const routes: Routes = [
         children: [
             {
                 path: 'dashboard',
-                loadChildren: () =>import('./dashboard/dashboard.module').then((m) => m.DashboardModule)
+                loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule)
             },
             //////////// --------------------------   recruiter menu portion ------------------------///////
             {
@@ -44,6 +44,10 @@ const routes: Routes = [
             {
                 path: 'information/position-license-requirement',
                 loadChildren: () => import('./pages/information/position-license-requirement/position-license-requirement.module').then((m) => m.PositionLicenseRequirementModule)
+            },
+            {
+                path: 'information/group-information',
+                loadChildren: () => import('./pages/information/group/group.module').then((m) => m.GroupModule)
             },
         ]
     },
