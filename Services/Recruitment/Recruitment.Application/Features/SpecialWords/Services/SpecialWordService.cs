@@ -1,15 +1,13 @@
-﻿using Recruitment.Application.Features.UpperCaseWords;
+﻿namespace Recruitment.Application.Features.SpecialWords;
 
-namespace Recruitment.Application.Features.SpecialWords;
-
-public class UpperCaseWordService:IUpperCaseWordService
+public class SpecailWordService : ISpecialWordService
 {
     private readonly IMapper _mapper;
     private readonly ICurrentUserService _currentUserService;
     private readonly IDateTimeService _dateTime;
     private readonly ISpecialWordRepository _specialWordRepository;
 
-    public UpperCaseWordService(IMapper mapper, ICurrentUserService currentUserService, IDateTimeService dateTime, ISpecialWordRepository specialWordRepository)
+    public SpecailWordService(IMapper mapper, ICurrentUserService currentUserService, IDateTimeService dateTime, ISpecialWordRepository specialWordRepository)
     {
         _mapper = mapper;
         _currentUserService = currentUserService;
@@ -17,17 +15,17 @@ public class UpperCaseWordService:IUpperCaseWordService
         _specialWordRepository = specialWordRepository;
     }
 
-    public async Task<List<UpperCaseWordListDto>> GetAllAsync()
+    public async Task<List<SpecialWordListDto>> GetAllAsync()
     {
         var entitiesFromRepo = await _specialWordRepository.GetAllAsync();
-        var entitiesToReturn = _mapper.Map<List<UpperCaseWordListDto>>(entitiesFromRepo);
+        var entitiesToReturn = _mapper.Map<List<SpecialWordListDto>>(entitiesFromRepo);
         return entitiesToReturn;
     }
 
-    public async Task<UpperCaseWordListDto> GetByIdAsync(long id)
+    public async Task<SpecialWordListDto> GetByIdAsync(long id)
     {
         var entityFromRepo = await _specialWordRepository.GetByIdAsync(id);
-        var entityToReturn = _mapper.Map<UpperCaseWordListDto>(entityFromRepo);
+        var entityToReturn = _mapper.Map<SpecialWordListDto>(entityFromRepo);
         return entityToReturn;
     }
 
@@ -39,7 +37,7 @@ public class UpperCaseWordService:IUpperCaseWordService
     public async Task<BaseCommandResponse> CreateAsync(CreateSpecialWordDto request)
     {
         var response = new BaseCommandResponse();
-        var validator = new CreateUpperCaseWordDtoValidator(this);
+        var validator = new CreateSpecialWordDtoValidator(this);
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.IsValid == false)
@@ -52,7 +50,7 @@ public class UpperCaseWordService:IUpperCaseWordService
 
         var entity = new SpecialWord
         {
-            Word = request.Word            
+            Word = request.Word
         };
         await _specialWordRepository.CreateAsync(entity);
 
@@ -61,10 +59,10 @@ public class UpperCaseWordService:IUpperCaseWordService
         return response;
     }
 
-    public async Task<BaseCommandResponse> UpdateAsync(long id, UpdateUpperCaseWordDto request)
+    public async Task<BaseCommandResponse> UpdateAsync(long id, UpdateSpecialWordDto request)
     {
         var response = new BaseCommandResponse();
-        var validator = new UpdateUpperCaseWordDtoValidator(this);
+        var validator = new UpdateSpecialWordDtoValidator(this);
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.IsValid == false)
@@ -88,7 +86,7 @@ public class UpperCaseWordService:IUpperCaseWordService
         }
 
         entity.Id = request.Id;
-        entity.Word = request.Word;        
+        entity.Word = request.Word;
         await _specialWordRepository.UpdateAsync(id, entity);
 
         response.Success = true;

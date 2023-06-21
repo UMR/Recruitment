@@ -8,6 +8,7 @@ public class MappingProfile : Profile
         CreateMap<Agency, AgencyListDto>().ReverseMap();
         CreateMap<EmailType, EmailTypeListDto>().ReverseMap();
         CreateMap<PositionLicenseRequirement, PositionLicenseRequirementListDto>().ReverseMap();
-        CreateMap<SpecialWord, UpperCaseWordListDto>().ReverseMap();
+        CreateMap<SpecialWord, SpecialWordListDto>().ReverseMap();
+        CreateMap<UpperCaseWord, UpperCaseWordListDto>().ReverseMap();
     }
 }

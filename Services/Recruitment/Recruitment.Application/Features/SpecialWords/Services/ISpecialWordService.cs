@@ -1,16 +1,16 @@
 ﻿namespace Recruitment.Application.Features.SpecialWords;
 
-public interface IUpperCaseWordService
+public interface ISpecialWordService
 {
-    Task<List<UpperCaseWordListDto>> GetAllAsync();
+    Task<List<SpecialWordListDto>> GetAllAsync();
 
-    Task<UpperCaseWordListDto> GetByIdAsync(long id);
+    Task<SpecialWordListDto> GetByIdAsync(long id);
 
     Task<bool> IsExistWordAsync(string name, long? id = null);
 
     Task<BaseCommandResponse> CreateAsync(CreateSpecialWordDto request);
 
-    Task<BaseCommandResponse> UpdateAsync(long id, UpdateUpperCaseWordDto request);
+    Task<BaseCommandResponse> UpdateAsync(long id, UpdateSpecialWordDto request);
 
     Task<BaseCommandResponse> DeleteAsync(long id);
 }

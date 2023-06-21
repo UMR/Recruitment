@@ -1,9 +1,9 @@
 ﻿namespace Recruitment.Application.Features.SpecialWords;
 
-public class CreateUpperCaseWordDtoValidator:AbstractValidator<CreateSpecialWordDto>
+public class CreateSpecialWordDtoValidator:AbstractValidator<CreateSpecialWordDto>
 {
-    private readonly IUpperCaseWordService _specialWordService;
-    public CreateUpperCaseWordDtoValidator(IUpperCaseWordService specialWordService)
+    private readonly ISpecialWordService _specialWordService;
+    public CreateSpecialWordDtoValidator(ISpecialWordService specialWordService)
     {
         _specialWordService = specialWordService;
 

@@ -1,4 +1,6 @@
-﻿namespace Recruitment.Application;
+﻿using Recruitment.Application.Features.UpperCaseWords;
+
+namespace Recruitment.Application;
 
 public static class ConfigureServices
 {
@@ -17,6 +19,7 @@ public static class ConfigureServices
         builder.Services.AddScoped<IMenuService, MenuService>();
         builder.Services.AddScoped<IPositionLicenseRequirementService, PositionLicenseRequirementService>();
         builder.Services.AddScoped<IRecruiterService, RecruiterService>();
+        builder.Services.AddScoped<ISpecialWordService, SpecailWordService>();
         builder.Services.AddScoped<IUpperCaseWordService, UpperCaseWordService>();
 
         return builder;

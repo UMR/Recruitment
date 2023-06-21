@@ -4,21 +4,21 @@
 [Route("api/v1/[controller]")]
 public class SpecialWordsController : ApiControllerBase
 {
-    private readonly IUpperCaseWordService _specialWordService;
+    private readonly ISpecialWordService _specialWordService;
 
-    public SpecialWordsController(IUpperCaseWordService specialWordService)
+    public SpecialWordsController(ISpecialWordService specialWordService)
     {
         _specialWordService = specialWordService;
     }
 
     [HttpGet("GetAll")]
-    public async Task<ActionResult<List<UpperCaseWordListDto>>> GetAllAsync()
+    public async Task<ActionResult<List<SpecialWordListDto>>> GetAllAsync()
     {
         return Ok(await _specialWordService.GetAllAsync());
     }
 
     [HttpGet("GetById/{id:long}")]
-    public async Task<ActionResult<UpperCaseWordListDto>> GetByIdAsync(long id)
+    public async Task<ActionResult<SpecialWordListDto>> GetByIdAsync(long id)
     {
         return Ok(await _specialWordService.GetByIdAsync(id));
     }
@@ -30,7 +30,7 @@ public class SpecialWordsController : ApiControllerBase
     }
 
     [HttpPut("Update/{id:long}")]
-    public async Task<ActionResult> PutAsync(long id, [FromBody] UpdateUpperCaseWordDto request)
+    public async Task<ActionResult> PutAsync(long id, [FromBody] UpdateSpecialWordDto request)
     {
         return Ok(await _specialWordService.UpdateAsync(id, request));
     }
