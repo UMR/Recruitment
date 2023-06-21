@@ -4,14 +4,14 @@
     </div>
 </div>
 <p-table [value]="users"
-         [rows]="10"
+         [rows]="15"
          [paginator]="true"
          [tableStyle]="{ 'min-width': '75rem' }"
          [rowHover]="true"
          dataKey="userId"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
          [showCurrentPageReport]="true"
-         [rowsPerPageOptions]="[10, 25, 50]">
+         [rowsPerPageOptions]="[15, 30, 50]">
     <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">
             <h5 style="width:300px">Manage Recruiter</h5>

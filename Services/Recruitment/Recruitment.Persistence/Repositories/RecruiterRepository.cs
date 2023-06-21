@@ -13,15 +13,22 @@ public class RecruiterRepository : IRecruiterRepository
 
     public async Task<IEnumerable<RecruiterListDto>> GetAllRecruitersAsync()
     {
-        var query = @"select UserID,LoginId,FirstName,LastName,Email,Telephone,ODAPermission,Users.IsActive,AgencyName,ApplicantType.ApplicantTypeID,Name from [Users]
-                    LEFT JOIN  [Agency] ON [Users].[AgencyID] = [Agency].[AgencyID]
-                    LEFT JOIN  ApplicantType ON [Users].ApplicantTypeID = ApplicantType.ApplicantTypeID" +
-                "ORDER BY FirstName,LastName,LoginId";
-
-        using (IDbConnection conn = _dapperContext.CreateConnection)
+        try
         {
-            var users = await conn.QueryAsync<RecruiterListDto>(query);
-            return users.ToList();
+            var query = @"select UserID,LoginId,FirstName,LastName,Email,Telephone,ODAPermission,Users.IsActive,AgencyName,ApplicantType.ApplicantTypeID,Name from [Users]
+                    LEFT JOIN  [Agency] ON [Users].[AgencyID] = [Agency].[AgencyID]
+                    LEFT JOIN  ApplicantType ON [Users].ApplicantTypeID = ApplicantType.ApplicantTypeID " +
+                    " ORDER BY FirstName,LastName,LoginId";
+
+            using (IDbConnection conn = _dapperContext.CreateConnection)
+            {
+                var users = await conn.QueryAsync<RecruiterListDto>(query);
+                return users.ToList();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
         }
     }
 
@@ -54,25 +61,6 @@ public class RecruiterRepository : IRecruiterRepository
         {
             var id = await conn.ExecuteAsync(query, parameters);
             return id;
-        }
-    }
-
-    public async Task<bool> UpdateRecruiterAsync(int id, EmailType emailType)
-    {
-        var query = "UPDATE EmailTypes SET Type = @Type, IsPersonal = @IsPersonal, IsOfficial = @IsOfficial, UpdatedBy = @UpdatedBy, UpdatedDate = @UpdatedDate WHERE ID = @ID";
-
-        var parameters = new DynamicParameters();
-        parameters.Add("Type", emailType.Type, DbType.String);
-        parameters.Add("IsPersonal", emailType.IsPersonal, DbType.Boolean);
-        parameters.Add("IsOfficial", emailType.IsOfficial, DbType.Boolean);
-        parameters.Add("UpdatedBy", emailType.UpdatedBy, DbType.Int32);
-        parameters.Add("UpdatedDate", emailType.UpdatedDate, DbType.DateTime);
-        parameters.Add("ID", id, DbType.Int32);
-
-        using (IDbConnection conn = _dapperContext.CreateConnection)
-        {
-            var result = await conn.ExecuteAsync(query, parameters);
-            return result > 0 ? true : false;
         }
     }
 
