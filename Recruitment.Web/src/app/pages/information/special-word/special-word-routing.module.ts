@@ -8,7 +8,7 @@ const routes: Routes = [
         path: '',
         component: SpecialWordComponent,
         data: {
-            title: $localize`Information / Position License Requirement`
+            title: $localize`Information / Special Word`
         }
     }
 ];
