@@ -28,6 +28,8 @@ global using Recruitment.Application.Features.EmailTypes;
 global using Recruitment.Application.Features.Menus;
 global using Recruitment.Application.Features.InstitutionTypes;
 global using Recruitment.Application.Features.PositionLicenseRequirements;
+global using Recruitment.Application.Features.ManageRecruiter;
+global using Recruitment.Application.Features.SpecialWords;
 
 global using Recruitment.Domain.Entities;
 
