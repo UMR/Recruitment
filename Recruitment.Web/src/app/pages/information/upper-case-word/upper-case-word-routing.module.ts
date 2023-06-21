@@ -1,7 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { UpperCaseWordComponent } from './upper-case-word.component';
+
+const routes: Routes = [
+    {
+        path: '',
+        component: UpperCaseWordComponent,
+        data: {
+            title: $localize`Information / Upper Case Word`
+        }
+    }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

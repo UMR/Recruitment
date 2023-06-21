@@ -53,6 +53,10 @@ const routes: Routes = [
                 path: 'information/special-word',
                 loadChildren: () => import('./pages/information/special-word/special-word.module').then((m) => m.SpecialWordModule)
             },
+            {
+                path: 'information/upper-case-word',
+                loadChildren: () => import('./pages/information/upper-case-word/upper-case-word.module').then((m) => m.UpperCaseWordModule)
+            },
         ]
     },
     {
