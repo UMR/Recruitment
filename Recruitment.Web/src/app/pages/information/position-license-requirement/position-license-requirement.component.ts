@@ -41,8 +41,6 @@ export class PositionLicenseRequirementComponent {
     }
 
     onEdit(model: PositionLicenseRequirementModel) {
-
-        console.log(model);
         this.id = model.positionLicenseRequirementId;
         this.formGroup.patchValue({
             name: model.positionLicenseRequirementName,
@@ -61,15 +59,15 @@ export class PositionLicenseRequirementComponent {
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
                 this.positionLicenseRequirementService.delete(model.positionLicenseRequirementId).subscribe({
-                    next: (res) => {                        
+                    next: (res) => {
                         if (res.status === 200) {
-                            if (res.body.success) {                                
+                            if ((res.body as any).success) {
                                 this.getPositionLicenseRequirements();
-                                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Delete Successfull', life: 3000 });                                
+                                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Delete Successfull', life: 3000 });
                             } else {
                                 this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.errors[0], life: 3000 });
                             }
-                        }                        
+                        }
                     },
                     error: (err) => {
                         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Delete Failed', life: 3000 });
@@ -97,20 +95,17 @@ export class PositionLicenseRequirementComponent {
                 this.positionLicenseRequirementService.create(model).subscribe({
                     next: (res) => {
                         if (res.status === 200) {
-                            if ((res.body as any).success) {
-                                this.messageService.add({ severity: 'success', summary: 'Successful', detail: res.body.message, life: 3000 });
+                            if ((res.body as any).success) {                                
                                 this.visibleDialog = false;
+                                this.getPositionLicenseRequirements();
+                                this.messageService.add({ severity: 'success', summary: 'Successful', detail: (res.body as any).message, life: 3000 });
                             } else {
-                                this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.errors[0], life: 3000 });
+                                this.messageService.add({ severity: 'error', summary: 'Error', detail: (res.body as any).errors[0], life: 3000 });
                             }
                         }
                     },
                     error: (err) => {
-                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Created Failed', life: 3000 });
-                    },
-                    complete: () => {
-                        this.id = 0;
-                        this.getPositionLicenseRequirements();
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Creating Failed', life: 3000 });
                     }
                 });
             } else {
@@ -118,19 +113,17 @@ export class PositionLicenseRequirementComponent {
                     next: (res) => {
                         if (res.status === 200) {
                             if ((res.body as any).success) {
-                                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Update Successfull', life: 3000 });
+                                this.id = 0;
                                 this.visibleDialog = false;
-                            } else if (!(res.body as any).success) {
+                                this.getPositionLicenseRequirements();                                
+                                this.messageService.add({ severity: 'success', summary: 'Successful', detail: (res.body as any).message, life: 3000 });
+                            } else {
                                 this.messageService.add({ severity: 'error', summary: 'Error', detail: (res.body as any).errors[0], life: 3000 });
                             }
                         }
                     },
                     error: (err) => {
-                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Update Failed', life: 3000 });
-                    },
-                    complete: () => {
-                        this.id = 0;
-                        this.getPositionLicenseRequirements();
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Updating Failed', life: 3000 });
                     }
                 });
             }
