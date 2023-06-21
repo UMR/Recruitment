@@ -36,7 +36,7 @@
             <td>{{ user.lastName }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.telephone }}</td>
-            <td>{{ user.agencyId }}</td>
+            <td>{{ user.agencyName }}</td>
             <td>
                 <input type="checkbox" name="group" [checked]="user.isActive" (change)="changeStatus(user.userId,user.isActive)">
             </td>
@@ -76,7 +76,7 @@
         </div>
         <div class="field">
             <label for="telephone">Telephone</label>
-            <p-inputMask mask="(999) 999-9999" id="telephone" [(ngModel)]="user.telephone" placeholder="(999) 999-9999" />
+            <p-inputMask mask="(999) 999-9999" style="{border: 0px solid}" id="telephone" [(ngModel)]="user.telephone" placeholder="(999) 999-9999" />
         </div>
         <div class="field">
             <label for="agency">Agency</label>
