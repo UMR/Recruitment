@@ -5,7 +5,7 @@ import { resourceServerUrl } from '../../../common/auth-key';
 import { UserModel } from '../../../common/models/user.model';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ManageRecruiterService {
 
@@ -26,8 +26,8 @@ export class ManageRecruiterService {
         return this.http.put(addRecruiterURI, user, { observe: 'response' })
     }
 
-    deleteRecruiter(userId: any): Observable<HttpResponse<any>> {
+    deleteRecruiter(deleteUserId: any, updatedUserId: any): Observable<HttpResponse<any>> {
         const deleteRecruiterURI = `${resourceServerUrl}/api/v1/Recruiter/DeleteRecruiter/`;
-        return this.http.delete(deleteRecruiterURI + userId, { observe: 'response' })
+        return this.http.delete(deleteRecruiterURI + deleteUserId + "/" + updatedUserId, { observe: 'response' })
     }
 }

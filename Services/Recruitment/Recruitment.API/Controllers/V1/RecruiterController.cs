@@ -27,19 +27,19 @@ public class RecruiterController : ApiControllerBase
 
     [HttpPost("CreateRecruiter")]
     public async Task<ActionResult> PostAsync([FromBody] CreateRecruiterDto request)
-    {            
+    {
         return Ok(await _recruiterService.CreateRecruiterAsync(request));
     }
 
     [HttpPut("UpdateRecruiter/{id:int}")]
     public async Task<ActionResult> PutAsync(int id, [FromBody] UpdateRecruiterDto request)
-    {            
+    {
         return Ok(await _recruiterService.UpdateRecruiterAsync(id, request));
-    }    
+    }
 
-    [HttpDelete("DeleteRecruiter/{id:int}")]
-    public async Task<ActionResult> DeleteAsync(int id)
-    {            
-        return Ok(await _recruiterService.DeleteRecruiterAsync(id));
+    [HttpDelete("DeleteRecruiter/{deleteUserId:int}/{updatedUserId:int}")]
+    public async Task<ActionResult> DeleteAsync(int deleteUserId, int updatedUserId)
+    {
+        return Ok(await _recruiterService.DeleteRecruiterAsync(deleteUserId, updatedUserId));
     }
 }

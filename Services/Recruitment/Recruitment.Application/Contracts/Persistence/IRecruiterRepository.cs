@@ -12,6 +12,6 @@ public interface IRecruiterRepository
 
     Task<bool> UpdateRecruiterAsync(int id, User user);
 
-    Task<bool> DeleteRecruiterAsync(long id);    
+    Task<bool> DeleteRecruiterAsync(int deleteUserId, int updatedUserId);    
     
 }

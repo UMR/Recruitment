@@ -13,5 +13,5 @@ public class RecruiterListDto
     public long? AgencyId { get; set; }
     public string AgencyName { get; set; }
     public long? ApplicantTypeId { get; set; }
-    public string ApplicantType { get; set; }
+    public string Name { get; set; }
 }

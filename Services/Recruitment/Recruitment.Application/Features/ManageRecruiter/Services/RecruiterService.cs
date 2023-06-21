@@ -96,17 +96,17 @@ public class RecruiterService : IRecruiterService
         return response;
     }
 
-    public async Task<BaseCommandResponse> DeleteRecruiterAsync(int id)
+    public async Task<BaseCommandResponse> DeleteRecruiterAsync(int deleteUserId, int updatedUserId)
     {
         var response = new BaseCommandResponse();
-        var entity = await _recruiterRepository.GetRecruiterByIdAsync(id);
+        var entity = await _recruiterRepository.GetRecruiterByIdAsync(deleteUserId);
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(User), id.ToString());
+            throw new NotFoundException(nameof(User), deleteUserId.ToString());
         }
 
-        await _recruiterRepository.DeleteRecruiterAsync(id);
+        await _recruiterRepository.DeleteRecruiterAsync(deleteUserId, updatedUserId);
 
         response.Success = true;
         response.Message = "Deleting Successful";

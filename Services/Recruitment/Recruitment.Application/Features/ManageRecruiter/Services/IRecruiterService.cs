@@ -10,6 +10,6 @@
 
         Task<BaseCommandResponse> UpdateRecruiterAsync(int id, UpdateRecruiterDto request);
 
-        Task<BaseCommandResponse> DeleteRecruiterAsync(int id);
+        Task<BaseCommandResponse> DeleteRecruiterAsync(int deleteUserId, int updatedUserId);
     }
 }

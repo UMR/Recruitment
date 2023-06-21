@@ -14,4 +14,6 @@
     updatedDate: Date;
     timeOut: number;
     agencyId: number;
+    applicantTypeId: number;
+    name: string;
 }

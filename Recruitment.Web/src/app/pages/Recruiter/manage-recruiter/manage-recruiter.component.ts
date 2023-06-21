@@ -38,14 +38,13 @@ export class ManageRecruiterComponent {
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                //this.agencyService.deleteAgency(user.loginId).subscribe(res => {
-                //    console.log(res);
-                //    if (res && res.body) {
-                //        this.agencys = this.agencys.filter((val) => val.agencyId !== agency.agencyId);
-                //        this.agency = {};
-                //        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Deleted', life: 3000 });
-                //    }
-                //}, err => { })
+                this.manageRecruiterService.deleteRecruiter(user.userId,"5034").subscribe(res => {
+                    console.log(res);
+                    if (res && res.body) {
+                        this.user = {};
+                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Deleted', life: 3000 });
+                    }
+                }, err => { })
 
             }
         });
