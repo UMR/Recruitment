@@ -1,12 +1,12 @@
-﻿namespace Recruitment.Application.Features.SpecialWords;
+﻿namespace Recruitment.Application.Features.UpperCaseWords;
 
 public class UpdateUpperCaseWordDtoValidator : AbstractValidator<UpdateUpperCaseWordDto>
 {
-    private readonly IUpperCaseWordService _specialWordService;
+    private readonly IUpperCaseWordService _upperCaseWordService;
 
-    public UpdateUpperCaseWordDtoValidator(IUpperCaseWordService specialWordService)
+    public UpdateUpperCaseWordDtoValidator(IUpperCaseWordService upperCaseWordService)
     {
-        _specialWordService = specialWordService;
+        _upperCaseWordService = upperCaseWordService;
 
         RuleFor(a => a.Id)
                .NotEmpty().WithMessage("{PropertyName} is required")
@@ -20,15 +20,10 @@ public class UpdateUpperCaseWordDtoValidator : AbstractValidator<UpdateUpperCase
         RuleFor(x => x)
            .Must(x => !IsExistWordAsync(x.Word, x.Id))
            .WithMessage("Word already exist");
-    }
-
-    public UpdateUpperCaseWordDtoValidator()
-    {
-
-    }
+    }    
 
     private bool IsExistWordAsync(string word, long? id = null)
     {
-        return _specialWordService.IsExistWordAsync(word, id).Result;
+        return _upperCaseWordService.IsExistWordAsync(word, id).Result;
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Recruitment.Application.Features.SpecialWords;
+﻿namespace Recruitment.Application.Features.UpperCaseWords;
 
 public class UpdateUpperCaseWordDto
 {

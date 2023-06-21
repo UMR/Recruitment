@@ -1,4 +1,4 @@
-﻿namespace Recruitment.Application.Features.SpecialWords;
+﻿namespace Recruitment.Application.Features.UpperCaseWords;
 
 public interface IUpperCaseWordService
 {
@@ -8,7 +8,7 @@ public interface IUpperCaseWordService
 
     Task<bool> IsExistWordAsync(string name, long? id = null);
 
-    Task<BaseCommandResponse> CreateAsync(CreateSpecialWordDto request);
+    Task<BaseCommandResponse> CreateAsync(CreateUpperCaseWordDto request);
 
     Task<BaseCommandResponse> UpdateAsync(long id, UpdateUpperCaseWordDto request);
 

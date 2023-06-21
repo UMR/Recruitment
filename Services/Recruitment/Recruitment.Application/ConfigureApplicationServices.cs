@@ -17,7 +17,7 @@ public static class ConfigureServices
         builder.Services.AddScoped<IMenuService, MenuService>();
         builder.Services.AddScoped<IPositionLicenseRequirementService, PositionLicenseRequirementService>();
         builder.Services.AddScoped<IRecruiterService, RecruiterService>();
-        builder.Services.AddScoped<ISpecialWordService, SpecialWordService>();
+        builder.Services.AddScoped<IUpperCaseWordService, UpperCaseWordService>();
 
         return builder;
     }

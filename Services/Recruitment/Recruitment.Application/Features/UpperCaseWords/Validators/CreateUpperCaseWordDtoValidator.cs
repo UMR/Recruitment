@@ -1,11 +1,11 @@
-﻿namespace Recruitment.Application.Features.SpecialWords;
+﻿namespace Recruitment.Application.Features.UpperCaseWords;
 
-public class CreateUpperCaseWordDtoValidator:AbstractValidator<CreateSpecialWordDto>
+public class CreateUpperCaseWordDtoValidator:AbstractValidator<CreateUpperCaseWordDto>
 {
-    private readonly IUpperCaseWordService _specialWordService;
-    public CreateUpperCaseWordDtoValidator(IUpperCaseWordService specialWordService)
+    private readonly IUpperCaseWordService _upperCaseWordService;
+    public CreateUpperCaseWordDtoValidator(IUpperCaseWordService upperCaseWordService)
     {
-        _specialWordService = specialWordService;
+        _upperCaseWordService = upperCaseWordService;
 
         RuleFor(a => a.Word)
             .NotEmpty().WithMessage("{PropertyName} is required")
@@ -19,6 +19,6 @@ public class CreateUpperCaseWordDtoValidator:AbstractValidator<CreateSpecialWord
 
     private bool IsExistWordAsync(string word)
     {
-        return _specialWordService.IsExistWordAsync(word).Result;
+        return _upperCaseWordService.IsExistWordAsync(word).Result;
     }
 }

@@ -1,42 +1,42 @@
-﻿using Recruitment.Application.Features.UpperCaseWords;
+﻿using Recruitment.Application.Features.SpecialWords;
 
-namespace Recruitment.Application.Features.SpecialWords;
+namespace Recruitment.Application.Features.UpperCaseWords;
 
 public class UpperCaseWordService:IUpperCaseWordService
 {
     private readonly IMapper _mapper;
     private readonly ICurrentUserService _currentUserService;
     private readonly IDateTimeService _dateTime;
-    private readonly ISpecialWordRepository _specialWordRepository;
+    private readonly IUpperCaseWordRepository _upperCaseWordRepository;
 
-    public UpperCaseWordService(IMapper mapper, ICurrentUserService currentUserService, IDateTimeService dateTime, ISpecialWordRepository specialWordRepository)
+    public UpperCaseWordService(IMapper mapper, ICurrentUserService currentUserService, IDateTimeService dateTime, IUpperCaseWordRepository upperCaseWordRepository)
     {
         _mapper = mapper;
         _currentUserService = currentUserService;
         _dateTime = dateTime;
-        _specialWordRepository = specialWordRepository;
+        _upperCaseWordRepository = upperCaseWordRepository;
     }
 
     public async Task<List<UpperCaseWordListDto>> GetAllAsync()
     {
-        var entitiesFromRepo = await _specialWordRepository.GetAllAsync();
+        var entitiesFromRepo = await _upperCaseWordRepository.GetAllAsync();
         var entitiesToReturn = _mapper.Map<List<UpperCaseWordListDto>>(entitiesFromRepo);
         return entitiesToReturn;
     }
 
     public async Task<UpperCaseWordListDto> GetByIdAsync(long id)
     {
-        var entityFromRepo = await _specialWordRepository.GetByIdAsync(id);
+        var entityFromRepo = await _upperCaseWordRepository.GetByIdAsync(id);
         var entityToReturn = _mapper.Map<UpperCaseWordListDto>(entityFromRepo);
         return entityToReturn;
     }
 
     public async Task<bool> IsExistWordAsync(string word, long? id = null)
     {
-        return await _specialWordRepository.IsExistWordAsync(word, id);
+        return await _upperCaseWordRepository.IsExistWordAsync(word, id);
     }
 
-    public async Task<BaseCommandResponse> CreateAsync(CreateSpecialWordDto request)
+    public async Task<BaseCommandResponse> CreateAsync(CreateUpperCaseWordDto request)
     {
         var response = new BaseCommandResponse();
         var validator = new CreateUpperCaseWordDtoValidator(this);
@@ -50,11 +50,11 @@ public class UpperCaseWordService:IUpperCaseWordService
             return response;
         }
 
-        var entity = new SpecialWord
+        var entity = new UpperCaseWord
         {
             Word = request.Word            
         };
-        await _specialWordRepository.CreateAsync(entity);
+        await _upperCaseWordRepository.CreateAsync(entity);
 
         response.Success = true;
         response.Message = "Creating Successful";
@@ -80,7 +80,7 @@ public class UpperCaseWordService:IUpperCaseWordService
             throw new BadRequestException("Id does not match");
         }
 
-        var entity = await _specialWordRepository.GetByIdAsync(id);
+        var entity = await _upperCaseWordRepository.GetByIdAsync(id);
 
         if (entity is null)
         {
@@ -89,7 +89,7 @@ public class UpperCaseWordService:IUpperCaseWordService
 
         entity.Id = request.Id;
         entity.Word = request.Word;        
-        await _specialWordRepository.UpdateAsync(id, entity);
+        await _upperCaseWordRepository.UpdateAsync(id, entity);
 
         response.Success = true;
         response.Message = "Updating Successful";
@@ -99,14 +99,14 @@ public class UpperCaseWordService:IUpperCaseWordService
     public async Task<BaseCommandResponse> DeleteAsync(long id)
     {
         var response = new BaseCommandResponse();
-        var entity = await _specialWordRepository.GetByIdAsync(id);
+        var entity = await _upperCaseWordRepository.GetByIdAsync(id);
 
         if (entity is null)
         {
             throw new NotFoundException(nameof(User), id.ToString());
         }
 
-        await _specialWordRepository.DeleteAsync(id);
+        await _upperCaseWordRepository.DeleteAsync(id);
 
         response.Success = true;
         response.Message = "Deleting Successful";
