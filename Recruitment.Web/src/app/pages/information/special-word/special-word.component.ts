@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { SpecialWordService } from '../../../common/service/special-word.service';
+import { SpecialWordModel } from '../../../common/models/special-word.model';
 
 @Component({
   selector: 'app-special-word',
@@ -12,7 +13,7 @@ import { SpecialWordService } from '../../../common/service/special-word.service
 export class SpecialWordComponent {
 
     public id: number = 0;
-    public specialWords: any[] = [];
+    public specialWords: SpecialWordModel[] = [];
     public formGroup!: FormGroup;
     public visibleDialog: boolean = false;
 
@@ -40,10 +41,10 @@ export class SpecialWordComponent {
         this.visibleDialog = true;
     }
 
-    onEdit(model: any) {
-        this.id = model.positionLicenseRequirementId;
+    onEdit(model: SpecialWordModel) {
+        this.id = model.id;
         this.formGroup.patchValue({
-            name: model.positionLicenseRequirementName,
+            word: model.word,
         });
         this.visibleDialog = true;
     }
@@ -52,13 +53,13 @@ export class SpecialWordComponent {
         this.visibleDialog = false;
     }
 
-    onDelete(model: any) {
+    onDelete(model: SpecialWordModel) {
         this.confirmationService.confirm({
-            message: `Are you sure you want to delete ${model.positionLicenseRequirementName} Position License Requirement?`,
+            message: `Are you sure you want to delete ${model.word} Special Word?`,
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.specialWordService.delete(model.positionLicenseRequirementId).subscribe({
+                this.specialWordService.delete(model.id).subscribe({
                     next: (res) => {
                         if (res.status === 200) {
                             if ((res.body as any).success) {
@@ -86,8 +87,8 @@ export class SpecialWordComponent {
     onSave(): void {
 
         const model: any = {
-            positionLicenseRequirementId: this.id,
-            positionLicenseRequirementName: this.formGroup.controls['name'].value ? this.formGroup.controls['name'].value.trim() : null,
+            id: this.id,
+            word: this.formGroup.controls['word'].value ? this.formGroup.controls['word'].value.trim() : null,
         };
 
         if (this.formGroup.valid) {
