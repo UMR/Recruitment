@@ -1,6 +1,4 @@
-﻿using Recruitment.Application.Features.PositionLicenseRequirements;
-
-namespace Recruitment.API.Controllers.V1;
+﻿namespace Recruitment.API.Controllers.V1;
 
 [ApiController]
 [Route("api/v1/[controller]")]
@@ -14,13 +12,13 @@ public class PositionLicenseRequirementsController : ApiControllerBase
     }
 
     [HttpGet("GetAll")]
-    public async Task<ActionResult<List<PositionLicenseRequirementListDto>>> GetPositionLicenseRequirementsAsync()
+    public async Task<ActionResult<List<PositionLicenseRequirementListDto>>> GetAllAsync()
     {
         return Ok(await _positionLicenseRequirementService.GetAllAsync());
     }
 
     [HttpGet("GetById/{id:long}")]
-    public async Task<ActionResult<PositionLicenseRequirementListDto>> GetPositionLicenseRequirementAsync(long id)
+    public async Task<ActionResult<PositionLicenseRequirementListDto>> GetByIdAsync(long id)
     {
         return Ok(await _positionLicenseRequirementService.GetByIdAsync(id));
     }

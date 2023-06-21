@@ -21,6 +21,9 @@ global using Recruitment.Application.Contracts;
 global using Recruitment.Application.Features.Agencies;
 global using Recruitment.Application.Features.EmailTypes;
 global using Recruitment.Application.Features.Menus;
+global using Recruitment.Application.Features.PositionLicenseRequirements;
+global using Recruitment.Application.Features.SpecialWords;
+
 
 global using Recruitment.Infrastructure;
 
