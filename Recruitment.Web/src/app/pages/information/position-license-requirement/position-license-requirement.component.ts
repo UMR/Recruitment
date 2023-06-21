@@ -40,10 +40,12 @@ export class PositionLicenseRequirementComponent {
         this.visibleDialog = true;
     }
 
-    onEdit(emailType: any) {
-        this.id = emailType.id;
+    onEdit(model: PositionLicenseRequirementModel) {
+
+        console.log(model);
+        this.id = model.positionLicenseRequirementId;
         this.formGroup.patchValue({
-            emailType: emailType.type,
+            name: model.positionLicenseRequirementName,
         });
         this.visibleDialog = true;
     }
