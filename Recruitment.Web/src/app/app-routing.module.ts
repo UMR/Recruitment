@@ -57,6 +57,10 @@ const routes: Routes = [
                 path: 'information/upper-case-word',
                 loadChildren: () => import('./pages/information/upper-case-word/upper-case-word.module').then((m) => m.UpperCaseWordModule)
             },
+            {
+                path: 'information/applicant-type',
+                loadChildren: () => import('./pages/information/applicant-type/applicant-type.module').then((m) => m.ApplicantTypeModule)
+            },
         ]
     },
     {

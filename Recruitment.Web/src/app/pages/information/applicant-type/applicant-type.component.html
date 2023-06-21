@@ -27,7 +27,7 @@
         <tr>
             <td>{{ appType.Name }}</td>
             <td>
-                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editApplicantType(appType)"></button>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editAppType(appType)"></button>
                 <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteAppType(appType)"></button>
             </td>
         </tr>
@@ -38,7 +38,7 @@
         <div class="field">
             <label for="appTypeName">Applicant Type Name</label>
             <input type="text" pInputText id="appTypeName" [(ngModel)]="appType.name" required autofocus maxlength="100" />
-            <small class="p-error" *ngIf="submitted && !agency.agencyName">Applicnt Type Name is required.</small>
+            <small class="p-error" *ngIf="submitted && !appType.name">Applicnt Type Name is required.</small>
         </div>
     </ng-template>
 
