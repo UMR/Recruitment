@@ -34,12 +34,12 @@ public class PositionLicenseRequirementsController : ApiControllerBase
     [HttpPut("Update/{id:long}")]
     public async Task<ActionResult> PutAsync(long id, [FromBody] UpdatePositionLicenseRequirementDto request)
     {
-        return Ok(await _positionLicenseRequirementService.UpdatePositionLicenseRequirementAsync(id, request));
+        return Ok(await _positionLicenseRequirementService.UpdateAsync(id, request));
     }
 
     [HttpDelete("Delete/{id:long}")]
     public async Task<ActionResult> DeleteAsync(long id)
     {
-        return Ok(await _positionLicenseRequirementService.DeletePositionLicenseRequirementAsync(id));
+        return Ok(await _positionLicenseRequirementService.DeleteAsync(id));
     }
 }

@@ -10,8 +10,8 @@
 
         Task<BaseCommandResponse> CreateAsync(CreatePositionLicenseRequirementDto request);
 
-        Task<BaseCommandResponse> UpdatePositionLicenseRequirementAsync(long id, UpdatePositionLicenseRequirementDto request);
+        Task<BaseCommandResponse> UpdateAsync(long id, UpdatePositionLicenseRequirementDto request);
 
-        Task<BaseCommandResponse> DeletePositionLicenseRequirementAsync(long id);
+        Task<BaseCommandResponse> DeleteAsync(long id);
     }
 }

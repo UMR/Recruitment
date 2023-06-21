@@ -61,7 +61,7 @@
             return response;
         }
 
-        public async Task<BaseCommandResponse> UpdatePositionLicenseRequirementAsync(long id, UpdatePositionLicenseRequirementDto request)
+        public async Task<BaseCommandResponse> UpdateAsync(long id, UpdatePositionLicenseRequirementDto request)
         {
             var response = new BaseCommandResponse();
             var validator = new UpdatePositionLicenseRequirementDtoValidator(this);
@@ -98,7 +98,7 @@
             return response;
         }
 
-        public async Task<BaseCommandResponse> DeletePositionLicenseRequirementAsync(long id)
+        public async Task<BaseCommandResponse> DeleteAsync(long id)
         {
             var response = new BaseCommandResponse();
             var entity = await _positionLicenseRequirementRepository.GetByIdAsync(id);
