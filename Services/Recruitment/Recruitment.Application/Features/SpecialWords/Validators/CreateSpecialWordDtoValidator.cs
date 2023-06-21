@@ -10,15 +10,15 @@ public class CreateSpecialWordDtoValidator:AbstractValidator<CreateSpecialWordDt
         RuleFor(a => a.Word)
             .NotEmpty().WithMessage("{PropertyName} is required")
             .NotNull().WithMessage("{PropertyName} is required")
-            .MaximumLength(200).WithMessage("{PropertyName} must not exceed 200 characters");
+            .MaximumLength(256).WithMessage("{PropertyName} must not exceed 256 characters");
 
         RuleFor(x => x)
            .Must(x => !IsExistWordAsync(x.Word))
-           .WithMessage("Name already exist");
+           .WithMessage("Word already exist");
     }
 
-    private bool IsExistWordAsync(string emailType)
+    private bool IsExistWordAsync(string word)
     {
-        return _specialWordService.IsExistWordAsync(emailType).Result;
+        return _specialWordService.IsExistWordAsync(word).Result;
     }
 }

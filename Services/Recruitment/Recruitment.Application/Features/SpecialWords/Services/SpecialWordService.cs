@@ -37,24 +37,22 @@ public class SpecialWordService:ISpecialWordService
     public async Task<BaseCommandResponse> CreateAsync(CreateSpecialWordDto request)
     {
         var response = new BaseCommandResponse();
-        //var validator = new CreatePositionLicenseRequirementDtoValidator(this);
-        //var validationResult = await validator.ValidateAsync(request);
+        var validator = new CreateSpecialWordDtoValidator(this);
+        var validationResult = await validator.ValidateAsync(request);
 
-        //if (validationResult.IsValid == false)
-        //{
-        //    response.Success = false;
-        //    response.Message = "Creating Failed";
-        //    response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-        //    return response;
-        //}
+        if (validationResult.IsValid == false)
+        {
+            response.Success = false;
+            response.Message = "Creating Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            return response;
+        }
 
-        //var entity = new PositionLicenseRequirement
-        //{
-        //    PositionLicenseRequirementName = request.PositionLicenseRequirementName,
-        //    CreatedBy = _currentUserService.UserId,
-        //    CreatedDate = _dateTime.Now
-        //};
-        //await _positionLicenseRequirementRepository.CreateAsync(entity);
+        var entity = new SpecialWord
+        {
+            Word = request.Word            
+        };
+        await _specialWordRepository.CreateAsync(entity);
 
         response.Success = true;
         response.Message = "Creating Successful";
@@ -64,34 +62,32 @@ public class SpecialWordService:ISpecialWordService
     public async Task<BaseCommandResponse> UpdateAsync(long id, UpdateSpecialWordDto request)
     {
         var response = new BaseCommandResponse();
-        //var validator = new UpdatePositionLicenseRequirementDtoValidator(this);
-        //var validationResult = await validator.ValidateAsync(request);
+        var validator = new UpdateSpecialWordDtoValidator(this);
+        var validationResult = await validator.ValidateAsync(request);
 
-        //if (validationResult.IsValid == false)
-        //{
-        //    response.Success = false;
-        //    response.Message = "Updating Failed";
-        //    response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-        //    return response;
-        //}
+        if (validationResult.IsValid == false)
+        {
+            response.Success = false;
+            response.Message = "Updating Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            return response;
+        }
 
-        //if (id != request.PositionLicenseRequirementId)
-        //{
-        //    throw new BadRequestException("Id does not match");
-        //}
+        if (id != request.Id)
+        {
+            throw new BadRequestException("Id does not match");
+        }
 
-        //var entity = await _positionLicenseRequirementRepository.GetByIdAsync(id);
+        var entity = await _specialWordRepository.GetByIdAsync(id);
 
-        //if (entity is null)
-        //{
-        //    throw new NotFoundException(nameof(User), id.ToString());
-        //}
+        if (entity is null)
+        {
+            throw new NotFoundException(nameof(User), id.ToString());
+        }
 
-        //entity.PositionLicenseRequirementId = request.PositionLicenseRequirementId;
-        //entity.PositionLicenseRequirementName = request.PositionLicenseRequirementName;
-        //entity.UpdatedBy = _currentUserService.UserId;
-        //entity.UpdatedDate = _dateTime.Now;
-        //await _positionLicenseRequirementRepository.UpdateAsync(id, entity);
+        entity.Id = request.Id;
+        entity.Word = request.Word;        
+        await _specialWordRepository.UpdateAsync(id, entity);
 
         response.Success = true;
         response.Message = "Updating Successful";
