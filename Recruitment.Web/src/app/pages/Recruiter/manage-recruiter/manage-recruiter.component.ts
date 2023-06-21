@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { AgencyModel } from '../../../common/models/agency.model';
 import { UserModel } from '../../../common/models/user.model';
+import { AgencyService } from '../../information/agency/agency.service';
 import { ManageRecruiterService } from './manage-recruiter.service';
 
 @Component({
@@ -12,23 +13,36 @@ import { ManageRecruiterService } from './manage-recruiter.service';
 export class ManageRecruiterComponent {
     userDialog: boolean = false;
     users: UserModel[] = [];
-    user: any;
+    user!: any;
     submitted: boolean = false;
     isActive: any = [];
-    statuses: any[] = [];
+    status: any[] = [];
     addEditTxt: string = "Add";
     agencys: AgencyModel[] = [];
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
-        private manageRecruiterService: ManageRecruiterService) { }
+        private manageRecruiterService: ManageRecruiterService, private agencyService: AgencyService) { }
 
     ngOnInit() {
         this.getAllUser();
+        this.getAllAgency();
     }
 
-    editUser(agency: UserModel) {
+    getAllAgency() {
+        this.agencyService.getAllAgency().subscribe(
+            res => {
+                this.agencys = res.body;
+            },
+            err => {
+                console.log(err);
+            },
+            () => {
+            });
+    }
+
+    editUser(user: UserModel) {
         this.addEditTxt = "Edit";
-        this.user = { ...agency };
+        this.user = { ...user };
         this.userDialog = true;
     }
 
@@ -49,11 +63,13 @@ export class ManageRecruiterComponent {
             }
         });
     }
+
     saveUser() {
         this.submitted = true;
+        console.log(this.user);
 
-        if (this.user.agencyName.trim()) {
-            if (this.user.agencyId) {
+        if (this.user) {
+            if (this.user.userId) {
                 //this.agencyService.updateAgency(this.agency.agencyId, this.agency).subscribe(res => {
                 //    console.log(res);
                 //    this.getAllAgency();

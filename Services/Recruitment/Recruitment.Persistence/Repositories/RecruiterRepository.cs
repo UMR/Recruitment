@@ -5,12 +5,10 @@ namespace Recruitment.Persistence.Repositories;
 public class RecruiterRepository : IRecruiterRepository
 {
     private readonly IDapperContext _dapperContext;
-
     public RecruiterRepository(IDapperContext dapperContext)
     {
         _dapperContext = dapperContext;
     }
-
     public async Task<IEnumerable<RecruiterListDto>> GetAllRecruitersAsync()
     {
         try
@@ -31,7 +29,6 @@ public class RecruiterRepository : IRecruiterRepository
             throw ex;
         }
     }
-
     public async Task<User> GetRecruiterByIdAsync(int id)
     {
         try
@@ -52,19 +49,26 @@ public class RecruiterRepository : IRecruiterRepository
             throw ex;
         }
     }
-    public async Task<int> CreateRecruiterAsync(User emailType)
+    public async Task<int> CreateRecruiterAsync(User user)
     {
         try
         {
-            var query = "INSERT INTO EmailTypes (Type, IsPersonal, IsOfficial, CreatedBy, CreatedDate) VALUES (@Type, @IsPersonal, @IsOfficial, @CreatedBy, @CreatedDate) " +
-                        "SELECT CAST(SCOPE_IDENTITY() as int)";
+            var query = "INSERT INTO [Users](LoginId,FirstName,LastName,Password,Email,Telephone,ODAPermission,[CreatedBy],[CreatedDate],[TimeOut],[AgencyID],[ApplicantTypeID])"+
+                               "VALUES(@LoginId, @FirstName, @LastName, @Password, @Email, @Telephone, @Permission, @CreatedBy, @CreatedDate, @TimeOut, @AgencyID, @ApplicantTypeID)";
 
             var parameters = new DynamicParameters();
-            //parameters.Add("Type", emailType.Type, DbType.String);
-            //parameters.Add("IsPersonal", emailType.IsPersonal, DbType.Boolean);
-            //parameters.Add("IsOfficial", emailType.IsOfficial, DbType.Boolean);
-            parameters.Add("CreatedBy", emailType.CreatedBy, DbType.Int32);
-            parameters.Add("CreatedDate", emailType.CreatedDate, DbType.DateTime);
+            parameters.Add("LoginId", user.LoginId, DbType.String);
+            parameters.Add("FirstName", user.FirstName, DbType.String);
+            parameters.Add("LastName", user.LastName, DbType.String);
+            parameters.Add("Password", user.Password, DbType.String);
+            parameters.Add("Email", user.Email, DbType.String);
+            parameters.Add("Telephone", user.Telephone, DbType.String);
+            parameters.Add("Permission", true, DbType.Boolean);
+            parameters.Add("TimeOut", user.TimeOut, DbType.Int32);
+            parameters.Add("AgencyID", user.AgencyId, DbType.Int64);
+            parameters.Add("ApplicantTypeID", user.ApplicantTypeId, DbType.Int64);
+            parameters.Add("CreatedBy", user.CreatedBy, DbType.Int32);
+            parameters.Add("CreatedDate", user.CreatedDate, DbType.DateTime);
 
             using (IDbConnection conn = _dapperContext.CreateConnection)
             {
@@ -77,7 +81,10 @@ public class RecruiterRepository : IRecruiterRepository
             throw ex;
         }
     }
-
+    public Task<bool> UpdateRecruiterAsync(int id, User user)
+    {
+        throw new NotImplementedException();
+    }
     public async Task<bool> DeleteRecruiterAsync(int deleteUserId, int updatedUserId)
     {
         try
@@ -107,8 +114,7 @@ public class RecruiterRepository : IRecruiterRepository
             throw ex;
         }
     }
-
-    public bool AddUserActionLog(int userId, string actionComment)
+    private bool AddUserActionLog(int userId, string actionComment)
     {
 
         try
@@ -136,8 +142,5 @@ public class RecruiterRepository : IRecruiterRepository
             throw ex;
         }
     }
-    public Task<bool> UpdateRecruiterAsync(int id, User user)
-    {
-        throw new NotImplementedException();
-    }
+   
 }

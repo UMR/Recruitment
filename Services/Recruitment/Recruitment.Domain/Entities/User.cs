@@ -24,6 +24,8 @@ namespace Recruitment.Domain.Entities
         public DateTime? UpdatedDate { get; set; }
         public int TimeOut { get; set; }
         public long? AgencyId { get; set; }
+        public long? ApplicantTypeId { get; set; }
+        
 
     }
 }

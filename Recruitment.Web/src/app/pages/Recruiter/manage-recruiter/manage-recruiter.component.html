@@ -11,6 +11,7 @@
          dataKey="userId"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
          [showCurrentPageReport]="true"
+         selectionMode="single"
          [rowsPerPageOptions]="[15, 30, 50]">
     <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">
@@ -76,12 +77,12 @@
         </div>
         <div class="field">
             <label for="telephone">Telephone</label>
-            <p-inputMask mask="(999) 999-9999" style="{border: 0px solid}" id="telephone" [(ngModel)]="user.telephone" placeholder="(999) 999-9999" />
+            <p-inputMask mask="(999) 999-9999" id="telephone" [(ngModel)]="user.telephone" placeholder="(999) 999-9999" />
         </div>
         <div class="field">
             <label for="agency">Agency</label>
             <!--<input type="text" pInputText id="agency" [(ngModel)]="user.agencyId" maxlength="200">-->
-            <p-dropdown [options]="agencys" [(ngModel)]="user.agencyId" optionLabel="name"></p-dropdown>
+            <p-dropdown [options]="agencys" [(ngModel)]="user.agencyId" optionLabel="agencyName" placeholder="Select a Agency"></p-dropdown>
         </div>
         <div class="field">
             <label for="timeOut">Time Out</label>
