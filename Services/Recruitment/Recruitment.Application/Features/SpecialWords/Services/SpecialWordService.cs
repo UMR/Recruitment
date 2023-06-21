@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Recruitment.Application.Features.SpecialWords;
 
-namespace Recruitment.Application.Features.SpecialWords.Services
+public class SpecialWordService:ISpecialWordService
 {
-    internal class SpecialWordService
-    {
-    }
 }

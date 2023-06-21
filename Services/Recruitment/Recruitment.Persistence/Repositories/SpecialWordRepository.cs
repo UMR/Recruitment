@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Recruitment.Persistence.Repositories;
 
-namespace Recruitment.Persistence.Repositories
+public class SpecialWordRepository:ISpecialWordRepository
 {
-    internal class SpecialWordRepository
-    {
-    }
 }

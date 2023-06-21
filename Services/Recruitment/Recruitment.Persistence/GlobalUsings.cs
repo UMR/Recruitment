@@ -11,6 +11,7 @@ global using Recruitment.Domain.Entities;
 global using Recruitment.Application.Contracts.Persistence;
 global using Recruitment.Persistence.Common;
 global using Recruitment.Persistence.Repositories;
+global using Recruitment.Application.Features.SpecialWords;
 
 
 

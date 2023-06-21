@@ -12,6 +12,7 @@ public static class ConfigureServices
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IPositionLicenseRequirementRepository, PositionLicenseRequirementRepository>();
         builder.Services.AddScoped<IRecruiterRepository, RecruiterRepository>();
+        builder.Services.AddScoped<ISpecialWordRepository, SpecialWordRepository>();
 
         return builder;
     }
