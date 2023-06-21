@@ -14,7 +14,6 @@ export class AgencyComponent {
     agency: any;
     submitted: boolean = false;
     isActive: any = [];
-    statuses: any[] = [];
     addEditTxt: string = "Add";
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,

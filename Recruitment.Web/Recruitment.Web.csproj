@@ -51,6 +51,7 @@
     <Content Include="src\app\pages\information\agency\agency.component.html" />
     <Content Include="src\app\login\login.component.html" />
     <Content Include="src\app\page-not-found\page-not-found.component.html" />
+    <Content Include="src\app\pages\information\applicant-type\applicant-type.component.html" />
     <Content Include="src\app\pages\information\contact-info\contact-info.component.html" />
     <Content Include="src\app\pages\information\email-type\email-type.component.html" />
     <Content Include="src\app\pages\information\group\group.component.html" />
@@ -71,6 +72,7 @@
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\auth.guard.ts" />
     <TypeScriptCompile Include="src\app\common\auth-key.ts" />
+    <TypeScriptCompile Include="src\app\common\models\applicant-type.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\instituteType.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\agency.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\auth-info.model.ts" />
@@ -92,6 +94,12 @@
     <TypeScriptCompile Include="src\app\dashboard\dashboard-routing.module.ts" />
     <TypeScriptCompile Include="src\app\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="src\app\dashboard\dashboard.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\applicant-type\applicant-type-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\applicant-type\applicant-type.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\applicant-type\applicant-type.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\applicant-type\applicant-type.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\applicant-type\applicant-type.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\applicant-type\applicant-type.service.ts" />
     <TypeScriptCompile Include="src\app\pages\information\contact-info\contact-info-routing.module.ts" />
     <TypeScriptCompile Include="src\app\pages\information\contact-info\contact-info.component.spec.ts" />
     <TypeScriptCompile Include="src\app\pages\information\contact-info\contact-info.component.ts" />
@@ -164,6 +172,7 @@
     <Content Include="src\app\pages\information\agency\agency.component.css" />
     <None Include="src\app\login\login.component.scss" />
     <None Include="src\app\page-not-found\page-not-found.component.scss" />
+    <None Include="src\app\pages\information\applicant-type\applicant-type.component.scss" />
     <None Include="src\app\pages\information\contact-info\contact-info.component.scss" />
     <None Include="src\app\pages\information\email-type\email-type.component.scss" />
     <None Include="src\app\pages\information\group\group.component.scss" />
