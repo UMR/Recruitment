@@ -216,7 +216,7 @@ export const navItems: INavData[] = [
             },
             {
                 name: 'Special Word',
-                url: '/information/"special-word'
+                url: '/information/special-word'
             },
             {
                 name: 'Upper Case Word',

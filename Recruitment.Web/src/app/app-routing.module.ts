@@ -49,6 +49,10 @@ const routes: Routes = [
                 path: 'information/group-information',
                 loadChildren: () => import('./pages/information/group/group.module').then((m) => m.GroupModule)
             },
+            {
+                path: 'information/special-word',
+                loadChildren: () => import('./pages/information/special-word/special-word.module').then((m) => m.SpecialWordModule)
+            },
         ]
     },
     {
