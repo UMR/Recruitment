@@ -62,7 +62,9 @@
     margin-right: 0.5rem;
     height: 2rem !important;
 }
-
+:host ::ng-deep .p-dropdown .p-dropdown-label {
+    border:none !important;
+}
 :host ::ng-deep .p-inputmask {
     border: 1px solid !important;
     padding: 2px 2px;
