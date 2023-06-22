@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LowerCaseWordRoutingModule } from './lower-case-word-routing.module';
 import { LowerCaseWordComponent } from './lower-case-word.component';
-
+import { LowerCaseWordService } from '../../../common/service/lower-case-word.service';
 
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
@@ -25,6 +25,6 @@ import { ConfirmationService, MessageService } from 'primeng/api';
         ConfirmDialogModule,
         DialogModule
     ],
-    providers: [ConfirmationService, MessageService ]
+    providers: [ConfirmationService, MessageService, LowerCaseWordService]
 })
 export class LowerCaseWordModule { }
