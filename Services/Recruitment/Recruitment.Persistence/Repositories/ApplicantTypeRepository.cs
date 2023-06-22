@@ -77,7 +77,7 @@ public class ApplicantTypeRepository : IApplicantTypeRepository
 
     public async Task<bool> UpdateAsync(int id, ApplicantTypeEntity model)
     {
-        var query = "UPDATE ApplicantTypes SET Name = @Name, UpdatedBy = @UpdatedBy, UpdatedDate = @UpdatedDate WHERE ApplicantTypeID = @ID";
+        var query = "UPDATE ApplicantType SET Name = @Name, UpdatedBy = @UpdatedBy, UpdatedDate = @UpdatedDate WHERE ApplicantTypeID = @ID";
 
         var parameters = new DynamicParameters();
         parameters.Add("Name", model.Name, DbType.String);

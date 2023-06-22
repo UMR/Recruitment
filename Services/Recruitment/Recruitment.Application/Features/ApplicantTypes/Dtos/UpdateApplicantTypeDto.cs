@@ -2,6 +2,6 @@
 
 public class UpdateApplicantTypeDto
 {
-    public int Id { get; set; }
+    public long ApplicantTypeId { get; set; }
     public string Name { get; set; } 
 }

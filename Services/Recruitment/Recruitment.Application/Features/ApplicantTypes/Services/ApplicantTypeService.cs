@@ -76,7 +76,7 @@ public class ApplicantTypeService : IApplicantTypeService
             return response;
         }
 
-        if (id != request.Id)
+        if (id != request.ApplicantTypeId)
         {
             throw new BadRequestException("Id does not match");
         }
@@ -88,7 +88,7 @@ public class ApplicantTypeService : IApplicantTypeService
             throw new NotFoundException(nameof(User), id.ToString());
         }
 
-        entity.ApplicantTypeId = request.Id;
+        entity.ApplicantTypeId = request.ApplicantTypeId;
         entity.Name = request.Name;
         entity.UpdatedBy = _currentUserService.UserId;
         entity.UpdatedDate = _dateTime.Now;

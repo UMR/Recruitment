@@ -23,9 +23,9 @@ export class ApplicantTypeComponent {
         this.getAllAppType();
     }
 
-    editAppType(agency: ApplicantTypeModel) {
+    editAppType(appType: ApplicantTypeModel) {
         this.addEditTxt = "Edit";
-        this.appType = { ...agency };
+        this.appType = { ...appType };
         this.appTypeDialog = true;
     }
 
@@ -54,6 +54,7 @@ export class ApplicantTypeComponent {
 
         if (this.appType.name.trim()) {
             if (this.appType.applicantTypeId) {
+                console.log(this.appType);
                 this.appTypeService.updateAppType(this.appType.applicantTypeId, this.appType).subscribe(res => {
                     this.getAllAppType();
                     this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Applicant Type Updated', life: 3000 });

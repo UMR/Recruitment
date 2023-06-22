@@ -6,17 +6,7 @@ internal class UpdateApplicantTypeDtoValidator : AbstractValidator<UpdateApplica
 
     public UpdateApplicantTypeDtoValidator(IApplicantTypeService applicantTypeService)
     {
-        _applicantTypeService = applicantTypeService;   
-
-        RuleFor(a => a.Id)
-            .NotEmpty().WithMessage("{PropertyName} is required")
-            .NotNull().WithMessage("{PropertyName} is required");            
-
-        RuleFor(a => a.Name)
-            .NotEmpty().WithMessage("{PropertyName} is required")
-            .NotNull().WithMessage("{PropertyName} is required")
-            .MaximumLength(128).WithMessage("{PropertyName} must not exceed 50 characters");
-
+        _applicantTypeService = applicantTypeService;  
     }
 
     private bool IsExistEmailTypeAsync(string emailType, int id)
