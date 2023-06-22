@@ -1,6 +1,4 @@
-﻿using Recruitment.Application.Features.SpecialWords;
-
-namespace Recruitment.Application.Features.UpperCaseWords;
+﻿namespace Recruitment.Application.Features.UpperCaseWords;
 
 public class UpperCaseWordService:IUpperCaseWordService
 {
