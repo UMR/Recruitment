@@ -71,32 +71,30 @@ export class ManageRecruiterComponent {
 
     saveUser() {
         this.submitted = true;
-        console.log(this.user);
 
         if (this.user) {
-            if (this.user.userId) {
-                //this.agencyService.updateAgency(this.agency.agencyId, this.agency).subscribe(res => {
-                //    console.log(res);
-                //    this.getAllAgency();
-                //    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Updated', life: 3000 });
-                //},
-                //    error => {
-                //        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Agency Updated Faild', life: 3000 });
-                //    },
-                //    () => { })
+            //if (this.user.userId) {
+            //    this.manageRecruiterService.updateRecruiter(this.user.userId, this.user).subscribe(res => {
+            //        console.log(res);
+            //        this.getAllRecruiter();
+            //        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Recruiter Updated', life: 3000 });
+            //    },
+            //        error => {
+            //            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Recruiter Updated Faild', life: 3000 });
+            //        },
+            //        () => { })
 
-            } else {
-                ////this.agency.agencyId = this.createId();
-                //this.agencyService.addAgency(this.agency).subscribe(res => {
-                //    this.getAllAgency();
-                //    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Created', life: 3000 });
-                //},
-                //    err => {
-                //        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Agency Created Faild', life: 3000 });
-                //    },
-                //    () => { })
+            //} else {
+            //    this.manageRecruiterService.addRecruiter(this.user).subscribe(res => {
+            //        this.getAllRecruiter();
+            //        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Recruiter created', life: 3000 });
+            //    },
+            //        err => {
+            //            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Recruiter Created Faild', life: 3000 });
+            //        },
+            //        () => { })
 
-            }
+            //}
 
             this.users = [...this.users];
             this.userDialog = false;
