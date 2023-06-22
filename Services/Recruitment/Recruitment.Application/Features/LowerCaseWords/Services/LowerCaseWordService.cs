@@ -25,7 +25,7 @@ public class LowerCaseWordService : ILowerCaseWordService
     public async Task<LowerCaseWordListDto> GetByIdAsync(long id)
     {
         var entityFromRepo = await _lowerCaseWordRepository.GetByIdAsync(id);
-        var entityToReturn = _mapper.Map<LowerCaseWordListDto >(entityFromRepo);
+        var entityToReturn = _mapper.Map<LowerCaseWordListDto>(entityFromRepo);
         return entityToReturn;
     }
 
@@ -34,60 +34,60 @@ public class LowerCaseWordService : ILowerCaseWordService
         return await _lowerCaseWordRepository.IsExistWordAsync(word, id);
     }
 
-    public async Task<BaseCommandResponse> CreateAsync(CreateUpperCaseWordDto request)
+    public async Task<BaseCommandResponse> CreateAsync(CreateLowerCaseWordDto request)
     {
         var response = new BaseCommandResponse();
-        //var validator = new CreateUpperCaseWordDtoValidator(this);
-        //var validationResult = await validator.ValidateAsync(request);
+        var validator = new CreateLowerCaseWordDtoValidator(this);
+        var validationResult = await validator.ValidateAsync(request);
 
-        //if (validationResult.IsValid == false)
-        //{
-        //    response.Success = false;
-        //    response.Message = "Creating Failed";
-        //    response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-        //    return response;
-        //}
+        if (validationResult.IsValid == false)
+        {
+            response.Success = false;
+            response.Message = "Creating Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            return response;
+        }
 
-        //var entity = new UpperCaseWord
-        //{
-        //    Word = request.Word
-        //};
-        //await _upperCaseWordRepository.CreateAsync(entity);
+        var entity = new LowerCaseWord
+        {
+            Word = request.Word
+        };
+        await _lowerCaseWordRepository.CreateAsync(entity);
 
         response.Success = true;
         response.Message = "Creating Successful";
         return response;
     }
 
-    public async Task<BaseCommandResponse> UpdateAsync(long id, UpdateUpperCaseWordDto request)
+    public async Task<BaseCommandResponse> UpdateAsync(long id, UpdateLowerCaseWordDto request)
     {
         var response = new BaseCommandResponse();
-        //var validator = new UpdateUpperCaseWordDtoValidator(this);
-        //var validationResult = await validator.ValidateAsync(request);
+        var validator = new UpdateLowerCaseWordDtoValidator(this);
+        var validationResult = await validator.ValidateAsync(request);
 
-        //if (validationResult.IsValid == false)
-        //{
-        //    response.Success = false;
-        //    response.Message = "Updating Failed";
-        //    response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-        //    return response;
-        //}
+        if (validationResult.IsValid == false)
+        {
+            response.Success = false;
+            response.Message = "Updating Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            return response;
+        }
 
-        //if (id != request.Id)
-        //{
-        //    throw new BadRequestException("Id does not match");
-        //}
+        if (id != request.Id)
+        {
+            throw new BadRequestException("Id does not match");
+        }
 
-        //var entity = await _upperCaseWordRepository.GetByIdAsync(id);
+        var entity = await _lowerCaseWordRepository.GetByIdAsync(id);
 
-        //if (entity is null)
-        //{
-        //    throw new NotFoundException(nameof(User), id.ToString());
-        //}
+        if (entity is null)
+        {
+            throw new NotFoundException(nameof(User), id.ToString());
+        }
 
-        //entity.Id = request.Id;
-        //entity.Word = request.Word;
-        //await _upperCaseWordRepository.UpdateAsync(id, entity);
+        entity.Id = request.Id;
+        entity.Word = request.Word;
+        await _lowerCaseWordRepository.UpdateAsync(id, entity);
 
         response.Success = true;
         response.Message = "Updating Successful";
