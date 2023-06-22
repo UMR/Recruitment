@@ -1,9 +1,9 @@
 ﻿namespace Recruitment.Application.Features.LowerCaseWords;
 
-public class UpdateUpperCaseWordDtoValidator : AbstractValidator<UpdateLowerCaseWordDto>
+public class UpdateLowerCaseWordDtoValidator : AbstractValidator<UpdateLowerCaseWordDto>
 {
     private readonly ILowerCaseWordService _lowerCaseWordService;
-    public UpdateUpperCaseWordDtoValidator(ILowerCaseWordService lowerCaseWordService)
+    public UpdateLowerCaseWordDtoValidator(ILowerCaseWordService lowerCaseWordService)
     {
         _lowerCaseWordService = lowerCaseWordService;
 

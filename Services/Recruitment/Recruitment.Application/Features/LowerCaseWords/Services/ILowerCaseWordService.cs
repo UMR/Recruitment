@@ -8,9 +8,9 @@
 
         Task<bool> IsExistWordAsync(string word, long? id = null);       
 
-        Task<BaseCommandResponse> CreateAsync(CreateUpperCaseWordDto request);        
+        Task<BaseCommandResponse> CreateAsync(CreateLowerCaseWordDto request);        
 
-        Task<BaseCommandResponse> UpdateAsync(long id, UpdateUpperCaseWordDto request);
+        Task<BaseCommandResponse> UpdateAsync(long id, UpdateLowerCaseWordDto request);
 
         Task<BaseCommandResponse> DeleteAsync(long id);
     }
