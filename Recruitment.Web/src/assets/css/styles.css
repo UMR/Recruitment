@@ -105,7 +105,7 @@ input, textarea {
 }
 
     .btn-no:hover {
-        background-color: #D97706;
+        background-color: #D97706 !important;
         border: none;
     }
 
@@ -115,6 +115,6 @@ input, textarea {
 }
 
     .btn-yes:hover {
-        background-color: #16A34A;
+        background-color: #16A34A !important;
         border: none;
     }

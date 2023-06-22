@@ -48,7 +48,7 @@ export class ManageRecruiterComponent {
 
     deleteUser(user: UserModel) {
         this.confirmationService.confirm({
-            message: 'Are you sure you want to delete ' + user.firstName + ' agency ?',
+            message: 'Are you sure you want to delete ' + user.firstName + ' recruiter ?',
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
@@ -56,7 +56,7 @@ export class ManageRecruiterComponent {
                     console.log(res);
                     if (res && res.body) {
                         this.user = {};
-                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Deleted', life: 3000 });
+                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Recruiter Deleted', life: 3000 });
                     }
                 }, err => { })
 
