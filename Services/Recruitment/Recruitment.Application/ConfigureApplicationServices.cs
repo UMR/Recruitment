@@ -22,6 +22,7 @@ public static class ConfigureServices
         builder.Services.AddScoped<IRecruiterService, RecruiterService>();
         builder.Services.AddScoped<ISpecialWordService, SpecailWordService>();
         builder.Services.AddScoped<IUpperCaseWordService, UpperCaseWordService>();
+        builder.Services.AddScoped<ILowerCaseWordService, LowerCaseWordService>();
         builder.Services.AddScoped<IApplicantTypeService, ApplicantTypeService>();
 
         return builder;
