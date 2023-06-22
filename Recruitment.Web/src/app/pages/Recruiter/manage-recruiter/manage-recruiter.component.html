@@ -3,6 +3,52 @@
         <button pButton pRipple label="Add New" class="p-button-success" (click)="openNewUser()"></button>
     </div>
 </div>
+<p-accordion (onClose)="onCloseAccordion()" (onOpen)="onOpenAccordion()">
+    <p-accordionTab>
+        <ng-template pTemplate="header">
+            <span class="vertical-align-middle">{{showHideOpt}} Search options</span>
+        </ng-template>
+        <ng-template pTemplate="content">
+            <div class="row">
+                <div class="field col-md-2">
+                    <label for="applicantName">First Name</label>
+                    <input type="text" pInputText id="applicantName" [(ngModel)]="firstName" maxlength="100" />
+                </div>
+                <div class="field col-md-2">
+                    <label for="designation">Last Name</label>
+                    <input pInputText id="designation" maxlength="50" [(ngModel)]="lastName" />
+                </div>
+                <div class="field col-md-2">
+                    <label for="address">Email</label>
+                    <input type="text" pInputText id="address" maxlength="100" [(ngModel)]="email" />
+                </div>
+                <div class="field col-md-3">
+                    <label for="email">Status</label>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="flex align-items-center">
+                            <p-radioButton value="All" [(ngModel)]="status" inputId="all"></p-radioButton>
+                            <label for="all" class="ml-2">All</label>
+                        </div>
+
+                        <div class="flex align-items-center">
+                            <p-radioButton  value="Active" [(ngModel)]="status" inputId="active"></p-radioButton>
+                            <label for="active" class="ml-2">Active</label>
+                        </div>
+
+                        <div class="flex align-items-center">
+                            <p-radioButton value="InActive" [(ngModel)]="status" inputId="inActive"></p-radioButton>
+                            <label for="inActive" class="ml-2">In Active</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field col-md-2" style="margin-top:24px">
+                    <button pButton pRipple label="Clear" icon="pi pi-times" class="p-button-text" style="margin-right:8px" (click)="onClearClick()"></button>
+                    <button pButton pRipple label="Search" icon="pi pi-search" class="p-button-text p-button-success p-modal-save-btn"></button>
+                </div>
+            </div>
+        </ng-template>
+    </p-accordionTab>
+</p-accordion>
 <p-table [value]="users"
          [rows]="15"
          [paginator]="true"

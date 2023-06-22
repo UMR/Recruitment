@@ -16,6 +16,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { PasswordModule } from 'primeng/password';
 import { DropdownModule } from 'primeng/dropdown';
+import { AccordionModule } from 'primeng/accordion';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
     declarations: [
@@ -34,7 +36,9 @@ import { DropdownModule } from 'primeng/dropdown';
         InputTextareaModule,
         KeyFilterModule,
         PasswordModule,
-        DropdownModule
+        DropdownModule,
+        AccordionModule,
+        RadioButtonModule
     ],
     providers: [ConfirmationService, MessageService]
 })

@@ -18,10 +18,16 @@ export class ManageRecruiterComponent {
     user!: any;
     submitted: boolean = false;
     isActive: any = [];
-    status: any[] = [];
     addEditTxt: string = "Add";
     agencys: AgencyModel[] = [];
     appTypes: ApplicantTypeModel[] = [];
+
+    showHideOpt: string = "Show";
+
+    firstName: string = "";
+    lastName: string = "";
+    email: string = "";
+    status: string="All"
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private appTypeService: ApplicantTypeService,
         private manageRecruiterService: ManageRecruiterService, private agencyService: AgencyService) { }
@@ -30,6 +36,23 @@ export class ManageRecruiterComponent {
         this.getAllRecruiter();
         this.getAllAgency();
         this.getAllAppType();
+    }
+    onCloseAccordion() {
+        this.showHideOpt = "Show";
+    }
+    onOpenAccordion() {
+        this.showHideOpt = "Hide";
+    }
+
+    onClearClick() {
+        this.clear();
+    }
+
+    clear() {
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.status = "All";
     }
 
     getAllAgency() {
