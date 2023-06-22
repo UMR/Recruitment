@@ -14,6 +14,7 @@ public static class ConfigureServices
         builder.Services.AddScoped<IRecruiterRepository, RecruiterRepository>();
         builder.Services.AddScoped<ISpecialWordRepository, SpecialWordRepository>();
         builder.Services.AddScoped<IUpperCaseWordRepository, UpperCaseWordRepository>();
+        builder.Services.AddScoped<ILowerCaseWordRepository, LowerCaseWordRepository>();
         builder.Services.AddScoped<IApplicantTypeRepository, ApplicantTypeRepository>();
 
         return builder;
