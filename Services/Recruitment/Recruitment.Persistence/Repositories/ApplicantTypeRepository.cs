@@ -22,7 +22,7 @@ public class ApplicantTypeRepository : IApplicantTypeRepository
 
     public async Task<ApplicantTypeEntity> GetByIdAsync(int id)
     {
-        var query = @"SELECT * FROM ApplicantType WHERE ID=@ID";
+        var query = @"SELECT * FROM ApplicantType WHERE ApplicantTypeID=@ID";
 
         var parameters = new DynamicParameters();
         parameters.Add("ID", id, DbType.Int32);
@@ -34,7 +34,7 @@ public class ApplicantTypeRepository : IApplicantTypeRepository
         }
     }
 
-    public async Task<bool> IsExistAsync(string ApplicantType, int? id = null)
+    public async Task<bool> IsExistAsync(string applicantType, int? id = null)
     {
         var query = @"SELECT COUNT(*) FROM ApplicantType WHERE ApplicantTypeID=@ApplicantTypeId";
 
@@ -44,7 +44,7 @@ public class ApplicantTypeRepository : IApplicantTypeRepository
         }
 
         var parameters = new DynamicParameters();
-        parameters.Add("ApplicantTypeId", ApplicantType, DbType.String);
+        parameters.Add("ApplicantTypeId", applicantType, DbType.String);
 
         if (id is not null)
         {

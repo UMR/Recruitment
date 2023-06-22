@@ -2,7 +2,7 @@
 {
     public interface IApplicantTypeService
     {
-        Task<List<ApplicantTypeListDto>> GetAllAsync();
+        Task<List<ApplicantTypeEntity>> GetAllAsync();
 
         Task<ApplicantTypeListDto> GetByIdAsync(int id);
 

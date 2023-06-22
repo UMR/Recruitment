@@ -50,10 +50,9 @@ export class ApplicantTypeComponent {
     saveAppType() {
         this.submitted = true;
 
-        if (this.appType.agencyName.trim()) {
+        if (this.appType.name.trim()) {
             if (this.appType.applicantTypeId) {
                 this.appTypeService.updateAppType(this.appType.applicantTypeId, this.appType).subscribe(res => {
-                    console.log(res);
                     this.getAllAppType();
                     this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Applicant Type Updated', life: 3000 });
                 },

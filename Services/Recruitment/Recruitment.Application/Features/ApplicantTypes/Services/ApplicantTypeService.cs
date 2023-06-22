@@ -15,10 +15,10 @@ public class ApplicantTypeService : IApplicantTypeService
         _applicantTypeRepository = applicantTypeRepository;
     }
 
-    public async Task<List<ApplicantTypeListDto>> GetAllAsync()
+    public async Task<List<ApplicantTypeEntity>> GetAllAsync()
     {
         var entitiesFromRepo = await _applicantTypeRepository.GetAllAsync();
-        var entitiesToReturn = _mapper.Map<List<ApplicantTypeListDto>>(entitiesFromRepo);
+        var entitiesToReturn = _mapper.Map<List<ApplicantTypeEntity>>(entitiesFromRepo);
         return entitiesToReturn;
     }
 
