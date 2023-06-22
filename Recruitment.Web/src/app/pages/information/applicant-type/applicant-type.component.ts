@@ -45,7 +45,8 @@ export class ApplicantTypeComponent {
                 }, err => {
                     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Applicant Type cannot delete, Used in another process.', life: 3000 });
                 })
-
+            },
+            reject: () => {
             }
         });
     }
