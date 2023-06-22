@@ -78,12 +78,14 @@
     <TypeScriptCompile Include="src\app\common\models\agency.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\auth-info.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\position-license-requirement.model.ts" />
+    <TypeScriptCompile Include="src\app\common\models\lower-case-word.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\upper-case-word.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\special-word.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\user.model.ts" />
     <TypeScriptCompile Include="src\app\common\service\auth-interceptor.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\auth.constant.ts" />
     <TypeScriptCompile Include="src\app\common\service\auth.service.ts" />
+    <TypeScriptCompile Include="src\app\common\service\lower-case-word.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\upper-case-word.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\special-word.service.ts" />
     <TypeScriptCompile Include="src\app\containers\default-layout\default-footer\default-footer.component.spec.ts" />
