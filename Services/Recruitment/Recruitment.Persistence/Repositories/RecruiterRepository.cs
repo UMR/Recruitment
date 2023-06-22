@@ -24,9 +24,29 @@ public class RecruiterRepository : IRecruiterRepository
                 return users.ToList();
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            throw ex;
+            throw;
+        }
+    }
+    public async Task<IEnumerable<RecruiterListDto>> GetAllRecruitersByAsync(SearchRecruiterParamDto searchRecruiterParamDto)
+    {
+        try
+        {
+            var query = @"select UserID,LoginId,FirstName,LastName,Email,Telephone,ODAPermission,Users.IsActive,AgencyName,Users.AgencyID,ApplicantType.ApplicantTypeID,Name from [Users]
+                    LEFT JOIN  [Agency] ON [Users].[AgencyID] = [Agency].[AgencyID]
+                    LEFT JOIN  ApplicantType ON [Users].ApplicantTypeID = ApplicantType.ApplicantTypeID " +
+                    " ORDER BY FirstName,LastName,LoginId";
+
+            using (IDbConnection conn = _dapperContext.CreateConnection)
+            {
+                var users = await conn.QueryAsync<RecruiterListDto>(query);
+                return users.ToList();
+            }
+        }
+        catch (Exception)
+        {
+            throw;
         }
     }
     public async Task<User> GetRecruiterByIdAsync(int id)
@@ -53,7 +73,7 @@ public class RecruiterRepository : IRecruiterRepository
     {
         try
         {
-            var query = "INSERT INTO [Users](LoginId,FirstName,LastName,Password,Email,Telephone,ODAPermission,[CreatedBy],[CreatedDate],[TimeOut],[AgencyID],[ApplicantTypeID])"+
+            var query = "INSERT INTO [Users](LoginId,FirstName,LastName,Password,Email,Telephone,ODAPermission,[CreatedBy],[CreatedDate],[TimeOut],[AgencyID],[ApplicantTypeID])" +
                                "VALUES(@LoginId, @FirstName, @LastName, @Password, @Email, @Telephone, @Permission, @CreatedBy, @CreatedDate, @TimeOut, @AgencyID, @ApplicantTypeID)";
 
             var parameters = new DynamicParameters();
@@ -142,5 +162,5 @@ public class RecruiterRepository : IRecruiterRepository
             throw ex;
         }
     }
-   
+
 }

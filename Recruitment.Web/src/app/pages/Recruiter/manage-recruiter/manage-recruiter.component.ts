@@ -49,7 +49,14 @@ export class ManageRecruiterComponent {
     }
 
     onSearchClick() {
-        this.manageRecruiterService.getRecruiterBy(this.firstName, this.lastName, this.email, this.status).subscribe(
+        let SearchParam=
+        {
+            firstName: this.firstName,
+            lastName: this.lastName,
+            email: this.email,
+            status: this.status
+        }
+        this.manageRecruiterService.getRecruiterBy(SearchParam).subscribe(
             res => {
                 this.users = [];
                 this.users = res.body;

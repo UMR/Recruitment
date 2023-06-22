@@ -19,8 +19,14 @@ public class RecruiterController : ApiControllerBase
         return Ok(await _recruiterService.GetAllRecruitersAsync());
     }
 
+    [HttpPost("GetRecruitersBy")]
+    public async Task<ActionResult<List<RecruiterListDto>>> GetAllRecruitersByAsync([FromBody]SearchRecruiterParamDto request)
+    {
+        return Ok(await _recruiterService.GetAllRecruitersAsync());
+    }
+
     [HttpGet("GetRecruiter/{id:int}")]
-    public async Task<ActionResult<EmailTypeListDto>> GetRecruiterAsync(int id)
+    public async Task<ActionResult<RecruiterListDto>> GetRecruiterAsync(int id)
     {
         return Ok(await _recruiterService.GetRecruiterByIdAsync(id));
     }

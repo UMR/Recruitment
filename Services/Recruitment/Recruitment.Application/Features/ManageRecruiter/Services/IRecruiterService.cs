@@ -3,6 +3,7 @@
     public interface IRecruiterService
     {
         Task<List<RecruiterListDto>> GetAllRecruitersAsync();
+        Task<List<RecruiterListDto>> GetAllRecruitersByAsync(SearchRecruiterParamDto searchRecruiterParamDto);
 
         Task<RecruiterListDto> GetRecruiterByIdAsync(int id);
 

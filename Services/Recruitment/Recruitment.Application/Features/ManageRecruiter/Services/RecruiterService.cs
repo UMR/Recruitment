@@ -20,6 +20,12 @@ public class RecruiterService : IRecruiterService
         var recruiterToReturn = _mapper.Map<List<RecruiterListDto>>(recruiterFromRepo);
         return recruiterToReturn;
     }
+    async Task<List<RecruiterListDto>> IRecruiterService.GetAllRecruitersByAsync(SearchRecruiterParamDto searchRecruiterParamDto)
+    {
+        var recruiterFromRepo = await _recruiterRepository.GetAllRecruitersByAsync(searchRecruiterParamDto);
+        var recruiterToReturn = _mapper.Map<List<RecruiterListDto>>(recruiterFromRepo);
+        return recruiterToReturn;
+    }
 
     public async Task<RecruiterListDto> GetRecruiterByIdAsync(int id)
     {
