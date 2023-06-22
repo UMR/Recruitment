@@ -32,6 +32,7 @@ global using Recruitment.Application.Features.ManageRecruiter;
 global using Recruitment.Application.Features.SpecialWords;
 global using Recruitment.Application.Features.UpperCaseWords;
 global using Recruitment.Application.Features.LowerCaseWords;
+global using Recruitment.Application.Features.ApplicantType;
 
 global using Recruitment.Domain.Entities;
 

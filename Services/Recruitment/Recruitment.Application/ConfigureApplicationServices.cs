@@ -1,7 +1,4 @@
-﻿using Recruitment.Application.Features.ApplicantType;
-using Recruitment.Application.Features.UpperCaseWords;
-
-namespace Recruitment.Application;
+﻿namespace Recruitment.Application;
 
 public static class ConfigureServices
 {
