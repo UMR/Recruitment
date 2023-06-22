@@ -82,6 +82,7 @@
     <TypeScriptCompile Include="src\app\common\service\auth-interceptor.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\auth.constant.ts" />
     <TypeScriptCompile Include="src\app\common\service\auth.service.ts" />
+    <TypeScriptCompile Include="src\app\common\service\upper-case-word.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\special-word.service.ts" />
     <TypeScriptCompile Include="src\app\containers\default-layout\default-footer\default-footer.component.spec.ts" />
     <TypeScriptCompile Include="src\app\containers\default-layout\default-footer\default-footer.component.ts" />
