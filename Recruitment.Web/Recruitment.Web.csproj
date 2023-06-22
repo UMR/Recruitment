@@ -56,6 +56,7 @@
     <Content Include="src\app\pages\information\email-type\email-type.component.html" />
     <Content Include="src\app\pages\information\group\group.component.html" />
     <Content Include="src\app\pages\information\institution-type\institution-type.component.html" />
+    <Content Include="src\app\pages\information\lower-case-word\lower-case-word.component.html" />
     <Content Include="src\app\pages\information\position-license-requirement\position-license-requirement.component.html" />
     <Content Include="src\app\pages\information\special-word\special-word.component.html" />
     <Content Include="src\app\pages\information\upper-case-word\upper-case-word.component.html" />
@@ -77,12 +78,14 @@
     <TypeScriptCompile Include="src\app\common\models\agency.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\auth-info.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\position-license-requirement.model.ts" />
+    <TypeScriptCompile Include="src\app\common\models\lower-case-word.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\upper-case-word.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\special-word.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\user.model.ts" />
     <TypeScriptCompile Include="src\app\common\service\auth-interceptor.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\auth.constant.ts" />
     <TypeScriptCompile Include="src\app\common\service\auth.service.ts" />
+    <TypeScriptCompile Include="src\app\common\service\lower-case-word.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\upper-case-word.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\special-word.service.ts" />
     <TypeScriptCompile Include="src\app\containers\default-layout\default-footer\default-footer.component.spec.ts" />
@@ -123,6 +126,10 @@
     <TypeScriptCompile Include="src\app\pages\information\institution-type\institution-type.module.ts" />
     <TypeScriptCompile Include="src\app\pages\information\institution-type\institution-type.service.spec.ts" />
     <TypeScriptCompile Include="src\app\pages\information\institution-type\institution-type.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\lower-case-word\lower-case-word-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\lower-case-word\lower-case-word.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\lower-case-word\lower-case-word.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\lower-case-word\lower-case-word.module.ts" />
     <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement-routing.module.ts" />
     <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement.service.ts" />
     <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement.component.spec.ts" />
@@ -179,6 +186,7 @@
     <None Include="src\app\pages\information\email-type\email-type.component.scss" />
     <None Include="src\app\pages\information\group\group.component.scss" />
     <None Include="src\app\pages\information\institution-type\institution-type.component.scss" />
+    <None Include="src\app\pages\information\lower-case-word\lower-case-word.component.scss" />
     <None Include="src\app\pages\information\position-license-requirement\position-license-requirement.component.scss" />
     <None Include="src\app\pages\information\special-word\special-word.component.scss" />
     <None Include="src\app\pages\information\upper-case-word\upper-case-word.component.scss" />
