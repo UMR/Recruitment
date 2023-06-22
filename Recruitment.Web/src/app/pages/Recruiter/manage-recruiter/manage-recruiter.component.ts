@@ -59,6 +59,7 @@ export class ManageRecruiterComponent {
                 this.manageRecruiterService.deleteRecruiter(user.userId,"5034").subscribe(res => {
                     console.log(res);
                     if (res && res.body) {
+                        this.getAllRecruiter();
                         this.user = {};
                         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Recruiter Deleted', life: 3000 });
                     }
