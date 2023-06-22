@@ -21,7 +21,7 @@ export class ManageRecruiterComponent {
     status: any[] = [];
     addEditTxt: string = "Add";
     agencys: AgencyModel[] = [];
-    appTypes: ApplicantTypeModel[]  = [];
+    appTypes: ApplicantTypeModel[] = [];
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private appTypeService: ApplicantTypeService,
         private manageRecruiterService: ManageRecruiterService, private agencyService: AgencyService) { }
@@ -56,7 +56,7 @@ export class ManageRecruiterComponent {
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.manageRecruiterService.deleteRecruiter(user.userId,"5034").subscribe(res => {
+                this.manageRecruiterService.deleteRecruiter(user.userId, "5034").subscribe(res => {
                     console.log(res);
                     if (res && res.body) {
                         this.getAllRecruiter();
@@ -118,25 +118,25 @@ export class ManageRecruiterComponent {
         this.submitted = false;
     }
 
-    changeStatus(id: any, value: boolean) {
-        let updateAgency = {
-            agencyId: id,
-            isActive: !value
-        }
-        //this.userService.updateAgencyStatus(id, updateAgency)
-        //    .subscribe(res => {
-        //        console.log(res);
-        //        if ((res.body as any).success) {
-        //            this.getAllAgency();
-        //            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Updated', life: 3000 });
-        //        }
-        //        else {
-        //            this.messageService.add({ severity: 'error', summary: 'Error', detail: (res.body as any).errors[0], life: 3000 });
-        //        }
-        //    },
-        //        err => { },
-        //        () => { });
-    }
+    //changeStatus(id: any, value: boolean) {
+    //    let updateAgency = {
+    //        agencyId: id,
+    //        isActive: !value
+    //    }
+    //this.userService.updateAgencyStatus(id, updateAgency)
+    //    .subscribe(res => {
+    //        console.log(res);
+    //        if ((res.body as any).success) {
+    //            this.getAllAgency();
+    //            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Agency Updated', life: 3000 });
+    //        }
+    //        else {
+    //            this.messageService.add({ severity: 'error', summary: 'Error', detail: (res.body as any).errors[0], life: 3000 });
+    //        }
+    //    },
+    //        err => { },
+    //        () => { });
+    //}
 
     openNewUser() {
         this.addEditTxt = "Add";
