@@ -9,18 +9,18 @@ public class ApplicantTypeRepository : IApplicantTypeRepository
         _dapperContext = dapperContext;
     }
 
-    public async Task<IEnumerable<ApplicantType>> GetAllAsync()
+    public async Task<IEnumerable<ApplicantTypeEntity>> GetAllAsync()
     {
         var query = @"SELECT * FROM ApplicantType ORDER BY Name ASC";
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
-            var ApplicantTypes = await conn.QueryAsync<ApplicantType>(query);
+            var ApplicantTypes = await conn.QueryAsync<ApplicantTypeEntity>(query);
             return ApplicantTypes.ToList();
         }
     }
 
-    public async Task<ApplicantType> GetByIdAsync(int id)
+    public async Task<ApplicantTypeEntity> GetByIdAsync(int id)
     {
         var query = @"SELECT * FROM ApplicantType WHERE ID=@ID";
 
@@ -29,7 +29,7 @@ public class ApplicantTypeRepository : IApplicantTypeRepository
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
-            var ApplicantType = await conn.QueryFirstOrDefaultAsync<ApplicantType>(query, parameters);
+            var ApplicantType = await conn.QueryFirstOrDefaultAsync<ApplicantTypeEntity>(query, parameters);
             return ApplicantType;
         }
     }
@@ -58,7 +58,7 @@ public class ApplicantTypeRepository : IApplicantTypeRepository
         }
     }
 
-    public async Task<int> CreateAsync(ApplicantType model)
+    public async Task<int> CreateAsync(ApplicantTypeEntity model)
     {
         var query = "INSERT INTO ApplicantType (Name,  CreatedBy, CreatedDate) VALUES (@Name, @CreatedBy, @CreatedDate) " +
                     "SELECT CAST(SCOPE_IDENTITY() as int)";
@@ -75,7 +75,7 @@ public class ApplicantTypeRepository : IApplicantTypeRepository
         }
     }
 
-    public async Task<bool> UpdateAsync(int id, ApplicantType model)
+    public async Task<bool> UpdateAsync(int id, ApplicantTypeEntity model)
     {
         var query = "UPDATE ApplicantTypes SET Name = @Name, UpdatedBy = @UpdatedBy, UpdatedDate = @UpdatedDate WHERE ApplicantTypeID = @ID";
 

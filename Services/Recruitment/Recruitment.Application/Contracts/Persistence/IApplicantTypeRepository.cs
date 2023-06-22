@@ -2,15 +2,15 @@
 
 public interface IApplicantTypeRepository
 {
-    Task<IEnumerable<ApplicantType>> GetAllAsync();
+    Task<IEnumerable<ApplicantTypeEntity>> GetAllAsync();
 
-    Task<ApplicantType> GetByIdAsync(int id);
+    Task<ApplicantTypeEntity> GetByIdAsync(int id);
 
     Task<bool> IsExistAsync(string applicantType, int? id = null);
 
-    Task<int> CreateAsync(ApplicantType applicantType);
+    Task<int> CreateAsync(ApplicantTypeEntity applicantType);
 
-    Task<bool> UpdateAsync(int id, ApplicantType applicantType);
+    Task<bool> UpdateAsync(int id, ApplicantTypeEntity applicantType);
 
     Task<bool> DeleteAsync(long id);    
     

@@ -14,7 +14,7 @@ namespace Recruitment.Domain.Entities
         public DateTime? UpdatedDate { get; set; }
 
         public virtual Applicant Applicant { get; set; } = null!;
-        public virtual ApplicantType ApplicantType { get; set; } = null!;
+        public virtual ApplicantTypeEntity ApplicantType { get; set; } = null!;
         public virtual User CreatedByNavigation { get; set; } = null!;
         public virtual User? UpdatedByNavigation { get; set; }
     }
