@@ -11,7 +11,7 @@ public class UpperCaseWordRepository: IUpperCaseWordRepository
 
     public async Task<IEnumerable<UpperCaseWord>> GetAllAsync()
     {
-        var query = @"SELECT * FROM SpecialCaseLookup ORDER BY Word ASC";
+        var query = @"SELECT * FROM UpperCaseLookup ORDER BY Word ASC";
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
@@ -22,7 +22,7 @@ public class UpperCaseWordRepository: IUpperCaseWordRepository
 
     public async Task<UpperCaseWord> GetByIdAsync(long id)
     {
-        var query = @"SELECT * FROM SpecialCaseLookup WHERE ID=@ID";
+        var query = @"SELECT * FROM UpperCaseLookup WHERE ID=@ID";
 
         var parameters = new DynamicParameters();
         parameters.Add("ID", id, DbType.Int64);
