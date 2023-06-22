@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { AgencyModel } from '../../../common/models/agency.model';
+import { ApplicantTypeModel } from '../../../common/models/applicant-type.model';
 import { UserModel } from '../../../common/models/user.model';
 import { AgencyService } from '../../information/agency/agency.service';
+import { ApplicantTypeService } from '../../information/applicant-type/applicant-type.service';
 import { ManageRecruiterService } from './manage-recruiter.service';
 
 @Component({
@@ -19,13 +21,15 @@ export class ManageRecruiterComponent {
     status: any[] = [];
     addEditTxt: string = "Add";
     agencys: AgencyModel[] = [];
+    appTypes: ApplicantTypeModel[]  = [];
 
-    constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
+    constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private appTypeService: ApplicantTypeService,
         private manageRecruiterService: ManageRecruiterService, private agencyService: AgencyService) { }
 
     ngOnInit() {
-        this.getAllUser();
+        this.getAllRecruiter();
         this.getAllAgency();
+        this.getAllAppType();
     }
 
     getAllAgency() {
@@ -142,10 +146,23 @@ export class ManageRecruiterComponent {
         this.userDialog = true;
     }
 
-    getAllUser() {
+    getAllRecruiter() {
         this.manageRecruiterService.getAllRecruiter().subscribe(
             res => {
                 this.users = res.body;
+                console.log(res);
+            },
+            err => {
+                console.log(err);
+            },
+            () => {
+            });
+    }
+
+    getAllAppType() {
+        this.appTypeService.getAllAppType().subscribe(
+            res => {
+                this.appTypes = res.body;
                 console.log(res);
             },
             err => {

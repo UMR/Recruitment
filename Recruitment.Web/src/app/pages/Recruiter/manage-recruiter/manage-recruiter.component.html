@@ -90,7 +90,7 @@
         </div>
         <div class="field">
             <label for="applicantType">Default Applicant Type</label>
-            <p-dropdown [options]="agencys" [(ngModel)]="user.agencyId" optionLabel="name"></p-dropdown>
+            <p-dropdown [options]="appTypes" [(ngModel)]="user.applicantTypeId" optionLabel="name" placeholder="Select a Applicant Type"></p-dropdown>
         </div>
     </ng-template>
 
