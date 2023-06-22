@@ -10,5 +10,6 @@ public class MappingProfile : Profile
         CreateMap<PositionLicenseRequirement, PositionLicenseRequirementListDto>().ReverseMap();
         CreateMap<SpecialWord, SpecialWordListDto>().ReverseMap();
         CreateMap<UpperCaseWord, UpperCaseWordListDto>().ReverseMap();
+        CreateMap<LowerCaseWord, LowerCaseWordListDto>().ReverseMap();
     }
 }
