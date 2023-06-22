@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { UpperCaseWordService } from '../../../common/service/upper-case-word.service';
-import { SpecialWordModel } from '../../../common/models/special-word.model';
+import { UpperCaseWordModel } from '../../../common/models/upper-case-word.model';
 
 @Component({
   selector: 'app-upper-case-word',
@@ -12,7 +12,7 @@ import { SpecialWordModel } from '../../../common/models/special-word.model';
 })
 export class UpperCaseWordComponent {
     public id: number = 0;
-    public upperCaseWords: SpecialWordModel[] = [];
+    public upperCaseWords: UpperCaseWordModel[] = [];
     public formGroup!: FormGroup;
     public visibleDialog: boolean = false;
 
@@ -40,7 +40,7 @@ export class UpperCaseWordComponent {
         this.visibleDialog = true;
     }
 
-    onEdit(model: any) {
+    onEdit(model: UpperCaseWordModel) {
         this.id = model.id;
         this.formGroup.patchValue({
             word: model.word,
@@ -52,7 +52,7 @@ export class UpperCaseWordComponent {
         this.visibleDialog = false;
     }
 
-    onDelete(model: any) {
+    onDelete(model: UpperCaseWordModel) {
         this.confirmationService.confirm({
             message: `Are you sure you want to delete ${model.word} Special Word?`,
             header: 'Confirm',

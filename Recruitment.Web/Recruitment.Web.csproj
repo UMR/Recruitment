@@ -77,6 +77,7 @@
     <TypeScriptCompile Include="src\app\common\models\agency.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\auth-info.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\position-license-requirement.model.ts" />
+    <TypeScriptCompile Include="src\app\common\models\upper-case-word.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\special-word.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\user.model.ts" />
     <TypeScriptCompile Include="src\app\common\service\auth-interceptor.service.ts" />
