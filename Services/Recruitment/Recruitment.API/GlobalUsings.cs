@@ -24,6 +24,7 @@ global using Recruitment.Application.Features.Menus;
 global using Recruitment.Application.Features.PositionLicenseRequirements;
 global using Recruitment.Application.Features.SpecialWords;
 global using Recruitment.Application.Features.UpperCaseWords;
+global using Recruitment.Application.Features.LowerCaseWords;
 
 global using Recruitment.Infrastructure;
 
