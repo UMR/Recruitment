@@ -27,7 +27,7 @@ export class ManageRecruiterComponent {
     firstName: string = "";
     lastName: string = "";
     email: string = "";
-    status: string="All"
+    status: string = "All"
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private appTypeService: ApplicantTypeService,
         private manageRecruiterService: ManageRecruiterService, private agencyService: AgencyService) { }
@@ -46,6 +46,20 @@ export class ManageRecruiterComponent {
 
     onClearClick() {
         this.clear();
+    }
+
+    onSearchClick() {
+        this.manageRecruiterService.getRecruiterBy(this.firstName, this.lastName, this.email, this.status).subscribe(
+            res => {
+                this.users = [];
+                this.users = res.body;
+                console.log(res);
+            },
+            err => {
+                console.log(err);
+            },
+            () => {
+            });
     }
 
     clear() {
@@ -124,17 +138,7 @@ export class ManageRecruiterComponent {
             this.user = {};
         }
     }
-    findIndexById(id: string): number {
-        let index = -1;
-        for (let i = 0; i < this.users.length; i++) {
-            if (this.users[i].agencyId.toString() === id) {
-                index = i;
-                break;
-            }
-        }
-
-        return index;
-    }
+    
 
     hideDialog() {
         this.userDialog = false;

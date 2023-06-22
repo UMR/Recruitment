@@ -16,6 +16,11 @@ export class ManageRecruiterService {
         return this.http.get(recruiterURI, { observe: 'response' })
     }
 
+    getRecruiterBy(firstName: string, lastName: string, email: string, status: string): Observable<HttpResponse<any>> {
+        const recruiterURI = `${resourceServerUrl}/api/v1/Recruiter/GetRecruitersBy/firstName=` + firstName + "/lastName=" + lastName + "/email=" + email + "/status=" + status;
+        return this.http.get(recruiterURI, { observe: 'response' })
+    }
+
     addRecruiter(agency: UserModel): Observable<HttpResponse<any>> {
         const addRecruiterURI = `${resourceServerUrl}/api/v1/Recruiter/CreateAgency/`;
         return this.http.post(addRecruiterURI, agency, { observe: 'response' })
