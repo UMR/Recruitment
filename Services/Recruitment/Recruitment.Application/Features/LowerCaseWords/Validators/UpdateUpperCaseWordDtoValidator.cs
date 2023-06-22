@@ -1,12 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Recruitment.Application.Features.LowerCaseWords;
 
-namespace Recruitment.Application.Features.LowerCaseWords.Validators
+public class UpdateUpperCaseWordDtoValidator : AbstractValidator<UpdateLowerCaseWordDto>
 {
-    internal class UpdateUpperCaseWordDtoValidator
+    private readonly ILowerCaseWordService _lowerCaseWordService;
+    public UpdateUpperCaseWordDtoValidator(ILowerCaseWordService lowerCaseWordService)
     {
+        _lowerCaseWordService = lowerCaseWordService;
+
+        RuleFor(a => a.Id)
+               .NotEmpty().WithMessage("{PropertyName} is required")
+               .NotNull().WithMessage("{PropertyName} is required");
+
+        RuleFor(a => a.Word)
+            .NotEmpty().WithMessage("{PropertyName} is required")
+            .NotNull().WithMessage("{PropertyName} is required")
+            .MaximumLength(256).WithMessage("{PropertyName} must not exceed 256 characters");
+
+        RuleFor(x => x)
+           .Must(x => !IsExistWordAsync(x.Word, x.Id))
+           .WithMessage("Word already exist");
+    }
+
+    private bool IsExistWordAsync(string word, long id)
+    {
+        return _lowerCaseWordService.IsExistWordAsync(word, id).Result;
     }
 }
