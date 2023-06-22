@@ -31,7 +31,7 @@ export class ApplicantTypeComponent {
 
     deleteAppType(appType: ApplicantTypeModel) {
         this.confirmationService.confirm({
-            message: 'Are you sure you want to delete ' + appType.name + ' agency ?',
+            message: 'Are you sure you want to delete ' + appType.name + ' applicant type ?',
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
@@ -42,7 +42,9 @@ export class ApplicantTypeComponent {
                         this.appType = {};
                         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Applicant Type Deleted', life: 3000 });
                     }
-                }, err => { })
+                }, err => {
+                    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Applicant Type cannot delete, Used in another process.', life: 3000 });
+                })
 
             }
         });
