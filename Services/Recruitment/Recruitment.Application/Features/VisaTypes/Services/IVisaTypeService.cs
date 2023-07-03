@@ -1,5 +1,5 @@
 ﻿namespace Recruitment.Application.Features.VisaTypes;
 
-internal interface IVisaTypeService
+public interface IVisaTypeService
 {
 }

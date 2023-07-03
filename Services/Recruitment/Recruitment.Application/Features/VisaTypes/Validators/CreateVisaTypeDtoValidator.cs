@@ -1,5 +1,5 @@
 ﻿namespace Recruitment.Application.Features.VisaTypes;
 
-internal class CreateVisaTypeDtoValidator
+public class CreateVisaTypeDtoValidator
 {
 }
