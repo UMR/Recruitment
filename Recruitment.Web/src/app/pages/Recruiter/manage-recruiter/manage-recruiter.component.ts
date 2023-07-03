@@ -14,6 +14,7 @@ import { ManageRecruiterService } from './manage-recruiter.service';
 })
 export class ManageRecruiterComponent {
     userDialog: boolean = false;
+    isLoading: boolean = true;
     users: UserModel[] = [];
     user!: any;
     submitted: boolean = false;
@@ -180,13 +181,16 @@ export class ManageRecruiterComponent {
     }
 
     getAllRecruiter() {
+        this.isLoading = true;
         this.manageRecruiterService.getAllRecruiter().subscribe(
             res => {
                 this.users = res.body;
+                this.isLoading = false;
                 console.log(res);
             },
             err => {
                 console.log(err);
+                this.isLoading = false;
             },
             () => {
             });
@@ -196,7 +200,6 @@ export class ManageRecruiterComponent {
         this.appTypeService.getAllAppType().subscribe(
             res => {
                 this.appTypes = res.body;
-                console.log(res);
             },
             err => {
                 console.log(err);

@@ -18,6 +18,7 @@ import { PasswordModule } from 'primeng/password';
 import { DropdownModule } from 'primeng/dropdown';
 import { AccordionModule } from 'primeng/accordion';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { LoaderModule } from '../../../common/component/loader.module';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
         PasswordModule,
         DropdownModule,
         AccordionModule,
-        RadioButtonModule
+        RadioButtonModule,
+        LoaderModule
     ],
     providers: [ConfirmationService, MessageService]
 })
