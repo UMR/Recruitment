@@ -32,7 +32,6 @@ import { AuthService } from './common/service/auth.service';
 import { AuthInterceptorService } from './common/service/auth-interceptor.service';
 import { AuthGuard } from './auth.guard';
 import { TooltipModule } from 'primeng/tooltip';
-import { VisaTypeComponent } from './pages/information/visa-type/visa-type.component';
 
 const APP_CONTAINERS = [
     DefaultFooterComponent,
@@ -41,7 +40,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-    declarations: [LoginComponent, AppComponent, ...APP_CONTAINERS, VisaTypeComponent],
+    declarations: [LoginComponent, AppComponent, ...APP_CONTAINERS],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
