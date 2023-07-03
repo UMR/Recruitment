@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { VisaTypeRoutingModule } from './visa-type-routing.module';
 import { VisaTypeComponent } from './visa-type.component';
+import { VisaTypeService } from '../../../common/service/visa-type.service';
 
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
@@ -25,6 +26,6 @@ import { ConfirmationService, MessageService } from 'primeng/api';
         ConfirmDialogModule,
         DialogModule
     ],
-    providers: [ConfirmationService, MessageService]
+    providers: [ConfirmationService, MessageService, VisaTypeService]
 })
 export class VisaTypeModule { }
