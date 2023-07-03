@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./manage-role.component.scss']
 })
 export class ManageRoleComponent {
+    isLoading: boolean = true;
 
 }

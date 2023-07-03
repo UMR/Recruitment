@@ -3,10 +3,10 @@
 @Component({
     selector: 'loading',
     template: `
-<div class="center-body" id="loading" [ngClass]="{loaderDisplayBlock: isLoading, loaderDisplayNone: !isLoading}">
-<div class="loader-circle-75"></div>
-</div>
-`,
+		<div class="center-body" id="loading" [ngClass]="{loaderDisplayBlock: isLoading, loaderDisplayNone: !isLoading}">
+		<div class="loader-circle-75"></div>
+		</div>`,
+
     styles: [`
                 .loaderDisplayBlock{
                      visibility: visible;
@@ -18,15 +18,6 @@
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					width: 100%;
-					/****** center box
-					width: 300px;
-					height: 300px;
-					border: solid 1px #aaa;
-					******/
-				}
-				body {
-					background-color: #111;
 				}
 				.loader-circle-75 {
 					position: relative;
@@ -39,9 +30,9 @@
 					position: absolute;
 					width: 100%;
 					height: 100%;
-					border-width: 3px 3px;
+					border-width: 4px 4px;
 					border-style: solid;
-					border-color: #ddbb00 rgba(221, 187, 0, 0.3);
+					border-color: #32CD32 rgba(50,205,50, 0.5);
 					border-radius: 50%;
 					box-sizing: border-box;
 					animation: loader-circle-75-spin 3s infinite;
@@ -53,7 +44,7 @@
 					height: 20px;
 					top: 50%;
 					left: 50%;
-					background-color: #ffd700;
+					background-color: red;
 					border-radius: 50%;
 					box-sizing: border-box;
 					animation: loader-circle-75-pulse 6s infinite, loader-circle-75-borderPulse 6s infinite;

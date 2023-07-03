@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ManageRoleComponent } from './manage-role.component';
 import { ManageRoleRoutingModule } from './manage-role-routing.module';
+import { LoaderModule } from '../../../common/component/loader.module';
 
 
 
@@ -11,7 +12,8 @@ import { ManageRoleRoutingModule } from './manage-role-routing.module';
     ],
     imports: [
         CommonModule,
-        ManageRoleRoutingModule
+        ManageRoleRoutingModule,
+        LoaderModule
     ]
 })
 export class ManageRoleModule { }
