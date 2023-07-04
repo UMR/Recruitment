@@ -6,6 +6,7 @@ import { ChangePasswordComponent } from './change-password.component';
 import { CardModule } from 'primeng/card';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { ButtonModule } from 'primeng/button';
         CardModule,
         PasswordModule,
         ButtonModule,
+        FormsModule,
         ChangePasswordRoutingModule
     ]
 })

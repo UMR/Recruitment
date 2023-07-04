@@ -6,10 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./change-password.component.scss']
 })
 export class ChangePasswordComponent {
+    oldPassword: string = "";
+    newPassword: string = "";
+    conPassword: string = "";
 
     onClearClick() {
     }
 
     onChangeClick() {
+
     }
 }
