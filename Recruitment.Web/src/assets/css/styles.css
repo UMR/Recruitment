@@ -94,6 +94,11 @@ p-dialog .p-dialog-header {
 .p-confirm-dialog .p-dialog-content {
     padding:16px;
 }
+
+.p-dialog .p-dialog-footer button {
+    margin: 0 0.5rem 0.5rem 0;    
+}
+
 /*************************** Primeng-p-input ***************************/
 input, textarea {
     width: 100%;
