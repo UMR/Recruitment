@@ -16,9 +16,11 @@ export class VisaTypeComponent {
     public formGroup!: FormGroup;
     public visibleDialog: boolean = false;
     public isSubmitted: boolean = false;
+    public addEditTitle: string | undefined;
 
     constructor(private formBuilder: FormBuilder, private messageService: MessageService, private confirmationService: ConfirmationService,
-        private visaTypeService: VisaTypeService) { }
+        private visaTypeService: VisaTypeService) {        
+    }
 
     ngOnInit(): void {
         this.createFormGroup();
@@ -36,11 +38,13 @@ export class VisaTypeComponent {
     }
 
     onAdd(): void {
+        this.addEditTitle = 'Add';
         this.id = 0;
         this.clearFields(false, true); 
     }
 
     onEdit(model: VisaTypeModel) {
+        this.addEditTitle = 'Edit';
         this.id = model.id;
         this.formGroup.patchValue({
             visaType: model.visaType,
