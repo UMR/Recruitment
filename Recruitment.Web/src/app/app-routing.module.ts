@@ -28,6 +28,10 @@ const routes: Routes = [
                 path: 'recruiter/manage-profile',
                 loadChildren: () => import('./pages/recruiter/manage-profile/manage-profile.module').then((m) => m.ManageProfileModule)
             },
+            {
+                path: 'recruiter/change-password',
+                loadChildren: () => import('./pages/recruiter/change-password/change-password.module').then((m) => m.ChangePasswordModule)
+            },
             //////////// --------------------------   information menu portion ------------------------///////
             {
                 path: 'information/agency',

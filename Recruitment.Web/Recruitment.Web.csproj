@@ -61,6 +61,7 @@
     <Content Include="src\app\pages\information\special-word\special-word.component.html" />
     <Content Include="src\app\pages\information\upper-case-word\upper-case-word.component.html" />
     <Content Include="src\app\pages\information\visa-type\visa-type.component.html" />
+    <Content Include="src\app\pages\Recruiter\change-password\change-password.component.html" />
     <Content Include="src\app\pages\Recruiter\manage-profile\manage-profile.component.html" />
     <Content Include="src\app\pages\Recruiter\manage-recruiter\manage-recruiter.component.html" />
     <Content Include="src\app\pages\Recruiter\manage-role\manage-role.component.html" />
@@ -153,6 +154,12 @@
     <TypeScriptCompile Include="src\app\pages\information\visa-type\visa-type.component.spec.ts" />
     <TypeScriptCompile Include="src\app\pages\information\visa-type\visa-type.component.ts" />
     <TypeScriptCompile Include="src\app\pages\information\visa-type\visa-type.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\Recruiter\change-password\change-password-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\Recruiter\change-password\change-password.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\pages\Recruiter\change-password\change-password.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\Recruiter\change-password\change-password.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\Recruiter\change-password\change-password.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\pages\Recruiter\change-password\change-password.service.ts" />
     <TypeScriptCompile Include="src\app\pages\Recruiter\manage-profile\manage-profile-routing.module.ts" />
     <TypeScriptCompile Include="src\app\pages\Recruiter\manage-profile\manage-profile.component.spec.ts" />
     <TypeScriptCompile Include="src\app\pages\Recruiter\manage-profile\manage-profile.component.ts" />
@@ -207,6 +214,7 @@
     <None Include="src\app\pages\information\special-word\special-word.component.scss" />
     <None Include="src\app\pages\information\upper-case-word\upper-case-word.component.scss" />
     <None Include="src\app\pages\information\visa-type\visa-type.component.scss" />
+    <None Include="src\app\pages\Recruiter\change-password\change-password.component.scss" />
     <None Include="src\app\pages\Recruiter\manage-profile\manage-profile.component.scss" />
     <None Include="src\app\pages\Recruiter\manage-recruiter\manage-recruiter.component.scss" />
     <None Include="src\app\pages\Recruiter\manage-role\manage-role.component.scss" />
