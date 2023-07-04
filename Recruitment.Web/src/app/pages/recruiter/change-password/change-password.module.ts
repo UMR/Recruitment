@@ -3,15 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { ChangePasswordRoutingModule } from './change-password-routing.module';
 import { ChangePasswordComponent } from './change-password.component';
-
+import { CardModule } from 'primeng/card';
+import { PasswordModule } from 'primeng/password';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
-  declarations: [
-    ChangePasswordComponent
-  ],
-  imports: [
-    CommonModule,
-    ChangePasswordRoutingModule
-  ]
+    declarations: [
+        ChangePasswordComponent
+    ],
+    imports: [
+        CommonModule,
+        CardModule,
+        PasswordModule,
+        ButtonModule,
+        ChangePasswordRoutingModule
+    ]
 })
 export class ChangePasswordModule { }
