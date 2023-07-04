@@ -38,6 +38,7 @@
                     user.UpdatedDate = !dr.IsNull("UpdatedDate") ?  Convert.ToDateTime(dr["UpdatedDate"]) : (DateTime?)null;
                     user.TimeOut = Convert.ToInt32(dr["TimeOut"]);
                     user.AgencyId = !dr.IsNull("AgencyID") ? Convert.ToInt32(dr["AgencyID"]) : (int?) null;
+                    user.ApplicantTypeId = !dr.IsNull("ApplicantTypeID") ? Convert.ToInt32(dr["ApplicantTypeID"]) : (int?)null;
                 }
             }
 
