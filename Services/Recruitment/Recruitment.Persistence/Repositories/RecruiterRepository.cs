@@ -13,7 +13,7 @@ public class RecruiterRepository : IRecruiterRepository
     {
         try
         {
-            var query = @"select UserID,LoginId,FirstName,LastName,Email,Telephone,ODAPermission,Users.IsActive,AgencyName,Users.AgencyID,ApplicantType.ApplicantTypeID,Name from [Users]
+            var query = @"select UserID,LoginId,FirstName,LastName,Email,Telephone,ODAPermission,TimeOut,Users.IsActive,AgencyName,Users.AgencyID,ApplicantType.ApplicantTypeID,Name from [Users]
                     LEFT JOIN  [Agency] ON [Users].[AgencyID] = [Agency].[AgencyID]
                     LEFT JOIN  ApplicantType ON [Users].ApplicantTypeID = ApplicantType.ApplicantTypeID " +
                     " ORDER BY FirstName,LastName,LoginId";
@@ -33,7 +33,7 @@ public class RecruiterRepository : IRecruiterRepository
     {
         try
         {
-            var query = @"select UserID,LoginId,FirstName,LastName,Email,Telephone,ODAPermission,Users.IsActive,AgencyName,Users.AgencyID,ApplicantType.ApplicantTypeID,Name from [Users]
+            var query = @"select UserID,LoginId,FirstName,LastName,Email,Telephone,ODAPermission,TimeOut,Users.IsActive,AgencyName,Users.AgencyID,ApplicantType.ApplicantTypeID,Name from [Users]
                     LEFT JOIN  [Agency] ON [Users].[AgencyID] = [Agency].[AgencyID]
                     LEFT JOIN  ApplicantType ON [Users].ApplicantTypeID = ApplicantType.ApplicantTypeID " +
                     " ORDER BY FirstName,LastName,LoginId";

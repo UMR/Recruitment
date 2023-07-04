@@ -13,5 +13,6 @@ public class RecruiterListDto
     public long? AgencyId { get; set; }
     public string AgencyName { get; set; }
     public long? ApplicantTypeId { get; set; }
+    public long? TimeOut { get; set; }
     public string Name { get; set; }
 }
