@@ -11,9 +11,15 @@ public class UsersController : ApiControllerBase
         _logger = logger;
     }
 
-    [HttpGet(Name = "Get")]
+    [HttpGet(Name = "GetUserId")]
     public IActionResult Get()
     {
         return Ok(CurrentUser.UserId);
+    }
+    [HttpGet("GetUser")]
+    public IActionResult GetUserInfo()
+    {
+        return Ok(CurrentUser);
+
     }
 }

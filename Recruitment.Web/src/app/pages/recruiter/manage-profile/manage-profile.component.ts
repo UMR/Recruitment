@@ -4,6 +4,7 @@ import { AgencyModel } from '../../../common/models/agency.model';
 import { ApplicantTypeModel } from '../../../common/models/applicant-type.model';
 import { AgencyService } from '../../information/agency/agency.service';
 import { ApplicantTypeService } from '../../information/applicant-type/applicant-type.service';
+import { ManageProfileService } from './manage-profile.service';
 
 @Component({
     selector: 'app-manage-profile',
@@ -24,9 +25,10 @@ export class ManageProfileComponent {
     agencyId: number = 0;
     applicantTypeId: number = 0;
 
-    constructor(private messageService: MessageService, private appTypeService: ApplicantTypeService, private agencyService: AgencyService) {
+    constructor(private messageService: MessageService, private appTypeService: ApplicantTypeService, private agencyService: AgencyService, private manageProfileService:ManageProfileService) {
         this.getAllAgency();
         this.getAllAppType();
+        this.getUser();
     }
 
     onClearClick() {
@@ -35,6 +37,19 @@ export class ManageProfileComponent {
     onChangeClick() {
 
     }
+
+    getUser() {
+        this.manageProfileService.getUser().subscribe(
+            res => {
+                console.log(res);
+            },
+            err => {
+                console.log(err);
+            },
+            () => {
+            });
+    }
+
     getAllAgency() {
         this.agencyService.getAllAgency().subscribe(
             res => {
@@ -46,6 +61,7 @@ export class ManageProfileComponent {
             () => {
             });
     }
+
     getAllAppType() {
         this.appTypeService.getAllAppType().subscribe(
             res => {
