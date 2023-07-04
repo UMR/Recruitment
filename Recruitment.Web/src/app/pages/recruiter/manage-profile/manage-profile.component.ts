@@ -24,7 +24,10 @@ export class ManageProfileComponent {
     agencyId: number = 0;
     applicantTypeId: number = 0;
 
-    constructor(private messageService: MessageService, private appTypeService: ApplicantTypeService, private agencyService: AgencyService) { }
+    constructor(private messageService: MessageService, private appTypeService: ApplicantTypeService, private agencyService: AgencyService) {
+        this.getAllAgency();
+        this.getAllAppType();
+    }
 
     onClearClick() {
     }
