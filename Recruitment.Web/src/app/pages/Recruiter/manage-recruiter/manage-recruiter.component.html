@@ -129,7 +129,7 @@
         <div class="field">
             <label for="agency">Agency</label>
             <!--<input type="text" pInputText id="agency" [(ngModel)]="user.agencyId" maxlength="200">-->
-            <p-dropdown [options]="agencys" [(ngModel)]="user.agencyId" optionLabel="agencyName" placeholder="Select a Agency"></p-dropdown>
+            <p-dropdown [options]="agencys" [(ngModel)]="user.agencyId" optionLabel="agencyName" placeholder="Select a Agency" optionValue="agencyId"></p-dropdown>
         </div>
         <div class="field">
             <label for="timeOut">Time Out</label>
@@ -137,7 +137,7 @@
         </div>
         <div class="field">
             <label for="applicantType">Default Applicant Type</label>
-            <p-dropdown [options]="appTypes" [(ngModel)]="user.applicantTypeId" optionLabel="name" placeholder="Select a Applicant Type"></p-dropdown>
+            <p-dropdown [options]="appTypes" [(ngModel)]="user.applicantTypeId" optionLabel="name" placeholder="Select a Applicant Type" optionValue="applicantTypeId"></p-dropdown>
         </div>
     </ng-template>
 
