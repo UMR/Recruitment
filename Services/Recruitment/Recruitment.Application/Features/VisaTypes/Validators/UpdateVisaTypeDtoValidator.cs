@@ -12,13 +12,13 @@ public class UpdateVisaTypeDtoValidator : AbstractValidator<UpdateVisaTypeDto>
                .NotEmpty().WithMessage("{PropertyName} is required")
                .NotNull().WithMessage("{PropertyName} is required");
 
-        RuleFor(a => a.VisaTypeName)
+        RuleFor(a => a.VisaType)
             .NotEmpty().WithMessage("{PropertyName} is required")
             .NotNull().WithMessage("{PropertyName} is required")
             .MaximumLength(256).WithMessage("{PropertyName} must not exceed 256 characters");
 
         RuleFor(x => x)
-           .Must(x => !IsExistWordAsync(x.VisaTypeName, x.Id))
+           .Must(x => !IsExistWordAsync(x.VisaType, x.Id))
            .WithMessage("Word already exist");
     }
 

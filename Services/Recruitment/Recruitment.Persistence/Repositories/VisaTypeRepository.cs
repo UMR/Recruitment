@@ -9,18 +9,18 @@ public class VisaTypeRepository:IVisaTypeRepository
         _dapperContext = dapperContext;
     }
 
-    public async Task<IEnumerable<VisaType>> GetAllAsync()
+    public async Task<IEnumerable<VisaTypeEntity>> GetAllAsync()
     {
         var query = @"SELECT * FROM VisaType ORDER BY VisaType ASC";
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
-            var result = await conn.QueryAsync<VisaType>(query);
+            var result = await conn.QueryAsync<VisaTypeEntity>(query);
             return result.ToList();
         }
     }
 
-    public async Task<VisaType> GetByIdAsync(int id)
+    public async Task<VisaTypeEntity> GetByIdAsync(int id)
     {
         var query = @"SELECT * FROM VisaType WHERE ID=@ID";
 
@@ -29,7 +29,7 @@ public class VisaTypeRepository:IVisaTypeRepository
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
-            var result = await conn.QueryFirstOrDefaultAsync<VisaType>(query, parameters);
+            var result = await conn.QueryFirstOrDefaultAsync<VisaTypeEntity>(query, parameters);
             return result;
         }
     }
@@ -58,13 +58,13 @@ public class VisaTypeRepository:IVisaTypeRepository
         }
     }
 
-    public async Task<int> CreateAsync(VisaType model)
+    public async Task<int> CreateAsync(VisaTypeEntity model)
     {
         var query = "INSERT INTO VisaType (VisaType) VALUES (@VisaType) " +
                     "SELECT CAST(SCOPE_IDENTITY() as int)";
 
         var parameters = new DynamicParameters();
-        parameters.Add("VisaType", model.VisaTypeName, DbType.String);
+        parameters.Add("VisaType", model.VisaType, DbType.String);
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
@@ -73,12 +73,12 @@ public class VisaTypeRepository:IVisaTypeRepository
         }
     }
 
-    public async Task<bool> UpdateAsync(int id, VisaType model)
+    public async Task<bool> UpdateAsync(int id, VisaTypeEntity model)
     {
         var query = "UPDATE VisaType SET VisaType = @VisaType WHERE ID = @ID";
 
         var parameters = new DynamicParameters();
-        parameters.Add("VisaType", model.VisaTypeName, DbType.String);
+        parameters.Add("VisaType", model.VisaType, DbType.String);
         parameters.Add("ID", id, DbType.Int32);
 
         using (IDbConnection conn = _dapperContext.CreateConnection)

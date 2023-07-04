@@ -25,7 +25,7 @@
     </ng-template>
     <ng-template pTemplate="body" let-visaType>
         <tr>
-            <td>{{ visaType.visaTypeName }}</td>
+            <td>{{ visaType.visaType }}</td>
             <td>
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="onEdit(visaType)"></button>
                 <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="onDelete(visaType)"></button>
@@ -42,9 +42,9 @@
         <form [formGroup]="formGroup">
             <div class="grid">
                 <div class="col-12">
-                    <label for="visaTypeName" class="font-bold block mb-2 mt-2">Visa Type</label>
-                    <input type="text" pInputText id="visaTypeName" formControlName="visaTypeName" required maxlength="256" autofocus />
-                    <small class="p-error" *ngIf="f['visaTypeName'].errors">Visa Type is required.</small>
+                    <label for="visaType" class="font-bold block mb-2 mt-2">Visa Type</label>
+                    <input type="text" pInputText id="visaType" formControlName="visaType" required maxlength="256" autofocus />
+                    <small class="p-error" *ngIf="isSubmitted && f['visaType'].errors">Visa Type is required.</small>
                 </div>
             </div>
         </form>

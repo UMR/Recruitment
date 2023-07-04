@@ -4,6 +4,6 @@ public class UpdateVisaTypeDto
 {
     public int Id { get; set; }
 
-    public string VisaTypeName { get; set; }   
+    public string VisaType { get; set; }   
 
 }

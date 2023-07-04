@@ -7,13 +7,13 @@ public class CreateVisaTypeDtoValidator : AbstractValidator<CreateVisaTypeDto>
     {
         _visaTypeService = visaTypeService;
 
-        RuleFor(a => a.VisaTypeName)
+        RuleFor(a => a.VisaType)
             .NotEmpty().WithMessage("{PropertyName} is required")
             .NotNull().WithMessage("{PropertyName} is required")
             .MaximumLength(256).WithMessage("{PropertyName} must not exceed 256 characters");
 
         RuleFor(x => x)
-           .Must(x => !IsExistVisaTypeAsync(x.VisaTypeName))
+           .Must(x => !IsExistVisaTypeAsync(x.VisaType))
            .WithMessage("Word already exist");
     }
 
