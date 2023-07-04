@@ -13,7 +13,7 @@ export class LeftTrimmedInput {
 
     onInputChange(value: string) {
 
-        let leftTrimmedValue = '';;
+        let leftTrimmedValue = '';
 
         if (this.model && value && value.trim().length === 0) {
             this.model.control.setErrors({ 'invalid': true });
