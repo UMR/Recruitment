@@ -19,6 +19,10 @@ export class DefaultHeaderComponent extends HeaderComponent {
     constructor(private classToggler: ClassToggleService, private authService: AuthService) {
         super();
     }
+
+    onManageProfileClick() {
+
+    }
     onLogoutClick() {
         this.authService.logout();
     }

@@ -24,6 +24,10 @@ const routes: Routes = [
                 path: 'recruiter/manage-role',
                 loadChildren: () => import('./pages/recruiter/manage-role/manage-role.module').then((m) => m.ManageRoleModule)
             },
+            {
+                path: 'recruiter/manage-profile',
+                loadChildren: () => import('./pages/recruiter/manage-profile/manage-profile.module').then((m) => m.ManageProfileModule)
+            },
             //////////// --------------------------   information menu portion ------------------------///////
             {
                 path: 'information/agency',
