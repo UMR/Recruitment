@@ -78,6 +78,8 @@
     <TypeScriptCompile Include="src\app\common\auth-key.ts" />
     <TypeScriptCompile Include="src\app\common\component\loader.component.ts" />
     <TypeScriptCompile Include="src\app\common\component\loader.module.ts" />
+    <TypeScriptCompile Include="src\app\common\directives\select-first-input.directive.ts" />
+    <TypeScriptCompile Include="src\app\common\directives\left-trim.directive.ts" />
     <TypeScriptCompile Include="src\app\common\models\applicant-type.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\instituteType.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\agency.model.ts" />
@@ -230,8 +232,6 @@
     <None Include="tsconfig.app.json" />
     <None Include="tsconfig.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\app\common\directives\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
