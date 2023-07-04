@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputMaskModule } from 'primeng/inputmask';
 import { MessageService } from 'primeng/api';
+import { LoaderModule } from '../../../common/component/loader.module';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { MessageService } from 'primeng/api';
         FormsModule,
         DropdownModule,
         InputMaskModule,
+        LoaderModule,
         ManageProfileRoutingModule
     ],
     providers: [MessageService]

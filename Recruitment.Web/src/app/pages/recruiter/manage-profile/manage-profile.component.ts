@@ -12,7 +12,7 @@ import { ManageProfileService } from './manage-profile.service';
     styleUrls: ['./manage-profile.component.scss']
 })
 export class ManageProfileComponent {
-
+    isLoading: boolean = false;
     loginId: string = "";
     agencys: AgencyModel[] = [];
     appTypes: ApplicantTypeModel[] = [];
@@ -39,6 +39,7 @@ export class ManageProfileComponent {
     }
 
     getUser() {
+        this.isLoading = true;
         this.manageProfileService.getUser().subscribe(
             res => {
                 this.loginId = res.body.loginId;
@@ -49,11 +50,14 @@ export class ManageProfileComponent {
                 this.selectedAgency = res.body.agencyId;
                 this.timeOut = res.body.timeOut;
                 this.selectedApplicantType = res.body.applicantTypeId;
+                this.isLoading = false;
             },
             err => {
+                this.isLoading = false;
                 console.log(err);
             },
             () => {
+                this.isLoading = false;
             });
     }
 
