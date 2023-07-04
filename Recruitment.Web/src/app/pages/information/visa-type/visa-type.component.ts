@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
@@ -18,7 +18,7 @@ export class VisaTypeComponent {
     public isSubmitted: boolean = false;
     public addEditTitle: string | undefined;
 
-    constructor(private formBuilder: FormBuilder, private messageService: MessageService, private confirmationService: ConfirmationService,
+    constructor(private formBuilder: FormBuilder, private messageService: MessageService, private confirmationService: ConfirmationService, private renderer: Renderer2,
         private visaTypeService: VisaTypeService) {        
     }
 
@@ -52,8 +52,9 @@ export class VisaTypeComponent {
         this.visibleDialog = true;
     }
 
-    onClear() {
-        this.clearFields(false, true);
+    onClear() {        
+        this.clearFields(false, true);        
+        this.renderer.selectRootElement('#visaType').focus();
     }
 
     onCancel() {
