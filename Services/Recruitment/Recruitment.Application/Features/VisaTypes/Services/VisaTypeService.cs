@@ -48,9 +48,9 @@ public class VisaTypeService:IVisaTypeService
             return response;
         }
 
-        var entity = new VisaType
+        var entity = new VisaTypeEntity
         {
-            VisaTypeName = request.VisaTypeName,
+            VisaType = request.VisaType,
             CreatedBy = _currentUserService.UserId,
             CreatedDate = _dateTime.Now
         };
@@ -84,11 +84,11 @@ public class VisaTypeService:IVisaTypeService
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(VisaType), id.ToString());
+            throw new NotFoundException(nameof(VisaTypeEntity), id.ToString());
         }
 
         entity.Id = request.Id;
-        entity.VisaTypeName = request.VisaTypeName;
+        entity.VisaType = request.VisaType;
         entity.UpdatedBy = _currentUserService.UserId;
         entity.UpdatedDate = _dateTime.Now;
         await _visaTypeRepository.UpdateAsync(id, entity);
@@ -105,7 +105,7 @@ public class VisaTypeService:IVisaTypeService
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(VisaType), id.ToString());
+            throw new NotFoundException(nameof(VisaTypeEntity), id.ToString());
         }
 
         await _visaTypeRepository.DeleteAsync(id);

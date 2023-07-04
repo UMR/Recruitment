@@ -125,7 +125,7 @@ namespace Recruitment.Domain.Entities
         public virtual State? StateNavigation { get; set; }
         public virtual NameSuffix? Suffix { get; set; }
         public virtual User? UpdatedByNavigation { get; set; }
-        public virtual VisaType? VisaStatus { get; set; }
+        public virtual VisaTypeEntity? VisaStatus { get; set; }
         public virtual ApplicantTemplateMasterProfile? ApplicantTemplateMasterProfile { get; set; }
         public virtual ICollection<AgreementFrom> AgreementFroms { get; set; }
         public virtual ICollection<Aiscontact> Aiscontacts { get; set; }

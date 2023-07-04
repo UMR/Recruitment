@@ -2,6 +2,6 @@
 
 public class CreateVisaTypeDto
 {
-    public string VisaTypeName { get; set; }
+    public string VisaType { get; set; }
 
 }
