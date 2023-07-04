@@ -22,8 +22,8 @@ export class ManageProfileComponent {
     email: string = "";
     telephone: string = "";
     timeOut: number = 0;
-    agencyId: number = 0;
-    applicantTypeId: number = 0;
+    selectedAgency: AgencyModel | undefined;
+    selectedApplicantType: ApplicantTypeModel | undefined;
 
     constructor(private messageService: MessageService, private appTypeService: ApplicantTypeService, private agencyService: AgencyService, private manageProfileService:ManageProfileService) {
         this.getAllAgency();
@@ -41,7 +41,14 @@ export class ManageProfileComponent {
     getUser() {
         this.manageProfileService.getUser().subscribe(
             res => {
-                console.log(res);
+                this.loginId = res.body.loginId;
+                this.firstName = res.body.firstName;
+                this.lastName = res.body.lastName;
+                this.email = res.body.email;
+                this.telephone = res.body.telephone;
+                this.selectedAgency = res.body.agencyId;
+                this.timeOut = res.body.timeOut;
+                this.selectedApplicantType = res.body.applicantTypeId;
             },
             err => {
                 console.log(err);

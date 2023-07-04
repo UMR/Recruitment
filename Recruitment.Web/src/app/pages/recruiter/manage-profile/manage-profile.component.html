@@ -8,15 +8,15 @@
             </div>
             <div class="field">
                 <label for="firstName">First Name</label>
-                <input type="text" pInputText id="firstName" [(ngModel)]="loginId" maxlength="100" />
+                <input type="text" pInputText id="firstName" [(ngModel)]="firstName" maxlength="100" />
             </div>
             <div class="field">
                 <label for="lastName">Last Name</label>
-                <input type="text" pInputText id="lastName" [(ngModel)]="loginId" maxlength="100" />
+                <input type="text" pInputText id="lastName" [(ngModel)]="lastName" maxlength="100" />
             </div>
             <div class="field">
                 <label for="email">Email</label>
-                <input type="text" pInputText id="email" [(ngModel)]="loginId" maxlength="100" />
+                <input type="text" pInputText id="email" [(ngModel)]="email" maxlength="100" />
             </div>
             <div class="field">
                 <label for="telephone">Telephone</label>
@@ -24,8 +24,7 @@
             </div>
             <div class="field">
                 <label for="agency">Agency</label>
-                <!--<input type="text" pInputText id="agency" [(ngModel)]="user.agencyId" maxlength="200">-->
-                <p-dropdown [options]="agencys" [(ngModel)]="agencyId" optionLabel="agencyName" placeholder="Select a Agency"></p-dropdown>
+                <p-dropdown [options]="agencys" [(ngModel)]="selectedAgency" optionLabel="agencyName" optionValue="agencyId" placeholder="Select a Agency"></p-dropdown>
             </div>
             <div class="field">
                 <label for="timeOut">Time Out</label>
@@ -33,7 +32,7 @@
             </div>
             <div class="field">
                 <label for="applicantType">Default Applicant Type</label>
-                <p-dropdown [options]="appTypes" [(ngModel)]="applicantTypeId" optionLabel="name" placeholder="Select a Applicant Type"></p-dropdown>
+                <p-dropdown [options]="appTypes" [(ngModel)]="selectedApplicantType" optionLabel="name" optionValue="applicantTypeId" placeholder="Select a Applicant Type"></p-dropdown>
             </div>
             <ng-template pTemplate="footer">
                 <button pButton pRipple label="Clear" icon="pi pi-times" class="p-button-text" (click)="onClearClick()"></button>
