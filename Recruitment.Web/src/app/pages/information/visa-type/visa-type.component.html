@@ -43,7 +43,7 @@
             <div class="grid">
                 <div class="col-12">
                     <label for="visaType" class="font-bold block mb-2 mt-2">Visa Type</label>
-                    <input type="text" pInputText id="visaType" formControlName="visaType" required maxlength="256" lefttrimmed autofocus />
+                    <input type="text" pInputText id="visaType" formControlName="visaType" required maxlength="256" lefttrimmed autofocus (keydown.enter)="onSave()"/>
                     <small class="p-error" *ngIf="isSubmitted && f['visaType'].errors">Visa Type is required.</small>
                 </div>
             </div>
