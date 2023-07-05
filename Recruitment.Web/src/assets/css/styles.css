@@ -76,10 +76,11 @@
 }
 
 .p-dialog .p-dialog-footer {
-    background: #EBEDEF;
-    padding: 0 0 3px 0;
+    background: #EBEDEF;    
     border-radius: 0px;
     padding-top: 0.7rem;
+    padding-right: 1rem;
+    padding-bottom: 3px;
 }
 
 p-dialog .p-dialog-header {
@@ -93,10 +94,6 @@ p-dialog .p-dialog-header {
 
 .p-confirm-dialog .p-dialog-content {
     padding:16px;
-}
-
-.p-dialog .p-dialog-footer button {
-    margin: 0 0.5rem 0.5rem 0;    
 }
 
 /*************************** Primeng-p-input ***************************/

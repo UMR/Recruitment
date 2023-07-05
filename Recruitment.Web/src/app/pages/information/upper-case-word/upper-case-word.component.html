@@ -36,7 +36,7 @@
 
 <p-dialog [(visible)]="visibleDialog" [style]="{width: '30vw'}" [draggable]="false" [resizable]="false">
     <ng-template pTemplate="header">
-        <span class="text-xl font-bold p-panel-header">Add Edit Upper Case Word</span>
+        <span class="text-xl font-bold p-panel-header">{{ addEditTitle }} Upper Case Word</span>
     </ng-template>
     <ng-template pTemplate="content">
         <form [formGroup]="formGroup">
@@ -44,7 +44,7 @@
                 <div class="col-12">
                     <label for="word" class="font-bold block mb-2 mt-2">Word</label>
                     <input type="text" pInputText id="word" formControlName="word" required maxlength="256" autofocus />
-                    <small class="p-error" *ngIf="f['word'].errors">Word is required.</small>
+                    <small class="p-error" *ngIf="isSubmitted && f['word'].errors">Word is required.</small>
                 </div>
             </div>
         </form>
