@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
@@ -18,8 +18,9 @@ export class VisaTypeComponent {
     public isSubmitted: boolean = false;
     public addEditTitle: string | undefined;
 
-    constructor(private formBuilder: FormBuilder, private messageService: MessageService, private confirmationService: ConfirmationService, private renderer: Renderer2,
-        private visaTypeService: VisaTypeService) {        
+    constructor(private formBuilder: FormBuilder, private messageService: MessageService,
+        private confirmationService: ConfirmationService, private renderer: Renderer2,
+        private el: ElementRef, private visaTypeService: VisaTypeService) {        
     }
 
     ngOnInit(): void {
@@ -102,6 +103,14 @@ export class VisaTypeComponent {
                         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Updating Failed', life: 3000 });
                     }
                 });
+            }
+        } else {
+            for (const key of Object.keys(this.formGroup.controls)) {
+                if (this.formGroup.controls[key].invalid) {
+                    const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+                    invalidControl.focus();
+                    break;
+                }
             }
         }
     }
