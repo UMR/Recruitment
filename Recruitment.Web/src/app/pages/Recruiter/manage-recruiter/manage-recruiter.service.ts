@@ -21,9 +21,9 @@ export class ManageRecruiterService {
         return this.http.post(recruiterURI, searchParam, { observe: 'response' })
     }
 
-    addRecruiter(agency: UserModel): Observable<HttpResponse<any>> {
-        const addRecruiterURI = `${resourceServerUrl}/api/v1/Recruiter/CreateAgency/`;
-        return this.http.post(addRecruiterURI, agency, { observe: 'response' })
+    addRecruiter(user: UserModel): Observable<HttpResponse<any>> {
+        const addRecruiterURI = `${resourceServerUrl}/api/v1/Recruiter/CreateRecruiter/`;
+        return this.http.post(addRecruiterURI, user, { observe: 'response' })
     }
 
     updateRecruiter(userId: number, user: UserModel) {

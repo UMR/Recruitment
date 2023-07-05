@@ -50,11 +50,18 @@ public class RecruiterService : IRecruiterService
 
         var entity = new User
         {
-            //Type = request.Type,
-            //IsPersonal = request.IsPersonal,
-            //IsOfficial = request.IsOfficial,
+            FirstName = request.FirstName,
+            LastName = request.LastName,
+            Email = request.Email,
+            AgencyId = request.AgencyId,
+            ApplicantTypeId = request.ApplicantTypeId,
+            IsActive = request.IsActive,
+            LoginId = request.LoginId,
+            Password = request.Password,
+            Telephone = request.Telephone,
+            TimeOut = request.TimeOut,
             CreatedBy = _currentUserService.UserId,
-            CreatedDate = _dateTime.Now
+            CreatedDate = DateTime.Now
         };
         await _recruiterRepository.CreateRecruiterAsync(entity);
 
@@ -77,7 +84,7 @@ public class RecruiterService : IRecruiterService
             return response;
         }
 
-        if (id != request.Id)
+        if (id != request.UserId)
         {
             throw new BadRequestException("Id does not match");
         }
@@ -93,8 +100,16 @@ public class RecruiterService : IRecruiterService
         //entity.Type = request.Type;
         //entity.IsOfficial = request.IsOfficial;
         //entity.IsPersonal = request.IsPersonal;
+        entity.FirstName = request.FirstName;
+        entity.LastName = request.LastName;
+        entity.Email = request.Email;
+        entity.IsActive = request.IsActive;
+        entity.Telephone = request.Telephone;
+        entity.AgencyId = request.AgencyId;
+        entity.ApplicantTypeId = request.ApplicantTypeId;
+        entity.TimeOut = request.TimeOut;
         entity.UpdatedBy = _currentUserService.UserId;
-        entity.UpdatedDate = _dateTime.Now;
+        entity.UpdatedDate = DateTime.Now;
         await _recruiterRepository.UpdateRecruiterAsync(id, entity);
 
         response.Success = true;

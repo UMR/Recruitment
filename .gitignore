@@ -373,3 +373,4 @@ Recruitment.Web/src/app/pages/recruiter/manage-recruiter/manage-recruiter.compon
 Recruitment.Web/src/app/pages/recruiter/manage-role/manage-role.component.spec.js
 Recruitment.Web/src/app/pages/recruiter/manage-role/manage-role.component.spec.js.map
 *.map
+*.js
