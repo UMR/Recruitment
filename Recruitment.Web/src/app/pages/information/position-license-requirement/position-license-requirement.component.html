@@ -36,15 +36,15 @@
 
 <p-dialog [(visible)]="visibleDialog" [style]="{width: '30vw'}" [draggable]="false" [resizable]="false">
     <ng-template pTemplate="header">
-        <span class="text-xl font-bold p-panel-header">Add Edit Position License Requirement</span>
+        <span class="text-xl font-bold p-panel-header">{{ addEditTitle }} Position License Requirement</span>
     </ng-template>
     <ng-template pTemplate="content">
         <form [formGroup]="formGroup">
             <div class="grid">
                 <div class="col-12">
                     <label for="name" class="font-bold block mb-2 mt-2">Email Type</label>
-                    <input type="text" pInputText id="name" formControlName="name" required maxlength="100" autofocus />
-                    <small class="p-error" *ngIf="f['name'].errors">Name is required.</small>
+                    <input type="text" pInputText id="name" formControlName="name" required maxlength="100" lefttrimmed autofocus (keydown.enter)="onSave()" />
+                    <small class="p-error" *ngIf="isSubmitted && f['name'].errors">Name is required.</small>
                 </div>                
             </div>
         </form>

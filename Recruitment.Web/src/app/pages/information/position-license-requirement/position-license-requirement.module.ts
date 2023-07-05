@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PositionLicenseRequirementRoutingModule } from './position-license-requirement-routing.module';
 import { PositionLicenseRequirementComponent } from './position-license-requirement.component';
 import { PositionLicenseRequirementService } from './position-license-requirement.service';
+import { CommonDirectiveModule } from '../../../common/directives/common-directive.module';
 
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
@@ -25,7 +26,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
         TableModule,
         ToastModule,
         ConfirmDialogModule,        
-        DialogModule
+        DialogModule,
+        CommonDirectiveModule
     ],
     providers: [ConfirmationService, MessageService, PositionLicenseRequirementService]
 })
