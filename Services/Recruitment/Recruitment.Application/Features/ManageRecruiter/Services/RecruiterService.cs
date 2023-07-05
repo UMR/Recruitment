@@ -108,6 +108,7 @@ public class RecruiterService : IRecruiterService
         entity.AgencyId = request.AgencyId;
         entity.ApplicantTypeId = request.ApplicantTypeId;
         entity.TimeOut = request.TimeOut;
+        entity.Odapermission=request.Odapermission;
         entity.UpdatedBy = _currentUserService.UserId;
         entity.UpdatedDate = DateTime.Now;
         await _recruiterRepository.UpdateRecruiterAsync(id, entity);
