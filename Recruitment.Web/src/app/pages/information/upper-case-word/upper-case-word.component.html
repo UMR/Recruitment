@@ -43,7 +43,7 @@
             <div class="grid">
                 <div class="col-12">
                     <label for="word" class="font-bold block mb-2 mt-2">Word</label>
-                    <input type="text" pInputText id="word" formControlName="word" required maxlength="256" autofocus />
+                    <input type="text" pInputText id="word" formControlName="word" required maxlength="256" lefttrimmed autofocus (keydown.enter)="onSave()" />
                     <small class="p-error" *ngIf="isSubmitted && f['word'].errors">Word is required.</small>
                 </div>
             </div>
