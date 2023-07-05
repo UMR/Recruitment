@@ -25,7 +25,8 @@ export class ManageProfileComponent {
     selectedAgency: AgencyModel | undefined;
     selectedApplicantType: ApplicantTypeModel | undefined;
 
-    constructor(private messageService: MessageService, private appTypeService: ApplicantTypeService, private agencyService: AgencyService, private manageProfileService:ManageProfileService) {
+    constructor(private messageService: MessageService, private appTypeService: ApplicantTypeService,
+        private agencyService: AgencyService, private manageProfileService: ManageProfileService) {
         this.getAllAgency();
         this.getAllAppType();
         this.getUser();
