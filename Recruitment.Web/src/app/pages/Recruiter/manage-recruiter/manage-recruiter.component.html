@@ -31,7 +31,7 @@
                         </div>
 
                         <div class="flex align-items-center">
-                            <p-radioButton  value="Active" [(ngModel)]="status" inputId="active"></p-radioButton>
+                            <p-radioButton value="Active" [(ngModel)]="status" inputId="active"></p-radioButton>
                             <label for="active" class="ml-2">Active</label>
                         </div>
 
@@ -95,48 +95,62 @@
         </tr>
     </ng-template>
 </p-table>
-<p-dialog [(visible)]="userDialog" [style]="{ width: '450px' }" header="{{addEditTxt}} User" [modal]="true" [draggable]="false" [resizable]="false">
+<p-dialog [(visible)]="userDialog" [style]="{ width: '550px' }" header="{{addEditTxt}} User" [modal]="true" [draggable]="false" [resizable]="false">
     <ng-template pTemplate="content">
-        <div class="field">
-            <label for="loginId">Login Id</label>
-            <input type="text" pInputText id="loginId" [(ngModel)]="user.loginId" required autofocus maxlength="100" />
-            <small class="p-error" *ngIf="submitted && !user.loginId">Login id required.</small>
-        </div>
-        <div class="field">
-            <label for="password">Password</label>
-            <p-password id="password" [(ngModel)]="user.password"  maxlength="50"></p-password>
-        </div>
-        <div class="field">
-            <label for="confirmPassword">Confirm Password</label>
-            <p-password id="confirmPassword" [(ngModel)]="user.password" maxlength="100"></p-password>
-        </div>
-        <div class="field">
-            <label for="firstName">First Name</label>
-            <input pInputText id="firstName" [(ngModel)]="user.firstName" />
-        </div>
-        <div class="field">
-            <label for="lastName">Last Name</label>
-            <input type="text" pInputText id="lastName" [(ngModel)]="user.lastName" maxlength="200" />
-        </div>
-        <div class="field">
-            <label for="email">Email</label>
-            <input type="text" pInputText id="email" [(ngModel)]="user.email" />
-        </div>
-        <div class="field">
-            <label for="telephone">Telephone</label>
-            <p-inputMask mask="(999) 999-9999" id="telephone" [(ngModel)]="user.telephone" placeholder="(999) 999-9999" />
-        </div>
-        <div class="field">
-            <label for="agency">Agency</label>
-            <p-dropdown [options]="agencys" [(ngModel)]="user.agencyId" optionLabel="agencyName" placeholder="Select a Agency" optionValue="agencyId"></p-dropdown>
-        </div>
-        <div class="field">
-            <label for="timeOut">Time Out</label>
-            <input type="text" pInputText id="timeOut" [(ngModel)]="user.timeOut" maxlength="8" value="144000"/>
-        </div>
-        <div class="field">
-            <label for="applicantType">Default Applicant Type</label>
-            <p-dropdown [options]="appTypes" [(ngModel)]="user.applicantTypeId" optionLabel="name" placeholder="Select a Applicant Type" optionValue="applicantTypeId"></p-dropdown>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="field">
+                    <label for="loginId">Login Id</label>
+                    <input type="text" pInputText id="loginId" [(ngModel)]="user.loginId" required autofocus maxlength="100" [disabled]="user.userId" />
+                    <small class="p-error" *ngIf="submitted && !user.loginId">Login id required.</small>
+                </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <p-password id="password" [(ngModel)]="user.password" maxlength="50"></p-password>
+                </div>
+                <div class="field">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <p-password id="confirmPassword" [(ngModel)]="user.password" maxlength="100"></p-password>
+                </div>
+                <div class="field">
+                    <label for="firstName">First Name</label>
+                    <input pInputText id="firstName" [(ngModel)]="user.firstName" />
+                </div>
+                <div class="field">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" pInputText id="lastName" [(ngModel)]="user.lastName" maxlength="200" />
+                </div>
+                <div class="field" *ngIf="user.userId">
+                    <p-checkbox inputId="active" [(ngModel)]="user.isActive" value="user.isActive" [binary]="true"></p-checkbox>
+                    <label for="active" class="chk-lbl">Active</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="text" pInputText id="email" [(ngModel)]="user.email" />
+                </div>
+                <div class="field">
+                    <label for="telephone">Telephone</label>
+                    <p-inputMask mask="(999) 999-9999" id="telephone" [(ngModel)]="user.telephone" placeholder="(999) 999-9999" />
+                </div>
+                <div class="field">
+                    <label for="agency">Agency</label>
+                    <p-dropdown [options]="agencys" [(ngModel)]="user.agencyId" optionLabel="agencyName" placeholder="Select a Agency" optionValue="agencyId"></p-dropdown>
+                </div>
+                <div class="field">
+                    <label for="timeOut">Time Out</label>
+                    <input type="text" pInputText id="timeOut" [(ngModel)]="user.timeOut" maxlength="8" value="144000" />
+                </div>
+                <div class="field">
+                    <label for="applicantType">Default Applicant Type</label>
+                    <p-dropdown [options]="appTypes" [(ngModel)]="user.applicantTypeId" optionLabel="name" placeholder="Select a Applicant Type" optionValue="applicantTypeId"></p-dropdown>
+                </div>
+                <div class="field" *ngIf="user.userId">
+                    <p-checkbox inputId="isSpecial" [(ngModel)]="user.odapermission" value="user.odapermission" [binary]="true"></p-checkbox>
+                    <label for="isSpecial" class="chk-lbl">Special Permission</label>
+                </div>
+            </div>
         </div>
     </ng-template>
 
