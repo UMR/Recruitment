@@ -23,7 +23,7 @@ export class UpperCaseWordComponent {
 
     ngOnInit(): void {
         this.createFormGroup();
-        this.getSpecialWords();
+        this.getUpperCaseWords();
     }
 
     createFormGroup() {
@@ -73,7 +73,7 @@ export class UpperCaseWordComponent {
                         if (res.status === 200) {
                             if ((res.body as any).success) {
                                 this.clearFields(false, false);
-                                this.getSpecialWords();
+                                this.getUpperCaseWords();
                                 this.messageService.add({ severity: 'success', summary: 'Successful', detail: (res.body as any).message, life: 3000 });
                             } else {
                                 this.messageService.add({ severity: 'error', summary: 'Error', detail: (res.body as any).errors[0], life: 3000 });
@@ -91,7 +91,7 @@ export class UpperCaseWordComponent {
                             if ((res.body as any).success) {
                                 this.id = 0;
                                 this.clearFields(false, false);
-                                this.getSpecialWords();
+                                this.getUpperCaseWords();
                                 this.messageService.add({ severity: 'success', summary: 'Successful', detail: (res.body as any).message, life: 3000 });
                             } else {
                                 this.messageService.add({ severity: 'error', summary: 'Error', detail: (res.body as any).errors[0], life: 3000 });
@@ -125,7 +125,7 @@ export class UpperCaseWordComponent {
                         if (res.status === 200) {
                             if ((res.body as any).success) {
                                 this.clearFields(false, false);
-                                this.getSpecialWords();
+                                this.getUpperCaseWords();
                                 this.messageService.add({ severity: 'success', summary: 'Successful', detail: (res.body as any).message, life: 3000 });
                             } else {
                                 this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.errors[0], life: 3000 });
@@ -148,7 +148,7 @@ export class UpperCaseWordComponent {
         this.formGroup.reset();
     }
 
-    getSpecialWords() {
+    getUpperCaseWords() {
         this.upperCaseWordService.getAll().subscribe({
             next: (res) => {
                 if (res.status === 200) {

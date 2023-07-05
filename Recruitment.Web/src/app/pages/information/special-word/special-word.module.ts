@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SpecialWordRoutingModule } from './special-word-routing.module';
 import { SpecialWordComponent } from './special-word.component';
 import { SpecialWordService } from '../../../common/service/special-word.service';
+import { CommonDirectiveModule } from '../../../common/directives/common-directive.module';
 
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
@@ -23,7 +24,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
         TableModule,
         ToastModule,
         ConfirmDialogModule,
-        DialogModule
+        DialogModule,
+        CommonDirectiveModule
     ],
     providers: [ConfirmationService, MessageService, SpecialWordService]
 })
