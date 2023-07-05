@@ -64,9 +64,9 @@ public class RecruiterRepository : IRecruiterRepository
                 return user;
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            throw ex;
+            throw;
         }
     }
     public async Task<int> CreateRecruiterAsync(User user)
@@ -96,14 +96,36 @@ public class RecruiterRepository : IRecruiterRepository
                 return id;
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            throw ex;
+            throw;
         }
     }
-    public Task<bool> UpdateRecruiterAsync(int id, User user)
+    public async Task<bool> UpdateRecruiterAsync(int id, User user)
     {
-        throw new NotImplementedException();
+        try
+        {
+            if (GetUserStatus(user.UserId) != user.IsActive)
+            {
+                if (UpdateUser(user))
+                {
+                    var result = await AddUserStatusHistory(user.UserId, user.IsActive, user.IsActive, user.UserId);
+                    return result;
+                }
+                else { 
+                    return false;
+                }
+            }
+            else {
+                var result = UpdateUser(user);
+                return result;
+            }
+            
+        }
+        catch (Exception)
+        {
+            throw;
+        }
     }
     public async Task<bool> DeleteRecruiterAsync(int deleteUserId, int updatedUserId)
     {
@@ -129,9 +151,9 @@ public class RecruiterRepository : IRecruiterRepository
                 return false;
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            throw ex;
+            throw;
         }
     }
     private bool AddUserActionLog(int userId, string actionComment)
@@ -162,5 +184,88 @@ public class RecruiterRepository : IRecruiterRepository
             throw ex;
         }
     }
+    public bool UpdateUser(User user)
+    {
+        string query = @"UPDATE [Users] SET 
+                                    [FirstName] = @FirstName
+                                    ,[LastName] = @LastName
+                                    ,[Password] = @Password
+                                    ,[Email] = @Email
+                                    ,[Telephone] = @Telephone
+                                    ,[ODAPermission] = @Permission
+                                    ,[IsActive] = @IsActive
+                                    ,[TimeOut] = @TimeOut
+                                    ,[UpdatedBy] = @UpdatedBy
+                                    ,[UpdatedDate] = @UpdatedDate
+                                    ,[AgencyID]=@AgencyID
+                                    ,[ApplicantTypeID]=@ApplicantTypeID
+                               WHERE [LoginId]=@LoginId";
 
+        var paramList = new DynamicParameters();
+        paramList.Add("FirstName", user.FirstName, DbType.String);
+        paramList.Add("LastName", user.LastName, DbType.String);
+        paramList.Add("Password", user.Password, DbType.String);
+        paramList.Add("Email", user.Email, DbType.String);
+        paramList.Add("Telephone", user.Telephone, DbType.String);
+        paramList.Add("Permission", user.Odapermission, DbType.Boolean);
+        paramList.Add("IsActive", user.IsActive, DbType.Boolean);
+        paramList.Add("UpdatedBy", user.UserId, DbType.Int32);
+        paramList.Add("UpdatedDate", DateTime.Now, DbType.DateTime);
+        paramList.Add("LoginId", user.LoginId, DbType.String);
+        paramList.Add("TimeOut", user.TimeOut, DbType.Int32);
+        paramList.Add("AgencyID", user.AgencyId, DbType.Int64);
+        paramList.Add("ApplicantTypeID", user.ApplicantTypeId, DbType.Int64);
+
+        using (IDbConnection conn = _dapperContext.CreateConnection)
+        {
+            var result = conn.Execute(query, paramList);
+            return result > 0 ? true : false;
+        }
+    }
+    public async Task<bool> AddUserStatusHistory(int userId, bool? fromStatus, bool? toStatus, int createdBy)
+    {
+        try
+        {
+            string query = @"INSERT INTO [UserStatusHistory]([UserID],[FromStatus],[ToStatus],[CreatedBy],[CreatedDate]) VALUES(@UserID,@FromStatus,@ToStatus,@CreatedBy,@CreatedDate)";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("UserID", userId, DbType.Int32);
+            parameters.Add("FromStatus", fromStatus, DbType.Boolean);
+            parameters.Add("ToStatus", toStatus, DbType.Boolean);
+            parameters.Add("CreatedBy", createdBy, DbType.Int32);
+            parameters.Add("CreatedDate", DateTime.Now, DbType.DateTime);
+
+            using (IDbConnection conn = _dapperContext.CreateConnection)
+            {
+                var result = await conn.ExecuteAsync(query, parameters);
+                return result > 0 ? true : false;
+            }
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+
+    private bool GetUserStatus(int userId)
+    {
+        try
+        {
+            var query = @"SELECT IsActive FROM [UMRRecruitementDB_New].[dbo].[Users] where UserID = @UserId";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("UserId", userId, DbType.Int32);
+
+            using (IDbConnection conn = _dapperContext.CreateConnection)
+            {
+                var user = conn.QueryFirstOrDefault<bool>(query, parameters);
+                return user;
+            }
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
 }
