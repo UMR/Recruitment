@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
@@ -18,7 +18,7 @@ export class UpperCaseWordComponent {
     public isSubmitted: boolean = false;
     public addEditTitle: string | undefined;
 
-    constructor(private formBuilder: FormBuilder, private messageService: MessageService, private confirmationService: ConfirmationService, private renderer: Renderer2,
+    constructor(private formBuilder: FormBuilder, private messageService: MessageService, private confirmationService: ConfirmationService, private renderer: Renderer2, private el: ElementRef,
         private upperCaseWordService: UpperCaseWordService) { }
 
     ngOnInit(): void {
@@ -60,7 +60,7 @@ export class UpperCaseWordComponent {
         this.clearFields(false, false);
     }
 
-    onSave(): void {
+    onSave() {
         this.isSubmitted = true;
         const model: any = {
             id: this.id,
@@ -102,6 +102,14 @@ export class UpperCaseWordComponent {
                         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Updating Failed', life: 3000 });
                     }
                 });
+            }
+        } else {
+            for (const key of Object.keys(this.formGroup.controls)) {
+                if (this.formGroup.controls[key].invalid) {
+                    const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+                    invalidControl.focus();
+                    break;
+                }
             }
         }
     }

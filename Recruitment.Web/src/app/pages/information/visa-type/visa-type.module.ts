@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VisaTypeRoutingModule } from './visa-type-routing.module';
 import { VisaTypeComponent } from './visa-type.component';
 import { VisaTypeService } from '../../../common/service/visa-type.service';
-import { LeftTrimmedInput } from '../../../common/directives/left-trim.directive';
+import { CommonDirectiveModule } from '../../../common/directives/common-directive.module';
 
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
@@ -16,7 +16,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 
 
 @NgModule({
-    declarations: [VisaTypeComponent, LeftTrimmedInput],
+    declarations: [VisaTypeComponent],
     imports: [
         CommonModule,
         VisaTypeRoutingModule,
@@ -25,7 +25,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
         TableModule,
         ToastModule,
         ConfirmDialogModule,
-        DialogModule
+        DialogModule,
+        CommonDirectiveModule
     ],
     providers: [ConfirmationService, MessageService, VisaTypeService]
 })
