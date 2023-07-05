@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { EmailTypeService } from './email-type.service';
@@ -8,15 +8,18 @@ import { EmailTypeService } from './email-type.service';
     templateUrl: './email-type.component.html',
     styleUrls: ['./email-type.component.scss']
 })
-export class EmailTypeComponent implements OnInit {
+export class EmailTypeComponent {
 
     public id: number = 0;
     public emailTypes: any[] = [];
     public formGroup!: FormGroup;
     public visibleDialog: boolean = false;
+    public isSubmitted: boolean = false;
+    public addEditTitle: string | undefined;
 
-    constructor(private formBuilder: FormBuilder, private messageService: MessageService, private confirmationService: ConfirmationService,
-        private emailTypeService: EmailTypeService) { }
+    constructor(private formBuilder: FormBuilder, private messageService: MessageService,
+        private confirmationService: ConfirmationService, private renderer: Renderer2,
+        private el: ElementRef, private emailTypeService: EmailTypeService) { }
 
     ngOnInit(): void {
         this.createFormGroup();
@@ -36,12 +39,13 @@ export class EmailTypeComponent implements OnInit {
     }
 
     onAdd(): void {
+        this.addEditTitle = 'Add';
         this.id = 0;
-        this.formGroup.reset();
-        this.visibleDialog = true;
+        this.clearFields(false, true);
     }
 
     onEdit(emailType: any) {
+        this.addEditTitle = 'Edit';
         this.id = emailType.id;
         this.formGroup.patchValue({
             emailType: emailType.type,
@@ -51,53 +55,32 @@ export class EmailTypeComponent implements OnInit {
         this.visibleDialog = true;
     }
 
-    onCancel() {
-        this.visibleDialog = false;
-    }
-
-    onDelete(emailType: any) {
-        this.confirmationService.confirm({
-            message: 'Are you sure you want to delete ' + emailType.type + ' email type?',
-            header: 'Confirm',
-            icon: 'pi pi-exclamation-triangle',
-            accept: () => {
-                this.emailTypeService.deleteEmailType(emailType.id).subscribe({
-                    next: (res) => {
-                        console.log(res);
-                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Delete Successfull', life: 3000 });
-                        this.visibleDialog = false;
-                    },
-                    error: (err) => {
-                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Delete Failed', life: 3000 });
-                    },
-                    complete: () => {
-                    }
-                });
-            }
-        });
-    }
-
     onClear() {
-        this.formGroup.reset();
+        this.clearFields(false, true);
+        this.renderer.selectRootElement('#emailType').focus();
     }
+
+    onCancel() {
+        this.clearFields(false, false);
+    }    
 
     onSave(): void {
+        this.isSubmitted = true;
         const model = {
             id: this.id,
             type: this.formGroup.controls['emailType'].value ? this.formGroup.controls['emailType'].value.trim() : null,
             isPersonal: this.formGroup.controls['isPersonal'].value ? true : false,
             isOfficial: this.formGroup.controls['isOfficial'].value ? true : false,
         };
-
         if (this.formGroup.valid) {
-
             if (this.id === 0) {
                 this.emailTypeService.addEmailType(model).subscribe({
                     next: (res) => {
                         if (res.status === 200) {
                             if ((res.body as any).success) {
-                                this.messageService.add({ severity: 'success', summary: 'Successful', detail: res.body.message, life: 3000 });
-                                this.visibleDialog = false;
+                                this.clearFields(false, false);
+                                this.getEmailTypes();
+                                this.messageService.add({ severity: 'success', summary: 'Successful', detail: res.body.message, life: 3000 });                                
                             } else if (!(res.body as any).success) {
                                 this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.errors[0], life: 3000 });
                             }
@@ -116,8 +99,9 @@ export class EmailTypeComponent implements OnInit {
                     next: (res) => {
                         if (res.status === 200) {
                             if ((res.body as any).success) {
-                                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Update Successfull', life: 3000 });
-                                this.visibleDialog = false;
+                                this.clearFields(false, false);
+                                this.getEmailTypes();
+                                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Update Successfull', life: 3000 });                                
                             } else if (!(res.body as any).success) {
                                 this.messageService.add({ severity: 'error', summary: 'Error', detail: (res.body as any).errors[0], life: 3000 });
                             }
@@ -126,13 +110,47 @@ export class EmailTypeComponent implements OnInit {
                     error: (err) => {
                         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Update Failed', life: 3000 });
                     },
-                    complete: () => {
-                        this.id = 0;
-                        this.getEmailTypes();
+                    complete: () => {                        
                     }
                 });
             }
+        } else {
+            for (const key of Object.keys(this.formGroup.controls)) {
+                if (this.formGroup.controls[key].invalid) {
+                    const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+                    invalidControl.focus();
+                    break;
+                }
+            }
         }
+    }
+
+    onDelete(emailType: any) {
+        this.confirmationService.confirm({
+            message: 'Are you sure you want to delete ' + emailType.type + ' email type?',
+            header: 'Confirm',
+            icon: 'pi pi-exclamation-triangle',
+            accept: () => {
+                this.emailTypeService.deleteEmailType(emailType.id).subscribe({
+                    next: (res) => {
+                        this.clearFields(false, false);
+                        this.getEmailTypes();
+                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Delete Successfull', life: 3000 });                        
+                    },
+                    error: (err) => {
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Delete Failed', life: 3000 });
+                    },
+                    complete: () => {
+                    }
+                });
+            }
+        });
+    } 
+
+    clearFields(isSubmitted: boolean, visibleDialog: boolean) {
+        this.isSubmitted = isSubmitted;
+        this.visibleDialog = visibleDialog;
+        this.formGroup.reset();
     }
 
     getEmailTypes() {

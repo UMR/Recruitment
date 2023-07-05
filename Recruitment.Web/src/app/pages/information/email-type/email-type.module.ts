@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmailTypeRoutingModule } from './email-type-routing.module';
 import { EmailTypeComponent } from './email-type.component';
 import { EmailTypeService } from './email-type.service';
+import { CommonDirectiveModule } from '../../../common/directives/common-directive.module';
 
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
@@ -26,7 +27,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
         ToastModule,
         ConfirmDialogModule,
         CheckboxModule,        
-        DialogModule        
+        DialogModule,
+        CommonDirectiveModule
     ],
     providers: [ConfirmationService, MessageService, EmailTypeService]
 })

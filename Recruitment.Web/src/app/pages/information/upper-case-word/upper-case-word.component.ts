@@ -88,8 +88,7 @@ export class UpperCaseWordComponent {
                 this.upperCaseWordService.update(this.id, model).subscribe({
                     next: (res) => {
                         if (res.status === 200) {
-                            if ((res.body as any).success) {
-                                this.id = 0;
+                            if ((res.body as any).success) {                                
                                 this.clearFields(false, false);
                                 this.getUpperCaseWords();
                                 this.messageService.add({ severity: 'success', summary: 'Successful', detail: (res.body as any).message, life: 3000 });
