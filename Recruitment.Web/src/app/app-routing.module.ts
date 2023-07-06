@@ -77,6 +77,10 @@ const routes: Routes = [
                 path: 'information/visa-type',
                 loadChildren: () => import('./pages/information/visa-type/visa-type.module').then((m) => m.VisaTypeModule)
             },
+            {
+                path: 'information/language-information',
+                loadChildren: () => import('./pages/information/language/language.module').then((m) => m.LanguageModule)
+            }, 
         ]
     },
     {
