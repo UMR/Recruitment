@@ -16,7 +16,7 @@ public static class ConfigureServices
         builder.Services.AddScoped<IUpperCaseWordRepository, UpperCaseWordRepository>();
         builder.Services.AddScoped<ILowerCaseWordRepository, LowerCaseWordRepository>();
         builder.Services.AddScoped<IApplicantTypeRepository, ApplicantTypeRepository>();
-        builder.Services.AddScoped<IVisaTypeRepository, VisaTypeRepository>();
+        builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
 
         return builder;
     }

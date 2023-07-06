@@ -2,11 +2,11 @@
 
 public class UpdateLanguageDtoValidator : AbstractValidator<UpdateLanguageDto>
 {
-    private readonly IVisaTypeService _visaTypeService;
+    private readonly ILanguageService _languageService;
 
-    public UpdateLanguageDtoValidator(IVisaTypeService visaTypeService)
+    public UpdateLanguageDtoValidator(ILanguageService languageService)
     {
-        _visaTypeService = visaTypeService;
+        _languageService = languageService;
 
         RuleFor(a => a.LanguageId)
                .NotEmpty().WithMessage("{PropertyName} is required")
@@ -22,8 +22,8 @@ public class UpdateLanguageDtoValidator : AbstractValidator<UpdateLanguageDto>
            .WithMessage("Language name already exist");
     }
 
-    private bool IsExistLanguageAsync(string visaType, int? id = null)
+    private bool IsExistLanguageAsync(string language, int? id = null)
     {
-        return _visaTypeService.IsExistVisaTypeAsync(visaType, id).Result;
+        return _languageService.IsExistLanguageAsync(language, id).Result;
     }
 }
