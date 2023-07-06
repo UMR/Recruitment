@@ -155,7 +155,7 @@ export const navItems: INavData[] = [
                 url: '/information/position-information'
             },
             {
-                name: 'Position License Requirement',
+                name: 'Position Lic. Requirement',
                 url: '/information/position-license-requirement'
             },
             {
@@ -203,7 +203,7 @@ export const navItems: INavData[] = [
                 url: '/information/applicant-type'
             },
             {
-                name: 'Time and Attendance Reason',
+                name: 'Time and Att. Reason',
                 url: '/information/time-attendance-reason'
             },
             {
