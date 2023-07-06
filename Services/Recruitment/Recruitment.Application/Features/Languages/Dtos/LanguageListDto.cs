@@ -1,6 +1,6 @@
-﻿namespace Recruitment.Domain.Entities;
+﻿namespace Recruitment.Application.Features.Languages;
 
-public partial class Language
+public class LanguageListDto
 {
     public int LanguageId { get; set; }
     public string Name { get; set; } = null!;
@@ -8,5 +8,4 @@ public partial class Language
     public DateTime? CreatedDate { get; set; }
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedDate { get; set; }
-    
 }
