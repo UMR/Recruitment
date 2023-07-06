@@ -35,8 +35,46 @@ public class RecruiterRepository : IRecruiterRepository
         {
             var query = @"select UserID,LoginId,FirstName,LastName,Email,Telephone,ODAPermission,TimeOut,Users.IsActive,AgencyName,Users.AgencyID,ApplicantType.ApplicantTypeID,Name from [Users]
                     LEFT JOIN  [Agency] ON [Users].[AgencyID] = [Agency].[AgencyID]
-                    LEFT JOIN  ApplicantType ON [Users].ApplicantTypeID = ApplicantType.ApplicantTypeID " +
-                    " ORDER BY FirstName,LastName,LoginId";
+                    LEFT JOIN  ApplicantType ON [Users].ApplicantTypeID = ApplicantType.ApplicantTypeID ";
+            string filterString = string.Empty;
+
+            if (!string.IsNullOrEmpty(searchRecruiterParamDto.FirstName))
+            {
+                filterString = "FirstName like '" + searchRecruiterParamDto.FirstName + "%'";
+            }
+            if(string.IsNullOrEmpty(filterString) && !string.IsNullOrEmpty(searchRecruiterParamDto.LastName))
+            {
+                filterString = "LastName like '" + searchRecruiterParamDto.LastName + "%'";
+            }
+            else if (!string.IsNullOrEmpty(filterString) && !string.IsNullOrEmpty(searchRecruiterParamDto.LastName))
+            {
+                filterString = filterString + " AND " + "LastName like '" + searchRecruiterParamDto.LastName + "%'";
+            }
+             if(string.IsNullOrEmpty(filterString) && !string.IsNullOrEmpty(searchRecruiterParamDto.Email))
+            {
+                filterString = "Email like '" + searchRecruiterParamDto.Email + "%'";
+            }
+            else if (!string.IsNullOrEmpty(filterString) && !string.IsNullOrEmpty(searchRecruiterParamDto.Email))
+            {
+                filterString = filterString + " AND " + "Email like '" + searchRecruiterParamDto.Email + "%'";
+            }
+            if (string.IsNullOrEmpty(filterString) && !string.IsNullOrEmpty(searchRecruiterParamDto.Status))
+            {
+                filterString = "Users.IsActive = " + searchRecruiterParamDto.Status;
+            }
+            else if (!string.IsNullOrEmpty(filterString) && !string.IsNullOrEmpty(searchRecruiterParamDto.Status))
+            {
+                filterString = filterString + " AND " + "Users.IsActive = " + searchRecruiterParamDto.Status;
+            }
+            if (!string.IsNullOrEmpty(filterString))
+            {
+                filterString = " Where " + filterString + " ORDER BY FirstName,LastName,LoginId";
+            }
+            else
+            {
+                filterString = " ORDER BY FirstName,LastName,LoginId";
+            }
+            query = query + filterString;
 
             using (IDbConnection conn = _dapperContext.CreateConnection)
             {
@@ -112,15 +150,17 @@ public class RecruiterRepository : IRecruiterRepository
                     var result = await AddUserStatusHistory(user.UserId, user.IsActive, user.IsActive, user.UserId);
                     return result;
                 }
-                else { 
+                else
+                {
                     return false;
                 }
             }
-            else {
+            else
+            {
                 var result = UpdateUser(user);
                 return result;
             }
-            
+
         }
         catch (Exception)
         {

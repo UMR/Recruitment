@@ -84,7 +84,7 @@
             <td>{{ user.email }}</td>
             <td>{{ user.telephone }}</td>
             <td>{{ user.agencyName }}</td>
-            <td>{{ user.isActive }}</td>
+            <td [ngClass]="{'greenColor': user.isActive==true,'redColor':user.isActive==false}">{{ user.isActive==true? 'Yes': 'No' }}</td>
             <!--<td>
                 <input type="checkbox" name="group" [checked]="user.isActive" (change)="changeStatus(user.userId,user.isActive)">
             </td>-->
