@@ -11,7 +11,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Features\Languages\Validators\" />
 		<Folder Include="Features\Menus\Validators\" />
 	</ItemGroup>
 
