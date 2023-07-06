@@ -8,7 +8,7 @@ const routes: Routes = [
         path: '',
         component: VisaTypeComponent,
         data: {
-            title: $localize`Information / Upper Case Word`
+            title: $localize`Information / Visa Type Information`
         }
     }
 ];

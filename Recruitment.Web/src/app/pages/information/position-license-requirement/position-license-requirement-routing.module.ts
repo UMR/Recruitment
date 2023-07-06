@@ -7,7 +7,7 @@ const routes: Routes = [
         path: '',
         component: PositionLicenseRequirementComponent,
         data: {
-            title: $localize`Information / Position License Requirement`
+            title: $localize`Information / Position License Requirement Information`
         }
     }
 ];

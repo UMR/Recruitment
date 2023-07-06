@@ -8,7 +8,7 @@ const routes: Routes = [
         path: '',
         component: UpperCaseWordComponent,
         data: {
-            title: $localize`Information / Upper Case Word`
+            title: $localize`Information / Upper Case Word Information`
         }
     }
 ];

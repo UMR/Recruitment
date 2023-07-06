@@ -7,7 +7,7 @@ const routes: Routes = [
         path: '',
         component: EmailTypeComponent,
         data: {
-            title: $localize`Information / EmailTypes`
+            title: $localize`Information / Email Type Information`
         }
     }
 ];
