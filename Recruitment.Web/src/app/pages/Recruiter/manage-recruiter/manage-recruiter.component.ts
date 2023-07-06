@@ -22,7 +22,7 @@ export class ManageRecruiterComponent {
     addEditTxt: string = "Add";
     agencys: AgencyModel[] = [];
     appTypes: ApplicantTypeModel[] = [];
-    selectedAgency: string="";
+    selectedAgency: string = "";
 
     showHideOpt: string = "Show";
 
@@ -48,21 +48,22 @@ export class ManageRecruiterComponent {
 
     onClearClick() {
         this.clear();
+        this.getAllRecruiter();
     }
 
     onSearchClick() {
-        let SearchParam=
+        console.log(this.status);
+        let SearchParam =
         {
             firstName: this.firstName,
             lastName: this.lastName,
             email: this.email,
-            status: this.status
+            status: this.status != "All" ? this.status == "Active" ? "1" : "0" : ""
         }
         this.manageRecruiterService.getRecruiterBy(SearchParam).subscribe(
             res => {
                 this.users = [];
                 this.users = res.body;
-                console.log(res);
             },
             err => {
                 console.log(err);
@@ -130,7 +131,7 @@ export class ManageRecruiterComponent {
                     () => { })
 
             } else {
-                
+
                 this.manageRecruiterService.addRecruiter(this.user).subscribe(res => {
                     this.getAllRecruiter();
                     this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Recruiter created', life: 3000 });
@@ -147,7 +148,7 @@ export class ManageRecruiterComponent {
             this.user = {};
         }
     }
-    
+
 
     hideDialog() {
         this.userDialog = false;
