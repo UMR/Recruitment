@@ -15,7 +15,7 @@ public class UpdateLanguageDtoValidator : AbstractValidator<UpdateLanguageDto>
         RuleFor(a => a.Name)
             .NotEmpty().WithMessage("{PropertyName} is required")
             .NotNull().WithMessage("{PropertyName} is required")
-            .MaximumLength(256).WithMessage("{PropertyName} must not exceed 256 characters");
+            .MaximumLength(100).WithMessage("{PropertyName} must not exceed 100 characters");
 
         RuleFor(x => x)
            .Must(x => !IsExistLanguageAsync(x.Name, x.LanguageId))
