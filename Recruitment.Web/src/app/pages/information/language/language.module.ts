@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LanguageRoutingModule } from './language-routing.module';
 import { LanguageComponent } from './language.component';
+import { LanguageService } from '../../../common/service/language.service';
 import { CommonDirectiveModule } from '../../../common/directives/common-directive.module';
 
 import { TableModule } from 'primeng/table';
@@ -26,6 +27,6 @@ import { ConfirmationService, MessageService } from 'primeng/api';
       DialogModule,
       CommonDirectiveModule
     ],
-    providers: [ConfirmationService, MessageService]
+    providers: [ConfirmationService, MessageService, LanguageService]
 })
 export class LanguageModule { }
