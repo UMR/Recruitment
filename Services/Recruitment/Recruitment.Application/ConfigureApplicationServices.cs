@@ -22,6 +22,7 @@ public static class ConfigureServices
         builder.Services.AddScoped<ILowerCaseWordService, LowerCaseWordService>();
         builder.Services.AddScoped<IApplicantTypeService, ApplicantTypeService>();
         builder.Services.AddScoped<IVisaTypeService, VisaTypeService>();
+        builder.Services.AddScoped<ILanguageService, LanguageService>();
 
         return builder;
     }
