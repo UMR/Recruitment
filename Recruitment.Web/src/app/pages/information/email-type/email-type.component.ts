@@ -133,9 +133,15 @@ export class EmailTypeComponent {
             accept: () => {
                 this.emailTypeService.deleteEmailType(emailType.id).subscribe({
                     next: (res) => {
-                        this.clearFields(false, false);
-                        this.getEmailTypes();
-                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Delete Successfull', life: 3000 });                        
+                        if (res.status === 200) {
+                            if ((res.body as any).success) {
+                                this.clearFields(false, false);
+                                this.getEmailTypes();
+                                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Delete Successfull', life: 3000 });
+                            } else if (!(res.body as any).success) {
+                                this.messageService.add({ severity: 'error', summary: 'Error', detail: (res.body as any).message, life: 3000 });
+                            }
+                        } 
                     },
                     error: (err) => {
                         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Delete Failed', life: 3000 });

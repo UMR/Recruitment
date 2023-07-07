@@ -112,7 +112,14 @@ public class EmailTypeService : IEmailTypeService
             throw new NotFoundException(nameof(User), id.ToString());
         }
 
-        await _emailTypeRepository.DeleteAsync(id);
+        string result = await _emailTypeRepository.DeleteAsync(id);
+
+        if (!string.IsNullOrEmpty(result)) 
+        {
+            response.Success = false;
+            response.Message = result;
+            return response;
+        }
 
         response.Success = true;
         response.Message = "Deleting Successful";

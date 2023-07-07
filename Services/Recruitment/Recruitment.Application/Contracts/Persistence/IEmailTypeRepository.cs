@@ -12,6 +12,6 @@ public interface IEmailTypeRepository
 
     Task<bool> UpdateAsync(int id, EmailType emailType);
 
-    Task<bool> DeleteAsync(long id);    
+    Task<string> DeleteAsync(long id);    
     
 }

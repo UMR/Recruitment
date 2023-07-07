@@ -1,8 +1,7 @@
 ﻿namespace Recruitment.Persistence.Common;
 
 public class DapperContext : IDapperContext
-{
-    private IDbConnection _connection;
+{    
     private readonly IConfiguration _configuration;
 
     public DapperContext(IConfiguration configuration)
@@ -21,6 +20,4 @@ public class DapperContext : IDapperContext
             return new SqlConnection(ConnectionString);
         }
     }   
-
-
 }
