@@ -1,4 +1,6 @@
-﻿using Recruitment.Application.Features.ManageRecruiter;
+﻿using Microsoft.Data.SqlClient;
+using Recruitment.Application.Features.ManageRecruiter;
+using Recruitment.Domain.Enums;
 
 namespace Recruitment.Persistence.Repositories;
 
@@ -13,6 +15,8 @@ public class RecruiterRepository : IRecruiterRepository
     {
         try
         {
+            //SelectRows(@"SELECT * FROM [dbo].[Users] where [LoginId]=@LoginId","test");
+
             var query = @"select UserID,LoginId,FirstName,LastName,Email,Telephone,ODAPermission,TimeOut,Users.IsActive,AgencyName,Users.AgencyID,ApplicantType.ApplicantTypeID,Name from [Users]
                     LEFT JOIN  [Agency] ON [Users].[AgencyID] = [Agency].[AgencyID]
                     LEFT JOIN  ApplicantType ON [Users].ApplicantTypeID = ApplicantType.ApplicantTypeID " +
@@ -42,7 +46,7 @@ public class RecruiterRepository : IRecruiterRepository
             {
                 filterString = "FirstName like '" + searchRecruiterParamDto.FirstName + "%'";
             }
-            if(string.IsNullOrEmpty(filterString) && !string.IsNullOrEmpty(searchRecruiterParamDto.LastName))
+            if (string.IsNullOrEmpty(filterString) && !string.IsNullOrEmpty(searchRecruiterParamDto.LastName))
             {
                 filterString = "LastName like '" + searchRecruiterParamDto.LastName + "%'";
             }
@@ -50,7 +54,7 @@ public class RecruiterRepository : IRecruiterRepository
             {
                 filterString = filterString + " AND " + "LastName like '" + searchRecruiterParamDto.LastName + "%'";
             }
-             if(string.IsNullOrEmpty(filterString) && !string.IsNullOrEmpty(searchRecruiterParamDto.Email))
+            if (string.IsNullOrEmpty(filterString) && !string.IsNullOrEmpty(searchRecruiterParamDto.Email))
             {
                 filterString = "Email like '" + searchRecruiterParamDto.Email + "%'";
             }
@@ -111,6 +115,8 @@ public class RecruiterRepository : IRecruiterRepository
     {
         try
         {
+
+
             var query = "INSERT INTO [Users](LoginId,FirstName,LastName,Password,Email,Telephone,ODAPermission,[CreatedBy],[CreatedDate],[TimeOut],[AgencyID],[ApplicantTypeID])" +
                                "VALUES(@LoginId, @FirstName, @LastName, @Password, @Email, @Telephone, @Permission, @CreatedBy, @CreatedDate, @TimeOut, @AgencyID, @ApplicantTypeID)";
 
@@ -126,18 +132,127 @@ public class RecruiterRepository : IRecruiterRepository
             parameters.Add("AgencyID", user.AgencyId, DbType.Int64);
             parameters.Add("ApplicantTypeID", user.ApplicantTypeId, DbType.Int64);
             parameters.Add("CreatedBy", user.CreatedBy, DbType.Int32);
-            parameters.Add("CreatedDate", user.CreatedDate, DbType.DateTime);
+            parameters.Add("CreatedDate", DateTime.Now, DbType.DateTime);
 
             using (IDbConnection conn = _dapperContext.CreateConnection)
             {
                 var id = await conn.ExecuteAsync(query, parameters);
+
                 return id;
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            throw;
+            throw ex;
         }
+    }
+    private bool AddUserRole(string loginId, int createdBy)
+    {
+        DataTable users = GetUserByLoginId(loginId);
+        DataTable userRoles = GetRoleByName();
+
+        if (users != null && users.Rows.Count > 0 && userRoles != null && userRoles.Rows.Count > 0)
+        {
+            int userId = Int32.Parse(users.Rows[0]["UserID"].ToString());
+            int roleId = Int32.Parse(userRoles.Rows[0]["RoleID"].ToString());
+
+            string query = @"INSERT INTO [UserRoles]([UserID],[RoleID],[CreatedBy],[CreatedDate])
+                                                VALUES(@UserID,@RoleID,@CreatedBy,@CreatedDate) ";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("UserID", userId, DbType.Int32);
+            parameters.Add("RoleID", roleId, DbType.Int32);
+            parameters.Add("CreatedBy", createdBy, DbType.String);
+            parameters.Add("CreatedDate", DateTime.Now, DbType.String);
+
+            using (IDbConnection conn = _dapperContext.CreateConnection)
+            {
+                var result = conn.Execute(query, parameters);
+                return result > 0 ? true : false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+    private bool AddUserSettings(string loginId, int createdBy)
+    {
+        DataTable users = GetUserByLoginId(loginId);
+
+        if (users != null && users.Rows.Count > 0)
+        {
+            int userId = Int32.Parse(users.Rows[0]["UserID"].ToString());
+
+            string query = @"INSERT INTO [dbo].[UserSettings] ([UserId],[Search_Match_Criteria],[CreatedBy],[CreatedDate])
+                            VALUES(@UserId,@Search_Match_Criteria ,@CreatedBy,@CreatedDate)";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("UserId", userId, DbType.Int32);
+            parameters.Add("Search_Match_Criteria", (int)SearchMathchCriteria.StartWith, DbType.Int32);
+            parameters.Add("CreatedBy", createdBy, DbType.String);
+            parameters.Add("CreatedDate", DateTime.Now, DbType.String);
+
+            using (IDbConnection conn = _dapperContext.CreateConnection)
+            {
+                var result = conn.Execute(query, parameters);
+                return result > 0 ? true : false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+    private DataTable GetUserByLoginId(string loginId)
+    {
+
+        string query = @"SELECT * FROM [dbo].[Users] where [LoginId]=@LoginId";
+
+        var parameters = new DynamicParameters();
+        parameters.Add("LoginId", loginId, DbType.String);
+
+        using (IDbConnection conn = _dapperContext.CreateConnection)
+        {
+            var result = conn.ExecuteReader(query, parameters);
+            var v = (DataTable)result;
+            return v;
+        }
+    }
+    //private DataTable SelectRows(string queryString, string loginId)
+    //{
+
+
+    //using (IDbConnection connection = _dapperContext.CreateConnection)
+    //{
+    //    List<SqlParameter> param = new List<SqlParameter>();
+    //    param.Add(new SqlParameter("LoginId",loginId));
+
+    //    DataSet ds = new DataSet();
+    //    SqlDataAdapter adapter = new SqlDataAdapter();
+    //    adapter.SelectCommand = new SqlCommand(queryString, (SqlConnection)connection);
+    //    adapter.SelectCommand.Parameters.Add(param);
+    //    adapter.Fill(ds);
+    //    return ds.Tables[0];
+    //}
+    //}
+
+    private DataTable GetRoleByName()
+    {
+
+        string query = @"SELECT RoleID,RoleName,Rank  FROM [Roles] where [RoleName]=@RoleName";
+
+        var parameters = new DynamicParameters();
+        parameters.Add("RoleName", "RegularUser", DbType.String);
+
+        string errorStr = String.Empty;
+        DataTable dt = new DataTable();
+
+        if (dt.Rows.Count > 0)
+        {
+            return dt;
+        }
+        return dt;
     }
     public async Task<bool> UpdateRecruiterAsync(int id, User user)
     {
