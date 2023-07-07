@@ -36,10 +36,6 @@ export const navItems: INavData[] = [
                 url: '/recruiter/applicant-ownership'
             },
             {
-                name: 'Recruiter Profiles',
-                url: '/recruiter/recruiter-profiles'
-            },
-            {
                 name: 'Applicant Transfer',
                 url: '/recruiter/applicant-transfer'
             },
