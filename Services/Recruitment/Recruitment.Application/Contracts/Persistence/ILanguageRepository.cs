@@ -12,6 +12,6 @@ public interface ILanguageRepository
 
     Task<bool> UpdateAsync(int id, Language model);
 
-    Task<bool> DeleteAsync(int id);
+    Task<string> DeleteAsync(int id);
     
 }

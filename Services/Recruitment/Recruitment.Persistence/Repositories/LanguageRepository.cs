@@ -88,17 +88,31 @@ public class LanguageRepository : ILanguageRepository
         }
     }
 
-    public async Task<bool> DeleteAsync(int id)
+    public async Task<string> DeleteAsync(int id)
     {
-        var query = "DELETE FROM Language WHERE LanguageID = @LanguageID";
+        string result = string.Empty;
 
-        var parameters = new DynamicParameters();
-        parameters.Add("LanguageID", id, DbType.Int32);
-
-        using (IDbConnection conn = _dapperContext.CreateConnection)
+        try
         {
-            var result = await conn.ExecuteAsync(query, parameters);
-            return result > 0 ? true : false;
+            var query = "DELETE FROM Language WHERE LanguageID = @LanguageID";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("LanguageID", id, DbType.Int32);
+
+            using (IDbConnection conn = _dapperContext.CreateConnection)
+            {
+                await conn.ExecuteAsync(query, parameters);                
+            }
+
         }
+        catch (SqlException se)
+        {
+            if (se.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+            {
+                result = "In Use. Can not be deleted.";
+            }
+        }
+
+        return result;
     }
 }
