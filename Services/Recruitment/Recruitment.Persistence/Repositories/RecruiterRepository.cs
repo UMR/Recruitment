@@ -135,7 +135,8 @@ public class RecruiterRepository : IRecruiterRepository
             using (IDbConnection conn = _dapperContext.CreateConnection)
             {
                 var id = await conn.ExecuteAsync(query, parameters);
-
+                AddUserRole(user.LoginId, user.CreatedBy);
+                AddUserSettings(user.LoginId, user.CreatedBy);
                 return id;
             }
         }
@@ -144,16 +145,16 @@ public class RecruiterRepository : IRecruiterRepository
             throw ex;
         }
     }
-    private bool AddUserRole(string loginId, int createdBy)
+    private bool AddUserRole(string loginId, int? createdBy)
     {
         List<User> users = GetUserByLoginId(loginId);
-        DataTable userRoles = GetRoleByName();
+        List<Role>  userRoles = GetRoleByName();
 
-        if (users != null && users.Count > 0 && userRoles != null && userRoles.Rows.Count > 0)
+        if (users != null && users.Count > 0 && userRoles != null && userRoles.Count > 0)
         {
 
             int userId = Int32.Parse(users.FirstOrDefault().UserId.ToString());
-            int roleId = Int32.Parse(userRoles.Rows[0]["RoleID"].ToString());
+            int roleId = Int32.Parse(userRoles.FirstOrDefault().RoleId.ToString());
 
             string query = @"INSERT INTO [UserRoles]([UserID],[RoleID],[CreatedBy],[CreatedDate])
                                                 VALUES(@UserID,@RoleID,@CreatedBy,@CreatedDate) ";
@@ -161,7 +162,7 @@ public class RecruiterRepository : IRecruiterRepository
             var parameters = new DynamicParameters();
             parameters.Add("UserID", userId, DbType.Int32);
             parameters.Add("RoleID", roleId, DbType.Int32);
-            parameters.Add("CreatedBy", createdBy, DbType.String);
+            parameters.Add("CreatedBy", createdBy, DbType.Int32);
             parameters.Add("CreatedDate", DateTime.Now, DbType.String);
 
             using (IDbConnection conn = _dapperContext.CreateConnection)
@@ -175,7 +176,7 @@ public class RecruiterRepository : IRecruiterRepository
             return false;
         }
     }
-    private bool AddUserSettings(string loginId, int createdBy)
+    private bool AddUserSettings(string loginId, int? createdBy)
     {
         List<User> users = GetUserByLoginId(loginId);
 
@@ -189,7 +190,7 @@ public class RecruiterRepository : IRecruiterRepository
             var parameters = new DynamicParameters();
             parameters.Add("UserId", userId, DbType.Int32);
             parameters.Add("Search_Match_Criteria", (int)SearchMathchCriteria.StartWith, DbType.Int32);
-            parameters.Add("CreatedBy", createdBy, DbType.String);
+            parameters.Add("CreatedBy", createdBy, DbType.Int32);
             parameters.Add("CreatedDate", DateTime.Now, DbType.String);
 
             using (IDbConnection conn = _dapperContext.CreateConnection)
@@ -214,22 +215,16 @@ public class RecruiterRepository : IRecruiterRepository
             return conn.Query<User>(query, parameters).ToList();
         }
     }
-    private DataTable GetRoleByName()
+    private List<Role> GetRoleByName()
     {
 
         string query = @"SELECT RoleID,RoleName,Rank  FROM [Roles] where [RoleName]=@RoleName";
 
-        var parameters = new DynamicParameters();
-        parameters.Add("RoleName", "RegularUser", DbType.String);
-
-        string errorStr = String.Empty;
-        DataTable dt = new DataTable();
-
-        if (dt.Rows.Count > 0)
+        using (IDbConnection conn = _dapperContext.CreateConnection)
         {
-            return dt;
+            var parameters = new { RoleName = "RegularUser" };
+            return conn.Query<Role>(query, parameters).ToList();
         }
-        return dt;
     }
     public async Task<bool> UpdateRecruiterAsync(int id, User user)
     {
