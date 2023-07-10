@@ -106,11 +106,11 @@
                 </div>
                 <div class="field">
                     <label for="password">Password</label>
-                    <p-password id="password" [(ngModel)]="user.password" maxlength="50"></p-password>
+                    <p-password id="password" [(ngModel)]="user.password" maxlength="50" [feedback]="false" [toggleMask]="true"></p-password>
                 </div>
                 <div class="field">
                     <label for="confirmPassword">Confirm Password</label>
-                    <p-password id="confirmPassword" [(ngModel)]="user.password" maxlength="100"></p-password>
+                    <p-password id="confirmPassword" [(ngModel)]="user.password" maxlength="100" [feedback]="false" [toggleMask]="true"></p-password>
                 </div>
                 <div class="field">
                     <label for="firstName">First Name</label>
@@ -136,7 +136,7 @@
                 </div>
                 <div class="field">
                     <label for="agency">Agency</label>
-                    <p-dropdown [options]="agencys" [(ngModel)]="user.agencyId" optionLabel="agencyName" placeholder="Select a Agency" optionValue="agencyId"></p-dropdown>
+                    <p-dropdown [options]="agencys" [(ngModel)]="user.agencyId" optionLabel="agencyName" placeholder="Select a Agency" optionValue="agencyId" appendTo="body"></p-dropdown>
                 </div>
                 <div class="field">
                     <label for="timeOut">Time Out</label>
@@ -144,7 +144,7 @@
                 </div>
                 <div class="field">
                     <label for="applicantType">Default Applicant Type</label>
-                    <p-dropdown [options]="appTypes" [(ngModel)]="user.applicantTypeId" optionLabel="name" placeholder="Select a Applicant Type" optionValue="applicantTypeId"></p-dropdown>
+                    <p-dropdown [options]="appTypes" [(ngModel)]="user.applicantTypeId" optionLabel="name" placeholder="Select a Applicant Type" optionValue="applicantTypeId"  appendTo="body"></p-dropdown>
                 </div>
                 <div class="field" *ngIf="user.userId">
                     <p-checkbox inputId="isSpecial" [(ngModel)]="user.odapermission" value="user.odapermission" [binary]="true"></p-checkbox>
