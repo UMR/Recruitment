@@ -82,7 +82,7 @@ public class SpecailWordService : ISpecialWordService
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(User), id.ToString());
+            throw new NotFoundException(nameof(SpecialWord), id.ToString());
         }
 
         entity.Id = request.Id;
@@ -101,7 +101,7 @@ public class SpecailWordService : ISpecialWordService
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(User), id.ToString());
+            throw new NotFoundException(nameof(SpecialWord), id.ToString());
         }
 
         await _specialWordRepository.DeleteAsync(id);

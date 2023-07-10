@@ -82,7 +82,7 @@ public class LowerCaseWordService : ILowerCaseWordService
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(User), id.ToString());
+            throw new NotFoundException(nameof(LowerCaseWord), id.ToString());
         }
 
         entity.Id = request.Id;
@@ -101,7 +101,7 @@ public class LowerCaseWordService : ILowerCaseWordService
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(User), id.ToString());
+            throw new NotFoundException(nameof(LowerCaseWord), id.ToString());
         }
 
         await _lowerCaseWordRepository.DeleteAsync(id);

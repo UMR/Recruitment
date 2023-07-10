@@ -82,7 +82,7 @@ public class UpperCaseWordService:IUpperCaseWordService
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(User), id.ToString());
+            throw new NotFoundException(nameof(UpperCaseWord), id.ToString());
         }
 
         entity.Id = request.Id;
@@ -101,7 +101,7 @@ public class UpperCaseWordService:IUpperCaseWordService
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(User), id.ToString());
+            throw new NotFoundException(nameof(UpperCaseWord), id.ToString());
         }
 
         await _upperCaseWordRepository.DeleteAsync(id);

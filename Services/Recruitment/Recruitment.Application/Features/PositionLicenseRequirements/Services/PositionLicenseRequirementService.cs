@@ -86,7 +86,7 @@ namespace Recruitment.Application.Features.PositionLicenseRequirements
 
             if (entity is null)
             {
-                throw new NotFoundException(nameof(User), id.ToString());
+                throw new NotFoundException(nameof(PositionLicenseRequirement), id.ToString());
             }
 
             entity.PositionLicenseRequirementId = request.PositionLicenseRequirementId;
@@ -107,7 +107,7 @@ namespace Recruitment.Application.Features.PositionLicenseRequirements
 
             if (entity is null)
             {
-                throw new NotFoundException(nameof(User), id.ToString());
+                throw new NotFoundException(nameof(PositionLicenseRequirement), id.ToString());
             }
 
             var result = await _positionLicenseRequirementRepository.DeleteAsync(id);
