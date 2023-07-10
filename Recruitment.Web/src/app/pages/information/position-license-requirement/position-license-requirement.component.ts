@@ -128,7 +128,7 @@ export class PositionLicenseRequirementComponent {
                                 this.getPositionLicenseRequirements();
                                 this.messageService.add({ severity: 'success', summary: 'Successful', detail: (res.body as any).message, life: 3000 });
                             } else {
-                                this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.errors[0], life: 3000 });
+                                this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.message, life: 3000 });
                             }
                         }
                     },

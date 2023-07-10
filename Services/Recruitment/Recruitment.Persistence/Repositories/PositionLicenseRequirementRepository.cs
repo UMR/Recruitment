@@ -1,4 +1,6 @@
-﻿namespace Recruitment.Persistence.Repositories
+﻿using Recruitment.Domain.Entities;
+
+namespace Recruitment.Persistence.Repositories
 {
     public class PositionLicenseRequirementRepository : IPositionLicenseRequirementRepository
     {
@@ -93,18 +95,30 @@
             }
         }
 
-        public async Task<bool> DeleteAsync(long id)
+        public async Task<string> DeleteAsync(long id)
         {
+            string result = string.Empty;
             var query = "DELETE FROM PositionLicenseRequirement WHERE PositionLicenseRequirementID = @PositionLicenseRequirementID";
 
             var parameters = new DynamicParameters();
             parameters.Add("PositionLicenseRequirementID", id, DbType.Int64);
 
-            using (IDbConnection conn = _dapperContext.CreateConnection)
+            try
             {
-                var result = await conn.ExecuteAsync(query, parameters);
-                return result > 0 ? true : false;
+                using (IDbConnection conn = _dapperContext.CreateConnection)
+                {
+                    await conn.ExecuteAsync(query, parameters);                    
+                }
             }
+            catch (SqlException se)
+            {
+                if (se.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    result = "In Use. Can not be deleted.";
+                }
+            }
+
+            return result;
         }        
     }
 }

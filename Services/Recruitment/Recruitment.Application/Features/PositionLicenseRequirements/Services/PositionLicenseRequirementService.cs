@@ -1,4 +1,6 @@
-﻿namespace Recruitment.Application.Features.PositionLicenseRequirements
+﻿using Recruitment.Domain.Entities;
+
+namespace Recruitment.Application.Features.PositionLicenseRequirements
 {
     public class PositionLicenseRequirementService : IPositionLicenseRequirementService
     {
@@ -108,7 +110,14 @@
                 throw new NotFoundException(nameof(User), id.ToString());
             }
 
-            await _positionLicenseRequirementRepository.DeleteAsync(id);
+            var result = await _positionLicenseRequirementRepository.DeleteAsync(id);
+
+            if (!string.IsNullOrEmpty(result))
+            {
+                response.Success = false;
+                response.Message = result;
+                return response;
+            }
 
             response.Success = true;
             response.Message = "Deleting Successful";
