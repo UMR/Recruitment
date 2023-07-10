@@ -103,7 +103,6 @@ public class LanguageRepository : ILanguageRepository
             {
                 await conn.ExecuteAsync(query, parameters);                
             }
-
         }
         catch (SqlException se)
         {

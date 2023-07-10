@@ -122,14 +122,14 @@ export class LanguageComponent {
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
                 this.languageService.delete(model.languageId).subscribe({
-                    next: (res) => {
+                    next: (res) => {                        
                         if (res.status === 200) {
                             if ((res.body as any).success) {
                                 this.clearFields(false, false);
                                 this.getLanguages();
                                 this.messageService.add({ severity: 'success', summary: 'Successful', detail: (res.body as any).message, life: 3000 });
                             } else {
-                                this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.errors[0], life: 3000 });
+                                this.messageService.add({ severity: 'error', summary: 'Error', detail: (res.body as any).message, life: 3000 });
                             }
                         }
                     },

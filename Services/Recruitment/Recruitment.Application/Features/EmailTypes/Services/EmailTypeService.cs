@@ -86,7 +86,7 @@ public class EmailTypeService : IEmailTypeService
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(User), id.ToString());
+            throw new NotFoundException(nameof(EmailType), id.ToString());
         }
 
         entity.Id = request.Id;
@@ -109,10 +109,10 @@ public class EmailTypeService : IEmailTypeService
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(User), id.ToString());
+            throw new NotFoundException(nameof(EmailType), id.ToString());
         }
 
-        string result = await _emailTypeRepository.DeleteAsync(id);
+        var result = await _emailTypeRepository.DeleteAsync(id);
 
         if (!string.IsNullOrEmpty(result)) 
         {

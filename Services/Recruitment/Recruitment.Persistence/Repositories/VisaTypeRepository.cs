@@ -5,10 +5,9 @@ public class VisaTypeRepository : IVisaTypeRepository
     private readonly IDapperContext _dapperContext;
     private readonly IDataAccessBase _dataAccessBase;
 
-    public VisaTypeRepository(IDapperContext dapperContext, IDataAccessBase dataAccessBase)
+    public VisaTypeRepository(IDapperContext dapperContext)
     {
-        _dapperContext = dapperContext;
-        _dataAccessBase = dataAccessBase;
+        _dapperContext = dapperContext;        
     }
 
     public async Task<IEnumerable<VisaTypeEntity>> GetAllAsync()

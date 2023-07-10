@@ -1,4 +1,6 @@
-﻿namespace Recruitment.Application.Features.Languages;
+﻿using Recruitment.Domain.Entities;
+
+namespace Recruitment.Application.Features.Languages;
 
 public class LanguageService : ILanguageService
 {
@@ -108,7 +110,14 @@ public class LanguageService : ILanguageService
             throw new NotFoundException(nameof(Language), id.ToString());
         }
 
-        await _languageRepository.DeleteAsync(id);
+        var result = await _languageRepository.DeleteAsync(id);
+
+        if (!string.IsNullOrEmpty(result))
+        {
+            response.Success = false;
+            response.Message = result;
+            return response;
+        }
 
         response.Success = true;
         response.Message = "Deleting Successful";
