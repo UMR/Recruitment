@@ -2,6 +2,8 @@
 
 public interface IDapperContext
 {
+    string ConnectionString { get; }
+
     IDbConnection CreateConnection { get; }
-    
+
 }
