@@ -1,6 +1,6 @@
 ﻿namespace Recruitment.Persistence.Repositories;
 
-public class VisaTypeRepository:IVisaTypeRepository
+public class VisaTypeRepository : IVisaTypeRepository
 {
     private readonly IDapperContext _dapperContext;
 
@@ -10,7 +10,14 @@ public class VisaTypeRepository:IVisaTypeRepository
     }
 
     public async Task<IEnumerable<VisaTypeEntity>> GetAllAsync()
-    {
+    {        
+        //List<SqlParameter> sqlParameters = new List<SqlParameter>();
+        //sqlParameters.Add(new SqlParameter { ParameterName = "RoleName", SqlDbType = SqlDbType.NVarChar, Value = "Administrator" });
+
+        //DataAccessBase dataAccessBase = new DataAccessBase(_dapperContext);
+        //var ds = dataAccessBase.GetDataSet(@"SELECT RoleID,RoleName,Rank  FROM [Roles] where [RoleName]=@RoleName", sqlParameters.ToArray());
+
+
         var query = @"SELECT * FROM VisaType ORDER BY VisaType ASC";
 
         using (IDbConnection conn = _dapperContext.CreateConnection)

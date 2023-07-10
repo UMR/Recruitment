@@ -1,28 +1,38 @@
 ﻿namespace Recruitment.Persistence.Common
 {
-    public class DataAccessBase
+    public class DataAccessBase : IDataAccessBase
     {
-        private readonly IDapperContext _dapperContext;
+        private readonly IConfiguration _configuration;
 
-        public DataAccessBase(IDapperContext dapperContext)
+        public DataAccessBase(IConfiguration configuration)
         {
-            _dapperContext = dapperContext;
+            _configuration = configuration;
         }
 
-        public DataSet GetDataSet(string query, SqlParameter[] parameters)
+        public string ConnectionString {
+            get {
+                return _configuration.GetConnectionString("DefaultConnection");
+            }
+        }
+
+        public DataSet GetDataSet(CommandType commandType, string query, List<SqlParameter> parameters = null)
         {
             DataSet ds = new DataSet();
 
-            using (SqlConnection connection = new SqlConnection(_dapperContext.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 SqlCommand sqlcommand = new SqlCommand()
                 {
                     CommandText = query,
                     Connection = connection,
-                    CommandType = CommandType.Text
+                    CommandType = commandType
                 };
 
-                sqlcommand.Parameters.AddRange(parameters);
+                if (parameters != null && parameters.Count > 0)
+                {
+                    sqlcommand.Parameters.AddRange(parameters.ToArray());
+                }
+
                 SqlDataAdapter da = new SqlDataAdapter(sqlcommand);
                 da.Fill(ds);
             }
