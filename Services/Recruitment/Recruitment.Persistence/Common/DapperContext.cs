@@ -9,7 +9,7 @@ public class DapperContext : IDapperContext
         _configuration = configuration;
     }
 
-    private string ConnectionString {
+    public string ConnectionString {
         get {
             return _configuration.GetConnectionString("DefaultConnection");
         }
