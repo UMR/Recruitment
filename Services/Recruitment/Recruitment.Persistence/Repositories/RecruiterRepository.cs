@@ -15,8 +15,6 @@ public class RecruiterRepository : IRecruiterRepository
     {
         try
         {
-            //SelectRows(@"SELECT * FROM [dbo].[Users] where [LoginId]=@LoginId","test");
-
             var query = @"select UserID,LoginId,FirstName,LastName,Email,Telephone,ODAPermission,TimeOut,Users.IsActive,AgencyName,Users.AgencyID,ApplicantType.ApplicantTypeID,Name from [Users]
                     LEFT JOIN  [Agency] ON [Users].[AgencyID] = [Agency].[AgencyID]
                     LEFT JOIN  ApplicantType ON [Users].ApplicantTypeID = ApplicantType.ApplicantTypeID " +
@@ -148,12 +146,13 @@ public class RecruiterRepository : IRecruiterRepository
     }
     private bool AddUserRole(string loginId, int createdBy)
     {
-        DataTable users = GetUserByLoginId(loginId);
+        List<User> users = GetUserByLoginId(loginId);
         DataTable userRoles = GetRoleByName();
 
-        if (users != null && users.Rows.Count > 0 && userRoles != null && userRoles.Rows.Count > 0)
+        if (users != null && users.Count > 0 && userRoles != null && userRoles.Rows.Count > 0)
         {
-            int userId = Int32.Parse(users.Rows[0]["UserID"].ToString());
+
+            int userId = Int32.Parse(users.FirstOrDefault().UserId.ToString());
             int roleId = Int32.Parse(userRoles.Rows[0]["RoleID"].ToString());
 
             string query = @"INSERT INTO [UserRoles]([UserID],[RoleID],[CreatedBy],[CreatedDate])
@@ -178,11 +177,11 @@ public class RecruiterRepository : IRecruiterRepository
     }
     private bool AddUserSettings(string loginId, int createdBy)
     {
-        DataTable users = GetUserByLoginId(loginId);
+        List<User> users = GetUserByLoginId(loginId);
 
-        if (users != null && users.Rows.Count > 0)
+        if (users != null && users.Count > 0)
         {
-            int userId = Int32.Parse(users.Rows[0]["UserID"].ToString());
+            int userId = Int32.Parse(users.FirstOrDefault().UserId.ToString());
 
             string query = @"INSERT INTO [dbo].[UserSettings] ([UserId],[Search_Match_Criteria],[CreatedBy],[CreatedDate])
                             VALUES(@UserId,@Search_Match_Criteria ,@CreatedBy,@CreatedDate)";
@@ -204,39 +203,17 @@ public class RecruiterRepository : IRecruiterRepository
             return false;
         }
     }
-    private DataTable GetUserByLoginId(string loginId)
+    private List<User> GetUserByLoginId(string loginId)
     {
 
         string query = @"SELECT * FROM [dbo].[Users] where [LoginId]=@LoginId";
 
-        var parameters = new DynamicParameters();
-        parameters.Add("LoginId", loginId, DbType.String);
-
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
-            var result = conn.ExecuteReader(query, parameters);
-            var v = (DataTable)result;
-            return v;
+            var parameters = new { loginId = loginId };
+            return conn.Query<User>(query, parameters).ToList();
         }
     }
-    //private DataTable SelectRows(string queryString, string loginId)
-    //{
-
-
-    //using (IDbConnection connection = _dapperContext.CreateConnection)
-    //{
-    //    List<SqlParameter> param = new List<SqlParameter>();
-    //    param.Add(new SqlParameter("LoginId",loginId));
-
-    //    DataSet ds = new DataSet();
-    //    SqlDataAdapter adapter = new SqlDataAdapter();
-    //    adapter.SelectCommand = new SqlCommand(queryString, (SqlConnection)connection);
-    //    adapter.SelectCommand.Parameters.Add(param);
-    //    adapter.Fill(ds);
-    //    return ds.Tables[0];
-    //}
-    //}
-
     private DataTable GetRoleByName()
     {
 
