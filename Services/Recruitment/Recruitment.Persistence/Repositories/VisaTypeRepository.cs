@@ -13,14 +13,6 @@ public class VisaTypeRepository : IVisaTypeRepository
 
     public async Task<IEnumerable<VisaTypeEntity>> GetAllAsync()
     {
-        List<SqlParameter> sqlParameters = new List<SqlParameter>
-        {
-            new SqlParameter { ParameterName = "RoleName", SqlDbType = SqlDbType.NVarChar, Value = "Administrator" }
-        };
-
-        var ds = _dataAccessBase.GetDataSet(CommandType.Text, @"SELECT RoleID,RoleName,Rank  FROM [Roles] where [RoleName]=@RoleName", sqlParameters);
-
-
         var query = @"SELECT * FROM VisaType ORDER BY VisaType ASC";
 
         using (IDbConnection conn = _dapperContext.CreateConnection)

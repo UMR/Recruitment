@@ -15,7 +15,7 @@
             }
         }
 
-        public DataSet GetDataSet(CommandType commandType, string query, List<SqlParameter> parameters = null)
+        public DataSet GetDataSet(CommandType commandType, string commandText, List<SqlParameter> parameters = null)
         {
             DataSet ds = new DataSet();
 
@@ -23,7 +23,7 @@
             {
                 SqlCommand sqlcommand = new SqlCommand()
                 {
-                    CommandText = query,
+                    CommandText = commandText,
                     Connection = connection,
                     CommandType = commandType
                 };
@@ -40,7 +40,7 @@
             return ds;
         }
 
-        public DataTable GetDataTable(CommandType commandType, string query, List<SqlParameter> parameters = null)
+        public DataTable GetDataTable(CommandType commandType, string commandText, List<SqlParameter> parameters = null)
         {
             DataTable dataTable = new DataTable();
 
@@ -49,14 +49,17 @@
                 var dataSet = new DataSet();
                 var command = new SqlCommand()
                 {
-                    CommandText = query,
+                    CommandText = commandText,
                     Connection = connection,
                     CommandType = commandType
                 };
 
                 if (parameters != null && parameters.Count > 0)
                 {
-                    command.Parameters.AddRange(parameters.ToArray());
+                    foreach (var parameter in parameters) 
+                    {
+                        command.Parameters.Add(parameter);
+                    }                    
                 }
 
                 var dataAdapter = new SqlDataAdapter(command);
