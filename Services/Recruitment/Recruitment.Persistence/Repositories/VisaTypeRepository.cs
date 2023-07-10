@@ -3,19 +3,22 @@
 public class VisaTypeRepository : IVisaTypeRepository
 {
     private readonly IDapperContext _dapperContext;
+    private readonly IDataAccessBase _dataAccessBase;
 
-    public VisaTypeRepository(IDapperContext dapperContext)
+    public VisaTypeRepository(IDapperContext dapperContext, IDataAccessBase dataAccessBase)
     {
         _dapperContext = dapperContext;
+        _dataAccessBase = dataAccessBase;
     }
 
     public async Task<IEnumerable<VisaTypeEntity>> GetAllAsync()
-    {        
-        //List<SqlParameter> sqlParameters = new List<SqlParameter>();
-        //sqlParameters.Add(new SqlParameter { ParameterName = "RoleName", SqlDbType = SqlDbType.NVarChar, Value = "Administrator" });
+    {
+        List<SqlParameter> sqlParameters = new List<SqlParameter>
+        {
+            new SqlParameter { ParameterName = "RoleName", SqlDbType = SqlDbType.NVarChar, Value = "Administrator" }
+        };
 
-        //DataAccessBase dataAccessBase = new DataAccessBase(_dapperContext);
-        //var ds = dataAccessBase.GetDataSet(@"SELECT RoleID,RoleName,Rank  FROM [Roles] where [RoleName]=@RoleName", sqlParameters.ToArray());
+        var ds = _dataAccessBase.GetDataSet(CommandType.Text, @"SELECT RoleID,RoleName,Rank  FROM [Roles] where [RoleName]=@RoleName", sqlParameters);
 
 
         var query = @"SELECT * FROM VisaType ORDER BY VisaType ASC";

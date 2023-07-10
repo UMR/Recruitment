@@ -39,5 +39,36 @@
 
             return ds;
         }
+
+        public DataTable GetDataTable(CommandType commandType, string query, List<SqlParameter> parameters = null)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (var connection = new SqlConnection(ConnectionString))
+            {
+                var dataSet = new DataSet();
+                var command = new SqlCommand()
+                {
+                    CommandText = query,
+                    Connection = connection,
+                    CommandType = commandType
+                };
+
+                if (parameters != null && parameters.Count > 0)
+                {
+                    command.Parameters.AddRange(parameters.ToArray());
+                }
+
+                var dataAdapter = new SqlDataAdapter(command);
+                dataAdapter.Fill(dataSet);
+
+                if (dataSet.Tables.Count > 0)
+                {
+                    dataTable = dataSet.Tables[0];
+                }
+            }
+
+            return dataTable;
+        }
     }
 }
