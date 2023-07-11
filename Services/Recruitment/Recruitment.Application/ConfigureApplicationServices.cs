@@ -1,4 +1,6 @@
-﻿namespace Recruitment.Application;
+﻿using Recruitment.Application.Features.ManageRole;
+
+namespace Recruitment.Application;
 
 public static class ConfigureServices
 {
@@ -13,6 +15,7 @@ public static class ConfigureServices
         builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
         builder.Services.AddScoped<IAgencyService, AgencyService>();
         builder.Services.AddScoped<IEmailTypeService, EmailTypeService>();
+        builder.Services.AddScoped<IRoleService, RoleService>();
         builder.Services.AddScoped<IInstitutionTypeService, InstitutionTypeService>();
         builder.Services.AddScoped<IMenuService, MenuService>();
         builder.Services.AddScoped<IPositionLicenseRequirementService, PositionLicenseRequirementService>();
