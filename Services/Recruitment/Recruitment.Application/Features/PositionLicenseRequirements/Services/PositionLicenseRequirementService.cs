@@ -109,15 +109,8 @@ namespace Recruitment.Application.Features.PositionLicenseRequirements
             {
                 throw new NotFoundException(nameof(PositionLicenseRequirement), id.ToString());
             }
-
-            var result = await _positionLicenseRequirementRepository.DeleteAsync(id);
-
-            if (!string.IsNullOrEmpty(result))
-            {
-                response.Success = false;
-                response.Message = result;
-                return response;
-            }
+           
+            var result = await _positionLicenseRequirementRepository.DeleteAsync(id);          
 
             response.Success = true;
             response.Message = "Deleting Successful";

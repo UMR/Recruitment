@@ -12,6 +12,6 @@
 
         Task<bool> UpdateAsync(long id, PositionLicenseRequirement model);
 
-        Task<string> DeleteAsync(long id);
+        Task<bool> DeleteAsync(long id);
     }
 }

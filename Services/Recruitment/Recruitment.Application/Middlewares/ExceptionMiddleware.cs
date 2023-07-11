@@ -14,6 +14,10 @@ public class ExceptionMiddleware
         try
         {
             await _next(httpContext);
+        }                                    
+        catch (ConflictException ce) 
+        {
+            await HandleConflictExceptionAsync(httpContext,ce);
         }
         catch (Exception ex)
         {
@@ -29,6 +33,17 @@ public class ExceptionMiddleware
         {
             StatusCode = context.Response.StatusCode,
             Message = "Internal Server Error."
+        }.ToString());
+    }
+
+    private async Task HandleConflictExceptionAsync(HttpContext context, Exception exception)
+    {
+        context.Response.ContentType = "application/json";
+        context.Response.StatusCode = (int)HttpStatusCode.Conflict;        
+        await context.Response.WriteAsync(new ErrorInfo()
+        {
+            StatusCode = context.Response.StatusCode,
+            Message = exception.Message
         }.ToString());
     }
 }

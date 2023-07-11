@@ -1,5 +1,6 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { PositionLicenseRequirementModel } from '../../../common/models/position-license-requirement.model';
@@ -121,7 +122,7 @@ export class PositionLicenseRequirementComponent {
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
                 this.positionLicenseRequirementService.delete(model.positionLicenseRequirementId).subscribe({
-                    next: (res) => {
+                    next: (res) => {                        
                         if (res.status === 200) {
                             if ((res.body as any).success) {
                                 this.clearFields(false, false);
@@ -132,10 +133,12 @@ export class PositionLicenseRequirementComponent {
                             }
                         }
                     },
-                    error: (err) => {
-                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Delete Failed', life: 3000 });
-                    },
-                    complete: () => {
+                    error: (err: HttpErrorResponse) => {
+                        if ((err.error as any).StatusCode === 409) {                            
+                            this.messageService.add({ severity: 'error', summary: 'Error', detail: (err.error as any).Message, life: 3000 });
+                        } else {
+                            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Delete Failed', life: 3000 });
+                        }
                     }
                 });
             }
