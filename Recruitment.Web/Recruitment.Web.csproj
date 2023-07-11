@@ -86,6 +86,7 @@
     <TypeScriptCompile Include="src\app\common\models\instituteType.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\agency.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\auth-info.model.ts" />
+    <TypeScriptCompile Include="src\app\common\models\manage-role.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\position-license-requirement.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\lower-case-word.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\language.model.ts" />
