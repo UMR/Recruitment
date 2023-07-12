@@ -68,7 +68,7 @@ export class CountryComponent {
         this.isSubmitted = true;
         const model: any = {
             countryId: this.id,
-            name: this.formGroup.controls['name'].value ? this.formGroup.controls['name'].value.trim() : null,
+            countryName: this.formGroup.controls['name'].value ? this.formGroup.controls['name'].value.trim() : null,
             description: this.formGroup.controls['description'].value ? this.formGroup.controls['description'].value.trim() : null
         };
         if (this.formGroup.valid) {

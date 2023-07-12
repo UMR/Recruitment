@@ -42,12 +42,12 @@
         <form [formGroup]="formGroup">
             <div class="grid">
                 <div class="col-12">
-                    <label for="name" class="font-bold block mb-2 mt-2">Email Type</label>
+                    <label for="name" class="font-bold block mb-2 mt-2">Name</label>
                     <input type="text" pInputText id="name" formControlName="name" required maxlength="50" lefttrimmed autofocus (keydown.enter)="onSave()" />
                     <small class="p-error" *ngIf="isSubmitted && f['name'].errors">Name is required.</small>
                 </div>
                 <div class="col-12">
-                    <label for="description" class="font-bold block mb-2 mt-2">Email Type</label>
+                    <label for="description" class="font-bold block mb-2 mt-2">Description</label>
                     <input type="text" pInputText id="description" formControlName="description" maxlength="50" lefttrimmed (keydown.enter)="onSave()" />
                     <small class="p-error" *ngIf="isSubmitted && f['description'].errors">Description is required.</small>
                 </div>
