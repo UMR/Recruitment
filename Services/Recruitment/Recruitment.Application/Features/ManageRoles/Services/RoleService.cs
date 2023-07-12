@@ -17,9 +17,16 @@ public class RoleService : IRoleService
 
     public async Task<List<RoleListDto>> GetAllAsync()
     {
-        var entitiesFromRepo = await _roleRepository.GetAllAsync();
-        var entitiesToReturn = _mapper.Map<List<RoleListDto>>(entitiesFromRepo);
-        return entitiesToReturn;
+        try
+        {
+            var entitiesFromRepo = await _roleRepository.GetAllAsync();
+            var entitiesToReturn = _mapper.Map<List<RoleListDto>>(entitiesFromRepo);
+            return entitiesToReturn;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
     }
 
     public async Task<RoleListDto> GetByIdAsync(int id)
@@ -110,7 +117,7 @@ public class RoleService : IRoleService
 
         var result = await _roleRepository.DeleteAsync(id);
 
-        if (!string.IsNullOrEmpty(result)) 
+        if (!string.IsNullOrEmpty(result))
         {
             response.Success = false;
             response.Message = result;

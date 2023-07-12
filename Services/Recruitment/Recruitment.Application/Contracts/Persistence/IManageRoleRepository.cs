@@ -1,16 +1,18 @@
-﻿namespace Recruitment.Application.Contracts.Persistence;
+﻿using Recruitment.Application.Features.ManageRole;
+
+namespace Recruitment.Application.Contracts.Persistence;
 
 public interface IManageRoleRepository
 {
-    Task<IEnumerable<Role>> GetAllAsync();
+    Task<IEnumerable<RoleListDto>> GetAllAsync();
 
     Task<Role> GetByIdAsync(int id);
 
-    Task<bool> IsExistAsync(string emailType, int? id = null);
+    Task<bool> IsExistAsync(string roleName, int? id = null);
 
-    Task<int> CreateAsync(Role emailType);
+    Task<int> CreateAsync(Role role);
 
-    Task<bool> UpdateAsync(int id, Role emailType);
+    Task<bool> UpdateAsync(int id, Role role);
 
     Task<string> DeleteAsync(long id);    
     

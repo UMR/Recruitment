@@ -2,10 +2,9 @@
 
 public class RoleListDto
 {
-    public int Id { get; set; }
-    public string Type { get; set; } = null!;
-    public bool IsPersonal { get; set; }
-    public bool IsOfficial { get; set; }
+    public int RoleId { get; set; }
+    public string RoleName { get; set; } = null!;
+    public int? Rank { get; set; }
     public int? CreatedBy { get; set; }
     public DateTime? CreatedDate { get; set; }
     public int? UpdatedBy { get; set; }

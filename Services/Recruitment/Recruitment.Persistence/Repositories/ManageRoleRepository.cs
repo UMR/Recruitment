@@ -1,4 +1,6 @@
-﻿namespace Recruitment.Persistence.Repositories;
+﻿using Recruitment.Application.Features.ManageRole;
+
+namespace Recruitment.Persistence.Repositories;
 
 public class ManageRoleRepository : IManageRoleRepository
 {
@@ -9,13 +11,13 @@ public class ManageRoleRepository : IManageRoleRepository
         _dapperContext = dapperContext;
     }
 
-    public async Task<IEnumerable<Role>> GetAllAsync()
+    public async Task<IEnumerable<RoleListDto>> GetAllAsync()
     {
         var query = @"SELECT * FROM [Roles] order by RoleName asc";
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
-            var roles = await conn.QueryAsync<Role>(query);
+            var roles = await conn.QueryAsync<RoleListDto>(query);
             return roles.ToList();
         }
     }
