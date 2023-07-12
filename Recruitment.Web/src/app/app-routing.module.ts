@@ -81,6 +81,10 @@ const routes: Routes = [
                 path: 'information/language-information',
                 loadChildren: () => import('./pages/information/language/language.module').then((m) => m.LanguageModule)
             }, 
+            {
+                path: 'information/country',
+                loadChildren: () => import('./pages/information/country/country.module').then((m) => m.CountryModule)
+            }, 
         ]
     },
     {
