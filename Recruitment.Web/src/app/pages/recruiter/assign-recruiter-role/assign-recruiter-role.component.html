@@ -1,1 +1,16 @@
-<p>assign-recruiter-role works!</p>
+<p-card header="Assign Recruiter Role">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="field">
+                <label for="user">Select User</label>
+                <p-dropdown id="user" [options]="users" [(ngModel)]="selectedUser" optionLabel="firstName" optionValue="userId" placeholder="Select a User"></p-dropdown>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3>Role</h3>
+            <h4>User Roles</h4>
+
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</p-card>

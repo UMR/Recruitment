@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { AssignRecruiterRoleRoutingModule } from './assign-recruiter-role-routing.module';
 import { AssignRecruiterRoleComponent } from './assign-recruiter-role.component';
+import { CardModule } from 'primeng/card';
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -10,7 +13,10 @@ import { AssignRecruiterRoleComponent } from './assign-recruiter-role.component'
     AssignRecruiterRoleComponent
   ],
   imports: [
-    CommonModule,
+      CommonModule,
+      FormsModule,
+      CardModule,
+      DropdownModule,
     AssignRecruiterRoleRoutingModule
   ]
 })
