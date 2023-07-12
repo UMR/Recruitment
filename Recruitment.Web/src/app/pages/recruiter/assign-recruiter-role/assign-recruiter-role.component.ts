@@ -7,12 +7,18 @@ import { AssignRecruiterRoleService } from './assign-recruiter-role.service';
     styleUrls: ['./assign-recruiter-role.component.scss']
 })
 export class AssignRecruiterRoleComponent {
-    users: any;
+    users: any = [];
+    userRoles: any = [];
+    roles: any = [];
+    ranks: any = [];
+
     selectedUser: string = "";
-    userRoles: any;
+    selectedRole: string = "";
+    selectedRank: string = "";
 
     constructor(private assignRecruiterRoleService: AssignRecruiterRoleService) {
         this.getUser();
+        this.getRank()
     }
     getUser() {
         this.assignRecruiterRoleService.getAllUser().subscribe(
@@ -27,5 +33,19 @@ export class AssignRecruiterRoleComponent {
             () => {
             });
     }
-    deleteRole(role:any) { }
+    getRank() {
+        this.assignRecruiterRoleService.getAllRank().subscribe(
+            res => {
+                console.log(res)
+                this.ranks = res.body;
+                //this.firstName = res.body.firstName;
+            },
+            err => {
+                console.log(err);
+            },
+            () => {
+            });
+    }
+
+    deleteRole(role: any) { }
 }

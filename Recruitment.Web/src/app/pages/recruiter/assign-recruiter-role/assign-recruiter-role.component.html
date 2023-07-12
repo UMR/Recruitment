@@ -1,13 +1,13 @@
 <p-card header="Assign Recruiter Role">
     <div class="row">
         <div class="col-md-4">
-            <h3>User name with login id.</h3>
+            <h5>Users</h5>
             <div class="field">
                 <p-dropdown id="user" [options]="users" [(ngModel)]="selectedUser" optionLabel="firstName" optionValue="userId" placeholder="Select a User"></p-dropdown>
             </div>
         </div>
         <div class="col-md-4">
-            <h3>Role</h3>
+            <h5>Role</h5>
             <p-table [value]="userRoles"
                      [paginator]="false"
                      [rowHover]="true"
@@ -44,9 +44,9 @@
             </div>
         </div>
         <div class="col-md-4">
-            <h3>Rank</h3>
+            <h5>Rank</h5>
             <div class="field">
-                <p-dropdown id="user" [options]="users" [(ngModel)]="selectedUser" optionLabel="firstName" optionValue="userId" placeholder="Select a User"></p-dropdown>
+                <p-dropdown id="rank" [options]="ranks" [(ngModel)]="selectedRank" optionLabel="rank" optionValue="rankLookupId" placeholder="Select a User"></p-dropdown>
             </div>
         </div>
     </div>

@@ -1,13 +1,11 @@
 ﻿global using Microsoft.AspNetCore.Mvc;
 global using MediatR;
-global using Serilog;
 global using Newtonsoft.Json;
 global using Microsoft.OpenApi.Models;
 global using Microsoft.AspNetCore.Mvc.Filters;
 global using Microsoft.AspNetCore.Authorization;
 global using Microsoft.AspNetCore.Mvc.Authorization;
 global using IdentityServer4.AccessTokenValidation;
-global using System.Security.Claims;
 
 global using Recruitment.API.Configurations;
 global using Recruitment.API.Models;
@@ -28,6 +26,8 @@ global using Recruitment.Application.Features.LowerCaseWords;
 global using Recruitment.Application.Features.VisaTypes;
 global using Recruitment.Application.Features.Languages;
 global using Recruitment.Application.Features.Countries;
+global using Recruitment.Application.Features.ManageRank;
+global using Recruitment.Application.Features.ManageRecruiter;
 
 global using Recruitment.Infrastructure;
 

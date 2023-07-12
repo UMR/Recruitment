@@ -36,6 +36,8 @@ global using Recruitment.Application.Features.ApplicantType;
 global using Recruitment.Application.Features.VisaTypes;
 global using Recruitment.Application.Features.Languages;
 global using Recruitment.Application.Features.Countries;
+global using Recruitment.Application.Features.ManageRank;
+global using Recruitment.Application.Features.ManageRole;
 
 global using Recruitment.Domain.Entities;
 

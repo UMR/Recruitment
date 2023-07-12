@@ -11,6 +11,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="Features\ManageRank\Validators\" />
 		<Folder Include="Features\Menus\Validators\" />
 	</ItemGroup>
 

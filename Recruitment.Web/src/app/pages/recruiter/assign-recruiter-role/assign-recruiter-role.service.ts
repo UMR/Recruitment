@@ -14,4 +14,8 @@ export class AssignRecruiterRoleService {
         const recruiterURI = `${resourceServerUrl}/api/v1/Recruiter/GetRecruiters`;
         return this.http.get(recruiterURI, { observe: 'response' })
     }
+    getAllRank(): Observable<HttpResponse<any>> {
+        const recruiterURI = `${resourceServerUrl}/api/v1/Rank/GetRanks`;
+        return this.http.get(recruiterURI, { observe: 'response' })
+    }
 }

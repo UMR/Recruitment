@@ -14,5 +14,6 @@ public class MappingProfile : Profile
         CreateMap<VisaTypeEntity, VisaTypeListDto>().ReverseMap();
         CreateMap<Language, LanguageListDto>().ReverseMap();
         CreateMap<Country, CountryListDto>().ReverseMap();
+        CreateMap<RankLookup, RankListDto>().ReverseMap();
     }
 }
