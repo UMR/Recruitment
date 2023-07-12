@@ -12,7 +12,6 @@
 
 	<ItemGroup>
 		<Folder Include="Features\Countries\Validators\" />
-		<Folder Include="Features\Countries\Services\" />
 		<Folder Include="Features\Menus\Validators\" />
 	</ItemGroup>
 
