@@ -6,6 +6,7 @@ import { AssignRecruiterRoleComponent } from './assign-recruiter-role.component'
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
       CommonModule,
       FormsModule,
       CardModule,
+      TableModule,
       DropdownModule,
     AssignRecruiterRoleRoutingModule
   ]

@@ -8,7 +8,8 @@ import { AssignRecruiterRoleService } from './assign-recruiter-role.service';
 })
 export class AssignRecruiterRoleComponent {
     users: any;
-    selectedUser: string="";
+    selectedUser: string = "";
+    userRoles: any;
 
     constructor(private assignRecruiterRoleService: AssignRecruiterRoleService) {
         this.getUser();
@@ -26,4 +27,5 @@ export class AssignRecruiterRoleComponent {
             () => {
             });
     }
+    deleteRole(role:any) { }
 }
