@@ -13,5 +13,6 @@ public class MappingProfile : Profile
         CreateMap<LowerCaseWord, LowerCaseWordListDto>().ReverseMap();
         CreateMap<VisaTypeEntity, VisaTypeListDto>().ReverseMap();
         CreateMap<Language, LanguageListDto>().ReverseMap();
+        CreateMap<Country, CountryListDto>().ReverseMap();
     }
 }
