@@ -25,6 +25,10 @@ const routes: Routes = [
                 loadChildren: () => import('./pages/recruiter/manage-role/manage-role.module').then((m) => m.ManageRoleModule)
             },
             {
+                path: 'recruiter/assign-recruiter-role',
+                loadChildren: () => import('./pages/recruiter/assign-recruiter-role/assign-recruiter-role.module').then((m) => m.AssignRecruiterRoleModule)
+            },
+            {
                 path: 'recruiter/manage-profile',
                 loadChildren: () => import('./pages/recruiter/manage-profile/manage-profile.module').then((m) => m.ManageProfileModule)
             },
