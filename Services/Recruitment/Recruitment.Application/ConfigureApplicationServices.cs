@@ -26,6 +26,7 @@ public static class ConfigureServices
         builder.Services.AddScoped<IApplicantTypeService, ApplicantTypeService>();
         builder.Services.AddScoped<IVisaTypeService, VisaTypeService>();
         builder.Services.AddScoped<ILanguageService, LanguageService>();
+        builder.Services.AddScoped<ICountryService, CountryService>();
 
         return builder;
     }

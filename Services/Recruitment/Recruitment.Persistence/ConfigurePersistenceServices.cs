@@ -20,6 +20,7 @@ public static class ConfigureServices
         builder.Services.AddScoped<IApplicantTypeRepository, ApplicantTypeRepository>();
         builder.Services.AddScoped<IVisaTypeRepository, VisaTypeRepository>();
         builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
+        builder.Services.AddScoped<ICountryRepository, CountryRepository>();
 
         return builder;
     }
