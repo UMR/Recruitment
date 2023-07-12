@@ -27,6 +27,7 @@ global using Recruitment.Application.Features.UpperCaseWords;
 global using Recruitment.Application.Features.LowerCaseWords;
 global using Recruitment.Application.Features.VisaTypes;
 global using Recruitment.Application.Features.Languages;
+global using Recruitment.Application.Features.Countries;
 
 global using Recruitment.Infrastructure;
 
