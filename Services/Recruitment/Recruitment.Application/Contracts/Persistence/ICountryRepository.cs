@@ -6,7 +6,7 @@ public interface ICountryRepository
 
     Task<Country> GetByIdAsync(int id);
 
-    Task<bool> IsExistCountryAsync(string name, int? id = null);
+    Task<bool> IsExistNameAsync(string name, int? id = null);
 
     Task<int> CreateAsync(Country model);
 

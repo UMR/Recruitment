@@ -34,7 +34,7 @@ public class CountryRepository : ICountryRepository
         }
     }
 
-    public async Task<bool> IsExistCountryAsync(string name, int? id = null)
+    public async Task<bool> IsExistNameAsync(string name, int? id = null)
     {
         var query = @"SELECT COUNT(*) FROM Country WHERE CountryName=@CountryName";
 

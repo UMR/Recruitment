@@ -1,6 +1,6 @@
 ﻿namespace Recruitment.Application.Features.Countries;
 
-public class CountryService 
+public class CountryService : ICountryService
 {
     private readonly IMapper _mapper;
     private readonly ICurrentUserService _currentUserService;
@@ -29,76 +29,76 @@ public class CountryService
         return entityToReturn;
     }
 
-    public async Task<bool> IsExistAsync(string emailType, int? id = null)
+    public async Task<bool> IsExistNameAsync(string name, int? id = null)
     {
-        return await _countryRepository.IsExistCountryAsync(emailType, id);
+        return await _countryRepository.IsExistNameAsync(name, id);
     }
 
-    //public async Task<BaseCommandResponse> CreateAsync(CreateCountryDto request)
-    //{
-    //    var response = new BaseCommandResponse();
-    //    var validator = new CreateEmailTypeDtoValidator(this);
-    //    var validationResult = await validator.ValidateAsync(request);
+    public async Task<BaseCommandResponse> CreateAsync(CreateCountryDto request)
+    {
+        var response = new BaseCommandResponse();
+        var validator = new CreateCountryDtoValidator(this);
+        var validationResult = await validator.ValidateAsync(request);
 
-    //    if (validationResult.IsValid == false)
-    //    {
-    //        response.Success = false;
-    //        response.Message = "Creating Failed";
-    //        response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-    //        return response;
-    //    }
+        if (validationResult.IsValid == false)
+        {
+            response.Success = false;
+            response.Message = "Creating Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            return response;
+        }
 
-    //    var entity = new Country
-    //    {
-    //        CountryName = request.CountryName,
-    //        Description = request.Description,            
-    //        CreatedBy = _currentUserService.UserId,
-    //        CreatedDate = _dateTime.Now
-    //    };
-    //    await _countryRepository.CreateAsync(entity);
+        var entity = new Country
+        {
+            CountryName = request.CountryName,
+            Description = request.Description,
+            CreatedBy = _currentUserService.UserId,
+            CreatedDate = _dateTime.Now
+        };
+        await _countryRepository.CreateAsync(entity);
 
-    //    response.Success = true;
-    //    response.Message = "Creating Successful";
-    //    return response;
-    //}
+        response.Success = true;
+        response.Message = "Creating Successful";
+        return response;
+    }
 
-    //public async Task<BaseCommandResponse> UpdateAsync(int id, UpdateCountryDto request)
-    //{
-    //    var response = new BaseCommandResponse();
-    //    var validator = new UpdateEmailTypeDtoValidator(this);
-    //    var validationResult = await validator.ValidateAsync(request);
+    public async Task<BaseCommandResponse> UpdateAsync(int id, UpdateCountryDto request)
+    {
+        var response = new BaseCommandResponse();
+        var validator = new UpdateCountryDtoValidator(this);
+        var validationResult = await validator.ValidateAsync(request);
 
-    //    if (validationResult.IsValid == false)
-    //    {
-    //        response.Success = false;
-    //        response.Message = "Updating Failed";
-    //        response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-    //        return response;
-    //    }
+        if (validationResult.IsValid == false)
+        {
+            response.Success = false;
+            response.Message = "Updating Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            return response;
+        }
 
-    //    if (id != request.CountryId)
-    //    {
-    //        throw new BadRequestException("Id does not match");
-    //    }
+        if (id != request.CountryId)
+        {
+            throw new BadRequestException("Id does not match");
+        }
 
-    //    var entity = await _countryRepository.GetByIdAsync(id);
+        var entity = await _countryRepository.GetByIdAsync(id);
 
-    //    if (entity is null)
-    //    {
-    //        throw new NotFoundException(nameof(EmailType), id.ToString());
-    //    }
+        if (entity is null)
+        {
+            throw new NotFoundException(nameof(EmailType), id.ToString());
+        }
 
-    //    entity.CountryId = request.CountryId;
-    //    entity.CountryName = request.CountryName;
-    //    entity.Description = request.Description;        
-    //    entity.UpdatedBy = _currentUserService.UserId;
-    //    entity.UpdatedDate = _dateTime.Now;
-    //    await _countryRepository.UpdateAsync(id, entity);
+        entity.CountryId = request.CountryId;
+        entity.CountryName = request.CountryName;
+        entity.Description = request.Description;
+        entity.UpdatedBy = _currentUserService.UserId;
+        entity.UpdatedDate = _dateTime.Now;
+        await _countryRepository.UpdateAsync(id, entity);
 
-    //    response.Success = true;
-    //    response.Message = "Updating Successful";
-    //    return response;
-    //}
+        response.Success = true;
+        response.Message = "Updating Successful";
+        return response;
+    }
 
     public async Task<BaseCommandResponse> DeleteAsync(int id)
     {
@@ -115,9 +115,9 @@ public class CountryService
         if (result)
         {
             response.Success = true;
-            response.Message = "Deleting Successful";            
+            response.Message = "Deleting Successful";
         }
-        else 
+        else
         {
             response.Success = false;
             response.Message = "Deleting Failed";
