@@ -2,8 +2,7 @@
 
 public class VisaTypeRepository : IVisaTypeRepository
 {
-    private readonly IDapperContext _dapperContext;
-    private readonly IDataAccessBase _dataAccessBase;
+    private readonly IDapperContext _dapperContext;    
 
     public VisaTypeRepository(IDapperContext dapperContext)
     {
