@@ -7,7 +7,7 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+    template: '<router-outlet><app-spinner></app-spinner></router-outlet>',
 })
 export class AppComponent implements OnInit {
     title = 'UMR Recruitment Management System';

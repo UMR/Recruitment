@@ -44,6 +44,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="src\app\common\component\spinner\spinner.component.html" />
     <Content Include="src\app\containers\default-layout\default-footer\default-footer.component.html" />
     <Content Include="src\app\containers\default-layout\default-header\default-header.component.html" />
     <Content Include="src\app\containers\default-layout\default-layout.component.html" />
@@ -81,6 +82,8 @@
     <TypeScriptCompile Include="src\app\common\auth-key.ts" />
     <TypeScriptCompile Include="src\app\common\component\loader.component.ts" />
     <TypeScriptCompile Include="src\app\common\component\loader.module.ts" />
+    <TypeScriptCompile Include="src\app\common\component\spinner\spinner.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\common\component\spinner\spinner.component.ts" />
     <TypeScriptCompile Include="src\app\common\directives\invalid-focus.directive.ts" />
     <TypeScriptCompile Include="src\app\common\directives\left-trim.directive.ts" />
     <TypeScriptCompile Include="src\app\common\directives\common-directive.module.ts" />
@@ -103,6 +106,7 @@
     <TypeScriptCompile Include="src\app\common\service\lower-case-word.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\language.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\country.service.ts" />
+    <TypeScriptCompile Include="src\app\common\service\spinner.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\visa-type.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\upper-case-word.service.ts" />
     <TypeScriptCompile Include="src\app\common\service\special-word.service.ts" />
@@ -222,6 +226,7 @@
   <ItemGroup>
     <None Include="angular.json" />
     <None Include="package.json" />
+    <None Include="src\app\common\component\spinner\spinner.component.scss" />
     <None Include="src\app\containers\default-layout\default-footer\default-footer.component.scss" />
     <None Include="src\app\containers\default-layout\default-header\default-header.component.scss" />
     <None Include="src\app\containers\default-layout\default-layout.component.scss" />

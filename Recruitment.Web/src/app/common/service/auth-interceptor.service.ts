@@ -1,14 +1,24 @@
 ﻿import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable, Injector } from "@angular/core";
-import { catchError, Observable, throwError } from "rxjs";
+import { catchError, finalize, Observable, throwError } from "rxjs";
 import { AuthService } from "./auth.service";
+import { SpinnerService } from '../../common/service/spinner.service';
+
 
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
-    constructor(private injector: Injector) { }
+
+    private totalRequests = 0;
+
+    constructor(private injector: Injector, private spinnerService: SpinnerService) { }
+
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
         const authService = this.injector.get(AuthService);
         const token = authService.getTokenInfo();
+
+        this.totalRequests++;
+        this.spinnerService.setLoading(true);
 
         if (token) {
             // If we have a token, we set it to the header
@@ -19,6 +29,12 @@ export class AuthInterceptorService implements HttpInterceptor {
         }
 
         return next.handle(request).pipe(
+            finalize(() => {
+                this.totalRequests--;
+                if (this.totalRequests == 0) {
+                    this.spinnerService.setLoading(false);
+                }
+            }),
             catchError((err) => {
                 if (err instanceof HttpErrorResponse) {
                     if (err.status === 401) {

@@ -15,6 +15,8 @@ import { AppComponent } from './app.component';
 // Import containers
 import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './containers';
 
+import { SpinnerComponent } from '../app/common/component/spinner/spinner.component';
+
 import {
     AvatarModule, BadgeModule, BreadcrumbModule, ButtonGroupModule, ButtonModule, CardModule, DropdownModule, FooterModule, FormModule, GridModule, HeaderModule, ListGroupModule, NavModule,
     ProgressModule,
@@ -40,7 +42,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-    declarations: [LoginComponent, AppComponent, ...APP_CONTAINERS],
+    declarations: [LoginComponent, AppComponent, ...APP_CONTAINERS, SpinnerComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
