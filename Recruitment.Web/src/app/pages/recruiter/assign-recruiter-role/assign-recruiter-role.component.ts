@@ -40,6 +40,7 @@ export class AssignRecruiterRoleComponent {
     onChangeUser() {
         this.getRankByUser(this.selectedUser);
     }
+
     getRank() {
         this.assignRecruiterRoleService.getAllRank().subscribe(
             res => {
@@ -55,6 +56,7 @@ export class AssignRecruiterRoleComponent {
             },
             () => { });
     }
+    addRank() { }
 
     getRole() {
         this.assignRecruiterRoleService.getAllRole().subscribe(
