@@ -13,6 +13,7 @@ public interface IRoleRepository
 
     Task<bool> UpdateAsync(int id, Role role);
 
-    Task<string> DeleteAsync(long id);    
-    
+    Task<string> DeleteAsync(long id);
+    Task<bool> DeleteRoleByUserAsync(int userId, int roleId);
+
 }

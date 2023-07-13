@@ -131,6 +131,52 @@ public class RoleRepository : IRoleRepository
         return result;
     }
 
+    public async Task<bool> DeleteRoleByUserAsync(int roleId, int userId)
+    {
+
+        try
+        {
+            var query = "DELETE FROM [UserRoles] WHERE [UserID]=@UserID and [RoleID]=@RoleID";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("UserID", userId, DbType.Int32);
+            parameters.Add("RoleID", roleId, DbType.Int32);
+
+            using (IDbConnection conn = _dapperContext.CreateConnection)
+            {
+                var result = await conn.ExecuteAsync(query, parameters);
+
+                await DeleteUserRoleFromUserSettingsGridView(userId, roleId);
+
+                return result > 0 ? true : false;
+            }
+        }
+        catch (SqlException se)
+        {
+            if (se.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+            {
+                //result = "In Use. Can not be deleted.";
+            }
+            return false;
+        }
+
+        //return result;
+    }
+    public async Task<bool> DeleteUserRoleFromUserSettingsGridView(int userId, int roleId)
+    {
+
+        var query = @"DELETE FROM [UserSettingsGridView] WHERE [UserID]=@UserID and [RoleId]=@RoleId";
+
+        var parameters = new DynamicParameters();
+        parameters.Add("UserID", userId, DbType.Int32);
+        parameters.Add("RoleID", roleId, DbType.Int32);
+
+        using (IDbConnection conn = _dapperContext.CreateConnection)
+        {
+            var result = await conn.ExecuteAsync(query, parameters);
+            return result > 0 ? true : false;
+        }
+    }
     public async Task<IEnumerable<RoleListDto>> GetRoleByUserAsync(int userId)
     {
         var query = @"SELECT UR.RoleID,R.RoleName,R.Rank FROM UserRoles UR,Roles R Where UR.RoleID=R.RoleID and UR.UserID=@UserID";
