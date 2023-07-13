@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { resourceServerUrl } from '../../../common/auth-key';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AssignRecruiterRoleService {
 
@@ -17,6 +17,11 @@ export class AssignRecruiterRoleService {
 
     getAllRank(): Observable<HttpResponse<any>> {
         const recruiterURI = `${resourceServerUrl}/api/v1/Rank/GetRanks`;
+        return this.http.get(recruiterURI, { observe: 'response' })
+    }
+
+    getRankByUser(userId: number): Observable<HttpResponse<any>> {
+        const recruiterURI = `${resourceServerUrl}/api/v1/Rank/GetRankByUser/` + userId;
         return this.http.get(recruiterURI, { observe: 'response' })
     }
 

@@ -33,4 +33,21 @@ public class RankRepository : IRankRepository
             return rank;
         }
     }
+
+    public async Task<RankLookup> GetByUserIdAsync(int userId)
+    {
+        var query = @"SELECT [RankLookup].[RankLookupID], [RankLookup].[EnumID], [Rank] 
+                          FROM [dbo].[UserRank]
+                          LEFT JOIN[dbo].[RankLookup] ON[dbo].[RankLookup].RankLookupID = [dbo].[UserRank].RankLookupID
+                          WHERE[dbo].[UserRank].UserID = @UserID";
+
+        var parameters = new DynamicParameters();
+        parameters.Add("UserID", userId, DbType.Int32);
+
+        using (IDbConnection conn = _dapperContext.CreateConnection)
+        {
+            var rank = await conn.QueryFirstOrDefaultAsync<RankLookup>(query, parameters);
+            return rank;
+        }
+    }
 }

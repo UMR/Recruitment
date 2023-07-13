@@ -17,10 +17,17 @@ public class RankService : IRankService
         var rankToReturn = _mapper.Map<List<RankListDto>>(rankFromRepo);
         return rankToReturn;
     }
-    
+
     public async Task<RankListDto> GetByIdAsync(int id)
     {
         var rankFromRepo = await _rankRepository.GetByIdAsync(id);
+        var rankToReturn = _mapper.Map<RankListDto>(rankFromRepo);
+        return rankToReturn;
+    }
+
+    public async Task<RankListDto> GetByUserIdAsync(int userId)
+    {
+        var rankFromRepo = await _rankRepository.GetByUserIdAsync(userId);
         var rankToReturn = _mapper.Map<RankListDto>(rankFromRepo);
         return rankToReturn;
     }

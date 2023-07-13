@@ -25,17 +25,30 @@ export class AssignRecruiterRoleComponent {
     getUser() {
         this.assignRecruiterRoleService.getActiveUsers().subscribe(
             res => {
-                this.users = res.body;
+                if (res.body) {
+                    this.users = res.body;
+                }
+                else {
+                    this.users = [];
+                }
             },
             err => {
                 console.log(err);
             },
             () => { });
     }
+    onChangeUser() {
+        this.getRankByUser(this.selectedUser);
+    }
     getRank() {
         this.assignRecruiterRoleService.getAllRank().subscribe(
             res => {
-                this.ranks = res.body;
+                if (res.body) {
+                    this.ranks = res.body;
+                }
+                else {
+                    this.ranks = [];
+                }
             },
             err => {
                 console.log(err);
@@ -46,7 +59,28 @@ export class AssignRecruiterRoleComponent {
     getRole() {
         this.assignRecruiterRoleService.getAllRole().subscribe(
             res => {
-                this.roles = res.body;
+                if (res.body) {
+                    this.roles = res.body;
+                }
+                else {
+                    this.roles = [];
+                }
+            },
+            err => {
+                console.log(err);
+            },
+            () => { });
+    }
+
+    getRankByUser(userId: any) {
+        this.assignRecruiterRoleService.getRankByUser(userId).subscribe(
+            res => {
+                if (res.body) {
+                    this.selectedRank = res.body.rankLookupId;
+                }
+                else {
+                    this.selectedRank = "";
+                }
             },
             err => {
                 console.log(err);

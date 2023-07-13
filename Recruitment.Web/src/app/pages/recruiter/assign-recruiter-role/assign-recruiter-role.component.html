@@ -3,7 +3,8 @@
         <div class="col-md-4">
             <h5>Users</h5>
             <div class="field">
-                <p-dropdown id="user" [options]="users" [(ngModel)]="selectedUser" optionLabel="userName" optionValue="userId" placeholder="Select a User"></p-dropdown>
+                <p-dropdown id="user" [options]="users" [(ngModel)]="selectedUser" (onChange)="onChangeUser()"
+                            optionLabel="userName" optionValue="userId" placeholder="Select a User"></p-dropdown>
             </div>
         </div>
         <div class="col-md-4">

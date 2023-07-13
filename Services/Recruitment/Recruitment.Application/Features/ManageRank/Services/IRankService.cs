@@ -4,5 +4,6 @@
     {
         Task<List<RankListDto>> GetAllAsync();
         Task<RankListDto> GetByIdAsync(int id);
+        Task<RankListDto> GetByUserIdAsync(int userId);
     }
 }

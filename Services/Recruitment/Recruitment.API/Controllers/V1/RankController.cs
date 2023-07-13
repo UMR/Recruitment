@@ -18,5 +18,10 @@ public class RankController : ApiControllerBase
         return Ok(await _rankService.GetAllAsync());
     }
 
-    
+    [HttpGet("GetRankByUser/{userId:int}")]
+    public async Task<ActionResult<RankListDto>> GetRankByUserAsync(int userId)
+    {
+        return Ok(await _rankService.GetByUserIdAsync(userId));
+    }
+
 }
