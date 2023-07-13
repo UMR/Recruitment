@@ -2,7 +2,7 @@
 import { Injectable, Injector } from "@angular/core";
 import { catchError, finalize, Observable, throwError } from "rxjs";
 import { AuthService } from "./auth.service";
-import { SpinnerService } from '../../common/service/spinner.service';
+import { SpinnerService } from '../component/spinner/spinner.service';
 
 
 @Injectable()
