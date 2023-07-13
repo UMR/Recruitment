@@ -42,4 +42,10 @@ public class ManageRoleController : ApiControllerBase
     {            
         return Ok(await _roleService.DeleteAsync(id));
     }
+
+    [HttpGet("GetRoleByUser/{userId:int}")]
+    public async Task<ActionResult<RoleListDto>> GetRoleByUserAsync(int userId)
+    {
+        return Ok(await _roleService.GetRoleByUserAsync(userId));
+    }
 }
