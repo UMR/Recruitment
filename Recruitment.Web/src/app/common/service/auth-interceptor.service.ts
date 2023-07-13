@@ -34,7 +34,7 @@ export class AuthInterceptorService implements HttpInterceptor {
                 if (this.totalRequests == 0) {
                     setTimeout(() => {
                         this.spinnerService.setLoading(false);
-                    }, 500);                    
+                    }, 500);
                 }
             }),
             catchError((err) => {
@@ -46,6 +46,6 @@ export class AuthInterceptorService implements HttpInterceptor {
                 }
                 return throwError(err);
             })
-        )
+        );
     }
 }

@@ -61,6 +61,7 @@
     <Content Include="src\app\pages\information\language\language.component.html" />
     <Content Include="src\app\pages\information\lower-case-word\lower-case-word.component.html" />
     <Content Include="src\app\pages\information\position-license-requirement\position-license-requirement.component.html" />
+    <Content Include="src\app\pages\information\post-code\post-code.component.html" />
     <Content Include="src\app\pages\information\special-word\special-word.component.html" />
     <Content Include="src\app\pages\information\upper-case-word\upper-case-word.component.html" />
     <Content Include="src\app\pages\information\visa-type\visa-type.component.html" />
@@ -165,6 +166,10 @@
     <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement.component.spec.ts" />
     <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement.component.ts" />
     <TypeScriptCompile Include="src\app\pages\information\position-license-requirement\position-license-requirement.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\post-code\post-code-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\post-code\post-code.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\post-code\post-code.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\information\post-code\post-code.module.ts" />
     <TypeScriptCompile Include="src\app\pages\information\special-word\special-word-routing.module.ts" />
     <TypeScriptCompile Include="src\app\pages\information\special-word\special-word.component.spec.ts" />
     <TypeScriptCompile Include="src\app\pages\information\special-word\special-word.component.ts" />
@@ -243,6 +248,7 @@
     <None Include="src\app\pages\information\language\language.component.scss" />
     <None Include="src\app\pages\information\lower-case-word\lower-case-word.component.scss" />
     <None Include="src\app\pages\information\position-license-requirement\position-license-requirement.component.scss" />
+    <None Include="src\app\pages\information\post-code\post-code.component.scss" />
     <None Include="src\app\pages\information\special-word\special-word.component.scss" />
     <None Include="src\app\pages\information\upper-case-word\upper-case-word.component.scss" />
     <None Include="src\app\pages\information\visa-type\visa-type.component.scss" />

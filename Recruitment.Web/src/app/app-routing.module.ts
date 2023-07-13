@@ -88,7 +88,11 @@ const routes: Routes = [
             {
                 path: 'information/country',
                 loadChildren: () => import('./pages/information/country/country.module').then((m) => m.CountryModule)
-            }, 
+            },
+            {
+                path: 'information/postal-code',
+                loadChildren: () => import('./pages/information/post-code/post-code-routing.module').then((m) => m.PostCodeRoutingModule)
+            } 
         ]
     },
     {
