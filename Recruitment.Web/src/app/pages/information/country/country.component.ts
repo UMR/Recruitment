@@ -17,7 +17,7 @@ export class CountryComponent {
     public formGroup!: FormGroup;
     public visibleDialog: boolean = false;
     public isSubmitted: boolean = false;
-    public addEditTitle: string | undefined;
+    public addEditTitle: string | undefined;    
 
     constructor(private formBuilder: FormBuilder, private messageService: MessageService,
         private confirmationService: ConfirmationService, private renderer: Renderer2,
@@ -64,14 +64,21 @@ export class CountryComponent {
         this.clearFields(false, false);
     }
 
+    onEnter(inputName: any) {
+        if (inputName === 'name') {
+            this.renderer.selectRootElement('#description').focus();
+        }
+    }
+
     onSave(): void {
-        this.isSubmitted = true;
+        this.isSubmitted = true;        
         const model: any = {
             countryId: this.id,
             countryName: this.formGroup.controls['name'].value ? this.formGroup.controls['name'].value.trim() : null,
             description: this.formGroup.controls['description'].value ? this.formGroup.controls['description'].value.trim() : null
         };
-        if (this.formGroup.valid) {
+
+        if (this.formGroup.valid) {            
             if (this.id === 0) {
                 this.countryService.create(model).subscribe({
                     next: (res) => {
@@ -89,7 +96,7 @@ export class CountryComponent {
                         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Creating Failed', life: 3000 });
                     }
                 });
-            } else {
+            } else {                
                 this.countryService.update(this.id, model).subscribe({
                     next: (res) => {
                         if (res.status === 200) {
@@ -116,14 +123,15 @@ export class CountryComponent {
                 }
             }
         }
+
     }
 
-    onDelete(model: CountryModel) {
+    onDelete(model: CountryModel) {        
         this.confirmationService.confirm({
             message: `Are you sure you want to delete ${model.countryName} Country?`,
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
-            accept: () => {
+            accept: () => {                
                 this.countryService.delete(model.countryId).subscribe({
                     next: (res) => {
                         if (res.status === 200) {

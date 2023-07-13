@@ -43,12 +43,12 @@
             <div class="grid">
                 <div class="col-12">
                     <label for="name" class="font-bold block mb-2 mt-2">Name</label>
-                    <input type="text" pInputText id="name" formControlName="name" required maxlength="50" lefttrimmed autofocus (keydown.enter)="onSave()" />
+                    <input type="text" pInputText id="name" formControlName="name" required maxlength="50" tabindex="1" lefttrimmed autofocus (keydown.enter)="onEnter('name')" />
                     <small class="p-error" *ngIf="isSubmitted && f['name'].errors">Name is required.</small>
                 </div>
                 <div class="col-12">
                     <label for="description" class="font-bold block mb-2 mt-2">Description</label>
-                    <input type="text" pInputText id="description" formControlName="description" maxlength="50" lefttrimmed (keydown.enter)="onSave()" />
+                    <input type="text" pInputText id="description" formControlName="description" maxlength="50" tabindex="2" lefttrimmed (keydown.enter)="onSave()" />
                     <small class="p-error" *ngIf="isSubmitted && f['description'].errors">Description is required.</small>
                 </div>
             </div>
@@ -57,9 +57,9 @@
     <ng-template pTemplate="footer" class="p-panel-header">
         <div class="grid">
             <div class="col-12">
-                <button pButton pRipple label="Cancel" class="p-button-info" (click)="onCancel()"></button>
-                <button pButton pRipple label="Clear" class="p-button-secondary" (click)="onClear()"></button>
-                <button pButton pRipple label="Save" class="p-button-success" (click)="onSave()"></button>
+                <button pButton pRipple label="Cancel" class="p-button-info" tabindex="4" (click)="onCancel()"></button>
+                <button pButton pRipple label="Clear" class="p-button-secondary" tabindex="5" (click)="onClear()"></button>
+                <button pButton pRipple label="Save" class="p-button-success" tabindex="3" (click)="onSave()"></button>
             </div>
         </div>
     </ng-template>
