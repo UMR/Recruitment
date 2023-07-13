@@ -32,7 +32,9 @@ export class AuthInterceptorService implements HttpInterceptor {
             finalize(() => {
                 this.totalRequests--;
                 if (this.totalRequests == 0) {
-                    this.spinnerService.setLoading(false);
+                    setTimeout(() => {
+                        this.spinnerService.setLoading(false);
+                    }, 500);                    
                 }
             }),
             catchError((err) => {
