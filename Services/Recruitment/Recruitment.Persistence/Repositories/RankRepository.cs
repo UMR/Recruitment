@@ -50,19 +50,52 @@ public class RankRepository : IRankRepository
             return rank;
         }
     }
+    public async Task<bool> AddUserRankAsync(UserRank userRank)
+    {
+        var query = "INSERT INTO [UserRank] ([UserID],[RankLookupID],[EnumID],[CreatedBy],[CreatedDate]) VALUES (@UserID, @RankLookupID, @EnumID, @CreatedBy, @CreatedDate)";
 
-    public async Task<bool> DeleteUserRoleByUserAsync(int userId) {
+        var parameters = new DynamicParameters();
+        parameters.Add("UserID", userRank.UserId, DbType.String);
+        parameters.Add("RankLookupID", userRank.RankLookupId, DbType.String);
+        parameters.Add("EnumID", userRank.EnumId, DbType.Int32);
+        parameters.Add("CreatedBy", userRank.CreatedBy, DbType.Int32);
+        parameters.Add("CreatedDate", DateTime.Now, DbType.DateTime);
+
+        using (IDbConnection conn = _dapperContext.CreateConnection)
+        {
+            var result = await conn.ExecuteAsync(query, parameters);
+            return result > 0 ? true : false;
+        }
+    }
+    public async Task<bool> UpdateUserRankAsync(UserRank userRank)
+    {
+        var query = "UPDATE [dbo].[UserRank] SET[RankLookupID] = @RankLookupID ,[UpdatedBy] = @UpdatedBy ,[UpdatedDate] = GETDATE(),[EnumID] = @EnumID WHERE UserID = @UserID";
+
+        var parameters = new DynamicParameters();
+        parameters.Add("RankLookupID", userRank.RankLookupId, DbType.String);
+        parameters.Add("EnumID", userRank.EnumId, DbType.String);
+        parameters.Add("UserID", userRank.UserId, DbType.String);
+        parameters.Add("UpdatedBy", userRank.UpdatedBy, DbType.Int32);
+        parameters.Add("UpdatedDate", DateTime.Now, DbType.DateTime);
+
+        using (IDbConnection conn = _dapperContext.CreateConnection)
+        {
+            var result = await conn.ExecuteAsync(query, parameters);
+            return result > 0 ? true : false;
+        }
+    }
+    public async Task<bool> DeleteUserRankByUserAsync(int userId)
+    {
 
         var query = @"DELETE FROM [UserRank] WHERE [UserID]=@UserID";
 
-        return true;
-        //var parameters = new DynamicParameters();
-        //parameters.Add("UserID", userId, DbType.Int32);
+        var parameters = new DynamicParameters();
+        parameters.Add("UserID", userId, DbType.Int32);
 
-        //using (IDbConnection conn = _dapperContext.CreateConnection)
-        //{
-        //    var rank = await conn.QueryFirstOrDefaultAsync<RankLookup>(query, parameters);
-        //    return rank;
-        //}
+        using (IDbConnection conn = _dapperContext.CreateConnection)
+        {
+            var result = await conn.ExecuteAsync(query, parameters);
+            return result > 0 ? true : false;
+        }
     }
 }
