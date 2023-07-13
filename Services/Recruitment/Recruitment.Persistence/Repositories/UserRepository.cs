@@ -1,4 +1,6 @@
-﻿namespace Recruitment.Persistence.Repositories
+﻿
+
+namespace Recruitment.Persistence.Repositories
 {
     public class UserRepository : IUserRepository
     {
@@ -21,10 +23,9 @@
                 return result > 0 ? true : false;
             }
         }
-
         public async Task<bool> UpdateUserByAgencyAsync(long id, UpdateAgencyStatusByUserDto agency)
         {
-            var query =  "UPDATE [Users] SET [IsActive] = @IsActive,[UpdatedBy] = @UpdatedBy,[UpdatedDate] = @UpdatedDate WHERE [AgencyID] = @AgencyID";
+            var query = "UPDATE [Users] SET [IsActive] = @IsActive,[UpdatedBy] = @UpdatedBy,[UpdatedDate] = @UpdatedDate WHERE [AgencyID] = @AgencyID";
 
             var parameters = new DynamicParameters();
             parameters.Add("IsActive", agency.IsActive, DbType.Boolean);
@@ -38,5 +39,17 @@
                 return result > 0 ? true : false;
             }
         }
+        public async Task<List<ActiveUsersDtos>> GetActiveUsers()
+        {
+
+            var query = @"SELECT [UserID], Concat([FirstName] ,' ',[LastName], ' (',[LoginId],')') AS [UserName] FROM [dbo].[Users] where IsActive = 1";
+
+            using (IDbConnection conn = _dapperContext.CreateConnection)
+            {
+                var result = await conn.QueryAsync<ActiveUsersDtos>(query);
+                return result.ToList();
+            }
+        }
+
     }
 }

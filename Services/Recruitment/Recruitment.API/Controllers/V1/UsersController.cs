@@ -5,10 +5,12 @@ namespace Recruitment.API.Controllers.V1;
 public class UsersController : ApiControllerBase
 {
     private readonly ILogger<UsersController> _logger;
+    private readonly IUserService _userService;
 
-    public UsersController(ILogger<UsersController> logger)
+    public UsersController(ILogger<UsersController> logger, IUserService userService)
     {
         _logger = logger;
+        _userService = userService;
     }
 
     [HttpGet(Name = "GetUserId")]
@@ -16,10 +18,16 @@ public class UsersController : ApiControllerBase
     {
         return Ok(CurrentUser.UserId);
     }
+
     [HttpGet("GetUser")]
     public IActionResult GetUserInfo()
     {
         return Ok(CurrentUser);
+    }
 
+    [HttpGet("GetActiveUser")]
+    public async Task<ActionResult<List<ActiveUsersDtos>>> GetActiveUsers()
+    {
+        return await _userService.GetActiveUserAsync();
     }
 }

@@ -10,12 +10,18 @@ export class AssignRecruiterRoleService {
 
     constructor(private http: HttpClient) { }
 
-    getAllUser(): Observable<HttpResponse<any>> {
-        const recruiterURI = `${resourceServerUrl}/api/v1/Recruiter/GetRecruiters`;
+    getActiveUsers(): Observable<HttpResponse<any>> {
+        const recruiterURI = `${resourceServerUrl}/api/v1/Users/GetActiveUser/`;
         return this.http.get(recruiterURI, { observe: 'response' })
     }
+
     getAllRank(): Observable<HttpResponse<any>> {
         const recruiterURI = `${resourceServerUrl}/api/v1/Rank/GetRanks`;
+        return this.http.get(recruiterURI, { observe: 'response' })
+    }
+
+    getAllRole(): Observable<HttpResponse<any>> {
+        const recruiterURI = `${resourceServerUrl}/api/v1/ManageRole/GetRole`;
         return this.http.get(recruiterURI, { observe: 'response' })
     }
 }

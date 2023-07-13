@@ -14,6 +14,7 @@ global using Recruitment.Persistence.Repositories;
 global using Recruitment.Application.Exceptions;
 global using Recruitment.Application.Features.SpecialWords;
 global using Recruitment.Application.Features.Agencies;
+global using Recruitment.Application.Features.Users;
 
 
 

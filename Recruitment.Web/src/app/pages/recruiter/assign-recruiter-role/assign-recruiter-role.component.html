@@ -3,7 +3,7 @@
         <div class="col-md-4">
             <h5>Users</h5>
             <div class="field">
-                <p-dropdown id="user" [options]="users" [(ngModel)]="selectedUser" optionLabel="firstName" optionValue="userId" placeholder="Select a User"></p-dropdown>
+                <p-dropdown id="user" [options]="users" [(ngModel)]="selectedUser" optionLabel="userName" optionValue="userId" placeholder="Select a User"></p-dropdown>
             </div>
         </div>
         <div class="col-md-4">
@@ -40,7 +40,7 @@
                 </ng-template>
             </p-table>
             <div class="field mt-4" >
-                <p-dropdown id="user" [options]="users" [(ngModel)]="selectedUser" optionLabel="firstName" optionValue="userId" placeholder="Select a Role"></p-dropdown>
+                <p-dropdown id="role" [options]="roles" [(ngModel)]="selectedRole" optionLabel="roleName" optionValue="roleId" placeholder="Select a Role"></p-dropdown>
             </div>
         </div>
         <div class="col-md-4">

@@ -16,6 +16,7 @@ public static class ConfigureServices
         builder.Services.AddScoped<IEmailTypeService, EmailTypeService>();
         builder.Services.AddScoped<IRoleService, RoleService>();
         builder.Services.AddScoped<IRankService, RankService>();
+        builder.Services.AddScoped<IUserService, UserService>();
         builder.Services.AddScoped<IInstitutionTypeService, InstitutionTypeService>();
         builder.Services.AddScoped<IMenuService, MenuService>();
         builder.Services.AddScoped<IPositionLicenseRequirementService, PositionLicenseRequirementService>();
