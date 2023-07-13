@@ -1,4 +1,6 @@
-﻿namespace Recruitment.Persistence.Repositories;
+﻿using Recruitment.Application.Features.ManageRank;
+
+namespace Recruitment.Persistence.Repositories;
 
 public class RankRepository : IRankRepository
 {
@@ -50,7 +52,7 @@ public class RankRepository : IRankRepository
             return rank;
         }
     }
-    public async Task<bool> AddUserRankAsync(UserRank userRank)
+    public async Task<bool> AddUserRankAsync(CreateUpdateUserRankDto userRank)
     {
         var query = "INSERT INTO [UserRank] ([UserID],[RankLookupID],[EnumID],[CreatedBy],[CreatedDate]) VALUES (@UserID, @RankLookupID, @EnumID, @CreatedBy, @CreatedDate)";
 
@@ -67,7 +69,7 @@ public class RankRepository : IRankRepository
             return result > 0 ? true : false;
         }
     }
-    public async Task<bool> UpdateUserRankAsync(UserRank userRank)
+    public async Task<bool> UpdateUserRankAsync(CreateUpdateUserRankDto userRank)
     {
         var query = "UPDATE [dbo].[UserRank] SET[RankLookupID] = @RankLookupID ,[UpdatedBy] = @UpdatedBy ,[UpdatedDate] = GETDATE(),[EnumID] = @EnumID WHERE UserID = @UserID";
 

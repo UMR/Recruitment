@@ -15,5 +15,6 @@ public class MappingProfile : Profile
         CreateMap<Language, LanguageListDto>().ReverseMap();
         CreateMap<Country, CountryListDto>().ReverseMap();
         CreateMap<RankLookup, RankListDto>().ReverseMap();
+        CreateMap<UserRank, CreateUpdateUserRankDto>().ReverseMap();
     }
 }

@@ -13,9 +13,5 @@ namespace Recruitment.Domain.Entities
         public int? UpdatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public int? EnumId { get; set; }
-
-        public virtual User? CreatedByNavigation { get; set; }
-        public virtual RankLookup? Enum { get; set; }
-        public virtual User? UpdatedByNavigation { get; set; }
     }
 }

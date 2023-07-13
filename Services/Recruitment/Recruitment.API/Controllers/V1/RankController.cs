@@ -24,4 +24,16 @@ public class RankController : ApiControllerBase
         return Ok(await _rankService.GetByUserIdAsync(userId));
     }
 
+    [HttpPost("AddUserRank")]
+    public async Task<ActionResult> PostAsync([FromBody] CreateUpdateUserRankDto request)
+    {
+        return Ok(await _rankService.AddUserRankAsync(request));
+    }
+
+    [HttpPut("UpdateUserRank/{userId:int}")]
+    public async Task<ActionResult> PutAsync(int userId, [FromBody] CreateUpdateUserRankDto request)
+    {
+        return Ok(await _rankService.UpdateUserRankAsync(userId, request));
+    }
+
 }
