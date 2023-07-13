@@ -48,7 +48,7 @@
         <div class="col-md-4">
             <h5>Rank</h5>
             <div class="field">
-                <p-dropdown id="rank" [options]="ranks" [(ngModel)]="selectedRank" optionLabel="rank" optionValue="rankLookupId" placeholder="Select a User"></p-dropdown>
+                <p-dropdown id="rank" [options]="ranks" [(ngModel)]="selectedRank" optionLabel="rank" optionValue="rankLookupId" (onChange)="onChangeRank()" placeholder="Select a User"></p-dropdown>
             </div>
             <button pButton pRipple label="Add Rank" class="p-button-success" icon="pi pi-plus" (click)="addRank()" [disabled] = "selectedUser == '' || selectedRank == ''"></button>
             <button pButton pRipple label="Delete Rank" class="p-button-danger" icon="pi pi-trash" (click)="addRank()" [disabled] = "selectedUser == '' || selectedRank == ''" style="margin-left:8px"></button>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserRankModel } from '../../../common/models/user-rank.model';
 import { AssignRecruiterRoleService } from './assign-recruiter-role.service';
 
 @Component({
@@ -22,6 +23,7 @@ export class AssignRecruiterRoleComponent {
         this.getRank();
         this.getRole();
     }
+
     getUser() {
         this.assignRecruiterRoleService.getActiveUsers().subscribe(
             res => {
@@ -42,9 +44,14 @@ export class AssignRecruiterRoleComponent {
         this.getRoleByUser(this.selectedUser);
     }
 
+    onChangeRank() {
+       //const index = this.ranks.findIndex(item => item.rankLookupId == this.selectedRank);
+    }
+
     getRank() {
         this.assignRecruiterRoleService.getAllRank().subscribe(
             res => {
+                console.log(res.body);
                 if (res.body) {
                     this.ranks = res.body;
                 }
@@ -57,7 +64,35 @@ export class AssignRecruiterRoleComponent {
             },
             () => { });
     }
-    addRank() { }
+
+    addRank() {
+        let userRank = {
+            UserRankId: 0,
+            userId: +this.selectedUser,
+            rankLookupId: +this.selectedRank,
+            enumId: 1,
+            CreatedBy: 0,
+            CreatedDate: new Date(),
+            UpdatedBy: 0,
+            UpdatedDate: new Date()
+        }
+        this.assignRecruiterRoleService.addRankByUser(userRank).subscribe(
+            res => {
+                if (res.body) {
+                    this.roles = res.body;
+                }
+                else {
+                    this.roles = [];
+                }
+            },
+            err => {
+                console.log(err);
+            },
+            () => { });
+    }
+    deleteRank() {
+
+    }
 
     getRole() {
         this.assignRecruiterRoleService.getAllRole().subscribe(

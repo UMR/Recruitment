@@ -2,6 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { resourceServerUrl } from '../../../common/auth-key';
+import { UserRankModel } from '../../../common/models/user-rank.model';
 
 @Injectable({
     providedIn: 'root'
@@ -21,6 +22,21 @@ export class AssignRecruiterRoleService {
     }
 
     getRankByUser(userId: number): Observable<HttpResponse<any>> {
+        const recruiterURI = `${resourceServerUrl}/api/v1/Rank/GetRankByUser/` + userId;
+        return this.http.get(recruiterURI, { observe: 'response' })
+    }
+
+    addRankByUser(userRank: any): Observable<HttpResponse<any>> {
+        const recruiterURI = `${resourceServerUrl}/api/v1/Rank/AddUserRank/`;
+        return this.http.post(recruiterURI, userRank, { observe: 'response' })
+    }
+
+    updateRankByUser(userId: number, userRank: UserRankModel): Observable<HttpResponse<any>> {
+        const recruiterURI = `${resourceServerUrl}/api/v1/Rank/UpdateUserRank/` + userId;
+        return this.http.put(recruiterURI, userRank, { observe: 'response' })
+    }
+
+    deleteRankByUser(userId: number): Observable<HttpResponse<any>> {
         const recruiterURI = `${resourceServerUrl}/api/v1/Rank/GetRankByUser/` + userId;
         return this.http.get(recruiterURI, { observe: 'response' })
     }

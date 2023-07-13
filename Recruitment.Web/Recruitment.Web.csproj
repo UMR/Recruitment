@@ -97,6 +97,7 @@
     <TypeScriptCompile Include="src\app\common\models\position-license-requirement.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\lower-case-word.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\language.model.ts" />
+    <TypeScriptCompile Include="src\app\common\models\user-rank.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\visa-type.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\upper-case-word.model.ts" />
     <TypeScriptCompile Include="src\app\common\models\special-word.model.ts" />
