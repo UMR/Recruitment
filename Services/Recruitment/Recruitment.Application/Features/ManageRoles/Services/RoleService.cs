@@ -23,9 +23,9 @@ public class RoleService : IRoleService
             var entitiesToReturn = _mapper.Map<List<RoleListDto>>(entitiesFromRepo);
             return entitiesToReturn;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            throw ex;
+            throw;
         }
     }
 
@@ -127,5 +127,19 @@ public class RoleService : IRoleService
         response.Success = true;
         response.Message = "Deleting Successful";
         return response;
+    }
+
+    public async Task<List<RoleListDto>> GetRoleByUserAsync(int userId)
+    {
+        try
+        {
+            var entitiesFromRepo = await _roleRepository.GetRoleByUserAsync(userId);
+            var entitiesToReturn = _mapper.Map<List<RoleListDto>>(entitiesFromRepo);
+            return entitiesToReturn;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
     }
 }

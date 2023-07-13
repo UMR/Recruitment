@@ -3,7 +3,7 @@
     public interface IRoleService
     {
         Task<List<RoleListDto>> GetAllAsync();
-
+        Task<List<RoleListDto>> GetRoleByUserAsync(int userId);
         Task<RoleListDto> GetByIdAsync(int id);
 
         Task<bool> IsExistAsync(string roleName, int? id = null);

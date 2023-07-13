@@ -130,4 +130,18 @@ public class ManageRoleRepository : IManageRoleRepository
 
         return result;
     }
+
+    public async Task<IEnumerable<RoleListDto>> GetRoleByUserAsync(int userId)
+    {
+        var query = @"SELECT UR.RoleID,R.RoleName,R.Rank FROM UserRoles UR,Roles R Where UR.RoleID=R.RoleID and UR.UserID=@UserID";
+
+        var parameters = new DynamicParameters();
+        parameters.Add("UserID", userId, DbType.Int32);
+
+        using (IDbConnection conn = _dapperContext.CreateConnection)
+        {
+            var roles = await conn.QueryAsync<RoleListDto>(query, parameters);
+            return roles.ToList();
+        }
+    }
 }

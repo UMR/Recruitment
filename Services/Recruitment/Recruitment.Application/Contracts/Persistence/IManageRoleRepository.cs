@@ -5,7 +5,7 @@ namespace Recruitment.Application.Contracts.Persistence;
 public interface IManageRoleRepository
 {
     Task<IEnumerable<RoleListDto>> GetAllAsync();
-
+    Task<IEnumerable<RoleListDto>> GetRoleByUserAsync(int userId);
     Task<Role> GetByIdAsync(int id);
 
     Task<bool> IsExistAsync(string roleName, int? id = null);
