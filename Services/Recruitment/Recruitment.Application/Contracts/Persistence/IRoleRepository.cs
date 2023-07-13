@@ -1,8 +1,7 @@
-﻿using Recruitment.Application.Features.ManageRole;
-
+﻿
 namespace Recruitment.Application.Contracts.Persistence;
 
-public interface IManageRoleRepository
+public interface IRoleRepository
 {
     Task<IEnumerable<RoleListDto>> GetAllAsync();
     Task<IEnumerable<RoleListDto>> GetRoleByUserAsync(int userId);

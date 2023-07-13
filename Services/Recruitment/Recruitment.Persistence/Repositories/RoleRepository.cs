@@ -2,11 +2,11 @@
 
 namespace Recruitment.Persistence.Repositories;
 
-public class ManageRoleRepository : IManageRoleRepository
+public class RoleRepository : IRoleRepository
 {
     private readonly IDapperContext _dapperContext;
 
-    public ManageRoleRepository(IDapperContext dapperContext)
+    public RoleRepository(IDapperContext dapperContext)
     {
         _dapperContext = dapperContext;
     }

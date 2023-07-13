@@ -5,9 +5,9 @@ public class RoleService : IRoleService
     private readonly IMapper _mapper;
     private readonly ICurrentUserService _currentUserService;
     private readonly IDateTimeService _dateTime;
-    private readonly IManageRoleRepository _roleRepository;
+    private readonly IRoleRepository _roleRepository;
 
-    public RoleService(IMapper mapper, ICurrentUserService currentUserService, IDateTimeService dateTime, IManageRoleRepository roleRepository)
+    public RoleService(IMapper mapper, ICurrentUserService currentUserService, IDateTimeService dateTime, IRoleRepository roleRepository)
     {
         _mapper = mapper;
         _currentUserService = currentUserService;

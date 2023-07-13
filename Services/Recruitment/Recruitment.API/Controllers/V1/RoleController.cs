@@ -4,11 +4,11 @@ namespace Recruitment.API.Controllers.V1;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-public class ManageRoleController : ApiControllerBase
+public class RoleController : ApiControllerBase
 {
     private readonly IRoleService _roleService;
 
-    public ManageRoleController(IRoleService roleService)
+    public RoleController(IRoleService roleService)
     {
         _roleService = roleService;
     }
