@@ -13,7 +13,7 @@ global using Recruitment.Persistence.Common;
 global using Recruitment.Persistence.Repositories;
 global using Recruitment.Application.Exceptions;
 global using Recruitment.Application.Features.SpecialWords;
-
+global using Recruitment.Application.Features.Agencies;
 
 
 

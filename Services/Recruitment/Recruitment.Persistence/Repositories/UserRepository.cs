@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Recruitment.Application.Features.Agencies;
-
-namespace Recruitment.Persistence.Repositories
+﻿namespace Recruitment.Persistence.Repositories
 {
     public class UserRepository : IUserRepository
     {
