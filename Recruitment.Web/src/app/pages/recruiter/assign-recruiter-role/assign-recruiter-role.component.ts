@@ -39,6 +39,7 @@ export class AssignRecruiterRoleComponent {
     }
     onChangeUser() {
         this.getRankByUser(this.selectedUser);
+        this.getRoleByUser(this.selectedUser);
     }
 
     getRank() {
@@ -90,5 +91,23 @@ export class AssignRecruiterRoleComponent {
             () => { });
     }
 
-    deleteRole(role: any) { }
+    getRoleByUser(userId: any) {
+        this.assignRecruiterRoleService.getRoleByUser(userId).subscribe(
+            res => {
+                if (res.body) {
+                    this.userRoles = res.body;
+                }
+                else {
+                    this.selectedRank = "";
+                }
+            },
+            err => {
+                console.log(err);
+            },
+            () => { });
+    }
+
+    deleteRole(role: any) {
+        console.log(role);
+    }
 }

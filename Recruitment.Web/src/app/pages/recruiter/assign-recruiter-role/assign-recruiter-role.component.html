@@ -33,9 +33,9 @@
                 </ng-template>
                 <ng-template pTemplate="body" let-role>
                     <tr>
-                        <td>{{ role.loginId }}</td>
+                        <td>{{ role.roleName }}</td>
                         <td>
-                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteRole(role)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteRole(role)"></button>
                         </td>
                     </tr>
                 </ng-template>
