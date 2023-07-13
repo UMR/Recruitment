@@ -50,4 +50,19 @@ public class RankRepository : IRankRepository
             return rank;
         }
     }
+
+    public async Task<bool> DeleteUserRoleByUserAsync(int userId) {
+
+        var query = @"DELETE FROM [UserRank] WHERE [UserID]=@UserID";
+
+        return true;
+        //var parameters = new DynamicParameters();
+        //parameters.Add("UserID", userId, DbType.Int32);
+
+        //using (IDbConnection conn = _dapperContext.CreateConnection)
+        //{
+        //    var rank = await conn.QueryFirstOrDefaultAsync<RankLookup>(query, parameters);
+        //    return rank;
+        //}
+    }
 }

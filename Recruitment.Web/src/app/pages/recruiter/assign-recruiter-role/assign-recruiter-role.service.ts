@@ -26,11 +26,11 @@ export class AssignRecruiterRoleService {
     }
 
     getAllRole(): Observable<HttpResponse<any>> {
-        const recruiterURI = `${resourceServerUrl}/api/v1/ManageRole/GetRole`;
+        const recruiterURI = `${resourceServerUrl}/api/v1/Role/GetRole`;
         return this.http.get(recruiterURI, { observe: 'response' })
     }
     getRoleByUser(userId: number): Observable<HttpResponse<any>> {
-        const recruiterURI = `${resourceServerUrl}/api/v1/ManageRole/GetRoleByUser/` + userId;
+        const recruiterURI = `${resourceServerUrl}/api/v1/Role/GetRoleByUser/` + userId;
         return this.http.get(recruiterURI, { observe: 'response' })
     }
 }
