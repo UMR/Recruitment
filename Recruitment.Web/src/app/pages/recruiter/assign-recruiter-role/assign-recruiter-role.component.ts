@@ -18,6 +18,8 @@ export class AssignRecruiterRoleComponent {
     selectedRole: string = "";
     selectedRank: string = "";
 
+    enumId: any;
+
     constructor(private assignRecruiterRoleService: AssignRecruiterRoleService) {
         this.getUser();
         this.getRank();
@@ -45,7 +47,10 @@ export class AssignRecruiterRoleComponent {
     }
 
     onChangeRank() {
-       //const index = this.ranks.findIndex(item => item.rankLookupId == this.selectedRank);
+        var index = this.ranks.findIndex((obj: any) => {
+            return obj.rankLookupId === this.selectedRank;
+        });
+        this.enumId = this.ranks[index].enumId;
     }
 
     getRank() {
@@ -70,7 +75,7 @@ export class AssignRecruiterRoleComponent {
             UserRankId: 0,
             userId: +this.selectedUser,
             rankLookupId: +this.selectedRank,
-            enumId: 1,
+            enumId: +this.enumId,
             CreatedBy: 0,
             CreatedDate: new Date(),
             UpdatedBy: 0,
