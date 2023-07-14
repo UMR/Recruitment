@@ -72,7 +72,7 @@ namespace Recruitment.Domain.Entities
 
         public virtual Applicant Applicant { get; set; } = null!;
         public virtual Country? Country { get; set; }
-        public virtual LookupPostCode? PostalCode { get; set; }
+        public virtual PostCode? PostalCode { get; set; }
         public virtual NamePrefix? Prefix { get; set; }
         public virtual State? StateNavigation { get; set; }
         public virtual User? UpdatedByNavigation { get; set; }
