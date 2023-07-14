@@ -1,6 +1,6 @@
-﻿namespace Recruitment.Domain.Entities;
+﻿namespace Recruitment.Application.Features.PostCodes;
 
-public partial class LookupPostCode
+public class PostCodeListDto
 {
     public int PostCodeId { get; set; }
     public string PostCode { get; set; } = null!;
@@ -9,5 +9,5 @@ public partial class LookupPostCode
     public DateTime? CreatedDate { get; set; }
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedDate { get; set; }
-    
+
 }
