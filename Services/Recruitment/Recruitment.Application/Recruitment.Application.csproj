@@ -13,7 +13,6 @@
 	<ItemGroup>
 		<Folder Include="Features\ManageRank\Validators\" />
 		<Folder Include="Features\Menus\Validators\" />
-		<Folder Include="Features\PostCodes\Services\" />
 		<Folder Include="Features\PostCodes\Validators\" />
 	</ItemGroup>
 
