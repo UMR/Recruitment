@@ -71,7 +71,7 @@ public class RankRepository : IRankRepository
     }
     public async Task<bool> UpdateUserRankAsync(CreateUpdateUserRankDto userRank)
     {
-        var query = "UPDATE [dbo].[UserRank] SET[RankLookupID] = @RankLookupID ,[UpdatedBy] = @UpdatedBy ,[UpdatedDate] = GETDATE(),[EnumID] = @EnumID WHERE UserID = @UserID";
+        var query = "UPDATE [dbo].[UserRank] SET[RankLookupID] = @RankLookupID ,[UpdatedBy] = @UpdatedBy ,[UpdatedDate] = @UpdatedDate,[EnumID] = @EnumID WHERE UserID = @UserID";
 
         var parameters = new DynamicParameters();
         parameters.Add("RankLookupID", userRank.RankLookupId, DbType.String);
