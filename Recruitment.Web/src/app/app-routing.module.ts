@@ -91,7 +91,7 @@ const routes: Routes = [
             },
             {
                 path: 'information/postal-code',
-                loadChildren: () => import('./pages/information/post-code/post-code-routing.module').then((m) => m.PostCodeRoutingModule)
+                loadChildren: () => import('./pages/information/post-code/post-code.module').then((m) => m.PostCodeModule)
             } 
         ]
     },
