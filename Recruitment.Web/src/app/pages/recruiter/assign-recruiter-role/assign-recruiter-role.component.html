@@ -43,15 +43,23 @@
             <div class="field mt-4">
                 <p-dropdown id="role" [options]="roles" [(ngModel)]="selectedRole" optionLabel="roleName" optionValue="roleId" placeholder="Select a Role"></p-dropdown>
             </div>
-            <button pButton pRipple label="Add Role" class="p-button-success" icon="pi pi-plus" (click)="addRank()" [disabled]="selectedUser == '' || selectedRole == ''"  style="margin-bottom:8px"></button>
+            <button pButton pRipple label="Add Role" class="p-button-success" icon="pi pi-plus" (click)="addRank()" [disabled]="selectedUser == '' || selectedRole == ''" style="margin-bottom:8px"></button>
         </div>
         <div class="col-md-4">
             <h5>Rank</h5>
             <div class="field">
                 <p-dropdown id="rank" [options]="ranks" [(ngModel)]="selectedRank" optionLabel="rank" optionValue="rankLookupId" (onChange)="onChangeRank()" placeholder="Select a User"></p-dropdown>
             </div>
-            <button pButton pRipple label="Add Rank" class="p-button-success" icon="pi pi-plus" (click)="addRank()" [disabled] = "selectedUser == '' || selectedRank == ''"></button>
-            <button pButton pRipple label="Delete Rank" class="p-button-danger" icon="pi pi-trash" (click)="addRank()" [disabled] = "selectedUser == '' || selectedRank == ''" style="margin-left:8px"></button>
+            <button pButton pRipple label="Add Rank" class="p-button-success" icon="pi pi-plus" (click)="addRank()" [disabled]="selectedUser == '' || selectedRank == ''"></button>
+            <button pButton pRipple label="Delete Rank" class="p-button-danger" icon="pi pi-trash" (click)="addRank()" [disabled]="selectedUser == '' || selectedRank == ''" style="margin-left:8px"></button>
         </div>
     </div>
 </p-card>
+
+<p-toast></p-toast>
+<p-confirmDialog [style]="{ width: '450px' }" #cd>
+    <ng-template pTemplate="footer">
+        <button type="button" pButton icon="pi pi-times" label="No" class="btn-no" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="pi pi-check" label="Yes" class="btn-yes" (click)="cd.accept()"></button>
+    </ng-template>
+</p-confirmDialog>

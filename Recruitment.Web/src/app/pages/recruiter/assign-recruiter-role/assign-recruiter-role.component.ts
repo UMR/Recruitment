@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserRankModel } from '../../../common/models/user-rank.model';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { AssignRecruiterRoleService } from './assign-recruiter-role.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class AssignRecruiterRoleComponent {
 
     enumId: any;
 
-    constructor(private assignRecruiterRoleService: AssignRecruiterRoleService) {
+    constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private assignRecruiterRoleService: AssignRecruiterRoleService) {
         this.getUser();
         this.getRank();
         this.getRole();
@@ -85,12 +85,15 @@ export class AssignRecruiterRoleComponent {
             res => {
                 if (res.body) {
                     this.roles = res.body;
+                    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Role Added Successfully', life: 3000 });
                 }
                 else {
+                    this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.message, life: 3000 });
                     this.roles = [];
                 }
             },
             err => {
+                this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message, life: 3000 });
                 console.log(err);
             },
             () => { });
@@ -148,6 +151,21 @@ export class AssignRecruiterRoleComponent {
     }
 
     deleteRole(role: any) {
-        console.log(role);
+        this.confirmationService.confirm({
+            message: 'Are you sure you want to delete ' + role.roleName + ' role ?',
+            header: 'Confirm',
+            icon: 'pi pi-exclamation-triangle',
+            accept: () => {
+                //this.manageRecruiterService.deleteRecruiter(user.userId, "5034").subscribe(res => {
+                //    console.log(res);
+                //    if (res && res.body) {
+                //        this.getRole();
+                //        this.user = {};
+                //        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Recruiter Deleted', life: 3000 });
+                //    }
+                //}, err => { })
+
+            }
+        });
     }
 }

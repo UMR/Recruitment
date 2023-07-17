@@ -8,6 +8,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 @NgModule({
@@ -17,11 +20,14 @@ import { ButtonModule } from 'primeng/button';
     imports: [
         CommonModule,
         FormsModule,
+        ToastModule,
+        ConfirmDialogModule,
         CardModule,
         TableModule,
         DropdownModule,
         ButtonModule,
         AssignRecruiterRoleRoutingModule
-    ]
+    ],
+    providers: [ConfirmationService, MessageService]
 })
 export class AssignRecruiterRoleModule { }
