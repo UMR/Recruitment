@@ -31,7 +31,7 @@ export class AssignRecruiterRoleService {
         return this.http.post(recruiterURI, userRank, { observe: 'response' })
     }
 
-    updateRankByUser(userId: number, userRank: UserRankModel): Observable<HttpResponse<any>> {
+    updateRankByUser(userId: number, userRank: any): Observable<HttpResponse<any>> {
         const recruiterURI = `${resourceServerUrl}/api/v1/Rank/UpdateUserRank/` + userId;
         return this.http.put(recruiterURI, userRank, { observe: 'response' })
     }

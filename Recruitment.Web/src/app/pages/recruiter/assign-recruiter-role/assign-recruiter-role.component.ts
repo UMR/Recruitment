@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { elementAt } from 'rxjs';
 import { AssignRecruiterRoleService } from './assign-recruiter-role.service';
 
 @Component({
@@ -71,32 +72,62 @@ export class AssignRecruiterRoleComponent {
     }
 
     addRank() {
-        let userRank = {
-            UserRankId: 0,
-            userId: +this.selectedUser,
-            rankLookupId: +this.selectedRank,
-            enumId: +this.enumId,
-            CreatedBy: 0,
-            CreatedDate: new Date(),
-            UpdatedBy: 0,
-            UpdatedDate: new Date()
+        if (this.ranks.length == 0) {
+            let userRank = {
+                UserRankId: 0,
+                userId: +this.selectedUser,
+                rankLookupId: +this.selectedRank,
+                enumId: +this.enumId,
+                CreatedBy: 0,
+                CreatedDate: new Date(),
+                UpdatedBy: 0,
+                UpdatedDate: new Date()
+            }
+            this.assignRecruiterRoleService.addRankByUser(userRank).subscribe(
+                res => {
+                    if (res.body) {
+                        this.roles = res.body;
+                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Role Added Successfully', life: 3000 });
+                    }
+                    else {
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.message, life: 3000 });
+                        this.roles = [];
+                    }
+                },
+                err => {
+                    this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message, life: 3000 });
+                    console.log(err);
+                },
+                () => { });
         }
-        this.assignRecruiterRoleService.addRankByUser(userRank).subscribe(
-            res => {
-                if (res.body) {
-                    this.roles = res.body;
-                    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Role Added Successfully', life: 3000 });
-                }
-                else {
-                    this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.message, life: 3000 });
-                    this.roles = [];
-                }
-            },
-            err => {
-                this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message, life: 3000 });
-                console.log(err);
-            },
-            () => { });
+        else {
+            let userRank = {
+                UserRankId: 0,
+                userId: +this.selectedUser,
+                rankLookupId: +this.selectedRank,
+                enumId: +this.enumId,
+                CreatedBy: 0,
+                CreatedDate: new Date(),
+                UpdatedBy: 0,
+                UpdatedDate: new Date()
+            }
+            this.assignRecruiterRoleService.updateRankByUser(+this.selectedUser, userRank).subscribe(
+                res => {
+                    if (res.body) {
+                        this.roles = res.body;
+                        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Role Added Successfully', life: 3000 });
+                    }
+                    else {
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.message, life: 3000 });
+                        this.roles = [];
+                    }
+                },
+                err => {
+                    this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message, life: 3000 });
+                    console.log(err);
+                },
+                () => { });
+        }
     }
     deleteRank() {
 
