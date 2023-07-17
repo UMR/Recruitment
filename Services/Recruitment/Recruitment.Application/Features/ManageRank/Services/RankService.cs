@@ -79,7 +79,7 @@ public class RankService : IRankService
         //    return response;
         //}
 
-        if (id != request.UserRankId)
+        if (id != request.UserId)
         {
             throw new BadRequestException("Id does not match");
         }
@@ -91,11 +91,16 @@ public class RankService : IRankService
             throw new NotFoundException(nameof(User), id.ToString());
         }
 
-        //entity.RankLookupId = request.RankLookupId;
-        //entity.EnumId = request.EnumId;
-        //entity.UpdatedBy = _currentUserService.UserId;
-        //entity.UpdatedDate = _dateTime.Now;
-        await _rankRepository.AddUserRankAsync(request);
+        CreateUpdateUserRankDto obj = new CreateUpdateUserRankDto();
+
+        obj.RankLookupId = request.RankLookupId;
+        obj.EnumId = request.EnumId;
+        obj.UpdatedBy = _currentUserService.UserId;
+        obj.UpdatedDate = _dateTime.Now;
+        obj.CreatedDate = _dateTime.Now;
+        obj.UserId = request.UserId;
+
+        await _rankRepository.UpdateUserRankAsync(obj);
 
         response.Success = true;
         response.Message = "Updating Successful";

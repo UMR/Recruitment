@@ -71,19 +71,26 @@ public class RankRepository : IRankRepository
     }
     public async Task<bool> UpdateUserRankAsync(CreateUpdateUserRankDto userRank)
     {
-        var query = "UPDATE [dbo].[UserRank] SET[RankLookupID] = @RankLookupID ,[UpdatedBy] = @UpdatedBy ,[UpdatedDate] = @UpdatedDate,[EnumID] = @EnumID WHERE UserID = @UserID";
-
-        var parameters = new DynamicParameters();
-        parameters.Add("RankLookupID", userRank.RankLookupId, DbType.String);
-        parameters.Add("EnumID", userRank.EnumId, DbType.String);
-        parameters.Add("UserID", userRank.UserId, DbType.String);
-        parameters.Add("UpdatedBy", userRank.UpdatedBy, DbType.Int32);
-        parameters.Add("UpdatedDate", DateTime.Now, DbType.DateTime);
-
-        using (IDbConnection conn = _dapperContext.CreateConnection)
+        try
         {
-            var result = await conn.ExecuteAsync(query, parameters);
-            return result > 0 ? true : false;
+            var query = "UPDATE [dbo].[UserRank] SET [RankLookupID] = @RankLookupID ,[UpdatedBy] = @UpdatedBy ,[UpdatedDate] = @UpdatedDate,[EnumID] = @EnumID WHERE UserID = @UserID";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("RankLookupID", userRank.RankLookupId, DbType.String);
+            parameters.Add("EnumID", userRank.EnumId, DbType.String);
+            parameters.Add("UserID", userRank.UserId, DbType.String);
+            parameters.Add("UpdatedBy", userRank.UpdatedBy, DbType.Int32);
+            parameters.Add("UpdatedDate", DateTime.Now, DbType.DateTime);
+
+            using (IDbConnection conn = _dapperContext.CreateConnection)
+            {
+                var result = await conn.ExecuteAsync(query, parameters);
+                return result > 0 ? true : false;
+            }
+        }
+        catch (Exception ex)
+        {
+            throw;
         }
     }
     public async Task<bool> DeleteUserRankByUserAsync(int userId)
