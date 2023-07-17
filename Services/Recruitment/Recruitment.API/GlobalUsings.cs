@@ -29,6 +29,7 @@ global using Recruitment.Application.Features.Countries;
 global using Recruitment.Application.Features.ManageRank;
 global using Recruitment.Application.Features.ManageRecruiter;
 global using Recruitment.Application.Features.Users;
+global using Recruitment.Application.Features.PostCodes;
 
 global using Recruitment.Infrastructure;
 
