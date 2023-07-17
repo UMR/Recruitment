@@ -34,69 +34,71 @@ public class PostCodeService : IPostCodeService
         return await _postCodeRepository.IsExistPostCodeAsync(name, id);
     }
 
-    //public async Task<BaseCommandResponse> CreateAsync(CreateVisaTypeDto request)
-    //{
-    //    var response = new BaseCommandResponse();
-    //    var validator = new CreateVisaTypeDtoValidator(this);
-    //    var validationResult = await validator.ValidateAsync(request);
+    public async Task<BaseCommandResponse> CreateAsync(CreatePostCodeDto request)
+    {
+        var response = new BaseCommandResponse();
+        var validator = new CreatePostCodeDtoValidator(this);
+        var validationResult = await validator.ValidateAsync(request);
 
-    //    if (validationResult.IsValid == false)
-    //    {
-    //        response.Success = false;
-    //        response.Message = "Creating Failed";
-    //        response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-    //        return response;
-    //    }
+        if (validationResult.IsValid == false)
+        {
+            response.Success = false;
+            response.Message = "Creating Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            return response;
+        }
 
-    //    var entity = new VisaTypeEntity
-    //    {
-    //        VisaType = request.VisaType,
-    //        CreatedBy = _currentUserService.UserId,
-    //        CreatedDate = _dateTime.Now
-    //    };
-    //    await _postCodeRepository.CreateAsync(entity);
+        var entity = new PostCode
+        {
+            PostCodeName = request.PostCode,
+            CountryId = request.CountryId,
+            CreatedBy = _currentUserService.UserId,
+            CreatedDate = _dateTime.Now
+        };
+        await _postCodeRepository.CreateAsync(entity);
 
-    //    response.Success = true;
-    //    response.Message = "Creating Successful";
-    //    return response;
-    //}
+        response.Success = true;
+        response.Message = "Creating Successful";
+        return response;
+    }
 
-    //public async Task<BaseCommandResponse> UpdateAsync(int id, UpdateVisaTypeDto request)
-    //{
-    //    var response = new BaseCommandResponse();
-    //    var validator = new UpdateVisaTypeDtoValidator(this);
-    //    var validationResult = await validator.ValidateAsync(request);
+    public async Task<BaseCommandResponse> UpdateAsync(int id, UpdatePostCodeDto request)
+    {
+        var response = new BaseCommandResponse();
+        var validator = new UpdatePostCodeDtoValidator(this);
+        var validationResult = await validator.ValidateAsync(request);
 
-    //    if (validationResult.IsValid == false)
-    //    {
-    //        response.Success = false;
-    //        response.Message = "Updating Failed";
-    //        response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-    //        return response;
-    //    }
+        if (validationResult.IsValid == false)
+        {
+            response.Success = false;
+            response.Message = "Updating Failed";
+            response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
+            return response;
+        }
 
-    //    if (id != request.Id)
-    //    {
-    //        throw new BadRequestException("Id does not match");
-    //    }
+        if (id != request.PostCodeId)
+        {
+            throw new BadRequestException("Id does not match");
+        }
 
-    //    var entity = await _postCodeRepository.GetByIdAsync(id);
+        var entity = await _postCodeRepository.GetByIdAsync(id);
 
-    //    if (entity is null)
-    //    {
-    //        throw new NotFoundException(nameof(VisaTypeEntity), id.ToString());
-    //    }
+        if (entity is null)
+        {
+            throw new NotFoundException(nameof(VisaTypeEntity), id.ToString());
+        }
 
-    //    entity.Id = request.Id;
-    //    entity.VisaType = request.VisaType;
-    //    entity.UpdatedBy = _currentUserService.UserId;
-    //    entity.UpdatedDate = _dateTime.Now;
-    //    await _postCodeRepository.UpdateAsync(id, entity);
+        entity.PostCodeId = request.PostCodeId;
+        entity.PostCodeName = request.PostCode;
+        entity.CountryId = request.CountryId;
+        entity.UpdatedBy = _currentUserService.UserId;
+        entity.UpdatedDate = _dateTime.Now;
+        await _postCodeRepository.UpdateAsync(id, entity);
 
-    //    response.Success = true;
-    //    response.Message = "Updating Successful";
-    //    return response;
-    //}
+        response.Success = true;
+        response.Message = "Updating Successful";
+        return response;
+    }
 
     public async Task<BaseCommandResponse> DeleteAsync(int id)
     {

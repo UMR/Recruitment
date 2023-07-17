@@ -1,6 +1,4 @@
-﻿using Recruitment.Application.Features.VisaTypes;
-
-namespace Recruitment.Application.Features.PostCodes;
+﻿namespace Recruitment.Application.Features.PostCodes;
 
 public class UpdatePostCodeDtoValidator : AbstractValidator<UpdatePostCodeDto>
 {
