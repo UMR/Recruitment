@@ -118,7 +118,7 @@ namespace Recruitment.Domain.Entities
         public virtual User CreatedByNavigation { get; set; } = null!;
         public virtual Position? DesiredPosition { get; set; }
         public virtual Country? PlaceOfBirthNavigation { get; set; }
-        public virtual PostCode? PostalCode { get; set; }
+        public virtual PostCodeEntity? PostalCode { get; set; }
         public virtual NamePrefix? Prefix { get; set; }
         public virtual User? PrimaryOwner { get; set; }
         public virtual Race? RaceNavigation { get; set; }

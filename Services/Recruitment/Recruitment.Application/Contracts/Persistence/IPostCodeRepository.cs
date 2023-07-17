@@ -2,15 +2,15 @@
 
 public interface IPostCodeRepository
 {
-    Task<IEnumerable<PostCode>> GetAllAsync();    
+    Task<IEnumerable<PostCodeEntity>> GetAllAsync();    
 
-    Task<PostCode> GetByIdAsync(int id);    
+    Task<PostCodeEntity> GetByIdAsync(int id);    
 
     Task<bool> IsExistPostCodeAsync(string name, int? id = null);    
 
-    Task<int> CreateAsync(PostCode model);
+    Task<int> CreateAsync(PostCodeEntity model);
 
-    Task<bool> UpdateAsync(int id, PostCode model);
+    Task<bool> UpdateAsync(int id, PostCodeEntity model);
 
     Task<bool> DeleteAsync(int id);
    

@@ -48,9 +48,9 @@ public class PostCodeService : IPostCodeService
             return response;
         }
 
-        var entity = new PostCode
+        var entity = new PostCodeEntity
         {
-            PostCodeName = request.PostCode,
+            PostCode = request.PostCode,
             CountryId = request.CountryId,
             CreatedBy = _currentUserService.UserId,
             CreatedDate = _dateTime.Now
@@ -89,7 +89,7 @@ public class PostCodeService : IPostCodeService
         }
 
         entity.PostCodeId = request.PostCodeId;
-        entity.PostCodeName = request.PostCode;
+        entity.PostCode = request.PostCode;
         entity.CountryId = request.CountryId;
         entity.UpdatedBy = _currentUserService.UserId;
         entity.UpdatedDate = _dateTime.Now;
@@ -107,7 +107,7 @@ public class PostCodeService : IPostCodeService
 
         if (entity is null)
         {
-            throw new NotFoundException(nameof(PostCode), id.ToString());
+            throw new NotFoundException(nameof(PostCodeEntity), id.ToString());
         }
 
         await _postCodeRepository.DeleteAsync(id);

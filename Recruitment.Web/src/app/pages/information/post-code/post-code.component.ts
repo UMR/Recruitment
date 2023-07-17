@@ -25,7 +25,7 @@ export class PostCodeComponent {
 
   ngOnInit(): void {
       this.createFormGroup();
-      this.getVisaTypes();
+      this.getPostCodes();
   }
 
   createFormGroup() {
@@ -75,7 +75,7 @@ export class PostCodeComponent {
                       if (res.status === 200) {
                           if ((res.body as any).success) {
                               this.clearFields(false, false);
-                              this.getVisaTypes();
+                              this.getPostCodes();
                               this.messageService.add({ severity: 'success', summary: 'Successful', detail: (res.body as any).message, life: 3000 });
                           } else {
                               this.messageService.add({ severity: 'error', summary: 'Error', detail: (res.body as any).errors[0], life: 3000 });
@@ -92,7 +92,7 @@ export class PostCodeComponent {
                       if (res.status === 200) {
                           if ((res.body as any).success) {                                
                               this.clearFields(false, false);
-                              this.getVisaTypes();
+                              this.getPostCodes();
                               this.messageService.add({ severity: 'success', summary: 'Successful', detail: (res.body as any).message, life: 3000 });
                           } else {
                               this.messageService.add({ severity: 'error', summary: 'Error', detail: (res.body as any).errors[0], life: 3000 });
@@ -126,7 +126,7 @@ export class PostCodeComponent {
                       if (res.status === 200) {
                           if ((res.body as any).success) {
                               this.clearFields(false, false);
-                              this.getVisaTypes();
+                              this.getPostCodes();
                               this.messageService.add({ severity: 'success', summary: 'Successful', detail: (res.body as any).message, life: 3000 });
                           } else {
                               this.messageService.add({ severity: 'error', summary: 'Error', detail: res.body.errors[0], life: 3000 });
@@ -149,15 +149,16 @@ export class PostCodeComponent {
       this.formGroup.reset();
   }
 
-  getVisaTypes() {
+  getPostCodes() {
       this.postCodeService.getAll().subscribe({
           next: (res) => {
               if (res.status === 200) {
+                  console.log(res);
                   this.postCodes = res.body;                    
               }
           },
           error: (err) => {
-              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to get Visa Type', life: 3000 });
+              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to get Post Code', life: 3000 });
           }
       });
   }

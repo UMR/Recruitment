@@ -16,5 +16,6 @@ public class MappingProfile : Profile
         CreateMap<Country, CountryListDto>().ReverseMap();
         CreateMap<RankLookup, RankListDto>().ReverseMap();
         CreateMap<UserRank, CreateUpdateUserRankDto>().ReverseMap();
+        CreateMap<PostCodeEntity, PostCodeListDto>().ReverseMap();
     }
 }

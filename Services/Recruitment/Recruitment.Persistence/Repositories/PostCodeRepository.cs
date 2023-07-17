@@ -9,18 +9,18 @@ public class PostCodeRepository : IPostCodeRepository
         _dapperContext = dapperContext;        
     }
 
-    public async Task<IEnumerable<PostCode>> GetAllAsync()
+    public async Task<IEnumerable<PostCodeEntity>> GetAllAsync()
     {
-        var query = @"SELECT * FROM Lookup_PostCode ORDER BY VisaType ASC";
+        var query = @"SELECT * FROM Lookup_PostCode ORDER BY PostCode ASC";
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
-            var result = await conn.QueryAsync<PostCode>(query);
+            var result = await conn.QueryAsync<PostCodeEntity>(query);
             return result.ToList();
         }
     }
 
-    public async Task<PostCode> GetByIdAsync(int id)
+    public async Task<PostCodeEntity> GetByIdAsync(int id)
     {
         var query = @"SELECT * FROM Lookup_PostCode WHERE PostCodeID=@PostCodeID";
 
@@ -29,7 +29,7 @@ public class PostCodeRepository : IPostCodeRepository
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
         {
-            var result = await conn.QueryFirstOrDefaultAsync<PostCode>(query, parameters);
+            var result = await conn.QueryFirstOrDefaultAsync<PostCodeEntity>(query, parameters);
             return result;
         }
     }
@@ -58,13 +58,13 @@ public class PostCodeRepository : IPostCodeRepository
         }
     }
 
-    public async Task<int> CreateAsync(PostCode model)
+    public async Task<int> CreateAsync(PostCodeEntity model)
     {
         var query = "INSERT INTO Lookup_PostCode (PostCode,CountryId) VALUES (@PostCode,@CountryId) " +
                     "SELECT CAST(SCOPE_IDENTITY() as int)";
 
         var parameters = new DynamicParameters();
-        parameters.Add("PostCode", model.PostCodeName, DbType.String);
+        parameters.Add("PostCode", model.PostCode, DbType.String);
         parameters.Add("CountryId", model.CountryId, DbType.Int32);
 
         using (IDbConnection conn = _dapperContext.CreateConnection)
@@ -74,12 +74,12 @@ public class PostCodeRepository : IPostCodeRepository
         }
     }
 
-    public async Task<bool> UpdateAsync(int id, PostCode model)
+    public async Task<bool> UpdateAsync(int id, PostCodeEntity model)
     {
         var query = "UPDATE Lookup_PostCode SET PostCode = @PostCode, CountryId=@CountryId WHERE ID = @ID";
 
         var parameters = new DynamicParameters();
-        parameters.Add("PostCode", model.PostCodeName, DbType.String);
+        parameters.Add("PostCode", model.PostCode, DbType.String);
         parameters.Add("CountryId", model.CountryId, DbType.Int32);
         parameters.Add("PostCodeID", id, DbType.Int32);
 
