@@ -1,6 +1,6 @@
-﻿namespace Recruitment.Application.Features.VisaTypes;
+﻿namespace Recruitment.Application.Features.PostCodes;
 
-public class PostCodeService
+public class PostCodeService : IPostCodeService
 {
     private readonly IMapper _mapper;
     private readonly ICurrentUserService _currentUserService;
